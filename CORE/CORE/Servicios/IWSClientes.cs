@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -21,7 +22,7 @@ namespace CORE
         void ActualizarCliente(int id, string Nombre, int TipoDocumento, string Documento, string Correo, string Telefono, string Direccion, DateTime FechaNacimiento);
 
         [OperationContract]
-        void MostrarClientes();
+        DataTable MostrarClientes();
     }
     
     [DataContract]

@@ -1,6 +1,7 @@
 ﻿using CORE.DSGeneralTableAdapters;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -29,9 +30,9 @@ namespace CORE.Servicios
             Adapter.Update(id, Estado, Balance);
         }
         
-        public void MostrarCuenta()
+        public DataTable MostrarCuenta()
         {
-            Adapter.GetData();
+            return Adapter.GetData();
         }
     }
 }

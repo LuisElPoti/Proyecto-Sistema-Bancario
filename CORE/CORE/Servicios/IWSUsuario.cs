@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -21,7 +22,7 @@ namespace CORE.Servicios
         void ActualizarUsuario(int id, int idPerfil, string Nombre, string Clave);
 
         [OperationContract]
-        void MostrarUsuarios();
+        DataTable MostrarUsuarios();
     }
 
     [DataContract]

@@ -1,6 +1,7 @@
 ﻿using CORE.DSGeneralTableAdapters;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -29,9 +30,9 @@ namespace CORE
             Adapter.Update(id, Nombre, TipoDocumento, Documento, Correo, Telefono, Direccion, FechaNacimiento);
         }
 
-        public void MostrarClientes()
+        public DataTable MostrarClientes()
         {
-            Adapter.GetData();
+            return Adapter.GetData();
         }
 
     }

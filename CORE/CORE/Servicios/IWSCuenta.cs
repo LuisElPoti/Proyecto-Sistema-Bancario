@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Runtime.Serialization;
@@ -22,7 +23,7 @@ namespace CORE.Servicios
         void ActualizarCuenta(int id, bool Estado, decimal Balance);
 
         [OperationContract]
-        void MostrarCuenta();
+        DataTable MostrarCuenta();
     }
 
     [DataContract]
