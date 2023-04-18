@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CORE_INTERFACES
 {
-    public partial class frmCargaCore : Form
+    public partial class frmLogin : Form
     {
-        public frmCargaCore()
+        public frmLogin()
         {
             InitializeComponent();
         }

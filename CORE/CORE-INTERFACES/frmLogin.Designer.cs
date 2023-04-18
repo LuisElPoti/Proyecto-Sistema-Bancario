@@ -1,6 +1,6 @@
 ﻿namespace CORE_INTERFACES
 {
-    partial class frmCargaCore
+    partial class frmLogin
     {
         /// <summary>
         /// Required designer variable.
