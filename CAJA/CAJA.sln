@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAJA", "CAJA\CAJA.csproj", "{E4A36B5D-F6D7-4933-B390-9D0CAAED03DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4A36B5D-F6D7-4933-B390-9D0CAAED03DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4A36B5D-F6D7-4933-B390-9D0CAAED03DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4A36B5D-F6D7-4933-B390-9D0CAAED03DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4A36B5D-F6D7-4933-B390-9D0CAAED03DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E94E0F9-976E-489E-BA7C-A980E387AEE3}
+	EndGlobalSection
+EndGlobal
