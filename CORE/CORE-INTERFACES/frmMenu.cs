@@ -46,5 +46,10 @@ namespace CORE_INTERFACES
         {
 
         }
+
+        private void guna2CirclePictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
