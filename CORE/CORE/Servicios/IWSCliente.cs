@@ -8,9 +8,9 @@ using System.Text;
 
 namespace CORE.Servicios
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IServicios" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IWSClientes
+    public interface IWSCliente
     {
         [OperationContract]
         void AgregarCliente(string Nombre, int TipoDocumento, string Documento, string Correo, string Telefono, string Direccion, DateTime FechaNacimiento);
@@ -19,15 +19,16 @@ namespace CORE.Servicios
         void EliminarCliente(int id);
 
         [OperationContract]
-        void ActualizarCliente(int id, string Nombre, int TipoDocumento, string Documento, string Correo, string Telefono, string Direccion, DateTime FechaNacimiento);
+        void ModificarCliente(int id, string Nombre, int TipoDocumento, string Documento, string Correo, string Telefono, string Direccion, DateTime FechaNacimiento);
 
         [OperationContract]
-        DataTable MostrarClientes();
+        void MostrarCliente();
 
         [OperationContract]
-        DataTable BuscarCliente(int id);
+        void BuscarCliente(int id);
+
     }
-    
+
     [DataContract]
     public class Cliente
     {
@@ -46,5 +47,4 @@ namespace CORE.Servicios
         [DataMember]
         public DateTime FechaNacimiento { get; set; }
     }
-    
 }

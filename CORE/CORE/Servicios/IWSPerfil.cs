@@ -27,4 +27,14 @@ namespace CORE.Servicios
         [OperationContract]
         DataTable BuscarPerfil(int id);
     }
+
+    [DataContract]
+    public class Perfil
+    {
+        [DataMember]
+        public string Nombre { get; set;}
+
+        [DataMember]
+        public string Descripcion { get;set;}
+    }
 }
