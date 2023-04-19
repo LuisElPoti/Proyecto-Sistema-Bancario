@@ -17,13 +17,11 @@ namespace Prueba_Servicios
             InitializeComponent();
         }
 
+        Cliente.WSClienteClient cliente = new Cliente.WSClienteClient();
+
         private void button1_Click(object sender, EventArgs e)
         {
-            Clientes.WSClientesClient Cliente = new Clientes.WSClientesClient();
-
-            Cliente.AgregarCliente("Prueba", 1, "Prueba", "Prueba@hotmail.com", "Prueba", "Prueba", DateTime.Now);
-
-            MessageBox.Show("Servicio Usado");
+            cliente.EliminarCliente(1);
         }
     }
 }
