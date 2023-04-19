@@ -133,9 +133,9 @@ namespace CORE_INTERFACES.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icono_transaccion {
+        internal static System.Drawing.Bitmap Icono_Transacción {
             get {
-                object obj = ResourceManager.GetObject("icono transaccion", resourceCulture);
+                object obj = ResourceManager.GetObject("Icono Transacción", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,29 +143,9 @@ namespace CORE_INTERFACES.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Icono_Usuario_blanco {
+        internal static System.Drawing.Bitmap Icono_Usuario {
             get {
-                object obj = ResourceManager.GetObject("Icono Usuario blanco", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Icono_Usuario_blanco1 {
-            get {
-                object obj = ResourceManager.GetObject("Icono Usuario blanco1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Icono_Usuario_blanco2 {
-            get {
-                object obj = ResourceManager.GetObject("Icono Usuario blanco2", resourceCulture);
+                object obj = ResourceManager.GetObject("Icono Usuario", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

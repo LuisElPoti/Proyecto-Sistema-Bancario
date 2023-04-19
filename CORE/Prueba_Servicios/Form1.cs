@@ -26,6 +26,7 @@ namespace Prueba_Servicios
             Cliente.AgregarCliente("Prueba", 1, "Prueba", "Prueba@hotmail.com", "Prueba", "Prueba", DateTime.Now);
 
             MessageBox.Show("Servicio Usado");
+            
         }
     }
 }

@@ -17,21 +17,6 @@ namespace CORE_INTERFACES
             InitializeComponent();
         }
 
-        private void guna2PictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2CirclePictureBox5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnUsuario_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnUsuario_MouseEnter(object sender, EventArgs e)
         {
             this.btnUsuario.BackColor = Color.Navy;
@@ -42,14 +27,7 @@ namespace CORE_INTERFACES
             this.btnUsuario.BackColor = ColorTranslator.FromHtml("#200752");
         }
 
-        private void frmMenu_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void guna2CirclePictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
