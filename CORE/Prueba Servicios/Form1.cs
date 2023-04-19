@@ -29,6 +29,7 @@ namespace Prueba_Servicios
             Referencia.AgregarCliente("Joaquin", 1, "402566", "Joaquin@gmail.com", "8299628881", "Avenida", DateTime.Now);
 
             MessageBox.Show("Servicio Usado");
+            
         }
     }
 }
