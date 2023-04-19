@@ -27,4 +27,23 @@ namespace CORE.Servicios
         [OperationContract]
         DataTable BuscarPrestamo(int idCuenta);
     }
+
+    [DataContract]
+    public class Prestamo
+    {
+        [DataMember]
+        public int idCuenta { get; set; }
+
+        [DataMember]
+        public decimal Tasa { get; set; }
+
+        [DataMember]
+        public decimal MontoOriginal { get; set; }
+
+        [DataMember]
+        public decimal MontoActual { get; set; }
+
+        [DataMember]
+        public DateTime FechaCorte { get; set; }
+    }
 }
