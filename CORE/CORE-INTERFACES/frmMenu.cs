@@ -27,7 +27,22 @@ namespace CORE_INTERFACES
             this.btnUsuario.BackColor = ColorTranslator.FromHtml("#200752");
         }
 
+        private void btnUsuario_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new frmUsuario());
+        }
+        private void AbrirFormHija(object formhija)
+        {
+            if (this.pnlContenedor.Controls.Count > 0)
+                this.pnlContenedor.Controls.RemoveAt(0);
 
-        
+            Form fh = formhija as Form;
+
+            fh.TopLevel = false;
+            fh.Dock = DockStyle.Fill;
+            this.pnlContenedor.Controls.Add(fh);
+            this.pnlContenedor.Tag = fh;
+            fh.Show();
+        }
     }
 }

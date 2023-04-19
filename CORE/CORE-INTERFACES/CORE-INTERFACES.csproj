@@ -218,6 +218,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCuentas.Designer.cs">
+      <DependentUpon>frmCuentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,8 +248,38 @@
     <Compile Include="frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPerfil.Designer.cs">
+      <DependentUpon>frmPerfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrestamos.Designer.cs">
+      <DependentUpon>frmPrestamos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTipoTransacción.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTipoTransacción.Designer.cs">
+      <DependentUpon>frmTipoTransacción.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsuario.Designer.cs">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCuentas.resx">
+      <DependentUpon>frmCuentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,6 +288,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPerfil.resx">
+      <DependentUpon>frmPerfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrestamos.resx">
+      <DependentUpon>frmPrestamos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTipoTransacción.resx">
+      <DependentUpon>frmTipoTransacción.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsuario.resx">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
