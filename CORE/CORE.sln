@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CORE", "CORE\CORE.csproj", "{C8CA3D11-6248-4AF4-A05D-5710FFFE17D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CORE-INTERFACES", "CORE-INTERFACES\CORE-INTERFACES.csproj", "{F95AF91A-6C90-48BC-ADAA-38F7F44B5AF4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C8CA3D11-6248-4AF4-A05D-5710FFFE17D4} = {C8CA3D11-6248-4AF4-A05D-5710FFFE17D4}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prueba_Servicios", "Prueba_Servicios\Prueba_Servicios.csproj", "{595BA46A-78D3-4593-85DC-DFD232465A02}"
 	ProjectSection(ProjectDependencies) = postProject

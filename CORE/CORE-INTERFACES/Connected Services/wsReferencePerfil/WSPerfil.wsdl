@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="WSPerfil" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://localhost:44362/Servicios/WSPerfil.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://localhost:44362/Servicios/WSPerfil.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://localhost:44362/Servicios/WSPerfil.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWSPerfil_CrearPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IWSPerfil_CrearPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSPerfil_EliminarPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IWSPerfil_EliminarPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSPerfil_ModificarPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IWSPerfil_ModificarPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSPerfil_MostrarPerfiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:MostrarPerfiles" />
+  </wsdl:message>
+  <wsdl:message name="IWSPerfil_MostrarPerfiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MostrarPerfilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSPerfil_BuscarPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IWSPerfil_BuscarPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarPerfilResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWSPerfil">
+    <wsdl:operation name="CrearPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSPerfil/CrearPerfil" message="tns:IWSPerfil_CrearPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSPerfil/CrearPerfilResponse" message="tns:IWSPerfil_CrearPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSPerfil/EliminarPerfil" message="tns:IWSPerfil_EliminarPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSPerfil/EliminarPerfilResponse" message="tns:IWSPerfil_EliminarPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSPerfil/ModificarPerfil" message="tns:IWSPerfil_ModificarPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSPerfil/ModificarPerfilResponse" message="tns:IWSPerfil_ModificarPerfil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MostrarPerfiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSPerfil/MostrarPerfiles" message="tns:IWSPerfil_MostrarPerfiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSPerfil/MostrarPerfilesResponse" message="tns:IWSPerfil_MostrarPerfiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSPerfil/BuscarPerfil" message="tns:IWSPerfil_BuscarPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSPerfil/BuscarPerfilResponse" message="tns:IWSPerfil_BuscarPerfil_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWSPerfil" type="tns:IWSPerfil">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearPerfil">
+      <soap:operation soapAction="http://tempuri.org/IWSPerfil/CrearPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarPerfil">
+      <soap:operation soapAction="http://tempuri.org/IWSPerfil/EliminarPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarPerfil">
+      <soap:operation soapAction="http://tempuri.org/IWSPerfil/ModificarPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarPerfiles">
+      <soap:operation soapAction="http://tempuri.org/IWSPerfil/MostrarPerfiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarPerfil">
+      <soap:operation soapAction="http://tempuri.org/IWSPerfil/BuscarPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSPerfil">
+    <wsdl:port name="BasicHttpBinding_IWSPerfil" binding="tns:BasicHttpBinding_IWSPerfil">
+      <soap:address location="http://localhost:61491/Servicios/WSPerfil.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

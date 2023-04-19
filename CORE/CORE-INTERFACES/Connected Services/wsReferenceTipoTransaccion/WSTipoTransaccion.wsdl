@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="WSTipoTransaccion" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://localhost:44362/Servicios/WSTipoTransaccion.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://localhost:44362/Servicios/WSTipoTransaccion.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://localhost:44362/Servicios/WSTipoTransaccion.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWSTipoTransaccion_CrearTipoTransaccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearTipoTransaccion" />
+  </wsdl:message>
+  <wsdl:message name="IWSTipoTransaccion_CrearTipoTransaccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearTipoTransaccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSTipoTransaccion_EliminarTipoTransaccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarTipoTransaccion" />
+  </wsdl:message>
+  <wsdl:message name="IWSTipoTransaccion_EliminarTipoTransaccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarTipoTransaccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSTipoTransaccion_ModificarTipoTransaccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarTipoTransaccion" />
+  </wsdl:message>
+  <wsdl:message name="IWSTipoTransaccion_ModificarTipoTransaccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarTipoTransaccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSTipoTransaccion_MostrarTipoTransaccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:MostrarTipoTransaccion" />
+  </wsdl:message>
+  <wsdl:message name="IWSTipoTransaccion_MostrarTipoTransaccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MostrarTipoTransaccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSTipoTransaccion_BuscarTipoTransaccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarTipoTransaccion" />
+  </wsdl:message>
+  <wsdl:message name="IWSTipoTransaccion_BuscarTipoTransaccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarTipoTransaccionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWSTipoTransaccion">
+    <wsdl:operation name="CrearTipoTransaccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSTipoTransaccion/CrearTipoTransaccion" message="tns:IWSTipoTransaccion_CrearTipoTransaccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSTipoTransaccion/CrearTipoTransaccionResponse" message="tns:IWSTipoTransaccion_CrearTipoTransaccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTipoTransaccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSTipoTransaccion/EliminarTipoTransaccion" message="tns:IWSTipoTransaccion_EliminarTipoTransaccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSTipoTransaccion/EliminarTipoTransaccionResponse" message="tns:IWSTipoTransaccion_EliminarTipoTransaccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarTipoTransaccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSTipoTransaccion/ModificarTipoTransaccion" message="tns:IWSTipoTransaccion_ModificarTipoTransaccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSTipoTransaccion/ModificarTipoTransaccionResponse" message="tns:IWSTipoTransaccion_ModificarTipoTransaccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MostrarTipoTransaccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSTipoTransaccion/MostrarTipoTransaccion" message="tns:IWSTipoTransaccion_MostrarTipoTransaccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSTipoTransaccion/MostrarTipoTransaccionResponse" message="tns:IWSTipoTransaccion_MostrarTipoTransaccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarTipoTransaccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSTipoTransaccion/BuscarTipoTransaccion" message="tns:IWSTipoTransaccion_BuscarTipoTransaccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSTipoTransaccion/BuscarTipoTransaccionResponse" message="tns:IWSTipoTransaccion_BuscarTipoTransaccion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWSTipoTransaccion" type="tns:IWSTipoTransaccion">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearTipoTransaccion">
+      <soap:operation soapAction="http://tempuri.org/IWSTipoTransaccion/CrearTipoTransaccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTipoTransaccion">
+      <soap:operation soapAction="http://tempuri.org/IWSTipoTransaccion/EliminarTipoTransaccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarTipoTransaccion">
+      <soap:operation soapAction="http://tempuri.org/IWSTipoTransaccion/ModificarTipoTransaccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarTipoTransaccion">
+      <soap:operation soapAction="http://tempuri.org/IWSTipoTransaccion/MostrarTipoTransaccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarTipoTransaccion">
+      <soap:operation soapAction="http://tempuri.org/IWSTipoTransaccion/BuscarTipoTransaccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSTipoTransaccion">
+    <wsdl:port name="BasicHttpBinding_IWSTipoTransaccion" binding="tns:BasicHttpBinding_IWSTipoTransaccion">
+      <soap:address location="http://localhost:61491/Servicios/WSTipoTransaccion.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

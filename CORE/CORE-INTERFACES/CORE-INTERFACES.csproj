@@ -219,6 +219,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\wsReferenceCuenta\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +312,16 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta.wsdl" />
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\Settings.settings">
@@ -368,6 +383,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\Icono tarjeta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\wsReferenceCuenta\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceCuenta\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceCuenta\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceCuenta\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
