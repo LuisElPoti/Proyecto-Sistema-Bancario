@@ -219,7 +219,27 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\wsReferencePerfil\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsReferencePrestamo\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\wsReferenceCuenta\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsReferenceTipoTransaccion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsReferenceUsuario\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -312,6 +332,26 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\wsReferencePerfil\WSPerfil.wsdl" />
+    <None Include="Connected Services\wsReferencePerfil\WSPerfil.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferencePerfil\WSPerfil1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferencePerfil\WSPerfil2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferencePrestamo\WSPrestamo.wsdl" />
+    <None Include="Connected Services\wsReferencePrestamo\WSPRestamo.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferencePrestamo\WSPRestamo1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferencePrestamo\WSPRestamo2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta.wsdl" />
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta.xsd">
       <SubType>Designer</SubType>
@@ -320,6 +360,26 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceTipoTransaccion\WSTipoTransaccion.wsdl" />
+    <None Include="Connected Services\wsReferenceTipoTransaccion\WSTipoTransaccion.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceTipoTransaccion\WSTipoTransaccion1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceTipoTransaccion\WSTipoTransaccion2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceUsuario\WSUsuario.wsdl" />
+    <None Include="Connected Services\wsReferenceUsuario\WSUsuario.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceUsuario\WSUsuario1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceUsuario\WSUsuario2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -388,7 +448,11 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\wsReferencePerfil\" />
+    <WCFMetadataStorage Include="Connected Services\wsReferencePrestamo\" />
     <WCFMetadataStorage Include="Connected Services\wsReferenceCuenta\" />
+    <WCFMetadataStorage Include="Connected Services\wsReferenceTipoTransaccion\" />
+    <WCFMetadataStorage Include="Connected Services\wsReferenceUsuario\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta.disco" />
@@ -401,6 +465,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\wsReferenceCuenta\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferencePerfil\WSPerfil.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferencePerfil\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferencePerfil\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferencePerfil\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferencePrestamo\WSPRestamo.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferencePrestamo\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferencePrestamo\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferencePrestamo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceTipoTransaccion\WSTipoTransaccion.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceTipoTransaccion\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceTipoTransaccion\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceTipoTransaccion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceUsuario\WSUsuario.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceUsuario\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceUsuario\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceUsuario\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
