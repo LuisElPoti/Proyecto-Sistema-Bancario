@@ -24,9 +24,9 @@ namespace Prueba_Servicios
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Clientes.WSClientesClient Referencia = new Clientes.WSClientesClient();
+            Clientes.WSClientesClient Cliente = new Clientes.WSClientesClient();
 
-            Referencia.AgregarCliente("Joaquin", 1, "402566", "Joaquin@gmail.com", "8299628881", "Avenida", DateTime.Now);
+            Cliente.AgregarCliente("Miguel",1,"402566","Miguel@gmail.com","8296697544","Avenida",DateTime.Now);
 
             MessageBox.Show("Servicio Usado");
             

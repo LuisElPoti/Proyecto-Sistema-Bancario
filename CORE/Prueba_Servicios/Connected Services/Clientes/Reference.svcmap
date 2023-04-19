@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="d9eb916a-52d5-4201-ae0b-6b26543d7e0b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="eabedf3e-ad38-4a4a-aaed-4e0b14bc3777" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="https://localhost:44362/Servicios/WSClientes.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WSClientes.xsd" MetadataType="Schema" ID="7b29283f-4cd7-427e-b3b0-90ece916b3bb" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSClientes.svc?xsd=xsd0" />
-    <MetadataFile FileName="WSClientes1.xsd" MetadataType="Schema" ID="12da9ef6-d7a8-41c1-806f-f6d6b816486d" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSClientes.svc?xsd=xsd1" />
-    <MetadataFile FileName="WSClientes2.xsd" MetadataType="Schema" ID="46e21b15-9905-4309-9b08-46da50bce615" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSClientes.svc?xsd=xsd2" />
-    <MetadataFile FileName="WSClientes.wsdl" MetadataType="Wsdl" ID="f465343a-8f01-4136-ad9c-4ede1ed72fe1" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSClientes.svc?wsdl" />
+    <MetadataFile FileName="WSClientes.xsd" MetadataType="Schema" ID="ec0245ec-d59a-4e93-8030-77aeedefef42" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSClientes.svc?xsd=xsd0" />
+    <MetadataFile FileName="WSClientes1.xsd" MetadataType="Schema" ID="efe4502f-45e9-477e-8d7f-434c7aa9bfc7" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSClientes.svc?xsd=xsd1" />
+    <MetadataFile FileName="WSClientes2.xsd" MetadataType="Schema" ID="4fa965f4-b3d1-43f8-afa3-5f5f773d68bd" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSClientes.svc?xsd=xsd2" />
+    <MetadataFile FileName="WSClientes.wsdl" MetadataType="Wsdl" ID="8ee397a2-98e5-49f4-b0d0-02eca8705399" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSClientes.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
