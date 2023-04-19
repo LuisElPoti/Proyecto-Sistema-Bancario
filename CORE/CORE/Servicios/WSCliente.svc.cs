@@ -22,11 +22,9 @@ namespace CORE.Servicios
             Adapter.Insert(Nombre, TipoDocumento, Documento, Correo, Telefono, Direccion, FechaNacimiento);
         }
 
-        public async void EliminarCliente(int id)
+        public void EliminarCliente(int id)
         {
             Adapter.Delete(id);
-            var passwordValidator = new PasswordValidator<IdentityUser>();
-            var result = await passwordValidator.ValidateAsync(null, password);
         }
 
         public void ModificarCliente(int id, string Nombre, int TipoDocumento, string Documento, string Correo, string Telefono, string Direccion, DateTime FechaNacimiento)
