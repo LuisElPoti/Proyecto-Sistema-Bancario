@@ -10,36 +10,31 @@ namespace CORE.Servicios
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IWSUsuario
+    public interface IWSTipoTransaccion
     {
         [OperationContract]
-        void AgregarUsuario(int idPerfil, string Nombre, string Clave);
+        void CrearTipoTransaccion(string Nombre, string Descripcion);
 
         [OperationContract]
-        void EliminarUsuario(int id);
+        void EliminarTipoTransaccion(int id);
 
         [OperationContract]
-        void ActualizarUsuario(int id, int idPerfil, string Nombre, string Clave);
+        void ModificarTipoTransaccion(int id, string Nombre, string Descripcion);
 
         [OperationContract]
-        DataTable MostrarUsuarios();
+        DataTable MostrarTipoTransaccion();
 
         [OperationContract]
-        DataTable BuscarUsuario(int id);
+        DataTable BuscarTipoTransaccion(int id);
     }
 
     [DataContract]
-    public class Usuario
+    public class TipoTransaccion
     {
-        [DataMember]
-        public int idPerfil { get; set; }
-
         [DataMember]
         public string Nombre { get; set; }
 
         [DataMember]
-        public string Clave { get; set; }
-
-
+        public string Descripcion { get; set; }
     }
 }

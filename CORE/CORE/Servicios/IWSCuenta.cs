@@ -24,6 +24,9 @@ namespace CORE.Servicios
 
         [OperationContract]
         DataTable MostrarCuenta();
+
+        [OperationContract]
+        DataTable BuscarCuenta(int id);
     }
 
     [DataContract]

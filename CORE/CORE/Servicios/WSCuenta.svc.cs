@@ -34,5 +34,10 @@ namespace CORE.Servicios
         {
             return Adapter.GetData();
         }
+
+        public DataTable BuscarCuenta(int id)
+        {
+            return Adapter.GetDataBy(id);
+        }
     }
 }

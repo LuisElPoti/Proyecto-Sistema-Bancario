@@ -12,27 +12,19 @@ namespace CORE.Servicios
     [ServiceContract]
     public interface IWSPerfil
     {
-
         [OperationContract]
-        void AgregarPerfil(string Nombre, string Descripcion);
+        void CrearPerfil(string Nombre, string Descripcion);
 
         [OperationContract]
         void EliminarPerfil(int id);
 
         [OperationContract]
-        void ActualizarPerfil(int id, string Nombre, string Descripcion);
+        void ModificarPerfil (int id, string Nombre, string Descripcion);
 
         [OperationContract]
-        DataTable MostrarPerfil();
+        DataTable MostrarPerfiles();
 
-    }
-
-    [DataContract]
-    public class Perfil
-    {
-        [DataMember]
-        public string Nombre { get; set; }
-        [DataMember]
-        public string Descripcion { get; set; }
+        [OperationContract]
+        DataTable BuscarPerfil(int id);
     }
 }

@@ -38,6 +38,12 @@ namespace Prueba_Servicios.Clientes {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSClientes/MostrarClientes", ReplyAction="http://tempuri.org/IWSClientes/MostrarClientesResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> MostrarClientesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSClientes/BuscarCliente", ReplyAction="http://tempuri.org/IWSClientes/BuscarClienteResponse")]
+        System.Data.DataTable BuscarCliente(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSClientes/BuscarCliente", ReplyAction="http://tempuri.org/IWSClientes/BuscarClienteResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> BuscarClienteAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +103,14 @@ namespace Prueba_Servicios.Clientes {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> MostrarClientesAsync() {
             return base.Channel.MostrarClientesAsync();
+        }
+        
+        public System.Data.DataTable BuscarCliente(int id) {
+            return base.Channel.BuscarCliente(id);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarClienteAsync(int id) {
+            return base.Channel.BuscarClienteAsync(id);
         }
     }
 }

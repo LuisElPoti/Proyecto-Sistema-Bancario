@@ -11,31 +11,31 @@ namespace CORE.Servicios
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-    public class WSUsuario : IWSUsuario
+    public class WSTipoTransaccion : IWSTipoTransaccion
     {
-        UsuarioTableAdapter Adapter = new UsuarioTableAdapter();
+        TipoTransaccionTableAdapter Adapter = new TipoTransaccionTableAdapter();
 
-        public void AgregarUsuario(int idPerfil, string Nombre, string Clave)
+        public void CrearTipoTransaccion(string Nombre, string Descripcion)
         {
-            Adapter.Insert(idPerfil, Nombre, Clave);
+             Adapter.Insert(Nombre, Descripcion);
         }
 
-        public void EliminarUsuario (int id)
+        public void EliminarTipoTransaccion(int id)
         {
             Adapter.Delete(id);
         }
 
-        public void ActualizarUsuario (int id, int idPerfil, string Nombre, string Clave)
+        public void ModificarTipoTransaccion(int id, string Nombre, string Descripcion)
         {
-            Adapter.Update(id, idPerfil, Nombre, Clave);
+            Adapter.Update(id, Nombre, Descripcion);
         }
 
-        public DataTable MostrarUsuarios()
+        public DataTable MostrarTipoTransaccion()
         {
             return Adapter.GetData();
         }
 
-        public DataTable BuscarUsuario(int id)
+        public DataTable BuscarTipoTransaccion(int id)
         {
             return Adapter.GetDataBy(id);
         }
