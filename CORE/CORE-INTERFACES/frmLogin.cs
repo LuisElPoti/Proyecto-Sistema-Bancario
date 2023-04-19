@@ -27,6 +27,8 @@ namespace CORE_INTERFACES
             frmMenu frm = new frmMenu();
             frm.Show();
             this.Hide();
+            
+            
         }
     }
 }
