@@ -230,6 +230,12 @@
     <Compile Include="frmCargaCore.Designer.cs">
       <DependentUpon>frmCargaCore.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmLogin.resx">
@@ -237,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCargaCore.resx">
       <DependentUpon>frmCargaCore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -273,6 +282,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\icono morado banco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Icono Usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Icono Usuario blanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Icono perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Icono cliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Icono cuenta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\icono prestamo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\icono transaccion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
