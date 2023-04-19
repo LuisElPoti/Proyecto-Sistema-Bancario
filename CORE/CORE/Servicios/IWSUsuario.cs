@@ -23,6 +23,9 @@ namespace CORE.Servicios
 
         [OperationContract]
         DataTable MostrarUsuarios();
+
+        [OperationContract]
+        DataTable BuscarUsuario(int id);
     }
 
     [DataContract]
@@ -36,5 +39,7 @@ namespace CORE.Servicios
 
         [DataMember]
         public string Clave { get; set; }
+
+
     }
 }

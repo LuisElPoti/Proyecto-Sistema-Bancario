@@ -202,6 +202,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Servicios\WSPRestamo.svc" />
     <Content Include="Servicios\WSUsuario.svc" />
     <Content Include="Servicios\WSCuenta.svc" />
     <Content Include="Servicios\WSClientes.svc" />
@@ -246,10 +247,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\IWSPrestamo.cs" />
     <Compile Include="Servicios\IWSUsuario.cs" />
     <Compile Include="Servicios\IWSCuenta.cs" />
     <Compile Include="Servicios\IWSClientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios\WSPRestamo.svc.cs">
+      <DependentUpon>WSPRestamo.svc</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\WSUsuario.svc.cs">
       <DependentUpon>WSUsuario.svc</DependentUpon>
     </Compile>

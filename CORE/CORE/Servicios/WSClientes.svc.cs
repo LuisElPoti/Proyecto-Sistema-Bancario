@@ -35,5 +35,9 @@ namespace CORE
             return Adapter.GetData();
         }
 
+        public DataTable BuscarCliente(int id)
+        {
+            return Adapter.GetDataBy(id);
+        }
     }
 }

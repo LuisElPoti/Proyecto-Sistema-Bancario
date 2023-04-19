@@ -23,6 +23,9 @@ namespace CORE
 
         [OperationContract]
         DataTable MostrarClientes();
+
+        [OperationContract]
+        DataTable BuscarCliente(int id);
     }
     
     [DataContract]
