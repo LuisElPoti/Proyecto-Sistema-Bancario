@@ -168,7 +168,6 @@
       <DependentUpon>DSGeneral.xsd</DependentUpon>
     </Content>
     <Content Include="Servicios\WSPerfil.svc" />
-    <Content Include="WSClientes.svc" />
     <None Include="DSGeneral.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -295,9 +294,6 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="WSClientes.svc.cs">
-      <DependentUpon>WSClientes.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
