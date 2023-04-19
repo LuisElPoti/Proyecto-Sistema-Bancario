@@ -66,7 +66,6 @@
             // guna2CirclePictureBox5
             // 
             this.guna2CirclePictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox5.Image = global::CORE_INTERFACES.Properties.Resources.icono_transaccion;
             this.guna2CirclePictureBox5.ImageRotate = 0F;
             this.guna2CirclePictureBox5.Location = new System.Drawing.Point(12, 468);
             this.guna2CirclePictureBox5.Name = "guna2CirclePictureBox5";
@@ -81,7 +80,6 @@
             // guna2CirclePictureBox4
             // 
             this.guna2CirclePictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox4.Image = global::CORE_INTERFACES.Properties.Resources.icono_prestamo;
             this.guna2CirclePictureBox4.ImageRotate = 0F;
             this.guna2CirclePictureBox4.Location = new System.Drawing.Point(13, 384);
             this.guna2CirclePictureBox4.Name = "guna2CirclePictureBox4";
@@ -95,7 +93,6 @@
             // guna2CirclePictureBox3
             // 
             this.guna2CirclePictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox3.Image = global::CORE_INTERFACES.Properties.Resources.Icono_cuenta;
             this.guna2CirclePictureBox3.ImageRotate = 0F;
             this.guna2CirclePictureBox3.Location = new System.Drawing.Point(13, 301);
             this.guna2CirclePictureBox3.Name = "guna2CirclePictureBox3";
@@ -109,7 +106,6 @@
             // guna2CirclePictureBox2
             // 
             this.guna2CirclePictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox2.Image = global::CORE_INTERFACES.Properties.Resources.Icono_perfil;
             this.guna2CirclePictureBox2.ImageRotate = 0F;
             this.guna2CirclePictureBox2.Location = new System.Drawing.Point(16, 131);
             this.guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
@@ -123,7 +119,6 @@
             // guna2CirclePictureBox1
             // 
             this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.Image = global::CORE_INTERFACES.Properties.Resources.Icono_cliente;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
             this.guna2CirclePictureBox1.Location = new System.Drawing.Point(16, 206);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
@@ -138,7 +133,6 @@
             // 
             this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = global::CORE_INTERFACES.Properties.Resources.Icono_Usuario_blanco2;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(12, 43);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
