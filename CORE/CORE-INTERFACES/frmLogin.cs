@@ -17,9 +17,16 @@ namespace CORE_INTERFACES
             InitializeComponent();
         }
 
-        private void guna2HtmlLabel3_Click(object sender, EventArgs e)
+        private void ptbExitLogin_Click(object sender, EventArgs e)
         {
+            Application.Exit();
+        }
 
+        private void guna2GradientTileButton1_Click(object sender, EventArgs e)
+        {
+            frmMenu frm = new frmMenu();
+            frm.Show();
+            this.Hide();
         }
     }
 }

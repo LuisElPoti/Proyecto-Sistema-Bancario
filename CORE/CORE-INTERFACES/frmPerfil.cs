@@ -16,5 +16,10 @@ namespace CORE_INTERFACES
         {
             InitializeComponent();
         }
+
+        private void frmPerfil_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -133,6 +133,16 @@ namespace CORE_INTERFACES.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icono_tarjeta {
+            get {
+                object obj = ResourceManager.GetObject("Icono tarjeta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icono_Transacción {
             get {
                 object obj = ResourceManager.GetObject("Icono Transacción", resourceCulture);

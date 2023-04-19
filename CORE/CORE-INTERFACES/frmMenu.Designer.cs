@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ContainerControl1 = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.btnTransacción = new Guna.UI2.WinForms.Guna2Button();
             this.btnPrestamos = new Guna.UI2.WinForms.Guna2Button();
@@ -37,11 +38,16 @@
             this.btnPerfil = new Guna.UI2.WinForms.Guna2Button();
             this.btnUsuario = new Guna.UI2.WinForms.Guna2Button();
             this.pnlContenedor = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.guna2ContainerControl2 = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.ptbExit = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2GradientPanel1.SuspendLayout();
+            this.guna2ContainerControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2GradientPanel1
             // 
+            this.guna2GradientPanel1.Controls.Add(this.guna2Button1);
             this.guna2GradientPanel1.Controls.Add(this.guna2ContainerControl1);
             this.guna2GradientPanel1.Controls.Add(this.btnTransacción);
             this.guna2GradientPanel1.Controls.Add(this.btnPrestamos);
@@ -54,8 +60,28 @@
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(7)))), ((int)(((byte)(82)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(249, 687);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(249, 739);
             this.guna2GradientPanel1.TabIndex = 2;
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = global::CORE_INTERFACES.Properties.Resources.Icono_Usuario;
+            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.ImageSize = new System.Drawing.Size(50, 50);
+            this.guna2Button1.IndicateFocus = true;
+            this.guna2Button1.Location = new System.Drawing.Point(0, 67);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(249, 55);
+            this.guna2Button1.TabIndex = 18;
+            this.guna2Button1.Text = "          Usuario";
             // 
             // guna2ContainerControl1
             // 
@@ -79,11 +105,12 @@
             this.btnTransacción.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTransacción.ImageSize = new System.Drawing.Size(50, 50);
             this.btnTransacción.IndicateFocus = true;
-            this.btnTransacción.Location = new System.Drawing.Point(0, 461);
+            this.btnTransacción.Location = new System.Drawing.Point(0, 560);
             this.btnTransacción.Name = "btnTransacción";
             this.btnTransacción.Size = new System.Drawing.Size(246, 60);
             this.btnTransacción.TabIndex = 17;
             this.btnTransacción.Text = "               Transacción";
+            this.btnTransacción.Click += new System.EventHandler(this.btnTransacción_Click);
             // 
             // btnPrestamos
             // 
@@ -99,11 +126,12 @@
             this.btnPrestamos.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnPrestamos.ImageSize = new System.Drawing.Size(50, 50);
             this.btnPrestamos.IndicateFocus = true;
-            this.btnPrestamos.Location = new System.Drawing.Point(3, 383);
+            this.btnPrestamos.Location = new System.Drawing.Point(3, 482);
             this.btnPrestamos.Name = "btnPrestamos";
             this.btnPrestamos.Size = new System.Drawing.Size(246, 60);
             this.btnPrestamos.TabIndex = 16;
             this.btnPrestamos.Text = "             Prestamos";
+            this.btnPrestamos.Click += new System.EventHandler(this.btnPrestamos_Click);
             // 
             // btnCuenta
             // 
@@ -119,11 +147,12 @@
             this.btnCuenta.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCuenta.ImageSize = new System.Drawing.Size(50, 50);
             this.btnCuenta.IndicateFocus = true;
-            this.btnCuenta.Location = new System.Drawing.Point(0, 296);
+            this.btnCuenta.Location = new System.Drawing.Point(0, 395);
             this.btnCuenta.Name = "btnCuenta";
             this.btnCuenta.Size = new System.Drawing.Size(246, 60);
             this.btnCuenta.TabIndex = 15;
             this.btnCuenta.Text = "          Cuentas";
+            this.btnCuenta.Click += new System.EventHandler(this.btnCuenta_Click);
             // 
             // btnCliente
             // 
@@ -139,11 +168,12 @@
             this.btnCliente.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCliente.ImageSize = new System.Drawing.Size(50, 50);
             this.btnCliente.IndicateFocus = true;
-            this.btnCliente.Location = new System.Drawing.Point(0, 219);
+            this.btnCliente.Location = new System.Drawing.Point(0, 318);
             this.btnCliente.Name = "btnCliente";
             this.btnCliente.Size = new System.Drawing.Size(246, 60);
             this.btnCliente.TabIndex = 14;
             this.btnCliente.Text = "          Clientes";
+            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
             // 
             // btnPerfil
             // 
@@ -159,11 +189,12 @@
             this.btnPerfil.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnPerfil.ImageSize = new System.Drawing.Size(50, 50);
             this.btnPerfil.IndicateFocus = true;
-            this.btnPerfil.Location = new System.Drawing.Point(0, 132);
+            this.btnPerfil.Location = new System.Drawing.Point(0, 231);
             this.btnPerfil.Name = "btnPerfil";
             this.btnPerfil.Size = new System.Drawing.Size(246, 60);
             this.btnPerfil.TabIndex = 13;
             this.btnPerfil.Text = "          Perfiles";
+            this.btnPerfil.Click += new System.EventHandler(this.btnPerfil_Click);
             // 
             // btnUsuario
             // 
@@ -179,7 +210,7 @@
             this.btnUsuario.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnUsuario.ImageSize = new System.Drawing.Size(50, 50);
             this.btnUsuario.IndicateFocus = true;
-            this.btnUsuario.Location = new System.Drawing.Point(0, 49);
+            this.btnUsuario.Location = new System.Drawing.Point(0, 148);
             this.btnUsuario.Name = "btnUsuario";
             this.btnUsuario.Size = new System.Drawing.Size(249, 55);
             this.btnUsuario.TabIndex = 7;
@@ -190,18 +221,44 @@
             // 
             // pnlContenedor
             // 
-            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContenedor.Location = new System.Drawing.Point(249, 0);
+            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlContenedor.Location = new System.Drawing.Point(249, 52);
             this.pnlContenedor.Name = "pnlContenedor";
             this.pnlContenedor.Size = new System.Drawing.Size(971, 687);
             this.pnlContenedor.TabIndex = 3;
             this.pnlContenedor.Text = "guna2ContainerControl2";
             // 
+            // guna2ContainerControl2
+            // 
+            this.guna2ContainerControl2.Controls.Add(this.ptbExit);
+            this.guna2ContainerControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2ContainerControl2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(7)))), ((int)(((byte)(82)))));
+            this.guna2ContainerControl2.Location = new System.Drawing.Point(249, 0);
+            this.guna2ContainerControl2.Name = "guna2ContainerControl2";
+            this.guna2ContainerControl2.Size = new System.Drawing.Size(971, 46);
+            this.guna2ContainerControl2.TabIndex = 4;
+            this.guna2ContainerControl2.Text = "guna2ContainerControl2";
+            // 
+            // ptbExit
+            // 
+            this.ptbExit.BackColor = System.Drawing.Color.Transparent;
+            this.ptbExit.Image = global::CORE_INTERFACES.Properties.Resources.icono_cerrar;
+            this.ptbExit.ImageRotate = 0F;
+            this.ptbExit.Location = new System.Drawing.Point(914, 0);
+            this.ptbExit.Name = "ptbExit";
+            this.ptbExit.Size = new System.Drawing.Size(45, 46);
+            this.ptbExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbExit.TabIndex = 17;
+            this.ptbExit.TabStop = false;
+            this.ptbExit.UseTransparentBackground = true;
+            this.ptbExit.Click += new System.EventHandler(this.ptbExit_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 687);
+            this.ClientSize = new System.Drawing.Size(1220, 739);
+            this.Controls.Add(this.guna2ContainerControl2);
             this.Controls.Add(this.pnlContenedor);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -209,6 +266,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenu";
             this.guna2GradientPanel1.ResumeLayout(false);
+            this.guna2ContainerControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,5 +283,8 @@
         private Guna.UI2.WinForms.Guna2Button btnPrestamos;
         private Guna.UI2.WinForms.Guna2ContainerControl guna2ContainerControl1;
         private Guna.UI2.WinForms.Guna2ContainerControl pnlContenedor;
+        private Guna.UI2.WinForms.Guna2ContainerControl guna2ContainerControl2;
+        private Guna.UI2.WinForms.Guna2PictureBox ptbExit;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

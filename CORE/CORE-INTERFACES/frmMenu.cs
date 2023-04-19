@@ -27,10 +27,6 @@ namespace CORE_INTERFACES
             this.btnUsuario.BackColor = ColorTranslator.FromHtml("#200752");
         }
 
-        private void btnUsuario_Click(object sender, EventArgs e)
-        {
-            AbrirFormHija(new frmUsuario());
-        }
         private void AbrirFormHija(object formhija)
         {
             if (this.pnlContenedor.Controls.Count > 0)
@@ -43,6 +39,45 @@ namespace CORE_INTERFACES
             this.pnlContenedor.Controls.Add(fh);
             this.pnlContenedor.Tag = fh;
             fh.Show();
+        }
+
+        private void btnUsuario_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new frmUsuario());
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPerfil_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new frmPerfil());
+        }
+
+        private void btnCliente_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new frmClientes());
+        }
+
+        private void btnCuenta_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new frmCuentas());
+        }
+
+        private void btnPrestamos_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new frmPrestamos());
+        }
+
+        private void btnTransacción_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new frmTipoTransacción());
+        }
+
+        private void ptbExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

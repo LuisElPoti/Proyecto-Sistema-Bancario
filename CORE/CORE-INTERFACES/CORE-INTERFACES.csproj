@@ -364,6 +364,9 @@
   <ItemGroup>
     <None Include="Image\Icono Transacción.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Icono tarjeta.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
