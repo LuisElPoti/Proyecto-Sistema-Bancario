@@ -219,6 +219,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\clsRol.cs" />
+    <Compile Include="Clases\ClsUsuario.cs" />
     <Compile Include="Connected Services\wsReferencePerfil\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

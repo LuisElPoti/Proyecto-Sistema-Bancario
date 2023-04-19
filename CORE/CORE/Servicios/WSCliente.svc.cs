@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Security;
 using System.Text;
+
 
 namespace CORE.Servicios
 {
@@ -14,14 +16,17 @@ namespace CORE.Servicios
     {
         ClientesTableAdapter Adapter = new ClientesTableAdapter();
 
+
         public void AgregarCliente(string Nombre, int TipoDocumento, string Documento, string Correo, string Telefono, string Direccion, DateTime FechaNacimiento)
         {
             Adapter.Insert(Nombre, TipoDocumento, Documento, Correo, Telefono, Direccion, FechaNacimiento);
         }
 
-        public void EliminarCliente(int id)
+        public async void EliminarCliente(int id)
         {
             Adapter.Delete(id);
+            var passwordValidator = new PasswordValidator<IdentityUser>();
+            var result = await passwordValidator.ValidateAsync(null, password);
         }
 
         public void ModificarCliente(int id, string Nombre, int TipoDocumento, string Documento, string Correo, string Telefono, string Direccion, DateTime FechaNacimiento)
