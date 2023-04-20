@@ -445,5 +445,24 @@ namespace CoreServices
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpsertUsuario", idUsuarioParameter, idPerfilParameter, idClienteParameter, nombreParameter, claveParameter);
         }
+    
+        public virtual ObjectResult<GetAllMovimientobyCuenta_Result> GetAllMovimientobyCuenta()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllMovimientobyCuenta_Result>("GetAllMovimientobyCuenta");
+        }
+    
+        public virtual ObjectResult<GetAllPrestamobyCliente_Result> GetAllPrestamobyCliente()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllPrestamobyCliente_Result>("GetAllPrestamobyCliente");
+        }
+    
+        public virtual ObjectResult<spGetCuentabyCliente_Result> spGetCuentabyCliente(Nullable<int> idCliente)
+        {
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetCuentabyCliente_Result>("spGetCuentabyCliente", idClienteParameter);
+        }
     }
 }

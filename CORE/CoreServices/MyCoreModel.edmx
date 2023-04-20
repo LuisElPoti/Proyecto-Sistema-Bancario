@@ -426,6 +426,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetAllMovimientobyCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllPrestamobyCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spDeleteCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idCuenta" Type="int" Mode="In" />
         </Function>
@@ -449,6 +451,9 @@
         <Function Name="spGetAllUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetClienteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetCuentabyCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCliente" Type="int" Mode="In" />
         </Function>
         <Function Name="spGetCuentaById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
@@ -1320,6 +1325,11 @@
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Clave" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetAllMovimientobyCuenta" ReturnType="Collection(DBCoreModel.GetAllMovimientobyCuenta_Result)" />
+          <FunctionImport Name="GetAllPrestamobyCliente" ReturnType="Collection(DBCoreModel.GetAllPrestamobyCliente_Result)" />
+          <FunctionImport Name="spGetCuentabyCliente" ReturnType="Collection(DBCoreModel.spGetCuentabyCliente_Result)">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetAllCliente_Result">
           <Property Type="Int32" Name="idCliente" Nullable="false" />
@@ -1419,6 +1429,26 @@
           <Property Type="Int32" Name="idPerfil" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
           <Property Type="String" Name="Clave" Nullable="false" MaxLength="80" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetAllMovimientobyCuenta_Result">
+          <Property Type="String" Name="Numero_Cuenta" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Asunto" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Tipo_Movimiento" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="GetAllPrestamobyCliente_Result">
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="80" />
+          <Property Type="Decimal" Name="Deuda" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="Fecha_de_Corte" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetCuentabyCliente_Result">
+          <Property Type="Int32" Name="idCuenta" Nullable="false" />
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="Int32" Name="idTipoCuenta" Nullable="false" />
+          <Property Type="Int32" Name="idBanco" Nullable="false" />
+          <Property Type="String" Name="NumeroCuenta" Nullable="false" MaxLength="80" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="Decimal" Name="Balance" Nullable="false" Precision="19" />
           <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
@@ -1788,6 +1818,38 @@
           <FunctionImportMapping FunctionImportName="spUpsertPrestamo" FunctionName="DBCoreModel.Store.spUpsertPrestamo" />
           <FunctionImportMapping FunctionImportName="spUpsertTipoTransaccion" FunctionName="DBCoreModel.Store.spUpsertTipoTransaccion" />
           <FunctionImportMapping FunctionImportName="spUpsertUsuario" FunctionName="DBCoreModel.Store.spUpsertUsuario" />
+          <FunctionImportMapping FunctionImportName="GetAllMovimientobyCuenta" FunctionName="DBCoreModel.Store.GetAllMovimientobyCuenta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.GetAllMovimientobyCuenta_Result">
+                <ScalarProperty Name="Numero_Cuenta" ColumnName="Numero Cuenta" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="Tipo_Movimiento" ColumnName="Tipo Movimiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPrestamobyCliente" FunctionName="DBCoreModel.Store.GetAllPrestamobyCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.GetAllPrestamobyCliente_Result">
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Deuda" ColumnName="Deuda" />
+                <ScalarProperty Name="Fecha_de_Corte" ColumnName="Fecha de Corte" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetCuentabyCliente" FunctionName="DBCoreModel.Store.spGetCuentabyCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetCuentabyCliente_Result">
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idTipoCuenta" ColumnName="idTipoCuenta" />
+                <ScalarProperty Name="idBanco" ColumnName="idBanco" />
+                <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

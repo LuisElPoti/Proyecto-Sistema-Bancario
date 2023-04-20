@@ -40,5 +40,10 @@ namespace CoreServices.Servicios
             return Operaciones.GetPrestamobyCuenta(id);
         }
 
+        public DataTable MostarPrestamoCliente()
+        {
+            return Operaciones.GetAllPrestamobyCliente();
+        }
+
     }
 }

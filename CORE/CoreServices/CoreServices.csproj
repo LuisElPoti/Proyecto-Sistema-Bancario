@@ -188,14 +188,25 @@
     <Compile Include="Estado.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetAllMovimientobyCuenta_Result.cs">
+      <DependentUpon>MyCoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllPrestamobyCliente_Result.cs">
+      <DependentUpon>MyCoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Operaciones\OperacionesCliente.cs" />
+    <Compile Include="Operaciones\OperacionesMovimiento.cs" />
     <Compile Include="Operaciones\OperacionesPrestamo.cs" />
     <Compile Include="Operaciones\OperacionesTipoTransaccion.cs" />
+    <Compile Include="Servicios\IWSMovimiento.cs" />
     <Compile Include="Servicios\IWSTipoTransaccion.cs" />
     <Compile Include="Servicios\IWSPrestamo.cs" />
+    <Compile Include="Servicios\WSMovimiento.svc.cs">
+      <DependentUpon>WSMovimiento.svc</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\WSTipoTransaccion.svc.cs">
       <DependentUpon>WSTipoTransaccion.svc</DependentUpon>
     </Compile>
@@ -274,6 +285,9 @@
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetClienteById_Result.cs">
+      <DependentUpon>MyCoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spGetCuentabyCliente_Result.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetCuentaById_Result.cs">
@@ -359,6 +373,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Servicios\WSMovimiento.svc" />
     <Content Include="Servicios\WSTipoTransaccion.svc" />
     <Content Include="Servicios\WSPrestamo.svc" />
     <Content Include="Servicios\WSCuenta.svc" />

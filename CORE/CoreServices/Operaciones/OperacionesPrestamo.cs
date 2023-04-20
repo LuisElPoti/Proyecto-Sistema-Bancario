@@ -128,5 +128,37 @@ namespace CoreServices.Operaciones
                 return dt;
             }
         }
+
+        public DataTable GetAllPrestamobyCliente()
+        {
+            using (DBCoreEntities db = new DBCoreEntities())
+            {
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "GetAllPrestamobyCliente";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return dt;
+            }
+        }
     }
 }

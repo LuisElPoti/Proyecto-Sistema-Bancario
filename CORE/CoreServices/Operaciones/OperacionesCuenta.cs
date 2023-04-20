@@ -127,5 +127,38 @@ namespace CoreServices.Clases
                 return dt;
             }
         }
+
+        public DataTable GetCuentabyCliente(int idCliente)
+        {
+            using (DBCoreEntities db = new DBCoreEntities())
+            {
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetCuentabyCliente";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("IdCliente", idCliente));
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return dt;
+            }
+        }
     }
 }

@@ -23,10 +23,10 @@ namespace CoreServices.Servicios
         bool ActualizarCuenta(int idCuenta, bool Estado, decimal Balance);
 
         [OperationContract]
-        DataTable MostrarClientes();
+        DataTable MostrarCuentas();
 
         [OperationContract]
-        DataTable BuscarCliente(int id);
+        DataTable BuscarCuenta(int id);
 
     }
 }

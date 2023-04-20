@@ -27,5 +27,8 @@ namespace CoreServices.Servicios
 
         [OperationContract]
         DataTable BuscarPrestamo(int id);
+
+        [OperationContract]
+        DataTable MostarPrestamoCliente();
     }
 }
