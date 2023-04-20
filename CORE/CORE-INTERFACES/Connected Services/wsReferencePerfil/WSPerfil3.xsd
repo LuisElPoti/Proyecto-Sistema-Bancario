@@ -1,56 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="AgregarCuenta">
+  <xs:element name="CrearPerfil">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idCliente" type="xs:int" />
-        <xs:element minOccurs="0" name="idTipoCuenta" type="xs:int" />
-        <xs:element minOccurs="0" name="idBanco" type="xs:int" />
-        <xs:element minOccurs="0" name="NumeroCuenta" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="Estado" type="xs:boolean" />
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AgregarCuentaResponse">
+  <xs:element name="CrearPerfilResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CrearPerfilResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EliminarCuenta">
+  <xs:element name="EliminarPerfil">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EliminarCuentaResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ActualizarCuenta">
+  <xs:element name="EliminarPerfilResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-        <xs:element minOccurs="0" name="Estado" type="xs:boolean" />
-        <xs:element minOccurs="0" name="Balance" type="xs:decimal" />
+        <xs:element minOccurs="0" name="EliminarPerfilResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ActualizarCuentaResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="MostrarCuenta">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="MostrarCuentaResponse">
+  <xs:element name="ActualizarPerfil">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="MostrarCuentaResult" nillable="true">
+        <xs:element minOccurs="0" name="idPerfil" type="xs:int" />
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarPerfilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActualizarPerfilResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MostrarPerfiles">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MostrarPerfilesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MostrarPerfilesResult" nillable="true">
           <xs:complexType>
             <xs:annotation>
               <xs:appinfo>
@@ -66,17 +69,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="BuscarCuenta">
+  <xs:element name="BuscarPerfil">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="BuscarCuentaResponse">
+  <xs:element name="BuscarPerfilResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="BuscarCuentaResult" nillable="true">
+        <xs:element minOccurs="0" name="BuscarPerfilResult" nillable="true">
           <xs:complexType>
             <xs:annotation>
               <xs:appinfo>

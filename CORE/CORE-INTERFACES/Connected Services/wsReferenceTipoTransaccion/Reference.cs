@@ -16,22 +16,22 @@ namespace CORE_INTERFACES.wsReferenceTipoTransaccion {
     public interface IWSTipoTransaccion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/CrearTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/CrearTipoTransaccionResponse")]
-        void CrearTipoTransaccion(string Nombre, string Descripcion);
+        bool CrearTipoTransaccion(string nombre, string descripcion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/CrearTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/CrearTipoTransaccionResponse")]
-        System.Threading.Tasks.Task CrearTipoTransaccionAsync(string Nombre, string Descripcion);
+        System.Threading.Tasks.Task<bool> CrearTipoTransaccionAsync(string nombre, string descripcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/ActualizarTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/ActualizarTipoTransaccionResponse")]
+        bool ActualizarTipoTransaccion(int idTipo, string nombre, string descripcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/ActualizarTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/ActualizarTipoTransaccionResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarTipoTransaccionAsync(int idTipo, string nombre, string descripcion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/EliminarTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/EliminarTipoTransaccionResponse")]
-        void EliminarTipoTransaccion(int id);
+        bool EliminarTipoTransaccion(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/EliminarTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/EliminarTipoTransaccionResponse")]
-        System.Threading.Tasks.Task EliminarTipoTransaccionAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/ModificarTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/ModificarTipoTransaccionResponse")]
-        void ModificarTipoTransaccion(int id, string Nombre, string Descripcion);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/ModificarTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/ModificarTipoTransaccionResponse")]
-        System.Threading.Tasks.Task ModificarTipoTransaccionAsync(int id, string Nombre, string Descripcion);
+        System.Threading.Tasks.Task<bool> EliminarTipoTransaccionAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/MostrarTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/MostrarTipoTransaccionResponse")]
         System.Data.DataTable MostrarTipoTransaccion();
@@ -40,10 +40,10 @@ namespace CORE_INTERFACES.wsReferenceTipoTransaccion {
         System.Threading.Tasks.Task<System.Data.DataTable> MostrarTipoTransaccionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/BuscarTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/BuscarTipoTransaccionResponse")]
-        System.Data.DataTable BuscarTipoTransaccion(int id);
+        System.Data.DataTable BuscarTipoTransaccion();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSTipoTransaccion/BuscarTipoTransaccion", ReplyAction="http://tempuri.org/IWSTipoTransaccion/BuscarTipoTransaccionResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> BuscarTipoTransaccionAsync(int id);
+        System.Threading.Tasks.Task<System.Data.DataTable> BuscarTipoTransaccionAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,28 +73,28 @@ namespace CORE_INTERFACES.wsReferenceTipoTransaccion {
                 base(binding, remoteAddress) {
         }
         
-        public void CrearTipoTransaccion(string Nombre, string Descripcion) {
-            base.Channel.CrearTipoTransaccion(Nombre, Descripcion);
+        public bool CrearTipoTransaccion(string nombre, string descripcion) {
+            return base.Channel.CrearTipoTransaccion(nombre, descripcion);
         }
         
-        public System.Threading.Tasks.Task CrearTipoTransaccionAsync(string Nombre, string Descripcion) {
-            return base.Channel.CrearTipoTransaccionAsync(Nombre, Descripcion);
+        public System.Threading.Tasks.Task<bool> CrearTipoTransaccionAsync(string nombre, string descripcion) {
+            return base.Channel.CrearTipoTransaccionAsync(nombre, descripcion);
         }
         
-        public void EliminarTipoTransaccion(int id) {
-            base.Channel.EliminarTipoTransaccion(id);
+        public bool ActualizarTipoTransaccion(int idTipo, string nombre, string descripcion) {
+            return base.Channel.ActualizarTipoTransaccion(idTipo, nombre, descripcion);
         }
         
-        public System.Threading.Tasks.Task EliminarTipoTransaccionAsync(int id) {
+        public System.Threading.Tasks.Task<bool> ActualizarTipoTransaccionAsync(int idTipo, string nombre, string descripcion) {
+            return base.Channel.ActualizarTipoTransaccionAsync(idTipo, nombre, descripcion);
+        }
+        
+        public bool EliminarTipoTransaccion(int id) {
+            return base.Channel.EliminarTipoTransaccion(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarTipoTransaccionAsync(int id) {
             return base.Channel.EliminarTipoTransaccionAsync(id);
-        }
-        
-        public void ModificarTipoTransaccion(int id, string Nombre, string Descripcion) {
-            base.Channel.ModificarTipoTransaccion(id, Nombre, Descripcion);
-        }
-        
-        public System.Threading.Tasks.Task ModificarTipoTransaccionAsync(int id, string Nombre, string Descripcion) {
-            return base.Channel.ModificarTipoTransaccionAsync(id, Nombre, Descripcion);
         }
         
         public System.Data.DataTable MostrarTipoTransaccion() {
@@ -105,12 +105,12 @@ namespace CORE_INTERFACES.wsReferenceTipoTransaccion {
             return base.Channel.MostrarTipoTransaccionAsync();
         }
         
-        public System.Data.DataTable BuscarTipoTransaccion(int id) {
-            return base.Channel.BuscarTipoTransaccion(id);
+        public System.Data.DataTable BuscarTipoTransaccion() {
+            return base.Channel.BuscarTipoTransaccion();
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarTipoTransaccionAsync(int id) {
-            return base.Channel.BuscarTipoTransaccionAsync(id);
+        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarTipoTransaccionAsync() {
+            return base.Channel.BuscarTipoTransaccionAsync();
         }
     }
 }

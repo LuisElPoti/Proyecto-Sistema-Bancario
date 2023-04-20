@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://localhost:44362/Servicios/WSPerfil.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost:44346/Servicios/WSPerfil.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WSPerfil.xsd" MetadataType="Schema" ID="f627a256-9b52-4c64-8393-cbf52e3daab7" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSPerfil.svc?xsd=xsd2" />
-    <MetadataFile FileName="WSPerfil1.xsd" MetadataType="Schema" ID="b2b2428b-dd66-4726-a4e4-4623b19aa1f8" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSPerfil.svc?xsd=xsd1" />
-    <MetadataFile FileName="WSPerfil.disco" MetadataType="Disco" ID="db23bd94-1582-4321-a267-94d27bf65a0a" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSPerfil.svc?disco" />
-    <MetadataFile FileName="WSPerfil2.xsd" MetadataType="Schema" ID="ed3d4dd2-d908-485b-b147-9056f9c9e6fc" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSPerfil.svc?xsd=xsd0" />
-    <MetadataFile FileName="WSPerfil.wsdl" MetadataType="Wsdl" ID="77905cc5-0d80-4259-be0c-04a63227568f" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSPerfil.svc?wsdl" />
+    <MetadataFile FileName="WSPerfil3.xsd" MetadataType="Schema" ID="64a23bd4-8b01-48bb-823d-d4c40c0aa61f" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSPerfil.svc?xsd=xsd0" />
+    <MetadataFile FileName="WSPerfil1.disco" MetadataType="Disco" ID="70e7e420-f315-4898-9a90-e58486a20ab3" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSPerfil.svc?disco" />
+    <MetadataFile FileName="WSPerfil31.xsd" MetadataType="Schema" ID="0d77d55c-30e5-46e7-aa89-9ca61e495e5d" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSPerfil.svc?xsd=xsd2" />
+    <MetadataFile FileName="WSPerfil1.wsdl" MetadataType="Wsdl" ID="d274f5bb-6fd2-4209-bb32-2f20f22db276" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSPerfil.svc?wsdl" />
+    <MetadataFile FileName="WSPerfil32.xsd" MetadataType="Schema" ID="b519f27d-adf2-42a0-9aaf-9a71182ca85e" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSPerfil.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

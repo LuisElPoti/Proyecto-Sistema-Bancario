@@ -16,22 +16,22 @@ namespace CORE_INTERFACES.wsReferencePerfil {
     public interface IWSPerfil {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/CrearPerfil", ReplyAction="http://tempuri.org/IWSPerfil/CrearPerfilResponse")]
-        void CrearPerfil(string Nombre, string Descripcion);
+        bool CrearPerfil(string nombre, string descripcion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/CrearPerfil", ReplyAction="http://tempuri.org/IWSPerfil/CrearPerfilResponse")]
-        System.Threading.Tasks.Task CrearPerfilAsync(string Nombre, string Descripcion);
+        System.Threading.Tasks.Task<bool> CrearPerfilAsync(string nombre, string descripcion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/EliminarPerfil", ReplyAction="http://tempuri.org/IWSPerfil/EliminarPerfilResponse")]
-        void EliminarPerfil(int id);
+        bool EliminarPerfil(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/EliminarPerfil", ReplyAction="http://tempuri.org/IWSPerfil/EliminarPerfilResponse")]
-        System.Threading.Tasks.Task EliminarPerfilAsync(int id);
+        System.Threading.Tasks.Task<bool> EliminarPerfilAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/ModificarPerfil", ReplyAction="http://tempuri.org/IWSPerfil/ModificarPerfilResponse")]
-        void ModificarPerfil(int id, string Nombre, string Descripcion);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/ActualizarPerfil", ReplyAction="http://tempuri.org/IWSPerfil/ActualizarPerfilResponse")]
+        bool ActualizarPerfil(int idPerfil, string nombre, string descripcion);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/ModificarPerfil", ReplyAction="http://tempuri.org/IWSPerfil/ModificarPerfilResponse")]
-        System.Threading.Tasks.Task ModificarPerfilAsync(int id, string Nombre, string Descripcion);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/ActualizarPerfil", ReplyAction="http://tempuri.org/IWSPerfil/ActualizarPerfilResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarPerfilAsync(int idPerfil, string nombre, string descripcion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/MostrarPerfiles", ReplyAction="http://tempuri.org/IWSPerfil/MostrarPerfilesResponse")]
         System.Data.DataTable MostrarPerfiles();
@@ -73,28 +73,28 @@ namespace CORE_INTERFACES.wsReferencePerfil {
                 base(binding, remoteAddress) {
         }
         
-        public void CrearPerfil(string Nombre, string Descripcion) {
-            base.Channel.CrearPerfil(Nombre, Descripcion);
+        public bool CrearPerfil(string nombre, string descripcion) {
+            return base.Channel.CrearPerfil(nombre, descripcion);
         }
         
-        public System.Threading.Tasks.Task CrearPerfilAsync(string Nombre, string Descripcion) {
-            return base.Channel.CrearPerfilAsync(Nombre, Descripcion);
+        public System.Threading.Tasks.Task<bool> CrearPerfilAsync(string nombre, string descripcion) {
+            return base.Channel.CrearPerfilAsync(nombre, descripcion);
         }
         
-        public void EliminarPerfil(int id) {
-            base.Channel.EliminarPerfil(id);
+        public bool EliminarPerfil(int id) {
+            return base.Channel.EliminarPerfil(id);
         }
         
-        public System.Threading.Tasks.Task EliminarPerfilAsync(int id) {
+        public System.Threading.Tasks.Task<bool> EliminarPerfilAsync(int id) {
             return base.Channel.EliminarPerfilAsync(id);
         }
         
-        public void ModificarPerfil(int id, string Nombre, string Descripcion) {
-            base.Channel.ModificarPerfil(id, Nombre, Descripcion);
+        public bool ActualizarPerfil(int idPerfil, string nombre, string descripcion) {
+            return base.Channel.ActualizarPerfil(idPerfil, nombre, descripcion);
         }
         
-        public System.Threading.Tasks.Task ModificarPerfilAsync(int id, string Nombre, string Descripcion) {
-            return base.Channel.ModificarPerfilAsync(id, Nombre, Descripcion);
+        public System.Threading.Tasks.Task<bool> ActualizarPerfilAsync(int idPerfil, string nombre, string descripcion) {
+            return base.Channel.ActualizarPerfilAsync(idPerfil, nombre, descripcion);
         }
         
         public System.Data.DataTable MostrarPerfiles() {

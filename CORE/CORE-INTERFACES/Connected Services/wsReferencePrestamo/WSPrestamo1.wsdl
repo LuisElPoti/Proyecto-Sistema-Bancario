@@ -2,9 +2,9 @@
 <wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="WSPrestamo" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="https://localhost:44362/Servicios/WSPRestamo.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="https://localhost:44362/Servicios/WSPRestamo.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="https://localhost:44362/Servicios/WSPRestamo.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="https://localhost:44346/Servicios/WSPrestamo.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://localhost:44346/Servicios/WSPrestamo.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://localhost:44346/Servicios/WSPrestamo.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IWSPrestamo_CrearPrestamo_InputMessage">
@@ -19,11 +19,11 @@
   <wsdl:message name="IWSPrestamo_EliminarPrestamo_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarPrestamoResponse" />
   </wsdl:message>
-  <wsdl:message name="IWSPrestamo_ModificarPrestamo_InputMessage">
-    <wsdl:part name="parameters" element="tns:ModificarPrestamo" />
+  <wsdl:message name="IWSPrestamo_ActualizarPrestamo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPrestamo" />
   </wsdl:message>
-  <wsdl:message name="IWSPrestamo_ModificarPrestamo_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ModificarPrestamoResponse" />
+  <wsdl:message name="IWSPrestamo_ActualizarPrestamo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPrestamoResponse" />
   </wsdl:message>
   <wsdl:message name="IWSPrestamo_MostrarPrestamos_InputMessage">
     <wsdl:part name="parameters" element="tns:MostrarPrestamos" />
@@ -37,6 +37,12 @@
   <wsdl:message name="IWSPrestamo_BuscarPrestamo_OutputMessage">
     <wsdl:part name="parameters" element="tns:BuscarPrestamoResponse" />
   </wsdl:message>
+  <wsdl:message name="IWSPrestamo_MostarPrestamoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:MostarPrestamoCliente" />
+  </wsdl:message>
+  <wsdl:message name="IWSPrestamo_MostarPrestamoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MostarPrestamoClienteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWSPrestamo">
     <wsdl:operation name="CrearPrestamo">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSPrestamo/CrearPrestamo" message="tns:IWSPrestamo_CrearPrestamo_InputMessage" />
@@ -46,9 +52,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWSPrestamo/EliminarPrestamo" message="tns:IWSPrestamo_EliminarPrestamo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWSPrestamo/EliminarPrestamoResponse" message="tns:IWSPrestamo_EliminarPrestamo_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ModificarPrestamo">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWSPrestamo/ModificarPrestamo" message="tns:IWSPrestamo_ModificarPrestamo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWSPrestamo/ModificarPrestamoResponse" message="tns:IWSPrestamo_ModificarPrestamo_OutputMessage" />
+    <wsdl:operation name="ActualizarPrestamo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSPrestamo/ActualizarPrestamo" message="tns:IWSPrestamo_ActualizarPrestamo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSPrestamo/ActualizarPrestamoResponse" message="tns:IWSPrestamo_ActualizarPrestamo_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="MostrarPrestamos">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSPrestamo/MostrarPrestamos" message="tns:IWSPrestamo_MostrarPrestamos_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="BuscarPrestamo">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSPrestamo/BuscarPrestamo" message="tns:IWSPrestamo_BuscarPrestamo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWSPrestamo/BuscarPrestamoResponse" message="tns:IWSPrestamo_BuscarPrestamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MostarPrestamoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSPrestamo/MostarPrestamoCliente" message="tns:IWSPrestamo_MostarPrestamoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSPrestamo/MostarPrestamoClienteResponse" message="tns:IWSPrestamo_MostarPrestamoCliente_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWSPrestamo" type="tns:IWSPrestamo">
@@ -79,8 +89,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ModificarPrestamo">
-      <soap:operation soapAction="http://tempuri.org/IWSPrestamo/ModificarPrestamo" style="document" />
+    <wsdl:operation name="ActualizarPrestamo">
+      <soap:operation soapAction="http://tempuri.org/IWSPrestamo/ActualizarPrestamo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -106,10 +116,19 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="MostarPrestamoCliente">
+      <soap:operation soapAction="http://tempuri.org/IWSPrestamo/MostarPrestamoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="WSPrestamo">
     <wsdl:port name="BasicHttpBinding_IWSPrestamo" binding="tns:BasicHttpBinding_IWSPrestamo">
-      <soap:address location="http://localhost:61491/Servicios/WSPRestamo.svc" />
+      <soap:address location="http://localhost:53368/Servicios/WSPrestamo.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

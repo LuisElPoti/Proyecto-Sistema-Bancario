@@ -15,35 +15,53 @@ namespace CORE_INTERFACES.wsReferenceCuenta {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wsReferenceCuenta.IWSCuenta")]
     public interface IWSCuenta {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/AgregarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/AgregarCuentaResponse")]
-        void AgregarCuenta(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/CrearCuenta", ReplyAction="http://tempuri.org/IWSCuenta/CrearCuentaResponse")]
+        bool CrearCuenta(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/AgregarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/AgregarCuentaResponse")]
-        System.Threading.Tasks.Task AgregarCuentaAsync(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/EliminarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/EliminarCuentaResponse")]
-        void EliminarCuenta(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/CrearCuenta", ReplyAction="http://tempuri.org/IWSCuenta/CrearCuentaResponse")]
+        System.Threading.Tasks.Task<bool> CrearCuentaAsync(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/EliminarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/EliminarCuentaResponse")]
-        System.Threading.Tasks.Task EliminarCuentaAsync(int id);
+        bool EliminarCuenta(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/EliminarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/EliminarCuentaResponse")]
+        System.Threading.Tasks.Task<bool> EliminarCuentaAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/ActualizarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/ActualizarCuentaResponse")]
-        void ActualizarCuenta(int id, bool Estado, decimal Balance);
+        bool ActualizarCuenta(int idCuenta, bool Estado, decimal Balance);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/ActualizarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/ActualizarCuentaResponse")]
-        System.Threading.Tasks.Task ActualizarCuentaAsync(int id, bool Estado, decimal Balance);
+        System.Threading.Tasks.Task<bool> ActualizarCuentaAsync(int idCuenta, bool Estado, decimal Balance);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/MostrarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/MostrarCuentaResponse")]
-        System.Data.DataTable MostrarCuenta();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/MostrarCuentas", ReplyAction="http://tempuri.org/IWSCuenta/MostrarCuentasResponse")]
+        System.Data.DataTable MostrarCuentas();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/MostrarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/MostrarCuentaResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> MostrarCuentaAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/MostrarCuentas", ReplyAction="http://tempuri.org/IWSCuenta/MostrarCuentasResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> MostrarCuentasAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/BuscarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/BuscarCuentaResponse")]
         System.Data.DataTable BuscarCuenta(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/BuscarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/BuscarCuentaResponse")]
         System.Threading.Tasks.Task<System.Data.DataTable> BuscarCuentaAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/Deposito_Retiro", ReplyAction="http://tempuri.org/IWSCuenta/Deposito_RetiroResponse")]
+        bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/Deposito_Retiro", ReplyAction="http://tempuri.org/IWSCuenta/Deposito_RetiroResponse")]
+        System.Threading.Tasks.Task<bool> Deposito_RetiroAsync(int tipo, string NumeroCuenta, decimal Monto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/Pago_Prestamo", ReplyAction="http://tempuri.org/IWSCuenta/Pago_PrestamoResponse")]
+        bool Pago_Prestamo(int idPrestamo, decimal Monto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/Pago_Prestamo", ReplyAction="http://tempuri.org/IWSCuenta/Pago_PrestamoResponse")]
+        System.Threading.Tasks.Task<bool> Pago_PrestamoAsync(int idPrestamo, decimal Monto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/Transferencia_MismoBanco", ReplyAction="http://tempuri.org/IWSCuenta/Transferencia_MismoBancoResponse")]
+        bool Transferencia_MismoBanco(string CuentaOrigen, string CuentaDestino, decimal Monto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/Transferencia_MismoBanco", ReplyAction="http://tempuri.org/IWSCuenta/Transferencia_MismoBancoResponse")]
+        System.Threading.Tasks.Task<bool> Transferencia_MismoBancoAsync(string CuentaOrigen, string CuentaDestino, decimal Monto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,36 +91,36 @@ namespace CORE_INTERFACES.wsReferenceCuenta {
                 base(binding, remoteAddress) {
         }
         
-        public void AgregarCuenta(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado) {
-            base.Channel.AgregarCuenta(idCliente, idTipoCuenta, idBanco, NumeroCuenta, Estado);
+        public bool CrearCuenta(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado) {
+            return base.Channel.CrearCuenta(idCliente, idTipoCuenta, idBanco, NumeroCuenta, Estado);
         }
         
-        public System.Threading.Tasks.Task AgregarCuentaAsync(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado) {
-            return base.Channel.AgregarCuentaAsync(idCliente, idTipoCuenta, idBanco, NumeroCuenta, Estado);
+        public System.Threading.Tasks.Task<bool> CrearCuentaAsync(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado) {
+            return base.Channel.CrearCuentaAsync(idCliente, idTipoCuenta, idBanco, NumeroCuenta, Estado);
         }
         
-        public void EliminarCuenta(int id) {
-            base.Channel.EliminarCuenta(id);
+        public bool EliminarCuenta(int id) {
+            return base.Channel.EliminarCuenta(id);
         }
         
-        public System.Threading.Tasks.Task EliminarCuentaAsync(int id) {
+        public System.Threading.Tasks.Task<bool> EliminarCuentaAsync(int id) {
             return base.Channel.EliminarCuentaAsync(id);
         }
         
-        public void ActualizarCuenta(int id, bool Estado, decimal Balance) {
-            base.Channel.ActualizarCuenta(id, Estado, Balance);
+        public bool ActualizarCuenta(int idCuenta, bool Estado, decimal Balance) {
+            return base.Channel.ActualizarCuenta(idCuenta, Estado, Balance);
         }
         
-        public System.Threading.Tasks.Task ActualizarCuentaAsync(int id, bool Estado, decimal Balance) {
-            return base.Channel.ActualizarCuentaAsync(id, Estado, Balance);
+        public System.Threading.Tasks.Task<bool> ActualizarCuentaAsync(int idCuenta, bool Estado, decimal Balance) {
+            return base.Channel.ActualizarCuentaAsync(idCuenta, Estado, Balance);
         }
         
-        public System.Data.DataTable MostrarCuenta() {
-            return base.Channel.MostrarCuenta();
+        public System.Data.DataTable MostrarCuentas() {
+            return base.Channel.MostrarCuentas();
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> MostrarCuentaAsync() {
-            return base.Channel.MostrarCuentaAsync();
+        public System.Threading.Tasks.Task<System.Data.DataTable> MostrarCuentasAsync() {
+            return base.Channel.MostrarCuentasAsync();
         }
         
         public System.Data.DataTable BuscarCuenta(int id) {
@@ -111,6 +129,30 @@ namespace CORE_INTERFACES.wsReferenceCuenta {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> BuscarCuentaAsync(int id) {
             return base.Channel.BuscarCuentaAsync(id);
+        }
+        
+        public bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto) {
+            return base.Channel.Deposito_Retiro(tipo, NumeroCuenta, Monto);
+        }
+        
+        public System.Threading.Tasks.Task<bool> Deposito_RetiroAsync(int tipo, string NumeroCuenta, decimal Monto) {
+            return base.Channel.Deposito_RetiroAsync(tipo, NumeroCuenta, Monto);
+        }
+        
+        public bool Pago_Prestamo(int idPrestamo, decimal Monto) {
+            return base.Channel.Pago_Prestamo(idPrestamo, Monto);
+        }
+        
+        public System.Threading.Tasks.Task<bool> Pago_PrestamoAsync(int idPrestamo, decimal Monto) {
+            return base.Channel.Pago_PrestamoAsync(idPrestamo, Monto);
+        }
+        
+        public bool Transferencia_MismoBanco(string CuentaOrigen, string CuentaDestino, decimal Monto) {
+            return base.Channel.Transferencia_MismoBanco(CuentaOrigen, CuentaDestino, Monto);
+        }
+        
+        public System.Threading.Tasks.Task<bool> Transferencia_MismoBancoAsync(string CuentaOrigen, string CuentaDestino, decimal Monto) {
+            return base.Channel.Transferencia_MismoBancoAsync(CuentaOrigen, CuentaDestino, Monto);
         }
     }
 }

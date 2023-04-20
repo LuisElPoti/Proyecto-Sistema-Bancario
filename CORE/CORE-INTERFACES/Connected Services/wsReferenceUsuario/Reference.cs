@@ -15,23 +15,29 @@ namespace CORE_INTERFACES.wsReferenceUsuario {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wsReferenceUsuario.IWSUsuario")]
     public interface IWSUsuario {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/AgregarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/AgregarUsuarioResponse")]
-        void AgregarUsuario(int idPerfil, string Nombre, string Clave);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/CrearUsuario", ReplyAction="http://tempuri.org/IWSUsuario/CrearUsuarioResponse")]
+        bool CrearUsuario(int idPerfil, int idCliente, string nombre, string clave);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/AgregarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/AgregarUsuarioResponse")]
-        System.Threading.Tasks.Task AgregarUsuarioAsync(int idPerfil, string Nombre, string Clave);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/EliminarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/EliminarUsuarioResponse")]
-        void EliminarUsuario(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/CrearUsuario", ReplyAction="http://tempuri.org/IWSUsuario/CrearUsuarioResponse")]
+        System.Threading.Tasks.Task<bool> CrearUsuarioAsync(int idPerfil, int idCliente, string nombre, string clave);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/EliminarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/EliminarUsuarioResponse")]
-        System.Threading.Tasks.Task EliminarUsuarioAsync(int id);
+        bool EliminarUsuario(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/EliminarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/EliminarUsuarioResponse")]
+        System.Threading.Tasks.Task<bool> EliminarUsuarioAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/ActualizarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/ActualizarUsuarioResponse")]
-        void ActualizarUsuario(int id, int idPerfil, string Nombre, string Clave);
+        bool ActualizarUsuario(int idUsuario, int idPerfil, int idCliente, string nombre, string clave);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/ActualizarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/ActualizarUsuarioResponse")]
-        System.Threading.Tasks.Task ActualizarUsuarioAsync(int id, int idPerfil, string Nombre, string Clave);
+        System.Threading.Tasks.Task<bool> ActualizarUsuarioAsync(int idUsuario, int idPerfil, int idCliente, string nombre, string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/ValidarSesion", ReplyAction="http://tempuri.org/IWSUsuario/ValidarSesionResponse")]
+        bool ValidarSesion(string nombre, string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/ValidarSesion", ReplyAction="http://tempuri.org/IWSUsuario/ValidarSesionResponse")]
+        System.Threading.Tasks.Task<bool> ValidarSesionAsync(string nombre, string clave);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/MostrarUsuarios", ReplyAction="http://tempuri.org/IWSUsuario/MostrarUsuariosResponse")]
         System.Data.DataTable MostrarUsuarios();
@@ -73,28 +79,36 @@ namespace CORE_INTERFACES.wsReferenceUsuario {
                 base(binding, remoteAddress) {
         }
         
-        public void AgregarUsuario(int idPerfil, string Nombre, string Clave) {
-            base.Channel.AgregarUsuario(idPerfil, Nombre, Clave);
+        public bool CrearUsuario(int idPerfil, int idCliente, string nombre, string clave) {
+            return base.Channel.CrearUsuario(idPerfil, idCliente, nombre, clave);
         }
         
-        public System.Threading.Tasks.Task AgregarUsuarioAsync(int idPerfil, string Nombre, string Clave) {
-            return base.Channel.AgregarUsuarioAsync(idPerfil, Nombre, Clave);
+        public System.Threading.Tasks.Task<bool> CrearUsuarioAsync(int idPerfil, int idCliente, string nombre, string clave) {
+            return base.Channel.CrearUsuarioAsync(idPerfil, idCliente, nombre, clave);
         }
         
-        public void EliminarUsuario(int id) {
-            base.Channel.EliminarUsuario(id);
+        public bool EliminarUsuario(int id) {
+            return base.Channel.EliminarUsuario(id);
         }
         
-        public System.Threading.Tasks.Task EliminarUsuarioAsync(int id) {
+        public System.Threading.Tasks.Task<bool> EliminarUsuarioAsync(int id) {
             return base.Channel.EliminarUsuarioAsync(id);
         }
         
-        public void ActualizarUsuario(int id, int idPerfil, string Nombre, string Clave) {
-            base.Channel.ActualizarUsuario(id, idPerfil, Nombre, Clave);
+        public bool ActualizarUsuario(int idUsuario, int idPerfil, int idCliente, string nombre, string clave) {
+            return base.Channel.ActualizarUsuario(idUsuario, idPerfil, idCliente, nombre, clave);
         }
         
-        public System.Threading.Tasks.Task ActualizarUsuarioAsync(int id, int idPerfil, string Nombre, string Clave) {
-            return base.Channel.ActualizarUsuarioAsync(id, idPerfil, Nombre, Clave);
+        public System.Threading.Tasks.Task<bool> ActualizarUsuarioAsync(int idUsuario, int idPerfil, int idCliente, string nombre, string clave) {
+            return base.Channel.ActualizarUsuarioAsync(idUsuario, idPerfil, idCliente, nombre, clave);
+        }
+        
+        public bool ValidarSesion(string nombre, string clave) {
+            return base.Channel.ValidarSesion(nombre, clave);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ValidarSesionAsync(string nombre, string clave) {
+            return base.Channel.ValidarSesionAsync(nombre, clave);
         }
         
         public System.Data.DataTable MostrarUsuarios() {
