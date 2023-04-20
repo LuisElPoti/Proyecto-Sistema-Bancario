@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -9,14 +11,37 @@ namespace CoreServices.Clases
 {
     public class OperacionesPerfil
     {
-        public DbSet<Perfil> GetPerfil()
+        public DataTable GetPerfil()
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                return db.Perfil;
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetAllPerfil";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return dt;
             }
         }
-
         public bool InsertPerfil(string nombre, string descripcion)
         {
             using (DBCoreEntities db = new DBCoreEntities())
@@ -69,15 +94,36 @@ namespace CoreServices.Clases
             }
         }
         
-        public Perfil GetPerfilbyID(int id)
+        public DataTable GetPerfilbyID(int id)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-
-                var Perfil = db.Perfil.Where(i => i.idPerfil == id).First();
-
-
-                return Perfil;
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetPerfilById";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("Id", id));
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return dt;
             }
         }
     }

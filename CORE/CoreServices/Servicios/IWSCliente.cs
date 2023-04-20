@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -19,9 +20,9 @@ namespace CoreServices.Servicios
         bool ActualizarCliente(int id, string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento);
 
         [OperationContract]
-        DbSet<Cliente> MostrarClientes();
+        DataTable MostrarClientes();
 
         [OperationContract]
-        Cliente BuscarCliente(int id);
+        DataTable BuscarCliente(int id);
     }
 }

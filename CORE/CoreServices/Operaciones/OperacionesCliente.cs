@@ -4,17 +4,44 @@ using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace CoreServices.Operaciones
 {
     public class OperacionesCliente
     {
 
-        public DbSet<Cliente> GetClientes()
+        public DataTable GetClientes()
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                return db.Cliente;
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetAllCliente";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+
+                return dt;
             }
         }
 
@@ -53,15 +80,36 @@ namespace CoreServices.Operaciones
             }
         }
 
-        public Cliente GetClientebyID(int id)
+        public DataTable GetClientebyID(int id)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-
-                var PCliente = db.Cliente.Where(i => i.idCliente == id).First();
-
-
-                return PCliente;
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetClienteById";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("Id", id));
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return dt;
             }
         }
     }

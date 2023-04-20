@@ -2,6 +2,7 @@
 using CoreServices.Operaciones;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -30,12 +31,12 @@ namespace CoreServices.Servicios
             return Operaciones.UpdateCuentas(idCuenta, Estado, Balance);
         }
 
-        public DbSet<Cuenta> MostrarClientes()
+        public DataTable MostrarClientes()
         {
             return Operaciones.GetCuentas();
         }
 
-        public Cuenta BuscarCliente(int id)
+        public DataTable BuscarCliente(int id)
         {
             return Operaciones.GetCuentabyID(id);
         }

@@ -31,7 +31,7 @@ namespace CoreServices.Servicios
             return Operaciones.UpdatePerfiles(idPerfil, nombre, descripcion);
         }
 
-        public DbSet<Perfil> MostrarPerfiles()
+        public DataTable MostrarPerfiles()
         {
             return Operaciones.GetPerfil();
         }

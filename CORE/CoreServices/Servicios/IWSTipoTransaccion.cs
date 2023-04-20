@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -22,9 +23,9 @@ namespace CoreServices.Servicios
         bool EliminarTipoTransaccion(int id);
 
         [OperationContract]
-        DbSet<TipoTransaccion> MostrarTipoTransaccion();
+        DataTable MostrarTipoTransaccion();
 
         [OperationContract]
-        WSTipoTransaccion BuscarTipoTransaccion();
+        DataTable BuscarTipoTransaccion();
     }
 }

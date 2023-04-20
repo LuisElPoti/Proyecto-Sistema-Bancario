@@ -5,16 +5,43 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using CoreServices.Servicios;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace CoreServices.Operaciones
 {
     public class OperacionesTipoTransaccion
     {
-        public DbSet<TipoTransaccion> GetAllTipoTransaccion()
+        public DataTable GetAllTipoTransaccion()
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                return db.TipoTransaccion;
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetAllTipoTransaccion";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+
+                return dt;
             }
         }
 
@@ -70,15 +97,36 @@ namespace CoreServices.Operaciones
             }
         }
 
-        public TipoTransaccion GetTipoTransaccionbyID(int id)
+        public DataTable GetTipoTransaccionbyID(int id)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-
-                var TipoTransaccion = db.TipoTransaccion.Where(i => i.idTipo == id).First();
-
-
-                return TipoTransaccion;
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetTipoTransaccionById";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("Id", id));
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return dt;
             }
         }
     }

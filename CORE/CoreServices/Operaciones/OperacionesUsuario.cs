@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -9,11 +11,36 @@ namespace CoreServices.Clases
 {
     public class OperacionesUsuario
     {
-        public DbSet<Usuario> GetUsuario()
+        public DataTable GetUsuario()
         {
-            using(DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities db = new DBCoreEntities())
             {
-                return db.Usuario;
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetAllUsuario";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+
+                return dt;
             }
         }
         
@@ -69,28 +96,36 @@ namespace CoreServices.Clases
             }
         }
 
-        public Usuario GetUsuarioID(int id)
+        public DataTable GetUsuarioID(int id)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                Usuario Usuario = null;
-
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
                 try
                 {
-                    Usuario Correspondiente = db.Usuario.First((p) => p.idUsuario == id);
-
-                    Usuario = new Usuario();
-
-                    Usuario.idPerfil = Correspondiente.idPerfil;
-                    Usuario.Nombre = Correspondiente.Nombre;
-                    Usuario.Clave = Correspondiente.Clave;
-
-                    return Usuario;
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetUsuarioById";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("Id", id));
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
                 }
                 catch (Exception)
                 {
-                    return null;
+                    throw;
                 }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return dt;
             }
         }
     }

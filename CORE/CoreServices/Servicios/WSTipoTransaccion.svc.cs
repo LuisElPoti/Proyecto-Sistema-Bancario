@@ -1,6 +1,7 @@
 ﻿using CoreServices.Operaciones;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -30,12 +31,12 @@ namespace CoreServices.Servicios
             return Operaciones.UpdateTipoTransaccion(idTipo, nombre, descripcion);
         }
 
-        public DbSet<TipoTransaccion> MostrarTipoTransaccion()
+        public DataTable MostrarTipoTransaccion()
         {
             return Operaciones.GetAllTipoTransaccion();
         }
 
-        public WSTipoTransaccion BuscarTipoTransaccion()
+        public DataTable BuscarTipoTransaccion()
         {
             throw new NotImplementedException();
         }

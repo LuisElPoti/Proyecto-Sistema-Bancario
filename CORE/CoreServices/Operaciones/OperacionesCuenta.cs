@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -9,24 +11,37 @@ namespace CoreServices.Clases
 {
     public class OperacionesCuenta
     {        
-        public DbSet<Cuenta> GetCuentas()
+        public DataTable GetCuentas()
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                return db.Cuenta;
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetAllCuenta";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch(Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if(connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return dt;
             }
         }
-
-
-        /*
-         * public List<CollegeDetail> GetCollegeRecords()  
-        {  
-            using (CollegeDataEntities context = new CollegeDataEntities())  
-            {  
-                return context.CollegeDetails.ToList();  
-            }  
-        }
-        */
 
         public bool InsertCuentas(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado)
         {
@@ -80,13 +95,36 @@ namespace CoreServices.Clases
             }
         }
 
-        public Cuenta GetCuentabyID(int id)
+        public DataTable GetCuentabyID(int id)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                var Cuenta = db.Cuenta.Where(i => i.idCuenta == id).First();
-
-                return Cuenta;
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "spGetCuentaById";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("Id", id));
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return dt;
             }
         }
     }
