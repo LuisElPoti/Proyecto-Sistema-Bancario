@@ -30,11 +30,11 @@
         {
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2GradientTileButton1 = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btnEnter = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.label3 = new System.Windows.Forms.Label();
             this.ptbExitLogin = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnLogin = new Guna.UI2.WinForms.Guna2Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbExitLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            this.guna2Panel1.SuspendLayout();
+            this.pnLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2GradientPanel1
@@ -71,24 +71,24 @@
             this.guna2PictureBox2.TabStop = false;
             this.guna2PictureBox2.UseTransparentBackground = true;
             // 
-            // guna2GradientTileButton1
+            // btnEnter
             // 
-            this.guna2GradientTileButton1.BorderRadius = 20;
-            this.guna2GradientTileButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientTileButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.guna2GradientTileButton1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.guna2GradientTileButton1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.guna2GradientTileButton1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GradientTileButton1.Location = new System.Drawing.Point(380, 431);
-            this.guna2GradientTileButton1.Name = "guna2GradientTileButton1";
-            this.guna2GradientTileButton1.Size = new System.Drawing.Size(96, 41);
-            this.guna2GradientTileButton1.TabIndex = 9;
-            this.guna2GradientTileButton1.Text = "ENTER";
-            this.guna2GradientTileButton1.Click += new System.EventHandler(this.guna2GradientTileButton1_Click);
+            this.btnEnter.BorderRadius = 20;
+            this.btnEnter.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEnter.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEnter.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEnter.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEnter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEnter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btnEnter.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btnEnter.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnEnter.ForeColor = System.Drawing.Color.Black;
+            this.btnEnter.Location = new System.Drawing.Point(380, 431);
+            this.btnEnter.Name = "btnEnter";
+            this.btnEnter.Size = new System.Drawing.Size(96, 41);
+            this.btnEnter.TabIndex = 9;
+            this.btnEnter.Text = "ENTER";
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // label3
             // 
@@ -128,17 +128,17 @@
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
-            // guna2Panel1
+            // pnLogin
             // 
-            this.guna2Panel1.Controls.Add(this.comboBox1);
-            this.guna2Panel1.Controls.Add(this.label2);
-            this.guna2Panel1.Controls.Add(this.label1);
-            this.guna2Panel1.Controls.Add(this.textBox2);
-            this.guna2Panel1.Controls.Add(this.textBox1);
-            this.guna2Panel1.Location = new System.Drawing.Point(235, 168);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(409, 257);
-            this.guna2Panel1.TabIndex = 19;
+            this.pnLogin.Controls.Add(this.comboBox1);
+            this.pnLogin.Controls.Add(this.label2);
+            this.pnLogin.Controls.Add(this.label1);
+            this.pnLogin.Controls.Add(this.textBox2);
+            this.pnLogin.Controls.Add(this.textBox1);
+            this.pnLogin.Location = new System.Drawing.Point(235, 168);
+            this.pnLogin.Name = "pnLogin";
+            this.pnLogin.Size = new System.Drawing.Size(409, 257);
+            this.pnLogin.TabIndex = 19;
             // 
             // comboBox1
             // 
@@ -200,11 +200,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(701, 506);
-            this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.pnLogin);
             this.Controls.Add(this.ptbExitLogin);
             this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.guna2GradientTileButton1);
+            this.Controls.Add(this.btnEnter);
             this.Controls.Add(this.guna2GradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
@@ -213,8 +213,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbExitLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
+            this.pnLogin.ResumeLayout(false);
+            this.pnLogin.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,12 +222,12 @@
 
         #endregion
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private Guna.UI2.WinForms.Guna2GradientTileButton guna2GradientTileButton1;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnEnter;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2PictureBox ptbExitLogin;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel pnLogin;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
