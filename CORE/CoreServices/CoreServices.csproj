@@ -192,6 +192,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Operaciones\OperacionesCliente.cs" />
+    <Compile Include="Operaciones\OperacionesPrestamo.cs" />
+    <Compile Include="Operaciones\OperacionesTipoTransaccion.cs" />
+    <Compile Include="Servicios\IWSTipoTransaccion.cs" />
+    <Compile Include="Servicios\IWSPrestamo.cs" />
+    <Compile Include="Servicios\WSTipoTransaccion.svc.cs">
+      <DependentUpon>WSTipoTransaccion.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\WSPrestamo.svc.cs">
+      <DependentUpon>WSPrestamo.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\WSCuenta.svc.cs">
+      <DependentUpon>WSCuenta.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\IWSCuenta.cs" />
     <Compile Include="Servicios\IWSPerfil.cs" />
     <Compile Include="Servicios\IWSCliente.cs" />
     <Compile Include="Servicios\IWSUsuario.cs" />
@@ -357,6 +371,9 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Servicios\WSTipoTransaccion.svc" />
+    <Content Include="Servicios\WSPrestamo.svc" />
+    <Content Include="Servicios\WSCuenta.svc" />
     <Content Include="Servicios\WSCliente.svc" />
     <Content Include="Servicios\WSPerfil.svc" />
     <Content Include="Servicios\WSUsuario.svc" />

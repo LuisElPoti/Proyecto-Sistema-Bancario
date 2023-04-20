@@ -1,39 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace CoreServices.Clases
+namespace CoreServices.Operaciones
 {
-    public class OperacionesCuenta
-    {        
-        public DbSet<Cuenta> GetCuentas()
+    public class OperacionesPrestamo
+    {
+        public DbSet<Prestamo> GetPrestamos()
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                return db.Cuenta;
+                return db.Prestamo;
             }
         }
 
-
-        /*
-         * public List<CollegeDetail> GetCollegeRecords()  
-        {  
-            using (CollegeDataEntities context = new CollegeDataEntities())  
-            {  
-                return context.CollegeDetails.ToList();  
-            }  
-        }
-        */
-
-        public bool InsertCuentas(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado)
+        public bool InsertPrestamo(int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, DateTime fechaCorte)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
                 ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
-                db.spInsertCuenta(idCliente, idTipoCuenta, idBanco, NumeroCuenta, Estado);
+                db.spInsertPrestamo(idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
 
                 if (Convert.ToInt32(ReturnedValue.Value) >= 1)
                 {
@@ -43,14 +32,14 @@ namespace CoreServices.Clases
                 {
                     return false;
                 }
-            }            
+            }
         }
 
-        public bool UpdateCuentas(int idCuenta, bool Estado, decimal Balance)
+        public bool UpdatePrestamos(int idPrestamo, int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, DateTime fechaCorte)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                int ReturnedValue = db.spUpsertCuenta(idCuenta, Estado, Balance);
+                int ReturnedValue = db.spUpsertPrestamo(idPrestamo, idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
 
                 if (ReturnedValue >= 1)
                 {
@@ -63,11 +52,11 @@ namespace CoreServices.Clases
             }
         }
 
-        public bool DeleteCuentas(int id)
+        public bool DeletePrestamo (int id)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                int ReturnedValue = db.spDeleteCuenta(id);
+                int ReturnedValue = db.spDeletePrestamo(id);
 
                 if (ReturnedValue >= 1)
                 {
@@ -80,13 +69,13 @@ namespace CoreServices.Clases
             }
         }
 
-        public Cuenta GetCuentabyID(int id)
+        public Prestamo GetPrestamobyID(int id)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                var Cuenta = db.Cuenta.Where(i => i.idCuenta == id).First();
+                var Prestamo = db.Prestamo.Where(i => i.idPrestamo == id).First();
 
-                return Cuenta;
+                return Prestamo;
             }
         }
     }
