@@ -191,7 +191,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Operaciones\OperacionesCliente.cs" />
     <Compile Include="Servicios\IPerfil.cs" />
+    <Compile Include="Servicios\ICliente.cs" />
     <Compile Include="Servicios\IWSUsuario.cs" />
     <Compile Include="Moneda.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
@@ -214,9 +216,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyCoreModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="OperacionesCuenta.cs" />
-    <Compile Include="OperacionesPerfil.cs" />
-    <Compile Include="OperacionesUsuario.cs" />
+    <Compile Include="Operaciones\OperacionesCuenta.cs" />
+    <Compile Include="Operaciones\OperacionesPerfil.cs" />
+    <Compile Include="Operaciones\OperacionesUsuario.cs" />
     <Compile Include="Perfil.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
@@ -229,6 +231,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rol.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\WSCliente.svc.cs">
+      <DependentUpon>WSCliente.svc</DependentUpon>
     </Compile>
     <Compile Include="Servicios\WSPerfil.svc.cs">
       <DependentUpon>WSPerfil.svc</DependentUpon>
@@ -352,6 +357,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Servicios\WSCliente.svc" />
     <Content Include="Servicios\WSPerfil.svc" />
     <Content Include="Servicios\WSUsuario.svc" />
     <Content Include="WSCuenta.asmx" />
