@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,11 @@ namespace CoreServices.Clases
 {
     public class OperacionesCuenta
     {        
-        public spGetAllCuenta_Result[] GetCuentas()
+        public DbSet<Cuenta> GetCuentas()
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                return db.spGetAllCuenta().ToArray();
+                return db.Cuenta;
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
@@ -8,20 +9,20 @@ namespace CoreServices.Clases
 {
     public class OperacionesUsuario
     {
-        public spGetAllUsuario_Result[] GetUsuario()
+        public DbSet<Usuario> GetUsuario()
         {
             using(DBCoreEntities db = new DBCoreEntities())
             {
-                return db.spGetAllUsuario().ToArray();
+                return db.Usuario;
             }
         }
         
-        public bool InsertUsuario(int idPerfil, string nombre, string clave)
+        public bool InsertUsuario(int idPerfil, int idCliente, string nombre, string clave)
         {
             using(DBCoreEntities db = new DBCoreEntities())
             {
                 ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
-                db.spInsertUsuario(idPerfil, nombre, clave);
+                db.spInsertUsuario(idPerfil, idCliente, nombre, clave);
 
                 if (Convert.ToInt32(ReturnedValue.Value) >= 1)
                 {
@@ -34,11 +35,11 @@ namespace CoreServices.Clases
             }
         }
 
-        public bool UpdateUsuario(int idUsuario, int idPerfil, string nombre, string clave)
+        public bool UpdateUsuario(int idUsuario, int idPerfil, int idCliente, string nombre, string clave)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                int ReturnedValue = db.spUpsertUsuario(idUsuario, idPerfil, nombre, clave);
+                int ReturnedValue = db.spUpsertUsuario(idUsuario, idPerfil, idCliente, nombre, clave);
 
                 if (ReturnedValue >= 1)
                 {

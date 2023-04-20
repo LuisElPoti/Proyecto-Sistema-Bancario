@@ -16,7 +16,7 @@ namespace CoreServices.WebServices
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
     public class WSUsuario : System.Web.Services.WebService
-    {
+    {/*
         OperacionesUsuario Operaciones = new OperacionesUsuario();
 
         [WebMethod]
@@ -48,5 +48,6 @@ namespace CoreServices.WebServices
         {
             return Operaciones.GetUsuarioID(id);
         }
+        */
     }
 }

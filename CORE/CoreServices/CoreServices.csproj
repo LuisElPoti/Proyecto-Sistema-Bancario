@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,6 +57,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -189,6 +191,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\IPerfil.cs" />
+    <Compile Include="Servicios\IWSUsuario.cs" />
     <Compile Include="Moneda.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
@@ -225,6 +229,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rol.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\WSPerfil.svc.cs">
+      <DependentUpon>WSPerfil.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\WSUsuario.svc.cs">
+      <DependentUpon>WSUsuario.svc</DependentUpon>
     </Compile>
     <Compile Include="spGetAllCliente_Result.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
@@ -342,6 +352,8 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Servicios\WSPerfil.svc" />
+    <Content Include="Servicios\WSUsuario.svc" />
     <Content Include="WSCuenta.asmx" />
     <Content Include="WSPerfil.asmx" />
     <Content Include="WSUsuario.asmx" />

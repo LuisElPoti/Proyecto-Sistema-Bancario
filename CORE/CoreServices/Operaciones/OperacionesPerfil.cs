@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
@@ -8,25 +9,13 @@ namespace CoreServices.Clases
 {
     public class OperacionesPerfil
     {
-
-        public spGetAllPerfil_Result[] GetPerfil()
+        public DbSet<Perfil> GetPerfil()
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                return db.spGetAllPerfil().ToArray();
+                return db.Perfil;
             }
         }
-
-
-        /*
-         * public List<CollegeDetail> GetCollegeRecords()  
-        {  
-            using (CollegeDataEntities context = new CollegeDataEntities())  
-            {  
-                return context.CollegeDetails.ToList();  
-            }  
-        }
-        */
 
         public bool InsertPerfil(string nombre, string descripcion)
         {
@@ -79,27 +68,16 @@ namespace CoreServices.Clases
                 }
             }
         }
-
+        
         public Perfil GetPerfilbyID(int id)
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                Perfil Perfiles = null;
 
-                try
-                {
-                    Perfil Correspondiente = db.Perfil.First((p) => p.idPerfil == id);
+                var Perfil = db.Perfil.Where(i => i.idPerfil == id).First();
 
-                    Perfiles.idPerfil = Correspondiente.idPerfil;
-                    Perfiles.Nombre = Correspondiente.Nombre;
-                    Perfiles.Descripcion = Correspondiente.Descripcion;
 
-                    return Perfiles;
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
+                return Perfil;
             }
         }
     }

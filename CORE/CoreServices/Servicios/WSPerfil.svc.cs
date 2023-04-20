@@ -3,51 +3,42 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
 using System.Web.Services;
 
-namespace CoreServices
+namespace CoreServices.Servicios
 {
-    /// <summary>
-    /// Summary description for WebService1
-    /// </summary>
-    [WebService(Namespace = "http://tempuri.org/")]
-    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-    [System.ComponentModel.ToolboxItem(false)]
-    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-    // [System.Web.Script.Services.ScriptService]
-    public class WSPerfil : System.Web.Services.WebService
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Perfil" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select Perfil.svc or Perfil.svc.cs at the Solution Explorer and start debugging.
+    public class WSPerfil : IWSPerfil
     {
         OperacionesPerfil Operaciones = new OperacionesPerfil();
 
-        [WebMethod]
         public bool CrearPerfil(string nombre, string descripcion)
         {
             return Operaciones.InsertPerfil(nombre, descripcion);
         }
 
-        [WebMethod]
         public bool EliminarPerfil(int id)
         {
             return Operaciones.DeletePerfil(id);
         }
 
-        [WebMethod]
         public bool ActualizarPerfil(int idPerfil, string nombre, string descripcion)
         {
             return Operaciones.UpdatePerfiles(idPerfil, nombre, descripcion);
         }
 
-        [WebMethod]
         public DbSet<Perfil> MostrarPerfiles()
         {
             return Operaciones.GetPerfil();
         }
-        /*
-        [WebMethod]
+        
         public Perfil BuscarPerfil(int id)
         {
             return Operaciones.GetPerfilbyID(id);
-        }*/
+        }
     }
 }
