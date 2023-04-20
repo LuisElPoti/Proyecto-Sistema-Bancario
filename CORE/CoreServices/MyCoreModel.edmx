@@ -1,0 +1,1811 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBCoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="idBanco" />
+          </Key>
+          <Property Name="idBanco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Beneficiario">
+          <Key>
+            <PropertyRef Name="idBeneficiario" />
+          </Key>
+          <Property Name="idBeneficiario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idBanco" Type="int" Nullable="false" />
+          <Property Name="TipoDocumento" Type="int" Nullable="false" />
+          <Property Name="Documento" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="TipoDocumento" Type="int" Nullable="false" />
+          <Property Name="Documento" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="80" />
+          <Property Name="Telefono" Type="char" MaxLength="10" />
+          <Property Name="Direccion" Type="varchar" MaxLength="80" />
+          <Property Name="FechaNacimiento" Type="datetime" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="idCuenta" />
+          </Key>
+          <Property Name="idCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="idTipoCuenta" Type="int" Nullable="false" />
+          <Property Name="idBanco" Type="int" Nullable="false" />
+          <Property Name="NumeroCuenta" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Cuenta_Beneficiario">
+          <Key>
+            <PropertyRef Name="idCuenta" />
+            <PropertyRef Name="idBeneficiario" />
+          </Key>
+          <Property Name="idCuenta" Type="int" Nullable="false" />
+          <Property Name="idBeneficiario" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Detalle_Prestamo">
+          <Key>
+            <PropertyRef Name="idDetallePrestamo" />
+          </Key>
+          <Property Name="idDetallePrestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPrestamo" Type="int" Nullable="false" />
+          <Property Name="idEstado" Type="int" Nullable="false" />
+          <Property Name="MontoPago" Type="money" Nullable="false" />
+          <Property Name="InteresesGenerados" Type="money" Nullable="false" />
+          <Property Name="CapitalAmortizado" Type="money" Nullable="false" />
+          <Property Name="FechaPago" Type="datetime" Nullable="false" />
+          <Property Name="SaldoPendiente" Type="money" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="datetime" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Moneda">
+          <Key>
+            <PropertyRef Name="idMoneda" />
+          </Key>
+          <Property Name="idMoneda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Movimiento">
+          <Key>
+            <PropertyRef Name="idMovimiento" />
+          </Key>
+          <Property Name="idMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCuenta" Type="int" Nullable="false" />
+          <Property Name="idTransaccion" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Perfil_Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="idPerfil" Type="int" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Prestamo">
+          <Key>
+            <PropertyRef Name="idPrestamo" />
+          </Key>
+          <Property Name="idPrestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCuenta" Type="int" Nullable="false" />
+          <Property Name="Tasa" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MontoOriginal" Type="money" Nullable="false" />
+          <Property Name="MontoActual" Type="money" Nullable="false" />
+          <Property Name="FechaCorte" Type="datetime" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TipoCuenta">
+          <Key>
+            <PropertyRef Name="idTipoCuenta" />
+          </Key>
+          <Property Name="idTipoCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TipoTransaccion">
+          <Key>
+            <PropertyRef Name="idTipo" />
+          </Key>
+          <Property Name="idTipo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Transaccion">
+          <Key>
+            <PropertyRef Name="idTransaccion" />
+          </Key>
+          <Property Name="idTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTipo" Type="int" Nullable="false" />
+          <Property Name="idMoneda" Type="int" Nullable="false" />
+          <Property Name="idEstado" Type="int" Nullable="false" />
+          <Property Name="CuentaOrigen" Type="int" Nullable="false" />
+          <Property Name="CuentaDestino" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="idPerfil" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Banco_Beneficiario">
+          <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
+          <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banco">
+              <PropertyRef Name="idBanco" />
+            </Principal>
+            <Dependent Role="Beneficiario">
+              <PropertyRef Name="idBanco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Banco_Cuenta">
+          <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banco">
+              <PropertyRef Name="idBanco" />
+            </Principal>
+            <Dependent Role="Cuenta">
+              <PropertyRef Name="idBanco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Beneficiario_Cuenta">
+          <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="1" />
+          <End Role="Cuenta_Beneficiario" Type="Self.Cuenta_Beneficiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beneficiario">
+              <PropertyRef Name="idBeneficiario" />
+            </Principal>
+            <Dependent Role="Cuenta_Beneficiario">
+              <PropertyRef Name="idBeneficiario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Cuenta">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Cuenta">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Usuario">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuenta_Beneficiario">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Cuenta_Beneficiario" Type="Self.Cuenta_Beneficiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="idCuenta" />
+            </Principal>
+            <Dependent Role="Cuenta_Beneficiario">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuenta_Movimiento">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="idCuenta" />
+            </Principal>
+            <Dependent Role="Movimiento">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Cuenta_Prestamo">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="idCuenta" />
+            </Principal>
+            <Dependent Role="Prestamo">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuenta_Transaccion">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="idCuenta" />
+            </Principal>
+            <Dependent Role="Transaccion">
+              <PropertyRef Name="CuentaOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Detalle">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Detalle_Prestamo" Type="Self.Detalle_Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Detalle_Prestamo">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Transaccion">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Transaccion">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moneda_Transaccion">
+          <End Role="Moneda" Type="Self.Moneda" Multiplicity="1" />
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moneda">
+              <PropertyRef Name="idMoneda" />
+            </Principal>
+            <Dependent Role="Transaccion">
+              <PropertyRef Name="idMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Perfil_Rol">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Perfil_Rol" Type="Self.Perfil_Rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="Perfil_Rol">
+              <PropertyRef Name="idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Perfil_Usuario">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prestamo_Detalle">
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="1" />
+          <End Role="Detalle_Prestamo" Type="Self.Detalle_Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prestamo">
+              <PropertyRef Name="idPrestamo" />
+            </Principal>
+            <Dependent Role="Detalle_Prestamo">
+              <PropertyRef Name="idPrestamo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rol_Perfil">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Perfil_Rol" Type="Self.Perfil_Rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Perfil_Rol">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo_Transaccion">
+          <End Role="TipoTransaccion" Type="Self.TipoTransaccion" Multiplicity="1" />
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTransaccion">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="Transaccion">
+              <PropertyRef Name="idTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoCuenta_Cuenta">
+          <End Role="TipoCuenta" Type="Self.TipoCuenta" Multiplicity="1" />
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCuenta">
+              <PropertyRef Name="idTipoCuenta" />
+            </Principal>
+            <Dependent Role="Cuenta">
+              <PropertyRef Name="idTipoCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaccion_CuentaDestino">
+          <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="1" />
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beneficiario">
+              <PropertyRef Name="idBeneficiario" />
+            </Principal>
+            <Dependent Role="Transaccion">
+              <PropertyRef Name="CuentaDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaccion_Movimiento">
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="1" />
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaccion">
+              <PropertyRef Name="idTransaccion" />
+            </Principal>
+            <Dependent Role="Movimiento">
+              <PropertyRef Name="idTransaccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spDeleteCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCuenta" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeletePerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPerfil" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeletePrestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPrestamo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeleteTipoTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeleteUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetAllCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetAllCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetAllPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetAllPrestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetAllTipoTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetAllUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetClienteById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetCuentaById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetPerfilById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPerfil" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetPrestamoByCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCuenta" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetTipoTransaccionById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetUsuarioById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInsertCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="TipoDocumento" Type="int" Mode="In" />
+          <Parameter Name="Documento" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefono" Type="char" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spInsertCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="idTipoCuenta" Type="int" Mode="In" />
+          <Parameter Name="idBanco" Type="int" Mode="In" />
+          <Parameter Name="NumeroCuenta" Type="varchar" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="spInsertPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertPrestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCuenta" Type="int" Mode="In" />
+          <Parameter Name="Tasa" Type="decimal" Mode="In" />
+          <Parameter Name="MontoOriginal" Type="money" Mode="In" />
+          <Parameter Name="MontoActual" Type="money" Mode="In" />
+          <Parameter Name="FechaCorte" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spInsertTipoTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPerfil" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpsertCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="TipoDocumento" Type="int" Mode="In" />
+          <Parameter Name="Documento" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefono" Type="char" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spUpsertCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCuenta" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+          <Parameter Name="Balance" Type="money" Mode="In" />
+        </Function>
+        <Function Name="spUpsertPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPerfil" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpsertPrestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPrestamo" Type="int" Mode="In" />
+          <Parameter Name="idCuenta" Type="int" Mode="In" />
+          <Parameter Name="Tasa" Type="decimal" Mode="In" />
+          <Parameter Name="MontoOriginal" Type="money" Mode="In" />
+          <Parameter Name="MontoActual" Type="money" Mode="In" />
+          <Parameter Name="FechaCorte" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spUpsertTipoTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpsertUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+          <Parameter Name="idPerfil" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DBCoreModelStoreContainer">
+          <EntitySet Name="Banco" EntityType="Self.Banco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Beneficiario" EntityType="Self.Beneficiario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuenta_Beneficiario" EntityType="Self.Cuenta_Beneficiario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalle_Prestamo" EntityType="Self.Detalle_Prestamo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moneda" EntityType="Self.Moneda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movimiento" EntityType="Self.Movimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil_Rol" EntityType="Self.Perfil_Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prestamo" EntityType="Self.Prestamo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCuenta" EntityType="Self.TipoCuenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoTransaccion" EntityType="Self.TipoTransaccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transaccion" EntityType="Self.Transaccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Banco_Beneficiario" Association="Self.FK_Banco_Beneficiario">
+            <End Role="Banco" EntitySet="Banco" />
+            <End Role="Beneficiario" EntitySet="Beneficiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Banco_Cuenta" Association="Self.FK_Banco_Cuenta">
+            <End Role="Banco" EntitySet="Banco" />
+            <End Role="Cuenta" EntitySet="Cuenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Beneficiario_Cuenta" Association="Self.FK_Beneficiario_Cuenta">
+            <End Role="Beneficiario" EntitySet="Beneficiario" />
+            <End Role="Cuenta_Beneficiario" EntitySet="Cuenta_Beneficiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Cuenta" Association="Self.FK_Cliente_Cuenta">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Cuenta" EntitySet="Cuenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Usuario" Association="Self.FK_Cliente_Usuario">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuenta_Beneficiario" Association="Self.FK_Cuenta_Beneficiario">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Cuenta_Beneficiario" EntitySet="Cuenta_Beneficiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuenta_Movimiento" Association="Self.FK_Cuenta_Movimiento">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Movimiento" EntitySet="Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Cuenta_Prestamo" Association="Self.Fk_Cuenta_Prestamo">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuenta_Transaccion" Association="Self.FK_Cuenta_Transaccion">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Transaccion" EntitySet="Transaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Detalle" Association="Self.FK_Estado_Detalle">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Detalle_Prestamo" EntitySet="Detalle_Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Transaccion" Association="Self.FK_Estado_Transaccion">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Transaccion" EntitySet="Transaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moneda_Transaccion" Association="Self.FK_Moneda_Transaccion">
+            <End Role="Moneda" EntitySet="Moneda" />
+            <End Role="Transaccion" EntitySet="Transaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Perfil_Rol" Association="Self.FK_Perfil_Rol">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="Perfil_Rol" EntitySet="Perfil_Rol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Perfil_Usuario" Association="Self.FK_Perfil_Usuario">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prestamo_Detalle" Association="Self.FK_Prestamo_Detalle">
+            <End Role="Prestamo" EntitySet="Prestamo" />
+            <End Role="Detalle_Prestamo" EntitySet="Detalle_Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rol_Perfil" Association="Self.FK_Rol_Perfil">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Perfil_Rol" EntitySet="Perfil_Rol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo_Transaccion" Association="Self.FK_Tipo_Transaccion">
+            <End Role="TipoTransaccion" EntitySet="TipoTransaccion" />
+            <End Role="Transaccion" EntitySet="Transaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoCuenta_Cuenta" Association="Self.FK_TipoCuenta_Cuenta">
+            <End Role="TipoCuenta" EntitySet="TipoCuenta" />
+            <End Role="Cuenta" EntitySet="Cuenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaccion_CuentaDestino" Association="Self.FK_Transaccion_CuentaDestino">
+            <End Role="Beneficiario" EntitySet="Beneficiario" />
+            <End Role="Transaccion" EntitySet="Transaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaccion_Movimiento" Association="Self.FK_Transaccion_Movimiento">
+            <End Role="Transaccion" EntitySet="Transaccion" />
+            <End Role="Movimiento" EntitySet="Movimiento" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBCoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="idBanco" />
+          </Key>
+          <Property Name="idBanco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Beneficiario" Relationship="Self.FK_Banco_Beneficiario" FromRole="Banco" ToRole="Beneficiario" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Banco_Cuenta" FromRole="Banco" ToRole="Cuenta" />
+        </EntityType>
+        <EntityType Name="Beneficiario">
+          <Key>
+            <PropertyRef Name="idBeneficiario" />
+          </Key>
+          <Property Name="idBeneficiario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idBanco" Type="Int32" Nullable="false" />
+          <Property Name="TipoDocumento" Type="Int32" Nullable="false" />
+          <Property Name="Documento" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Banco" Relationship="Self.FK_Banco_Beneficiario" FromRole="Beneficiario" ToRole="Banco" />
+          <NavigationProperty Name="Cuenta_Beneficiario" Relationship="Self.FK_Beneficiario_Cuenta" FromRole="Beneficiario" ToRole="Cuenta_Beneficiario" />
+          <NavigationProperty Name="Transaccion" Relationship="Self.FK_Transaccion_CuentaDestino" FromRole="Beneficiario" ToRole="Transaccion" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoDocumento" Type="Int32" Nullable="false" />
+          <Property Name="Documento" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Cliente_Cuenta" FromRole="Cliente" ToRole="Cuenta" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Cliente_Usuario" FromRole="Cliente" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="idCuenta" />
+          </Key>
+          <Property Name="idCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="idTipoCuenta" Type="Int32" Nullable="false" />
+          <Property Name="idBanco" Type="Int32" Nullable="false" />
+          <Property Name="NumeroCuenta" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Banco" Relationship="Self.FK_Banco_Cuenta" FromRole="Cuenta" ToRole="Banco" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Cuenta" FromRole="Cuenta" ToRole="Cliente" />
+          <NavigationProperty Name="Cuenta_Beneficiario" Relationship="Self.FK_Cuenta_Beneficiario" FromRole="Cuenta" ToRole="Cuenta_Beneficiario" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.FK_Cuenta_Movimiento" FromRole="Cuenta" ToRole="Movimiento" />
+          <NavigationProperty Name="Prestamo" Relationship="Self.Fk_Cuenta_Prestamo" FromRole="Cuenta" ToRole="Prestamo" />
+          <NavigationProperty Name="Transaccion" Relationship="Self.FK_Cuenta_Transaccion" FromRole="Cuenta" ToRole="Transaccion" />
+          <NavigationProperty Name="TipoCuenta" Relationship="Self.FK_TipoCuenta_Cuenta" FromRole="Cuenta" ToRole="TipoCuenta" />
+        </EntityType>
+        <EntityType Name="Cuenta_Beneficiario">
+          <Key>
+            <PropertyRef Name="idCuenta" />
+            <PropertyRef Name="idBeneficiario" />
+          </Key>
+          <Property Name="idCuenta" Type="Int32" Nullable="false" />
+          <Property Name="idBeneficiario" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Beneficiario" Relationship="Self.FK_Beneficiario_Cuenta" FromRole="Cuenta_Beneficiario" ToRole="Beneficiario" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Cuenta_Beneficiario" FromRole="Cuenta_Beneficiario" ToRole="Cuenta" />
+        </EntityType>
+        <EntityType Name="Detalle_Prestamo">
+          <Key>
+            <PropertyRef Name="idDetallePrestamo" />
+          </Key>
+          <Property Name="idDetallePrestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPrestamo" Type="Int32" Nullable="false" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <Property Name="MontoPago" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="InteresesGenerados" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CapitalAmortizado" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="FechaPago" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SaldoPendiente" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_Estado_Detalle" FromRole="Detalle_Prestamo" ToRole="Estado" />
+          <NavigationProperty Name="Prestamo" Relationship="Self.FK_Prestamo_Detalle" FromRole="Detalle_Prestamo" ToRole="Prestamo" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Detalle_Prestamo" Relationship="Self.FK_Estado_Detalle" FromRole="Estado" ToRole="Detalle_Prestamo" />
+          <NavigationProperty Name="Transaccion" Relationship="Self.FK_Estado_Transaccion" FromRole="Estado" ToRole="Transaccion" />
+        </EntityType>
+        <EntityType Name="Moneda">
+          <Key>
+            <PropertyRef Name="idMoneda" />
+          </Key>
+          <Property Name="idMoneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Transaccion" Relationship="Self.FK_Moneda_Transaccion" FromRole="Moneda" ToRole="Transaccion" />
+        </EntityType>
+        <EntityType Name="Movimiento">
+          <Key>
+            <PropertyRef Name="idMovimiento" />
+          </Key>
+          <Property Name="idMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCuenta" Type="Int32" Nullable="false" />
+          <Property Name="idTransaccion" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Cuenta_Movimiento" FromRole="Movimiento" ToRole="Cuenta" />
+          <NavigationProperty Name="Transaccion" Relationship="Self.FK_Transaccion_Movimiento" FromRole="Movimiento" ToRole="Transaccion" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Perfil_Rol" Relationship="Self.FK_Perfil_Rol" FromRole="Perfil" ToRole="Perfil_Rol" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Perfil_Usuario" FromRole="Perfil" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Perfil_Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="idPerfil" Type="Int32" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Perfil" Relationship="Self.FK_Perfil_Rol" FromRole="Perfil_Rol" ToRole="Perfil" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK_Rol_Perfil" FromRole="Perfil_Rol" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Prestamo">
+          <Key>
+            <PropertyRef Name="idPrestamo" />
+          </Key>
+          <Property Name="idPrestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCuenta" Type="Int32" Nullable="false" />
+          <Property Name="Tasa" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MontoOriginal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="MontoActual" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="FechaCorte" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.Fk_Cuenta_Prestamo" FromRole="Prestamo" ToRole="Cuenta" />
+          <NavigationProperty Name="Detalle_Prestamo" Relationship="Self.FK_Prestamo_Detalle" FromRole="Prestamo" ToRole="Detalle_Prestamo" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Perfil_Rol" Relationship="Self.FK_Rol_Perfil" FromRole="Rol" ToRole="Perfil_Rol" />
+        </EntityType>
+        <EntityType Name="TipoCuenta">
+          <Key>
+            <PropertyRef Name="idTipoCuenta" />
+          </Key>
+          <Property Name="idTipoCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_TipoCuenta_Cuenta" FromRole="TipoCuenta" ToRole="Cuenta" />
+        </EntityType>
+        <EntityType Name="TipoTransaccion">
+          <Key>
+            <PropertyRef Name="idTipo" />
+          </Key>
+          <Property Name="idTipo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Transaccion" Relationship="Self.FK_Tipo_Transaccion" FromRole="TipoTransaccion" ToRole="Transaccion" />
+        </EntityType>
+        <EntityType Name="Transaccion">
+          <Key>
+            <PropertyRef Name="idTransaccion" />
+          </Key>
+          <Property Name="idTransaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipo" Type="Int32" Nullable="false" />
+          <Property Name="idMoneda" Type="Int32" Nullable="false" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <Property Name="CuentaOrigen" Type="Int32" Nullable="false" />
+          <Property Name="CuentaDestino" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Beneficiario" Relationship="Self.FK_Transaccion_CuentaDestino" FromRole="Transaccion" ToRole="Beneficiario" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Cuenta_Transaccion" FromRole="Transaccion" ToRole="Cuenta" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_Estado_Transaccion" FromRole="Transaccion" ToRole="Estado" />
+          <NavigationProperty Name="Moneda" Relationship="Self.FK_Moneda_Transaccion" FromRole="Transaccion" ToRole="Moneda" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.FK_Transaccion_Movimiento" FromRole="Transaccion" ToRole="Movimiento" />
+          <NavigationProperty Name="TipoTransaccion" Relationship="Self.FK_Tipo_Transaccion" FromRole="Transaccion" ToRole="TipoTransaccion" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="idPerfil" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Usuario" FromRole="Usuario" ToRole="Cliente" />
+          <NavigationProperty Name="Perfil" Relationship="Self.FK_Perfil_Usuario" FromRole="Usuario" ToRole="Perfil" />
+        </EntityType>
+        <Association Name="FK_Banco_Beneficiario">
+          <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
+          <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banco">
+              <PropertyRef Name="idBanco" />
+            </Principal>
+            <Dependent Role="Beneficiario">
+              <PropertyRef Name="idBanco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Banco_Cuenta">
+          <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banco">
+              <PropertyRef Name="idBanco" />
+            </Principal>
+            <Dependent Role="Cuenta">
+              <PropertyRef Name="idBanco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Beneficiario_Cuenta">
+          <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="1" />
+          <End Role="Cuenta_Beneficiario" Type="Self.Cuenta_Beneficiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beneficiario">
+              <PropertyRef Name="idBeneficiario" />
+            </Principal>
+            <Dependent Role="Cuenta_Beneficiario">
+              <PropertyRef Name="idBeneficiario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaccion_CuentaDestino">
+          <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="1" />
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beneficiario">
+              <PropertyRef Name="idBeneficiario" />
+            </Principal>
+            <Dependent Role="Transaccion">
+              <PropertyRef Name="CuentaDestino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Cuenta">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Cuenta">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Usuario">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuenta_Beneficiario">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Cuenta_Beneficiario" Type="Self.Cuenta_Beneficiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="idCuenta" />
+            </Principal>
+            <Dependent Role="Cuenta_Beneficiario">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuenta_Movimiento">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="idCuenta" />
+            </Principal>
+            <Dependent Role="Movimiento">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Cuenta_Prestamo">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="idCuenta" />
+            </Principal>
+            <Dependent Role="Prestamo">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuenta_Transaccion">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="idCuenta" />
+            </Principal>
+            <Dependent Role="Transaccion">
+              <PropertyRef Name="CuentaOrigen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoCuenta_Cuenta">
+          <End Role="TipoCuenta" Type="Self.TipoCuenta" Multiplicity="1" />
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCuenta">
+              <PropertyRef Name="idTipoCuenta" />
+            </Principal>
+            <Dependent Role="Cuenta">
+              <PropertyRef Name="idTipoCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Detalle">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Detalle_Prestamo" Type="Self.Detalle_Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Detalle_Prestamo">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prestamo_Detalle">
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="1" />
+          <End Role="Detalle_Prestamo" Type="Self.Detalle_Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prestamo">
+              <PropertyRef Name="idPrestamo" />
+            </Principal>
+            <Dependent Role="Detalle_Prestamo">
+              <PropertyRef Name="idPrestamo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Transaccion">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Transaccion">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moneda_Transaccion">
+          <End Role="Moneda" Type="Self.Moneda" Multiplicity="1" />
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moneda">
+              <PropertyRef Name="idMoneda" />
+            </Principal>
+            <Dependent Role="Transaccion">
+              <PropertyRef Name="idMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaccion_Movimiento">
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="1" />
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaccion">
+              <PropertyRef Name="idTransaccion" />
+            </Principal>
+            <Dependent Role="Movimiento">
+              <PropertyRef Name="idTransaccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Perfil_Rol">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Perfil_Rol" Type="Self.Perfil_Rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="Perfil_Rol">
+              <PropertyRef Name="idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Perfil_Usuario">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rol_Perfil">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Perfil_Rol" Type="Self.Perfil_Rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="Perfil_Rol">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo_Transaccion">
+          <End Role="TipoTransaccion" Type="Self.TipoTransaccion" Multiplicity="1" />
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTransaccion">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="Transaccion">
+              <PropertyRef Name="idTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBCoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Banco" EntityType="Self.Banco" />
+          <EntitySet Name="Beneficiario" EntityType="Self.Beneficiario" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Cuenta" EntityType="Self.Cuenta" />
+          <EntitySet Name="Cuenta_Beneficiario" EntityType="Self.Cuenta_Beneficiario" />
+          <EntitySet Name="Detalle_Prestamo" EntityType="Self.Detalle_Prestamo" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Moneda" EntityType="Self.Moneda" />
+          <EntitySet Name="Movimiento" EntityType="Self.Movimiento" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" />
+          <EntitySet Name="Perfil_Rol" EntityType="Self.Perfil_Rol" />
+          <EntitySet Name="Prestamo" EntityType="Self.Prestamo" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="TipoCuenta" EntityType="Self.TipoCuenta" />
+          <EntitySet Name="TipoTransaccion" EntityType="Self.TipoTransaccion" />
+          <EntitySet Name="Transaccion" EntityType="Self.Transaccion" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Banco_Beneficiario" Association="Self.FK_Banco_Beneficiario">
+            <End Role="Banco" EntitySet="Banco" />
+            <End Role="Beneficiario" EntitySet="Beneficiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Banco_Cuenta" Association="Self.FK_Banco_Cuenta">
+            <End Role="Banco" EntitySet="Banco" />
+            <End Role="Cuenta" EntitySet="Cuenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Beneficiario_Cuenta" Association="Self.FK_Beneficiario_Cuenta">
+            <End Role="Beneficiario" EntitySet="Beneficiario" />
+            <End Role="Cuenta_Beneficiario" EntitySet="Cuenta_Beneficiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaccion_CuentaDestino" Association="Self.FK_Transaccion_CuentaDestino">
+            <End Role="Beneficiario" EntitySet="Beneficiario" />
+            <End Role="Transaccion" EntitySet="Transaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Cuenta" Association="Self.FK_Cliente_Cuenta">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Cuenta" EntitySet="Cuenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Usuario" Association="Self.FK_Cliente_Usuario">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuenta_Beneficiario" Association="Self.FK_Cuenta_Beneficiario">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Cuenta_Beneficiario" EntitySet="Cuenta_Beneficiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuenta_Movimiento" Association="Self.FK_Cuenta_Movimiento">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Movimiento" EntitySet="Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Cuenta_Prestamo" Association="Self.Fk_Cuenta_Prestamo">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuenta_Transaccion" Association="Self.FK_Cuenta_Transaccion">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Transaccion" EntitySet="Transaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoCuenta_Cuenta" Association="Self.FK_TipoCuenta_Cuenta">
+            <End Role="TipoCuenta" EntitySet="TipoCuenta" />
+            <End Role="Cuenta" EntitySet="Cuenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Detalle" Association="Self.FK_Estado_Detalle">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Detalle_Prestamo" EntitySet="Detalle_Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prestamo_Detalle" Association="Self.FK_Prestamo_Detalle">
+            <End Role="Prestamo" EntitySet="Prestamo" />
+            <End Role="Detalle_Prestamo" EntitySet="Detalle_Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Transaccion" Association="Self.FK_Estado_Transaccion">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Transaccion" EntitySet="Transaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moneda_Transaccion" Association="Self.FK_Moneda_Transaccion">
+            <End Role="Moneda" EntitySet="Moneda" />
+            <End Role="Transaccion" EntitySet="Transaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaccion_Movimiento" Association="Self.FK_Transaccion_Movimiento">
+            <End Role="Transaccion" EntitySet="Transaccion" />
+            <End Role="Movimiento" EntitySet="Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Perfil_Rol" Association="Self.FK_Perfil_Rol">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="Perfil_Rol" EntitySet="Perfil_Rol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Perfil_Usuario" Association="Self.FK_Perfil_Usuario">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rol_Perfil" Association="Self.FK_Rol_Perfil">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Perfil_Rol" EntitySet="Perfil_Rol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo_Transaccion" Association="Self.FK_Tipo_Transaccion">
+            <End Role="TipoTransaccion" EntitySet="TipoTransaccion" />
+            <End Role="Transaccion" EntitySet="Transaccion" />
+          </AssociationSet>
+          <FunctionImport Name="spDeleteCuenta">
+            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeletePerfil">
+            <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeletePrestamo">
+            <Parameter Name="idPrestamo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteTipoTransaccion">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteUsuario">
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetAllCliente" ReturnType="Collection(DBCoreModel.spGetAllCliente_Result)" />
+          <FunctionImport Name="spGetAllCuenta" ReturnType="Collection(DBCoreModel.spGetAllCuenta_Result)" />
+          <FunctionImport Name="spGetAllPerfil" ReturnType="Collection(DBCoreModel.spGetAllPerfil_Result)" />
+          <FunctionImport Name="spGetAllPrestamo" ReturnType="Collection(DBCoreModel.spGetAllPrestamo_Result)" />
+          <FunctionImport Name="spGetAllTipoTransaccion" ReturnType="Collection(DBCoreModel.spGetAllTipoTransaccion_Result)" />
+          <FunctionImport Name="spGetAllUsuario" ReturnType="Collection(DBCoreModel.spGetAllUsuario_Result)" />
+          <FunctionImport Name="spGetClienteById" ReturnType="Collection(DBCoreModel.spGetClienteById_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetCuentaById" ReturnType="Collection(DBCoreModel.spGetCuentaById_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetPerfilById" ReturnType="Collection(DBCoreModel.spGetPerfilById_Result)">
+            <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetPrestamoByCuenta" ReturnType="Collection(DBCoreModel.spGetPrestamoByCuenta_Result)">
+            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetTipoTransaccionById" ReturnType="Collection(DBCoreModel.spGetTipoTransaccionById_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetUsuarioById" ReturnType="Collection(DBCoreModel.spGetUsuarioById_Result)">
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertCliente">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="TipoDocumento" Mode="In" Type="Int32" />
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertCuenta">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idTipoCuenta" Mode="In" Type="Int32" />
+            <Parameter Name="idBanco" Mode="In" Type="Int32" />
+            <Parameter Name="NumeroCuenta" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertPerfil">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertPrestamo">
+            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
+            <Parameter Name="Tasa" Mode="In" Type="Decimal" />
+            <Parameter Name="MontoOriginal" Mode="In" Type="Decimal" />
+            <Parameter Name="MontoActual" Mode="In" Type="Decimal" />
+            <Parameter Name="FechaCorte" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertTipoTransaccion">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertUsuario">
+            <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpsertCliente">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="TipoDocumento" Mode="In" Type="Int32" />
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spUpsertCuenta">
+            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+            <Parameter Name="Balance" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spUpsertPerfil">
+            <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpsertPrestamo">
+            <Parameter Name="idPrestamo" Mode="In" Type="Int32" />
+            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
+            <Parameter Name="Tasa" Mode="In" Type="Decimal" />
+            <Parameter Name="MontoOriginal" Mode="In" Type="Decimal" />
+            <Parameter Name="MontoActual" Mode="In" Type="Decimal" />
+            <Parameter Name="FechaCorte" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spUpsertTipoTransaccion">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpsertUsuario">
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spGetAllCliente_Result">
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
+          <Property Type="Int32" Name="TipoDocumento" Nullable="false" />
+          <Property Type="String" Name="Documento" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="80" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetAllCuenta_Result">
+          <Property Type="Int32" Name="idCuenta" Nullable="false" />
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="Int32" Name="idTipoCuenta" Nullable="false" />
+          <Property Type="Int32" Name="idBanco" Nullable="false" />
+          <Property Type="String" Name="NumeroCuenta" Nullable="false" MaxLength="80" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="Decimal" Name="Balance" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetAllPerfil_Result">
+          <Property Type="Int32" Name="idPerfil" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetAllPrestamo_Result">
+          <Property Type="Int32" Name="idPrestamo" Nullable="false" />
+          <Property Type="Int32" Name="idCuenta" Nullable="false" />
+          <Property Type="Decimal" Name="Tasa" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="MontoOriginal" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="MontoActual" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="FechaCorte" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetAllTipoTransaccion_Result">
+          <Property Type="Int32" Name="idTipo" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetAllUsuario_Result">
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="Int32" Name="idPerfil" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="80" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetClienteById_Result">
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
+          <Property Type="Int32" Name="TipoDocumento" Nullable="false" />
+          <Property Type="String" Name="Documento" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="80" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetCuentaById_Result">
+          <Property Type="Int32" Name="idCuenta" Nullable="false" />
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="Int32" Name="idTipoCuenta" Nullable="false" />
+          <Property Type="Int32" Name="idBanco" Nullable="false" />
+          <Property Type="String" Name="NumeroCuenta" Nullable="false" MaxLength="80" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="Decimal" Name="Balance" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetPerfilById_Result">
+          <Property Type="Int32" Name="idPerfil" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetPrestamoByCuenta_Result">
+          <Property Type="Int32" Name="idPrestamo" Nullable="false" />
+          <Property Type="Int32" Name="idCuenta" Nullable="false" />
+          <Property Type="Decimal" Name="Tasa" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="MontoOriginal" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="MontoActual" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="FechaCorte" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetTipoTransaccionById_Result">
+          <Property Type="Int32" Name="idTipo" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spGetUsuarioById_Result">
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="Int32" Name="idPerfil" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="80" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBCoreModelStoreContainer" CdmEntityContainer="DBCoreEntities">
+          <EntitySetMapping Name="Banco">
+            <EntityTypeMapping TypeName="DBCoreModel.Banco">
+              <MappingFragment StoreEntitySet="Banco">
+                <ScalarProperty Name="idBanco" ColumnName="idBanco" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Beneficiario">
+            <EntityTypeMapping TypeName="DBCoreModel.Beneficiario">
+              <MappingFragment StoreEntitySet="Beneficiario">
+                <ScalarProperty Name="idBeneficiario" ColumnName="idBeneficiario" />
+                <ScalarProperty Name="idBanco" ColumnName="idBanco" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="DBCoreModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuenta">
+            <EntityTypeMapping TypeName="DBCoreModel.Cuenta">
+              <MappingFragment StoreEntitySet="Cuenta">
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idTipoCuenta" ColumnName="idTipoCuenta" />
+                <ScalarProperty Name="idBanco" ColumnName="idBanco" />
+                <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuenta_Beneficiario">
+            <EntityTypeMapping TypeName="DBCoreModel.Cuenta_Beneficiario">
+              <MappingFragment StoreEntitySet="Cuenta_Beneficiario">
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="idBeneficiario" ColumnName="idBeneficiario" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalle_Prestamo">
+            <EntityTypeMapping TypeName="DBCoreModel.Detalle_Prestamo">
+              <MappingFragment StoreEntitySet="Detalle_Prestamo">
+                <ScalarProperty Name="idDetallePrestamo" ColumnName="idDetallePrestamo" />
+                <ScalarProperty Name="idPrestamo" ColumnName="idPrestamo" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="MontoPago" ColumnName="MontoPago" />
+                <ScalarProperty Name="InteresesGenerados" ColumnName="InteresesGenerados" />
+                <ScalarProperty Name="CapitalAmortizado" ColumnName="CapitalAmortizado" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="SaldoPendiente" ColumnName="SaldoPendiente" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="DBCoreModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moneda">
+            <EntityTypeMapping TypeName="DBCoreModel.Moneda">
+              <MappingFragment StoreEntitySet="Moneda">
+                <ScalarProperty Name="idMoneda" ColumnName="idMoneda" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movimiento">
+            <EntityTypeMapping TypeName="DBCoreModel.Movimiento">
+              <MappingFragment StoreEntitySet="Movimiento">
+                <ScalarProperty Name="idMovimiento" ColumnName="idMovimiento" />
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="idTransaccion" ColumnName="idTransaccion" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfil">
+            <EntityTypeMapping TypeName="DBCoreModel.Perfil">
+              <MappingFragment StoreEntitySet="Perfil">
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfil_Rol">
+            <EntityTypeMapping TypeName="DBCoreModel.Perfil_Rol">
+              <MappingFragment StoreEntitySet="Perfil_Rol">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prestamo">
+            <EntityTypeMapping TypeName="DBCoreModel.Prestamo">
+              <MappingFragment StoreEntitySet="Prestamo">
+                <ScalarProperty Name="idPrestamo" ColumnName="idPrestamo" />
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="Tasa" ColumnName="Tasa" />
+                <ScalarProperty Name="MontoOriginal" ColumnName="MontoOriginal" />
+                <ScalarProperty Name="MontoActual" ColumnName="MontoActual" />
+                <ScalarProperty Name="FechaCorte" ColumnName="FechaCorte" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="DBCoreModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCuenta">
+            <EntityTypeMapping TypeName="DBCoreModel.TipoCuenta">
+              <MappingFragment StoreEntitySet="TipoCuenta">
+                <ScalarProperty Name="idTipoCuenta" ColumnName="idTipoCuenta" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoTransaccion">
+            <EntityTypeMapping TypeName="DBCoreModel.TipoTransaccion">
+              <MappingFragment StoreEntitySet="TipoTransaccion">
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transaccion">
+            <EntityTypeMapping TypeName="DBCoreModel.Transaccion">
+              <MappingFragment StoreEntitySet="Transaccion">
+                <ScalarProperty Name="idTransaccion" ColumnName="idTransaccion" />
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="idMoneda" ColumnName="idMoneda" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="CuentaOrigen" ColumnName="CuentaOrigen" />
+                <ScalarProperty Name="CuentaDestino" ColumnName="CuentaDestino" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="DBCoreModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spDeleteCuenta" FunctionName="DBCoreModel.Store.spDeleteCuenta" />
+          <FunctionImportMapping FunctionImportName="spDeletePerfil" FunctionName="DBCoreModel.Store.spDeletePerfil" />
+          <FunctionImportMapping FunctionImportName="spDeletePrestamo" FunctionName="DBCoreModel.Store.spDeletePrestamo" />
+          <FunctionImportMapping FunctionImportName="spDeleteTipoTransaccion" FunctionName="DBCoreModel.Store.spDeleteTipoTransaccion" />
+          <FunctionImportMapping FunctionImportName="spDeleteUsuario" FunctionName="DBCoreModel.Store.spDeleteUsuario" />
+          <FunctionImportMapping FunctionImportName="spGetAllCliente" FunctionName="DBCoreModel.Store.spGetAllCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetAllCliente_Result">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetAllCuenta" FunctionName="DBCoreModel.Store.spGetAllCuenta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetAllCuenta_Result">
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idTipoCuenta" ColumnName="idTipoCuenta" />
+                <ScalarProperty Name="idBanco" ColumnName="idBanco" />
+                <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetAllPerfil" FunctionName="DBCoreModel.Store.spGetAllPerfil">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetAllPerfil_Result">
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetAllPrestamo" FunctionName="DBCoreModel.Store.spGetAllPrestamo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetAllPrestamo_Result">
+                <ScalarProperty Name="idPrestamo" ColumnName="idPrestamo" />
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="Tasa" ColumnName="Tasa" />
+                <ScalarProperty Name="MontoOriginal" ColumnName="MontoOriginal" />
+                <ScalarProperty Name="MontoActual" ColumnName="MontoActual" />
+                <ScalarProperty Name="FechaCorte" ColumnName="FechaCorte" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetAllTipoTransaccion" FunctionName="DBCoreModel.Store.spGetAllTipoTransaccion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetAllTipoTransaccion_Result">
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetAllUsuario" FunctionName="DBCoreModel.Store.spGetAllUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetAllUsuario_Result">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetClienteById" FunctionName="DBCoreModel.Store.spGetClienteById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetClienteById_Result">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetCuentaById" FunctionName="DBCoreModel.Store.spGetCuentaById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetCuentaById_Result">
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idTipoCuenta" ColumnName="idTipoCuenta" />
+                <ScalarProperty Name="idBanco" ColumnName="idBanco" />
+                <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetPerfilById" FunctionName="DBCoreModel.Store.spGetPerfilById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetPerfilById_Result">
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetPrestamoByCuenta" FunctionName="DBCoreModel.Store.spGetPrestamoByCuenta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetPrestamoByCuenta_Result">
+                <ScalarProperty Name="idPrestamo" ColumnName="idPrestamo" />
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="Tasa" ColumnName="Tasa" />
+                <ScalarProperty Name="MontoOriginal" ColumnName="MontoOriginal" />
+                <ScalarProperty Name="MontoActual" ColumnName="MontoActual" />
+                <ScalarProperty Name="FechaCorte" ColumnName="FechaCorte" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetTipoTransaccionById" FunctionName="DBCoreModel.Store.spGetTipoTransaccionById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetTipoTransaccionById_Result">
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetUsuarioById" FunctionName="DBCoreModel.Store.spGetUsuarioById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetUsuarioById_Result">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInsertCliente" FunctionName="DBCoreModel.Store.spInsertCliente" />
+          <FunctionImportMapping FunctionImportName="spInsertCuenta" FunctionName="DBCoreModel.Store.spInsertCuenta" />
+          <FunctionImportMapping FunctionImportName="spInsertPerfil" FunctionName="DBCoreModel.Store.spInsertPerfil" />
+          <FunctionImportMapping FunctionImportName="spInsertPrestamo" FunctionName="DBCoreModel.Store.spInsertPrestamo" />
+          <FunctionImportMapping FunctionImportName="spInsertTipoTransaccion" FunctionName="DBCoreModel.Store.spInsertTipoTransaccion" />
+          <FunctionImportMapping FunctionImportName="spInsertUsuario" FunctionName="DBCoreModel.Store.spInsertUsuario" />
+          <FunctionImportMapping FunctionImportName="spUpsertCliente" FunctionName="DBCoreModel.Store.spUpsertCliente" />
+          <FunctionImportMapping FunctionImportName="spUpsertCuenta" FunctionName="DBCoreModel.Store.spUpsertCuenta" />
+          <FunctionImportMapping FunctionImportName="spUpsertPerfil" FunctionName="DBCoreModel.Store.spUpsertPerfil" />
+          <FunctionImportMapping FunctionImportName="spUpsertPrestamo" FunctionName="DBCoreModel.Store.spUpsertPrestamo" />
+          <FunctionImportMapping FunctionImportName="spUpsertTipoTransaccion" FunctionName="DBCoreModel.Store.spUpsertTipoTransaccion" />
+          <FunctionImportMapping FunctionImportName="spUpsertUsuario" FunctionName="DBCoreModel.Store.spUpsertUsuario" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
