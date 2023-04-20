@@ -283,11 +283,15 @@ namespace CoreServices
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertTipoTransaccion", nombreParameter, descripcionParameter);
         }
     
-        public virtual int spInsertUsuario(Nullable<int> idPerfil, string nombre, string clave)
+        public virtual int spInsertUsuario(Nullable<int> idPerfil, Nullable<int> idCliente, string nombre, string clave)
         {
             var idPerfilParameter = idPerfil.HasValue ?
                 new ObjectParameter("idPerfil", idPerfil) :
                 new ObjectParameter("idPerfil", typeof(int));
+    
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
     
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -297,7 +301,7 @@ namespace CoreServices
                 new ObjectParameter("Clave", clave) :
                 new ObjectParameter("Clave", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertUsuario", idPerfilParameter, nombreParameter, claveParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertUsuario", idPerfilParameter, idClienteParameter, nombreParameter, claveParameter);
         }
     
         public virtual int spUpsertCliente(Nullable<int> id, string nombre, Nullable<int> tipoDocumento, string documento, string correo, string telefono, string direccion, Nullable<System.DateTime> fechaNacimiento)
@@ -417,7 +421,7 @@ namespace CoreServices
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpsertTipoTransaccion", idParameter, nombreParameter, descripcionParameter);
         }
     
-        public virtual int spUpsertUsuario(Nullable<int> idUsuario, Nullable<int> idPerfil, string nombre, string clave)
+        public virtual int spUpsertUsuario(Nullable<int> idUsuario, Nullable<int> idPerfil, Nullable<int> idCliente, string nombre, string clave)
         {
             var idUsuarioParameter = idUsuario.HasValue ?
                 new ObjectParameter("idUsuario", idUsuario) :
@@ -427,6 +431,10 @@ namespace CoreServices
                 new ObjectParameter("idPerfil", idPerfil) :
                 new ObjectParameter("idPerfil", typeof(int));
     
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
+    
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
                 new ObjectParameter("Nombre", typeof(string));
@@ -435,7 +443,7 @@ namespace CoreServices
                 new ObjectParameter("Clave", clave) :
                 new ObjectParameter("Clave", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpsertUsuario", idUsuarioParameter, idPerfilParameter, nombreParameter, claveParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpsertUsuario", idUsuarioParameter, idPerfilParameter, idClienteParameter, nombreParameter, claveParameter);
         }
     }
 }
