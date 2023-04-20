@@ -1,0 +1,6 @@
+namespace pruebaAzure.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}
