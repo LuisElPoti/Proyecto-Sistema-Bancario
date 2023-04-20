@@ -96,6 +96,44 @@ namespace CoreServices.Clases
             }
         }
 
+        public bool ValidarUsuario(string nombre, string clave)
+        {
+            using(DBCoreEntities db = new DBCoreEntities()) 
+            {
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "ValidarUsuario";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("nombre", nombre));
+                        cmd.Parameters.Add(new SqlParameter("clave", nombre));
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if(reader.Read())
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+            }
+        }
         public DataTable GetUsuarioID(int id)
         {
             using (DBCoreEntities db = new DBCoreEntities())

@@ -558,8 +558,12 @@
         </Function>
         <Function Name="TransferenciaMismoBanco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="monto" Type="money" Mode="In" />
-          <Parameter Name="cuentaOrigen" Type="int" Mode="In" />
-          <Parameter Name="cuentaDestino" Type="int" Mode="In" />
+          <Parameter Name="cuentaOrigen" Type="varchar" Mode="In" />
+          <Parameter Name="cuentaDestino" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="clave" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="DBCoreModelStoreContainer">
           <EntitySet Name="Banco" EntityType="Self.Banco" Schema="dbo" store:Type="Tables" />
@@ -1355,8 +1359,12 @@
           </FunctionImport>
           <FunctionImport Name="TransferenciaMismoBanco">
             <Parameter Name="monto" Mode="In" Type="Decimal" />
-            <Parameter Name="cuentaOrigen" Mode="In" Type="Int32" />
-            <Parameter Name="cuentaDestino" Mode="In" Type="Int32" />
+            <Parameter Name="cuentaOrigen" Mode="In" Type="String" />
+            <Parameter Name="cuentaDestino" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ValidarUsuario" ReturnType="Collection(DBCoreModel.ValidarUsuario_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="clave" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetAllCliente_Result">
@@ -1477,6 +1485,14 @@
           <Property Type="String" Name="NumeroCuenta" Nullable="false" MaxLength="80" />
           <Property Type="Boolean" Name="Estado" Nullable="false" />
           <Property Type="Decimal" Name="Balance" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ValidarUsuario_Result">
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="Int32" Name="idPerfil" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="80" />
           <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
@@ -1881,6 +1897,18 @@
           <FunctionImportMapping FunctionImportName="spOperaciones" FunctionName="DBCoreModel.Store.spOperaciones" />
           <FunctionImportMapping FunctionImportName="spPagoPrestamo" FunctionName="DBCoreModel.Store.spPagoPrestamo" />
           <FunctionImportMapping FunctionImportName="TransferenciaMismoBanco" FunctionName="DBCoreModel.Store.TransferenciaMismoBanco" />
+          <FunctionImportMapping FunctionImportName="ValidarUsuario" FunctionName="DBCoreModel.Store.ValidarUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.ValidarUsuario_Result">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

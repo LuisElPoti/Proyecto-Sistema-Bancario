@@ -317,6 +317,9 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ValidarUsuario_Result.cs">
+      <DependentUpon>MyCoreModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

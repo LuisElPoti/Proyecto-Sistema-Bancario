@@ -160,5 +160,56 @@ namespace CoreServices.Clases
                 return dt;
             }
         }
+
+        public bool Deposito_Retiro(int Tipo, string NumeroCuenta, decimal Monto)
+        {
+            using (DBCoreEntities db = new DBCoreEntities())
+            {
+                int ReturnedValue = db.spOperaciones(Tipo, NumeroCuenta, Monto);
+
+                if (ReturnedValue >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool Pago(int idPrestamo, decimal Monto)
+        {
+            using (DBCoreEntities db = new DBCoreEntities())
+            {
+                int ReturnedValue = db.spPagoPrestamo(idPrestamo,Monto);
+
+                if (ReturnedValue >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool Transferencia_Mismo(string CuentaOrigen, string CuentaDestino, decimal Monto)
+        {
+            using (DBCoreEntities db = new DBCoreEntities())
+            {
+                int ReturnedValue = db.TransferenciaMismoBanco(Monto,CuentaOrigen,CuentaDestino);
+
+                if (ReturnedValue >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

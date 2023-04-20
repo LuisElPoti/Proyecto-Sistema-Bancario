@@ -45,5 +45,20 @@ namespace CoreServices.Servicios
         {
             return Operaciones.GetCuentabyCliente(idCliente);
         }
+        
+        public bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto)
+        {
+            return Operaciones.Deposito_Retiro(tipo, NumeroCuenta, Monto);
+        }
+
+        public bool Pago_Prestamo(int idPrestamo, decimal Monto)
+        {
+            return Operaciones.Pago(idPrestamo, Monto);
+        }
+
+        public bool Transferencia_MismoBanco(string CuentaOrigen, string CuentaDestino, decimal Monto)
+        {
+            return Operaciones.Transferencia_Mismo(CuentaOrigen, CuentaDestino, Monto);
+        }
     }
 }

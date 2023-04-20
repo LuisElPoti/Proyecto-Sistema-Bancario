@@ -32,6 +32,10 @@ namespace CoreServices
             return Operaciones.UpdateUsuario(idUsuario, idPerfil, idCliente, nombre, clave);
         }
 
+        public bool ValidarSesion(string nombre, string clave)
+        {
+            return Operaciones.ValidarUsuario(nombre, clave);
+        }
         public DataTable MostrarUsuarios()
         {
             return Operaciones.GetUsuario();

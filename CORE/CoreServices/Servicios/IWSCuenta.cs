@@ -28,5 +28,13 @@ namespace CoreServices.Servicios
         [OperationContract]
         DataTable BuscarCuenta(int id);
 
+        [OperationContract]
+        bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto);
+
+        [OperationContract]
+        bool Pago_Prestamo(int idPrestamo, decimal Monto);
+
+        [OperationContract]
+        bool Transferencia_MismoBanco(string CuentaOrigen, string CuentaDestino, decimal Monto);
     }
 }

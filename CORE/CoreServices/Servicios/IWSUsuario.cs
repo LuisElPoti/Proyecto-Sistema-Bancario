@@ -26,9 +26,13 @@ namespace CoreServices
         bool ActualizarUsuario(int idUsuario, int idPerfil, int idCliente, string nombre, string clave);
 
         [OperationContract]
+        bool ValidarSesion(string nombre, string clave);
+
+        [OperationContract]
         DataTable MostrarUsuarios();
 
         [OperationContract]
         DataTable BuscarUsuario(int id);
+
     }
 }

@@ -495,21 +495,34 @@ namespace CoreServices
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spPagoPrestamo", idPrestamoParameter, montoParameter);
         }
     
-        public virtual int TransferenciaMismoBanco(Nullable<decimal> monto, Nullable<int> cuentaOrigen, Nullable<int> cuentaDestino)
+        public virtual int TransferenciaMismoBanco(Nullable<decimal> monto, string cuentaOrigen, string cuentaDestino)
         {
             var montoParameter = monto.HasValue ?
                 new ObjectParameter("monto", monto) :
                 new ObjectParameter("monto", typeof(decimal));
     
-            var cuentaOrigenParameter = cuentaOrigen.HasValue ?
+            var cuentaOrigenParameter = cuentaOrigen != null ?
                 new ObjectParameter("cuentaOrigen", cuentaOrigen) :
-                new ObjectParameter("cuentaOrigen", typeof(int));
+                new ObjectParameter("cuentaOrigen", typeof(string));
     
-            var cuentaDestinoParameter = cuentaDestino.HasValue ?
+            var cuentaDestinoParameter = cuentaDestino != null ?
                 new ObjectParameter("cuentaDestino", cuentaDestino) :
-                new ObjectParameter("cuentaDestino", typeof(int));
+                new ObjectParameter("cuentaDestino", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TransferenciaMismoBanco", montoParameter, cuentaOrigenParameter, cuentaDestinoParameter);
+        }
+    
+        public virtual ObjectResult<ValidarUsuario_Result> ValidarUsuario(string nombre, string clave)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("clave", clave) :
+                new ObjectParameter("clave", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarUsuario_Result>("ValidarUsuario", nombreParameter, claveParameter);
         }
     }
 }
