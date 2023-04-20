@@ -17,6 +17,7 @@ namespace CoreServices.WebServices
     // [System.Web.Script.Services.ScriptService]
     public class WSCuenta : System.Web.Services.WebService
     {
+        /*
         OperacionesCuenta Operaciones = new OperacionesCuenta();
 
         [WebMethod]
@@ -49,5 +50,6 @@ namespace CoreServices.WebServices
         {
             return Operaciones.GetCuentabyID(id);
         }
+        */
     }
 }

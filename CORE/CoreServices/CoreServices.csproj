@@ -192,8 +192,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Operaciones\OperacionesCliente.cs" />
-    <Compile Include="Servicios\IPerfil.cs" />
-    <Compile Include="Servicios\ICliente.cs" />
+    <Compile Include="Servicios\IWSPerfil.cs" />
+    <Compile Include="Servicios\IWSCliente.cs" />
     <Compile Include="Servicios\IWSUsuario.cs" />
     <Compile Include="Moneda.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
