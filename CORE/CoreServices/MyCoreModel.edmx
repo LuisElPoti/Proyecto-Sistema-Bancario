@@ -507,6 +507,15 @@
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="Clave" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="spOperaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Tipo" Type="int" Mode="In" />
+          <Parameter Name="NumeroCuenta" Type="varchar" Mode="In" />
+          <Parameter Name="Monto" Type="money" Mode="In" />
+        </Function>
+        <Function Name="spPagoPrestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPrestamo" Type="int" Mode="In" />
+          <Parameter Name="Monto" Type="money" Mode="In" />
+        </Function>
         <Function Name="spUpsertCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
           <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
@@ -546,6 +555,11 @@
           <Parameter Name="idCliente" Type="int" Mode="In" />
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="Clave" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="TransferenciaMismoBanco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="monto" Type="money" Mode="In" />
+          <Parameter Name="cuentaOrigen" Type="int" Mode="In" />
+          <Parameter Name="cuentaDestino" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="DBCoreModelStoreContainer">
           <EntitySet Name="Banco" EntityType="Self.Banco" Schema="dbo" store:Type="Tables" />
@@ -1328,7 +1342,21 @@
           <FunctionImport Name="GetAllMovimientobyCuenta" ReturnType="Collection(DBCoreModel.GetAllMovimientobyCuenta_Result)" />
           <FunctionImport Name="GetAllPrestamobyCliente" ReturnType="Collection(DBCoreModel.GetAllPrestamobyCliente_Result)" />
           <FunctionImport Name="spGetCuentabyCliente" ReturnType="Collection(DBCoreModel.spGetCuentabyCliente_Result)">
-            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+          <Parameter Name="idCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spOperaciones">
+            <Parameter Name="Tipo" Mode="In" Type="Int32" />
+            <Parameter Name="NumeroCuenta" Mode="In" Type="String" />
+            <Parameter Name="Monto" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spPagoPrestamo">
+            <Parameter Name="idPrestamo" Mode="In" Type="Int32" />
+            <Parameter Name="Monto" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="TransferenciaMismoBanco">
+            <Parameter Name="monto" Mode="In" Type="Decimal" />
+            <Parameter Name="cuentaOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="cuentaDestino" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetAllCliente_Result">
@@ -1850,6 +1878,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spOperaciones" FunctionName="DBCoreModel.Store.spOperaciones" />
+          <FunctionImportMapping FunctionImportName="spPagoPrestamo" FunctionName="DBCoreModel.Store.spPagoPrestamo" />
+          <FunctionImportMapping FunctionImportName="TransferenciaMismoBanco" FunctionName="DBCoreModel.Store.TransferenciaMismoBanco" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

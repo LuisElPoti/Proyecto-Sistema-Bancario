@@ -464,5 +464,52 @@ namespace CoreServices
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetCuentabyCliente_Result>("spGetCuentabyCliente", idClienteParameter);
         }
+    
+        public virtual int spOperaciones(Nullable<int> tipo, string numeroCuenta, Nullable<decimal> monto)
+        {
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("Tipo", tipo) :
+                new ObjectParameter("Tipo", typeof(int));
+    
+            var numeroCuentaParameter = numeroCuenta != null ?
+                new ObjectParameter("NumeroCuenta", numeroCuenta) :
+                new ObjectParameter("NumeroCuenta", typeof(string));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("Monto", monto) :
+                new ObjectParameter("Monto", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spOperaciones", tipoParameter, numeroCuentaParameter, montoParameter);
+        }
+    
+        public virtual int spPagoPrestamo(Nullable<int> idPrestamo, Nullable<decimal> monto)
+        {
+            var idPrestamoParameter = idPrestamo.HasValue ?
+                new ObjectParameter("idPrestamo", idPrestamo) :
+                new ObjectParameter("idPrestamo", typeof(int));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("Monto", monto) :
+                new ObjectParameter("Monto", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spPagoPrestamo", idPrestamoParameter, montoParameter);
+        }
+    
+        public virtual int TransferenciaMismoBanco(Nullable<decimal> monto, Nullable<int> cuentaOrigen, Nullable<int> cuentaDestino)
+        {
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("monto", monto) :
+                new ObjectParameter("monto", typeof(decimal));
+    
+            var cuentaOrigenParameter = cuentaOrigen.HasValue ?
+                new ObjectParameter("cuentaOrigen", cuentaOrigen) :
+                new ObjectParameter("cuentaOrigen", typeof(int));
+    
+            var cuentaDestinoParameter = cuentaDestino.HasValue ?
+                new ObjectParameter("cuentaDestino", cuentaDestino) :
+                new ObjectParameter("cuentaDestino", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TransferenciaMismoBanco", montoParameter, cuentaOrigenParameter, cuentaDestinoParameter);
+        }
     }
 }
