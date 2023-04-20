@@ -274,10 +274,6 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="WebService1.asmx.cs">
-      <DependentUpon>WebService1.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="WSCuenta.asmx.cs">
       <DependentUpon>WSCuenta.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -346,7 +342,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="WebService1.asmx" />
     <Content Include="WSCuenta.asmx" />
     <Content Include="WSPerfil.asmx" />
     <Content Include="WSUsuario.asmx" />
