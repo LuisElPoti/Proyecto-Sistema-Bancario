@@ -61,6 +61,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -209,6 +210,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyCoreModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="OperacionesCuenta.cs" />
+    <Compile Include="OperacionesPerfil.cs" />
+    <Compile Include="OperacionesUsuario.cs" />
     <Compile Include="Perfil.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
@@ -270,6 +274,22 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="WebService1.asmx.cs">
+      <DependentUpon>WebService1.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WSCuenta.asmx.cs">
+      <DependentUpon>WSCuenta.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WSPerfil.asmx.cs">
+      <DependentUpon>WSPerfil.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WSUsuario.asmx.cs">
+      <DependentUpon>WSUsuario.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -326,6 +346,10 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="WebService1.asmx" />
+    <Content Include="WSCuenta.asmx" />
+    <Content Include="WSPerfil.asmx" />
+    <Content Include="WSUsuario.asmx" />
     <EntityDeploy Include="MyCoreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MyCoreModel.Designer.cs</LastGenOutput>
