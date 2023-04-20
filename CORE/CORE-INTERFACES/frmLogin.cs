@@ -22,13 +22,25 @@ namespace CORE_INTERFACES
             Application.Exit();
         }
 
-        private void guna2GradientTileButton1_Click(object sender, EventArgs e)
+        private void btnEnter_Click(object sender, EventArgs e)
         {
+
             frmMenu frm = new frmMenu();
             frm.Show();
             this.Hide();
             
             
         }
+        bool ValidarCamposRellenos() //Valida que los campos del contenedor esten todos llenos
+        {
+            foreach (Control c in pnLogin.Controls) //Recorremos cada elemento del contenedor que posee los campos
+                if (String.IsNullOrWhiteSpace(c.Text) && typeof(TextBox) == c.GetType()) //Si esta vacio y es un textbox
+                {
+                    MessageBox.Show("Rellene los campos vacios", "ATENCIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false; //retorna que hay campos no rellenos
+                }
+            return true; //retorna que los campos estan rellenos
+        }
+
     }
 }
