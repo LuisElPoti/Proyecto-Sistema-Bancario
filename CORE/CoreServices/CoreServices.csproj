@@ -303,18 +303,6 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="WSCuenta.asmx.cs">
-      <DependentUpon>WSCuenta.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WSPerfil.asmx.cs">
-      <DependentUpon>WSPerfil.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WSUsuario.asmx.cs">
-      <DependentUpon>WSUsuario.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -377,9 +365,6 @@
     <Content Include="Servicios\WSCliente.svc" />
     <Content Include="Servicios\WSPerfil.svc" />
     <Content Include="Servicios\WSUsuario.svc" />
-    <Content Include="WSCuenta.asmx" />
-    <Content Include="WSPerfil.asmx" />
-    <Content Include="WSUsuario.asmx" />
     <EntityDeploy Include="MyCoreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MyCoreModel.Designer.cs</LastGenOutput>
