@@ -108,6 +108,8 @@
             this.txtBox_monto_final.ReadOnly = true;
             this.txtBox_monto_final.Size = new System.Drawing.Size(197, 24);
             this.txtBox_monto_final.TabIndex = 20;
+            this.txtBox_monto_final.TextChanged += new System.EventHandler(this.txtBox_monto_final_TextChanged);
+            this.txtBox_monto_final.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_monto_final_KeyPress);
             // 
             // txtBox_hora_inicio
             // 

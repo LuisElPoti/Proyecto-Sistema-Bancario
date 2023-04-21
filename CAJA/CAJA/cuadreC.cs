@@ -104,6 +104,16 @@ namespace CAJA
             }
 
         }
+
+        private void txtBox_monto_final_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBox_monto_final_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
 
