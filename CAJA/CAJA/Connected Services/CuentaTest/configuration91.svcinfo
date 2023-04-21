@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="k0AQbN/5qsrBvF+w4m/XJFnLlKWazW4kXoySqNqawVM=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="o0sYaKc8nzv2h8iuEEWpzynv7IuTXemInelhamZmLQU=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IWSCuenta6">
+    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IWSCuenta">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IWSCuenta6</serializedValue>
+          <serializedValue>BasicHttpBinding_IWSCuenta</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -112,7 +112,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IWSCuenta6" contract="CuentaTest.IWSCuenta" bindingType="basicHttpBinding" address="http://localhost:53368/Servicios/WSCuenta.svc" bindingConfiguration="BasicHttpBinding_IWSCuenta6">
+    <endpoint name="BasicHttpBinding_IWSCuenta" contract="CuentaTest.IWSCuenta" bindingType="basicHttpBinding" address="http://localhost:53368/Servicios/WSCuenta.svc" bindingConfiguration="BasicHttpBinding_IWSCuenta">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:53368/Servicios/WSCuenta.svc</serializedValue>
@@ -124,7 +124,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IWSCuenta6</serializedValue>
+          <serializedValue>BasicHttpBinding_IWSCuenta</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>CuentaTest.IWSCuenta</serializedValue>
@@ -187,7 +187,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IWSCuenta6</serializedValue>
+          <serializedValue>BasicHttpBinding_IWSCuenta</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

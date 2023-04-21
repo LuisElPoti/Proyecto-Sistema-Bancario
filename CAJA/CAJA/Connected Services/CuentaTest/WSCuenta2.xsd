@@ -106,6 +106,25 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CrearTransferencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CuentaOrigen" type="xs:int" />
+        <xs:element minOccurs="0" name="CuentaDestino" type="xs:int" />
+        <xs:element minOccurs="0" name="Monto" type="xs:decimal" />
+        <xs:element minOccurs="0" name="idEstado" type="xs:int" />
+        <xs:element minOccurs="0" name="idMoneda" type="xs:int" />
+        <xs:element minOccurs="0" name="idTipo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearTransferenciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CrearTransferenciaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Transferencia_MismoBanco">
     <xs:complexType>
       <xs:sequence>
