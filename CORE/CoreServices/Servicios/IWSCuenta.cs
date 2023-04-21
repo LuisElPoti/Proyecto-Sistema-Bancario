@@ -37,9 +37,6 @@ namespace CoreServices.Servicios
         [OperationContract]
         bool Transferencia_MismoBanco(string CuentaOrigen, string CuentaDestino, decimal Monto);
     }
-
-<<<<<<< HEAD
-=======
     [DataContract]
     public class ClCuenta
     {
@@ -54,5 +51,4 @@ namespace CoreServices.Servicios
         [DataMember]
         public bool Estado { get; set; }
     }
->>>>>>> c464aed82b45e56291b718127524f420952a1d28
 }

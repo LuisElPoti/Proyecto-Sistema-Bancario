@@ -29,8 +29,6 @@ namespace CoreServices.Servicios
         DataTable BuscarPerfil(int id);
         
     }
-<<<<<<< HEAD
-=======
     [DataContract]
     public class ClPerfil
     {
@@ -41,5 +39,4 @@ namespace CoreServices.Servicios
         [DataMember]
         public string descripcion { get; set; }
     }
->>>>>>> c464aed82b45e56291b718127524f420952a1d28
 }

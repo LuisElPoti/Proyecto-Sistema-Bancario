@@ -36,8 +36,6 @@ namespace CoreServices
 
     }
 
-<<<<<<< HEAD
-=======
     [DataContract]
     public class ClUsuario
     {
@@ -52,5 +50,4 @@ namespace CoreServices
         [DataMember]
         public string clave { get; set; }
     }
->>>>>>> c464aed82b45e56291b718127524f420952a1d28
 }

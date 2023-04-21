@@ -25,8 +25,6 @@ namespace CoreServices.Servicios
         [OperationContract]
         DataTable BuscarCliente(int id);
     }
-<<<<<<< HEAD
-=======
 
     [DataContract]
     public class ClCliente
@@ -49,5 +47,4 @@ namespace CoreServices.Servicios
         public DateTime FechaNacimiento { get; set; }
 
     }
->>>>>>> c464aed82b45e56291b718127524f420952a1d28
 }

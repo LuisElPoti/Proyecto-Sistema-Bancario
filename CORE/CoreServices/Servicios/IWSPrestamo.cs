@@ -32,8 +32,6 @@ namespace CoreServices.Servicios
         DataTable MostarPrestamoCliente();
     }
 
-<<<<<<< HEAD
-=======
     [DataContract]
     public class ClPrestamo
     {
@@ -48,5 +46,4 @@ namespace CoreServices.Servicios
         [DataMember]
         public decimal montoOriginal { get; set; }
     }
->>>>>>> c464aed82b45e56291b718127524f420952a1d28
 }
