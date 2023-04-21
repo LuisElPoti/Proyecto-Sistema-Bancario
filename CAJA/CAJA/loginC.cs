@@ -14,44 +14,55 @@ namespace CAJA
     public partial class loginC : Form
     {
 
-        SqlConnection conn = new SqlConnection("Server=tcp:sistema-bancario-server.database.windows.net,1433;Database=DBCaja;User ID=Administrador@sistema-bancario-server;Password=sistema.banco21;Trusted_Connection=False;Encrypt=True;");
-
-
         public loginC()
         {
             InitializeComponent();
-            
-        }
 
+        }
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("SELECT nombre_cajero, clave_cajero FROM cajeros WHERE nombre_cajero=@nombre_cajero AND clave_cajero=@clave_cajero", conn);
-            cmd.Parameters.AddWithValue("@nombre_cajero", txtBox_usuario.Text);
-            cmd.Parameters.AddWithValue("@clave_cajero", txtBox_contrasena.Text);
-
-            SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
-                {
-                    menuC m1 = new menuC();
-                    this.Hide();
-                    m1.ShowDialog();
-                    this.Close();
-
-
-            } else
+            using (DBCajaEntities db = new DBCajaEntities())
             {
-                MessageBox.Show("No es usuario");
+                var conn = (SqlConnection)db.Database.Connection;
+                conn.Open();
+                string userName = txtBox_usuario.Text;
+                string query = "SELECT id_cajero FROM cajeros WHERE nombre_cajero = @UserName";
+
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@UserName", userName);
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        CurrentUser.SetUser(Convert.ToInt32(result), txtBox_usuario.Text, txtBox_contrasena.Text);
+                    }
+
+                    using (SqlCommand cmd = new SqlCommand("SELECT nombre_cajero, clave_cajero FROM cajeros WHERE nombre_cajero=@nombre_cajero AND clave_cajero=@clave_cajero", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre_cajero", txtBox_usuario.Text);
+                        cmd.Parameters.AddWithValue("@clave_cajero", txtBox_contrasena.Text);
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                menuC m1 = new menuC();
+                                this.Hide();
+                                m1.ShowDialog();
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No es usuario");
+                            }
+                        }
+                    }
+                    conn.Close();
+                }
             }
-
-            conn.Close();
-
-        }
-
-        private void loginC_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
+

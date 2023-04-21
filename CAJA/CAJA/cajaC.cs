@@ -16,10 +16,10 @@ namespace CAJA
     {
         decimal monto_total = 0;
         SqlConnection conn = new SqlConnection("Server=tcp:sistema-bancario-server.database.windows.net,1433;Database=DBCaja;User ID=Administrador@sistema-bancario-server;Password=sistema.banco21;Trusted_Connection=False;Encrypt=True;");
-
         public cajaC()
         {
             InitializeComponent();
+
         }
 
         private void txt_usuario_login_Click(object sender, EventArgs e)
@@ -44,10 +44,11 @@ namespace CAJA
         {
             conn.Open();
 
+
             try
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO caja (monto_caja, id_sucursal) VALUES (@Monto, 2)", conn);
-                cmd.Parameters.AddWithValue("@Monto", monto_total);
+                SqlCommand cmd = new SqlCommand("INSERT INTO caja (monto_caja, id_sucursal) VALUES (@Monto, @Current_sucursal)", conn);
+                cmd.Parameters.AddWithValue("@Monto", "@Current_sucursal");
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Transacción realizada de manera exitosa");
@@ -86,6 +87,11 @@ namespace CAJA
                     MessageBox.Show("Por favor ingrese un valor decimal válido");
                 }
             }
+        }
+
+        private void txtBox_Cajero_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
