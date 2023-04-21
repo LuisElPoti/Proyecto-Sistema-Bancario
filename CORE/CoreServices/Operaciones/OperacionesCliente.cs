@@ -143,7 +143,7 @@ namespace CoreServices.Operaciones
                             while (reader.Read())
                             {
                                 Cliente cliente = new Cliente();
-                                cliente.idCliente = int.Parse(reader[0].ToString());      //GetInt32(reader.GetOrdinal("Id"));
+                                cliente.idCliente = int.Parse(reader[0].ToString());     
                                 cliente.Nombre = reader.GetString(reader.GetOrdinal("Nombre"));
                                 cliente.TipoDocumento = reader.GetInt32(reader.GetOrdinal("TipoDocumento"));
                                 cliente.Documento = reader.GetString(reader.GetOrdinal("Documento"));
