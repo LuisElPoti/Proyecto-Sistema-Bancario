@@ -12,11 +12,13 @@ namespace CoreServices.Clases
 {
     public class OperacionesUsuario
     {
-        public DataTable GetUsuario()
+        public List<Usuario> GetUsuario()
         {
+
+            List<Usuario> clientes = new List<Usuario>();
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var dt = new DataTable();
+                var usuarios = new List<Usuario>();
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
                 try
@@ -28,7 +30,19 @@ namespace CoreServices.Clases
                         cmd.CommandType = CommandType.StoredProcedure;
                         using (var reader = cmd.ExecuteReader())
                         {
-                            dt.Load(reader);
+                            while (reader.Read())
+                            {
+                                var usuario = new Usuario
+                                {
+                                    idUsuario = (int)reader[0],
+                                    idCliente = (int)reader[1],
+                                    idPerfil = (int)reader[2],
+                                    Nombre = reader[3].ToString(),
+                                    Clave = reader[4].ToString()
+                                    // etc. para cada propiedad de Usuario
+                                };
+                                usuarios.Add(usuario);
+                            }
                         }
                     }
                 }
@@ -41,8 +55,10 @@ namespace CoreServices.Clases
                     if (connectionState != ConnectionState.Closed) conn.Close();
                 }
 
-                return dt;
+                return usuarios;
             }
+
+            
         }
         
         public bool InsertUsuario(int idPerfil, int idCliente, string nombre, string clave)
@@ -140,16 +156,41 @@ namespace CoreServices.Clases
                 }
             }
         }
-        public DataTable GetUsuarioID(int id)
+        public List<Usuario> GetUsuarioID(int id)
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var Cliente = db.Cliente;
-                DataTable dt = new DataTable();
-                return dt;
+                var usuarios = new List<Usuario>();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
 
-                
+                if (connectionState != ConnectionState.Open) conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "spGetUsuarioById";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("Id", id));
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Usuario usuario = new Usuario();
+                            usuario.idUsuario = (int)reader[0];
+                            usuario.idCliente = (int)reader[1];
+                            usuario.idPerfil = (int)reader[2];
+                            usuario.Nombre = reader[3].ToString();
+                            usuario.Clave = reader[4].ToString();
+                            usuarios.Add(usuario);
+                        }
+
+                        
+                    }
+                }
+                return usuarios;
+
             }
+            
+
         }
     }
 }

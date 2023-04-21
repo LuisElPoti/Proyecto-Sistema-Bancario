@@ -48,9 +48,9 @@ namespace CORE_INTERFACES
                 usuarios = Referencia.BuscarUsuario(id);
                 //List<Cliente> clientes = client.BuscarCliente(id);
 
-                if (clientes != null && clientes.Count > 0)
+                if (usuarios != null && usuarios.Count > 0)
                 {
-                    dgbClientes.DataSource = clientes;
+                    dgvUsuario.DataSource = usuarios;
                     MessageBox.Show("Cliente encontrado.");
                 }
                 else

@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using CoreServices;
+
 namespace CORE_INTERFACES.wsReferenceUsuario {
     
     
@@ -52,10 +54,10 @@ namespace CORE_INTERFACES.wsReferenceUsuario {
         System.Threading.Tasks.Task<System.Data.DataTable> MostrarUsuariosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/BuscarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/BuscarUsuarioResponse")]
-        System.Data.DataTable BuscarUsuario(int id);
+        System.Collections.Generic.List<Cliente> BuscarUsuario(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/BuscarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/BuscarUsuarioResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> BuscarUsuarioAsync(int id);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Cliente>> BuscarUsuarioAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -133,11 +135,11 @@ namespace CORE_INTERFACES.wsReferenceUsuario {
             return base.Channel.MostrarUsuariosAsync();
         }
         
-        public System.Data.DataTable BuscarUsuario(int id) {
+        public System.Collections.Generic.List<Cliente> BuscarUsuario(int id) {
             return base.Channel.BuscarUsuario(id);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarUsuarioAsync(int id) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Cliente>> BuscarUsuarioAsync(int id) {
             return base.Channel.BuscarUsuarioAsync(id);
         }
     }
