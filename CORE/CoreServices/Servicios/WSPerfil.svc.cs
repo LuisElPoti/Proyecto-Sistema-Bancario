@@ -1,6 +1,7 @@
 ﻿using CoreServices.Clases;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -31,12 +32,12 @@ namespace CoreServices.Servicios
             return Operaciones.UpdatePerfiles(idPerfil, nombre, descripcion);
         }
 
-        public DbSet<Perfil> MostrarPerfiles()
+        public DataTable MostrarPerfiles()
         {
             return Operaciones.GetPerfil();
         }
         
-        public Perfil BuscarPerfil(int id)
+        public DataTable BuscarPerfil(int id)
         {
             return Operaciones.GetPerfilbyID(id);
         }

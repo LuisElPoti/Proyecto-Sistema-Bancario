@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://localhost:44362/Servicios/WSCuenta.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost:44346/Servicios/WSCuenta.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WSCuenta.xsd" MetadataType="Schema" ID="1093ac5a-2e1b-408d-807d-c7da9df22f38" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSCuenta.svc?xsd=xsd1" />
-    <MetadataFile FileName="WSCuenta1.xsd" MetadataType="Schema" ID="ff91de84-9775-4c32-b1cf-940832983919" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSCuenta.svc?xsd=xsd0" />
-    <MetadataFile FileName="WSCuenta2.xsd" MetadataType="Schema" ID="ffca68a0-1d97-4514-92b3-38e4771f32cd" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSCuenta.svc?xsd=xsd2" />
-    <MetadataFile FileName="WSCuenta.disco" MetadataType="Disco" ID="15ad17e2-c67c-4162-870c-fbc90071eccd" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSCuenta.svc?disco" />
-    <MetadataFile FileName="WSCuenta.wsdl" MetadataType="Wsdl" ID="02f06445-e71e-4e02-8233-7930aa93f0ab" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSCuenta.svc?wsdl" />
+    <MetadataFile FileName="WSCuenta3.xsd" MetadataType="Schema" ID="47f6c536-cea4-47af-88e9-30d6c8e66b08" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCuenta.svc?xsd=xsd1" />
+    <MetadataFile FileName="WSCuenta1.wsdl" MetadataType="Wsdl" ID="cc1ebd9a-0666-4a75-a83f-08aa0f032157" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCuenta.svc?wsdl" />
+    <MetadataFile FileName="WSCuenta1.disco" MetadataType="Disco" ID="ec1fd39d-3d8e-471a-b4cd-21178e1b3329" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCuenta.svc?disco" />
+    <MetadataFile FileName="WSCuenta31.xsd" MetadataType="Schema" ID="993bd779-2daf-4e35-a76d-6ec4180230d5" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCuenta.svc?xsd=xsd2" />
+    <MetadataFile FileName="WSCuenta32.xsd" MetadataType="Schema" ID="8498f3a6-d0c2-4970-abdd-573ff227841d" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCuenta.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

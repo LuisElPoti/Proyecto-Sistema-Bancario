@@ -16,22 +16,22 @@ namespace CORE_INTERFACES.wsReferencePrestamo {
     public interface IWSPrestamo {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/CrearPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/CrearPrestamoResponse")]
-        void CrearPrestamo(int idCuenta, decimal Tasa, decimal MontoOriginal, decimal MontoActual, System.DateTime FechaCorte);
+        bool CrearPrestamo(int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, System.DateTime fechaCorte);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/CrearPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/CrearPrestamoResponse")]
-        System.Threading.Tasks.Task CrearPrestamoAsync(int idCuenta, decimal Tasa, decimal MontoOriginal, decimal MontoActual, System.DateTime FechaCorte);
+        System.Threading.Tasks.Task<bool> CrearPrestamoAsync(int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, System.DateTime fechaCorte);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/EliminarPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/EliminarPrestamoResponse")]
-        void EliminarPrestamo(int id);
+        bool EliminarPrestamo(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/EliminarPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/EliminarPrestamoResponse")]
-        System.Threading.Tasks.Task EliminarPrestamoAsync(int id);
+        System.Threading.Tasks.Task<bool> EliminarPrestamoAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/ModificarPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/ModificarPrestamoResponse")]
-        void ModificarPrestamo(int id, int idCuenta, decimal Tasa, decimal MontoOriginal, decimal MontoActual, System.DateTime FechaCorte);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/ActualizarPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/ActualizarPrestamoResponse")]
+        bool ActualizarPrestamo(int idPrestamo, int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, System.DateTime fechaCorte);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/ModificarPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/ModificarPrestamoResponse")]
-        System.Threading.Tasks.Task ModificarPrestamoAsync(int id, int idCuenta, decimal Tasa, decimal MontoOriginal, decimal MontoActual, System.DateTime FechaCorte);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/ActualizarPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/ActualizarPrestamoResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarPrestamoAsync(int idPrestamo, int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, System.DateTime fechaCorte);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/MostrarPrestamos", ReplyAction="http://tempuri.org/IWSPrestamo/MostrarPrestamosResponse")]
         System.Data.DataTable MostrarPrestamos();
@@ -40,10 +40,16 @@ namespace CORE_INTERFACES.wsReferencePrestamo {
         System.Threading.Tasks.Task<System.Data.DataTable> MostrarPrestamosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/BuscarPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/BuscarPrestamoResponse")]
-        System.Data.DataTable BuscarPrestamo(int idCuenta);
+        System.Data.DataTable BuscarPrestamo(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/BuscarPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/BuscarPrestamoResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> BuscarPrestamoAsync(int idCuenta);
+        System.Threading.Tasks.Task<System.Data.DataTable> BuscarPrestamoAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/MostarPrestamoCliente", ReplyAction="http://tempuri.org/IWSPrestamo/MostarPrestamoClienteResponse")]
+        System.Data.DataTable MostarPrestamoCliente();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/MostarPrestamoCliente", ReplyAction="http://tempuri.org/IWSPrestamo/MostarPrestamoClienteResponse")]
+        System.Threading.Tasks.Task<System.Data.DataTable> MostarPrestamoClienteAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,28 +79,28 @@ namespace CORE_INTERFACES.wsReferencePrestamo {
                 base(binding, remoteAddress) {
         }
         
-        public void CrearPrestamo(int idCuenta, decimal Tasa, decimal MontoOriginal, decimal MontoActual, System.DateTime FechaCorte) {
-            base.Channel.CrearPrestamo(idCuenta, Tasa, MontoOriginal, MontoActual, FechaCorte);
+        public bool CrearPrestamo(int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, System.DateTime fechaCorte) {
+            return base.Channel.CrearPrestamo(idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
         }
         
-        public System.Threading.Tasks.Task CrearPrestamoAsync(int idCuenta, decimal Tasa, decimal MontoOriginal, decimal MontoActual, System.DateTime FechaCorte) {
-            return base.Channel.CrearPrestamoAsync(idCuenta, Tasa, MontoOriginal, MontoActual, FechaCorte);
+        public System.Threading.Tasks.Task<bool> CrearPrestamoAsync(int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, System.DateTime fechaCorte) {
+            return base.Channel.CrearPrestamoAsync(idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
         }
         
-        public void EliminarPrestamo(int id) {
-            base.Channel.EliminarPrestamo(id);
+        public bool EliminarPrestamo(int id) {
+            return base.Channel.EliminarPrestamo(id);
         }
         
-        public System.Threading.Tasks.Task EliminarPrestamoAsync(int id) {
+        public System.Threading.Tasks.Task<bool> EliminarPrestamoAsync(int id) {
             return base.Channel.EliminarPrestamoAsync(id);
         }
         
-        public void ModificarPrestamo(int id, int idCuenta, decimal Tasa, decimal MontoOriginal, decimal MontoActual, System.DateTime FechaCorte) {
-            base.Channel.ModificarPrestamo(id, idCuenta, Tasa, MontoOriginal, MontoActual, FechaCorte);
+        public bool ActualizarPrestamo(int idPrestamo, int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, System.DateTime fechaCorte) {
+            return base.Channel.ActualizarPrestamo(idPrestamo, idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
         }
         
-        public System.Threading.Tasks.Task ModificarPrestamoAsync(int id, int idCuenta, decimal Tasa, decimal MontoOriginal, decimal MontoActual, System.DateTime FechaCorte) {
-            return base.Channel.ModificarPrestamoAsync(id, idCuenta, Tasa, MontoOriginal, MontoActual, FechaCorte);
+        public System.Threading.Tasks.Task<bool> ActualizarPrestamoAsync(int idPrestamo, int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, System.DateTime fechaCorte) {
+            return base.Channel.ActualizarPrestamoAsync(idPrestamo, idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
         }
         
         public System.Data.DataTable MostrarPrestamos() {
@@ -105,12 +111,20 @@ namespace CORE_INTERFACES.wsReferencePrestamo {
             return base.Channel.MostrarPrestamosAsync();
         }
         
-        public System.Data.DataTable BuscarPrestamo(int idCuenta) {
-            return base.Channel.BuscarPrestamo(idCuenta);
+        public System.Data.DataTable BuscarPrestamo(int id) {
+            return base.Channel.BuscarPrestamo(id);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarPrestamoAsync(int idCuenta) {
-            return base.Channel.BuscarPrestamoAsync(idCuenta);
+        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarPrestamoAsync(int id) {
+            return base.Channel.BuscarPrestamoAsync(id);
+        }
+        
+        public System.Data.DataTable MostarPrestamoCliente() {
+            return base.Channel.MostarPrestamoCliente();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> MostarPrestamoClienteAsync() {
+            return base.Channel.MostarPrestamoClienteAsync();
         }
     }
 }

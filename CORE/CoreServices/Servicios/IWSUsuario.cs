@@ -1,6 +1,7 @@
 ﻿using CoreServices.Clases;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -25,9 +26,13 @@ namespace CoreServices
         bool ActualizarUsuario(int idUsuario, int idPerfil, int idCliente, string nombre, string clave);
 
         [OperationContract]
-        DbSet<Usuario> MostrarUsuarios();
+        bool ValidarSesion(string nombre, string clave);
 
         [OperationContract]
-        Usuario BuscarUsuario(int id);
+        DataTable MostrarUsuarios();
+
+        [OperationContract]
+        DataTable BuscarUsuario(int id);
+
     }
 }

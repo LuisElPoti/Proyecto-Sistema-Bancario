@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -22,9 +23,12 @@ namespace CoreServices.Servicios
         bool ActualizarPrestamo(int idPrestamo, int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, DateTime fechaCorte);
 
         [OperationContract]
-        DbSet<Prestamo> MostrarPrestamos();
+        DataTable MostrarPrestamos();
 
         [OperationContract]
-        Prestamo BuscarPrestamo(int id);
+        DataTable BuscarPrestamo(int id);
+
+        [OperationContract]
+        DataTable MostarPrestamoCliente();
     }
 }

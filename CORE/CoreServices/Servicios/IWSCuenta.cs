@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -22,10 +23,18 @@ namespace CoreServices.Servicios
         bool ActualizarCuenta(int idCuenta, bool Estado, decimal Balance);
 
         [OperationContract]
-        DbSet<Cuenta> MostrarClientes();
+        DataTable MostrarCuentas();
 
         [OperationContract]
-        Cuenta BuscarCliente(int id);
+        DataTable BuscarCuenta(int id);
 
+        [OperationContract]
+        bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto);
+
+        [OperationContract]
+        bool Pago_Prestamo(int idPrestamo, decimal Monto);
+
+        [OperationContract]
+        bool Transferencia_MismoBanco(string CuentaOrigen, string CuentaDestino, decimal Monto);
     }
 }

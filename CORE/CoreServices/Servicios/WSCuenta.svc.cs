@@ -2,6 +2,7 @@
 using CoreServices.Operaciones;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -30,14 +31,34 @@ namespace CoreServices.Servicios
             return Operaciones.UpdateCuentas(idCuenta, Estado, Balance);
         }
 
-        public DbSet<Cuenta> MostrarClientes()
+        public DataTable MostrarCuentas()
         {
             return Operaciones.GetCuentas();
         }
 
-        public Cuenta BuscarCliente(int id)
+        public DataTable BuscarCuenta(int id)
         {
             return Operaciones.GetCuentabyID(id);
+        }
+
+        public DataTable MostrarCuentaCliente(int idCliente)
+        {
+            return Operaciones.GetCuentabyCliente(idCliente);
+        }
+        
+        public bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto)
+        {
+            return Operaciones.Deposito_Retiro(tipo, NumeroCuenta, Monto);
+        }
+
+        public bool Pago_Prestamo(int idPrestamo, decimal Monto)
+        {
+            return Operaciones.Pago(idPrestamo, Monto);
+        }
+
+        public bool Transferencia_MismoBanco(string CuentaOrigen, string CuentaDestino, decimal Monto)
+        {
+            return Operaciones.Transferencia_Mismo(CuentaOrigen, CuentaDestino, Monto);
         }
     }
 }

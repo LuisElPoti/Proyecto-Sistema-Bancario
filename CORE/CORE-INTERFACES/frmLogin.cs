@@ -24,10 +24,21 @@ namespace CORE_INTERFACES
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
+            wsReferenceUsuario.WSUsuarioClient Referencia = new wsReferenceUsuario.WSUsuarioClient();
 
-            frmMenu frm = new frmMenu();
-            frm.Show();
-            this.Hide();
+            if(Referencia.ValidarSesion(tbUsername.Text,tbPassword.Text))
+            {
+                frmMenu frm = new frmMenu();
+                frm.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Credenciales incorrectas");
+
+                tbUsername.Text = tbPassword.Text = "";
+            }
+                
             
             
         }

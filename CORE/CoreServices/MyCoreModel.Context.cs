@@ -445,5 +445,84 @@ namespace CoreServices
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpsertUsuario", idUsuarioParameter, idPerfilParameter, idClienteParameter, nombreParameter, claveParameter);
         }
+    
+        public virtual ObjectResult<GetAllMovimientobyCuenta_Result> GetAllMovimientobyCuenta()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllMovimientobyCuenta_Result>("GetAllMovimientobyCuenta");
+        }
+    
+        public virtual ObjectResult<GetAllPrestamobyCliente_Result> GetAllPrestamobyCliente()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllPrestamobyCliente_Result>("GetAllPrestamobyCliente");
+        }
+    
+        public virtual ObjectResult<spGetCuentabyCliente_Result> spGetCuentabyCliente(Nullable<int> idCliente)
+        {
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetCuentabyCliente_Result>("spGetCuentabyCliente", idClienteParameter);
+        }
+    
+        public virtual int spOperaciones(Nullable<int> tipo, string numeroCuenta, Nullable<decimal> monto)
+        {
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("Tipo", tipo) :
+                new ObjectParameter("Tipo", typeof(int));
+    
+            var numeroCuentaParameter = numeroCuenta != null ?
+                new ObjectParameter("NumeroCuenta", numeroCuenta) :
+                new ObjectParameter("NumeroCuenta", typeof(string));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("Monto", monto) :
+                new ObjectParameter("Monto", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spOperaciones", tipoParameter, numeroCuentaParameter, montoParameter);
+        }
+    
+        public virtual int spPagoPrestamo(Nullable<int> idPrestamo, Nullable<decimal> monto)
+        {
+            var idPrestamoParameter = idPrestamo.HasValue ?
+                new ObjectParameter("idPrestamo", idPrestamo) :
+                new ObjectParameter("idPrestamo", typeof(int));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("Monto", monto) :
+                new ObjectParameter("Monto", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spPagoPrestamo", idPrestamoParameter, montoParameter);
+        }
+    
+        public virtual int TransferenciaMismoBanco(Nullable<decimal> monto, string cuentaOrigen, string cuentaDestino)
+        {
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("monto", monto) :
+                new ObjectParameter("monto", typeof(decimal));
+    
+            var cuentaOrigenParameter = cuentaOrigen != null ?
+                new ObjectParameter("cuentaOrigen", cuentaOrigen) :
+                new ObjectParameter("cuentaOrigen", typeof(string));
+    
+            var cuentaDestinoParameter = cuentaDestino != null ?
+                new ObjectParameter("cuentaDestino", cuentaDestino) :
+                new ObjectParameter("cuentaDestino", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TransferenciaMismoBanco", montoParameter, cuentaOrigenParameter, cuentaDestinoParameter);
+        }
+    
+        public virtual ObjectResult<ValidarUsuario_Result> ValidarUsuario(string nombre, string clave)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("clave", clave) :
+                new ObjectParameter("clave", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarUsuario_Result>("ValidarUsuario", nombreParameter, claveParameter);
+        }
     }
 }

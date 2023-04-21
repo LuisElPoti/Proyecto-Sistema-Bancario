@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -22,10 +23,10 @@ namespace CoreServices.Servicios
         bool ActualizarPerfil(int idPerfil, string nombre, string descripcion);
 
         [OperationContract]
-        DbSet<Perfil> MostrarPerfiles();
+        DataTable MostrarPerfiles();
         
         [OperationContract]
-        Perfil BuscarPerfil(int id);
+        DataTable BuscarPerfil(int id);
         
     }
 }

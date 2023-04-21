@@ -1,6 +1,7 @@
 ﻿using CoreServices.Clases;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -31,12 +32,16 @@ namespace CoreServices
             return Operaciones.UpdateUsuario(idUsuario, idPerfil, idCliente, nombre, clave);
         }
 
-        public DbSet<Usuario> MostrarUsuarios()
+        public bool ValidarSesion(string nombre, string clave)
+        {
+            return Operaciones.ValidarUsuario(nombre, clave);
+        }
+        public DataTable MostrarUsuarios()
         {
             return Operaciones.GetUsuario();
         }
 
-        public Usuario BuscarUsuario(int id)
+        public DataTable BuscarUsuario(int id)
         {
             return Operaciones.GetUsuarioID(id);
         }

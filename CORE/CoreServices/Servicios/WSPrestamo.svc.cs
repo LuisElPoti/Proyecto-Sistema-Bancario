@@ -1,6 +1,7 @@
 ﻿using CoreServices.Operaciones;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -29,14 +30,19 @@ namespace CoreServices.Servicios
             return Operaciones.UpdatePrestamos(idPrestamo, idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
         }
 
-        public DbSet<Prestamo> MostrarPrestamos()
+        public DataTable MostrarPrestamos()
         {
             return Operaciones.GetPrestamos();
         }
 
-        public Prestamo BuscarPrestamo(int id)
+        public DataTable BuscarPrestamo(int id)
         {
-            return Operaciones.GetPrestamobyID(id);
+            return Operaciones.GetPrestamobyCuenta(id);
+        }
+
+        public DataTable MostarPrestamoCliente()
+        {
+            return Operaciones.GetAllPrestamobyCliente();
         }
 
     }
