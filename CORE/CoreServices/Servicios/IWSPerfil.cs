@@ -26,7 +26,7 @@ namespace CoreServices.Servicios
         DataTable MostrarPerfiles();
         
         [OperationContract]
-        DataTable BuscarPerfil(int id);
+        List<Perfil> BuscarPerfil(int id);
         
     }
     [DataContract]

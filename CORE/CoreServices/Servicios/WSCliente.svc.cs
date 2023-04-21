@@ -40,8 +40,7 @@ namespace CoreServices.Servicios
         public List<Cliente> BuscarCliente(int id)
         {
             return Operaciones.GetClientebyID(id);
-
-
         }
+
     }
 }

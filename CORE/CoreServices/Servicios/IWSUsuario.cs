@@ -32,10 +32,10 @@ namespace CoreServices
         bool ValidarSesion(string nombre, string clave);
 
         [OperationContract]
-        DataTable MostrarUsuarios();
+        List<Usuario> MostrarUsuarios();
 
         [OperationContract]
-        DataTable BuscarUsuario(int id);
+        List<Usuario> BuscarUsuario(int id);
 
     }
 

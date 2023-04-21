@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace INTEGRACION.Servicios
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "ICuenta" in both code and config file together.
     [ServiceContract]
     public interface IWSCuenta
     {
@@ -22,10 +23,10 @@ namespace INTEGRACION.Servicios
         bool ActualizarCuenta(int idCuenta, bool Estado, decimal Balance);
 
         [OperationContract]
-        DataTable MostrarCuentas();
+        List<Cuenta> MostrarCuentas();
 
         [OperationContract]
-        DataTable BuscarCuenta(int id);
+        List<Cuenta> BuscarCuenta(int id);
 
         [OperationContract]
         bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto);
@@ -35,5 +36,19 @@ namespace INTEGRACION.Servicios
 
         [OperationContract]
         bool Transferencia_MismoBanco(int CuentaOrigen, int CuentaDestino, decimal Monto);
+    }
+    [DataContract]
+    public class ClCuenta
+    {
+        [DataMember]
+        public int idCliente { get; set; }
+        [DataMember]
+        public int idTipoCuenta { get; set; }
+        [DataMember]
+        public int idBanco { get; set; }
+        [DataMember]
+        public string NumeroCuenta { get; set; }
+        [DataMember]
+        public bool Estado { get; set; }
     }
 }

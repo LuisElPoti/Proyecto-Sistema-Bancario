@@ -1,7 +1,10 @@
-﻿using System;
-using INTEGRACION.Operaciones;
+﻿using INTEGRACION.Operaciones;
+using INTEGRACION.Servicios;
+using INTEGRACION;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -9,8 +12,8 @@ using System.Text;
 
 namespace INTEGRACION.Servicios
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Cuenta" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select Cuenta.svc or Cuenta.svc.cs at the Solution Explorer and start debugging.
     public class WSCuenta : IWSCuenta
     {
         OperacionesCuenta Operaciones = new OperacionesCuenta();
@@ -29,20 +32,21 @@ namespace INTEGRACION.Servicios
             return Operaciones.UpdateCuentas(idCuenta, Estado, Balance);
         }
 
-        public DataTable MostrarCuentas()
+        public List<Cuenta> MostrarCuentas()
         {
             return Operaciones.GetCuentas();
         }
 
-        public DataTable BuscarCuenta(int id)
+        public List<Cuenta> BuscarCuenta(int id)
         {
             return Operaciones.GetCuentabyID(id);
         }
 
-        public DataTable MostrarCuentaCliente(int idCliente)
+        public List<Cuenta> MostrarCuentaCliente(int idCliente)
         {
             return Operaciones.GetCuentabyCliente(idCliente);
         }
+
 
         public bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto)
         {

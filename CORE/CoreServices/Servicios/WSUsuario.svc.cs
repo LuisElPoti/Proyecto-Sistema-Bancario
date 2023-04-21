@@ -40,12 +40,12 @@ namespace CoreServices
         {
             return Operaciones.ValidarUsuario(nombre, clave);
         }
-        public DataTable MostrarUsuarios()
+        public List<Usuario> MostrarUsuarios()
         {
             return Operaciones.GetUsuario();
         }
 
-        public DataTable BuscarUsuario(int id)
+        public List<Usuario> BuscarUsuario(int id)
         {
             return Operaciones.GetUsuarioID(id);
         }

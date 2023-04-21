@@ -1,20 +1,25 @@
-﻿using System;
+﻿using INTEGRACION;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
-namespace INTEGRACION.Operaciones
+namespace INTEGRACION.Clases
 {
     public class OperacionesUsuario
     {
-        public DataTable GetUsuario()
+        public List<Usuario> GetUsuario()
         {
+
+            List<Usuario> clientes = new List<Usuario>();
             using (DBIntegracionEntities db = new DBIntegracionEntities())
             {
-                var dt = new DataTable();
+                var usuarios = new List<Usuario>();
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
                 try
@@ -26,7 +31,19 @@ namespace INTEGRACION.Operaciones
                         cmd.CommandType = CommandType.StoredProcedure;
                         using (var reader = cmd.ExecuteReader())
                         {
-                            dt.Load(reader);
+                            while (reader.Read())
+                            {
+                                var usuario = new Usuario
+                                {
+                                    idUsuario = (int)reader[0],
+                                    idCliente = (int)reader[1],
+                                    idPerfil = (int)reader[2],
+                                    Nombre = reader[3].ToString(),
+                                    Clave = reader[4].ToString()
+                                    // etc. para cada propiedad de Usuario
+                                };
+                                usuarios.Add(usuario);
+                            }
                         }
                     }
                 }
@@ -39,8 +56,10 @@ namespace INTEGRACION.Operaciones
                     if (connectionState != ConnectionState.Closed) conn.Close();
                 }
 
-                return dt;
+                return usuarios;
             }
+
+
         }
 
         public bool InsertUsuario(int idPerfil, int idCliente, string nombre, string clave)
@@ -95,6 +114,11 @@ namespace INTEGRACION.Operaciones
             }
         }
 
+        public bool ContraseñaSegura(string clave)
+        {
+            return Regex.IsMatch(clave, @"^(?=.\d)(?=.[a-z])(?=.[A-Z])(?!.\s).{8,}$");
+        }
+
         public bool ValidarUsuario(string nombre, string clave)
         {
             using (DBIntegracionEntities db = new DBIntegracionEntities())
@@ -133,37 +157,41 @@ namespace INTEGRACION.Operaciones
                 }
             }
         }
-        public DataTable GetUsuarioID(int id)
+        public List<Usuario> GetUsuarioID(int id)
         {
             using (DBIntegracionEntities db = new DBIntegracionEntities())
             {
-                var dt = new DataTable();
+                var usuarios = new List<Usuario>();
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
-                try
+
+                if (connectionState != ConnectionState.Open) conn.Open();
+                using (var cmd = conn.CreateCommand())
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    cmd.CommandText = "spGetUsuarioById";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("Id", id));
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        cmd.CommandText = "spGetUsuarioById";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("Id", id));
-                        using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
                         {
-                            dt.Load(reader);
+                            Usuario usuario = new Usuario();
+                            usuario.idUsuario = (int)reader[0];
+                            usuario.idCliente = (int)reader[1];
+                            usuario.idPerfil = (int)reader[2];
+                            usuario.Nombre = reader[3].ToString();
+                            usuario.Clave = reader[4].ToString();
+                            usuarios.Add(usuario);
                         }
+
+
                     }
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
+                return usuarios;
+
             }
+
+
         }
     }
 }
