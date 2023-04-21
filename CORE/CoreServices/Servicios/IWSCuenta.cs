@@ -35,7 +35,7 @@ namespace CoreServices.Servicios
         bool Pago_Prestamo(int idPrestamo, decimal Monto);
 
         [OperationContract]
-        bool Transferencia_MismoBanco(string CuentaOrigen, string CuentaDestino, decimal Monto);
+        bool Transferencia_MismoBanco(int CuentaOrigen, int CuentaDestino, decimal Monto);
     }
     [DataContract]
     public class ClCuenta
