@@ -36,7 +36,7 @@
          </div>
        </div>
         <div class="footer bg-gray">
-            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn bg-orange col-12" />
+            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn bg-orange col-12" OnClick="btnAceptar_Click" />
             <br/>
              <asp:Button ID="btnAtras" runat="server" Text="Atras" CssClass="btn bg-purple col-12" OnClick="btnAtras_Click" />
         </div>

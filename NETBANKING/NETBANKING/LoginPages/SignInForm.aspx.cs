@@ -19,6 +19,10 @@ namespace NETBANKING.LoginPages
             Response.Redirect("LoginForm.aspx");
         }
 
-       
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+
+
+        }
     }
 }
