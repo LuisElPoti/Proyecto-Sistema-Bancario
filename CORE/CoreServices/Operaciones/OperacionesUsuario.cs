@@ -144,18 +144,9 @@ namespace CoreServices.Clases
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var Cliente = db.Cliente();
-                ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
-                db.spInsertPerfil(nombre, descripcion);
+                var Cliente = db.Cliente;
 
-                if (Convert.ToInt32(ReturnedValue.Value) >= 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                
             }
         }
     }
