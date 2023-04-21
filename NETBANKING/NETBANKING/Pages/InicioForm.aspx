@@ -3,6 +3,8 @@
     <h1>Panel General</h1>
 </asp:Content>
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
+    <div class="row"></div>
+
     <div class="col-md-6">
         <h2>Cuentas</h2>
         <div class="card w-50">
@@ -18,5 +20,6 @@
     <p class="card-text">Cuenta de ahorro</p>
       <asp:Button ID="Button1" runat="server" Text="Ver mas" Width="163px" OnClick="btnVerMas_Click" CssClass="btn bg-purple col-12" Height="36px"/>
 </div>
-  </div>
+  </div></div>
+            
  </asp:Content>

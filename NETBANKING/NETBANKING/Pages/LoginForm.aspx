@@ -19,12 +19,12 @@
             <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control" placeholder="Nombre de usuario"></asp:TextBox>
         </div>
          <div class="form-group" class="bg-gray">
-             <asp:Label ID="LabelClave" runat="server" Text="Contraseña"></asp:Label>
-             <asp:TextBox ID="txtClave" runat="server" CssClass="form-control" placeholder="Contraseña"></asp:TextBox>
-         </div>
+    <asp:Label ID="LabelClave" runat="server" Text="Contraseña"></asp:Label>
+    <asp:TextBox ID="txtClave" runat="server" CssClass="form-control" placeholder="Contraseña" onkeyup="maskPassword(this)" TextMode="Password"></asp:TextBox>
+</div>
        </div>
         <div class="footer bg-gray">
-            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn bg-orange col-12" />
+            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn bg-orange col-12" OnClick="btnAceptar_Click1" />
         <asp:Button ID="btnNuevoUsuario" runat="server" Text="Nuevo usuario" CssClass="btn bg-purple col-12" OnClick="btnNuevoUsuario_Click" />
         </div>
     </form>
