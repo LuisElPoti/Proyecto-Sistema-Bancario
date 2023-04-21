@@ -350,17 +350,17 @@ namespace CoreServices
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spOperaciones", tipoParameter, numeroCuentaParameter, montoParameter);
         }
     
-        public virtual int spPagoPrestamo(Nullable<int> idPrestamo, Nullable<decimal> monto)
+        public virtual int spPagoPrestamo(Nullable<int> idCuenta, Nullable<decimal> monto)
         {
-            var idPrestamoParameter = idPrestamo.HasValue ?
-                new ObjectParameter("idPrestamo", idPrestamo) :
-                new ObjectParameter("idPrestamo", typeof(int));
+            var idCuentaParameter = idCuenta.HasValue ?
+                new ObjectParameter("idCuenta", idCuenta) :
+                new ObjectParameter("idCuenta", typeof(int));
     
             var montoParameter = monto.HasValue ?
                 new ObjectParameter("Monto", monto) :
                 new ObjectParameter("Monto", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spPagoPrestamo", idPrestamoParameter, montoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spPagoPrestamo", idCuentaParameter, montoParameter);
         }
     
         public virtual int spUpsertCliente(Nullable<int> id, string nombre, Nullable<int> tipoDocumento, string documento, string correo, string telefono, string direccion, Nullable<System.DateTime> fechaNacimiento)

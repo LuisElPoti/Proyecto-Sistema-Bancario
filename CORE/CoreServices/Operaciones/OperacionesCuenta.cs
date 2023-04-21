@@ -200,11 +200,11 @@ namespace CoreServices.Clases
             }
         }
 
-        public bool Pago(int idPrestamo, decimal Monto)
+        public bool Pago(int idCliente, decimal Monto)
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                int ReturnedValue = db.spPagoPrestamo(idPrestamo,Monto);
+                int ReturnedValue = db.spPagoPrestamo(idCliente,Monto);
 
                 if (ReturnedValue >= 1)
                 {

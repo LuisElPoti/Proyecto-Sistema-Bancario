@@ -52,9 +52,9 @@ namespace CoreServices.Servicios
             return Operaciones.Deposito_Retiro(tipo, NumeroCuenta, Monto);
         }
 
-        public bool Pago_Prestamo(int idPrestamo, decimal Monto)
+        public bool Pago_Prestamo(int idCliente, decimal Monto)
         {
-            return Operaciones.Pago(idPrestamo, Monto);
+            return Operaciones.Pago(idCliente, Monto);
         }
 
         public bool Transferencia_MismoBanco(int CuentaOrigen, int CuentaDestino, decimal Monto)
