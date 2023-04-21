@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="14dab8f3779443e0a03f624d2f7984a3" Name="Diagram1" ZoomLevel="61">
+      <Diagram DiagramId="14dab8f3779443e0a03f624d2f7984a3" Name="Diagram1" ZoomLevel="76">
         <EntityTypeShape EntityType="DBIntegracionModel.Banco" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DBIntegracionModel.Beneficiario" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBIntegracionModel.Cliente" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />

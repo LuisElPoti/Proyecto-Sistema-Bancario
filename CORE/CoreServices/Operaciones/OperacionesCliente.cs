@@ -7,6 +7,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using log4net;
+using System.Xml.Linq;
 
 namespace CoreServices.Operaciones
 {
@@ -15,7 +16,7 @@ namespace CoreServices.Operaciones
         log4net.ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public DataTable GetClientes()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1()) 
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -49,7 +50,7 @@ namespace CoreServices.Operaciones
 
         public bool InsertCliente(string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 try
                 {
@@ -67,9 +68,28 @@ namespace CoreServices.Operaciones
             }
         }
 
+        public bool EliminarCliente(int id)
+        {
+            using (DBCoreEntities1 db = new DBCoreEntities1())
+            {
+                try
+                {
+                    ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
+                    db.spDeleteCliente(id);
+
+                    log.Info("Something");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    log.Error("Fallo Insert Clientes: " + ex);
+                    return false;
+                }
+            }
+        }
         public bool UpdateClientes(int id, string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 try
                 {
@@ -88,7 +108,7 @@ namespace CoreServices.Operaciones
 
         public DataTable GetClientebyID(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;

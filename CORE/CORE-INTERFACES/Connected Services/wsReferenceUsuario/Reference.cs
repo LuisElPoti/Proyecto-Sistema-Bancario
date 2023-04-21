@@ -33,6 +33,12 @@ namespace CORE_INTERFACES.wsReferenceUsuario {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/ActualizarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/ActualizarUsuarioResponse")]
         System.Threading.Tasks.Task<bool> ActualizarUsuarioAsync(int idUsuario, int idPerfil, int idCliente, string nombre, string clave);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/ValidarSeguridad", ReplyAction="http://tempuri.org/IWSUsuario/ValidarSeguridadResponse")]
+        bool ValidarSeguridad(string clave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/ValidarSeguridad", ReplyAction="http://tempuri.org/IWSUsuario/ValidarSeguridadResponse")]
+        System.Threading.Tasks.Task<bool> ValidarSeguridadAsync(string clave);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/ValidarSesion", ReplyAction="http://tempuri.org/IWSUsuario/ValidarSesionResponse")]
         bool ValidarSesion(string nombre, string clave);
         
@@ -101,6 +107,14 @@ namespace CORE_INTERFACES.wsReferenceUsuario {
         
         public System.Threading.Tasks.Task<bool> ActualizarUsuarioAsync(int idUsuario, int idPerfil, int idCliente, string nombre, string clave) {
             return base.Channel.ActualizarUsuarioAsync(idUsuario, idPerfil, idCliente, nombre, clave);
+        }
+        
+        public bool ValidarSeguridad(string clave) {
+            return base.Channel.ValidarSeguridad(clave);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ValidarSeguridadAsync(string clave) {
+            return base.Channel.ValidarSeguridadAsync(clave);
         }
         
         public bool ValidarSesion(string nombre, string clave) {

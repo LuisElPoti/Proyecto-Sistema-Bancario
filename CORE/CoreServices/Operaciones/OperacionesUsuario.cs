@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace CoreServices.Clases
@@ -13,7 +14,7 @@ namespace CoreServices.Clases
     {
         public DataTable GetUsuario()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -46,7 +47,7 @@ namespace CoreServices.Clases
         
         public bool InsertUsuario(int idPerfil, int idCliente, string nombre, string clave)
         {
-            using(DBCoreEntities db = new DBCoreEntities())
+            using(DBCoreEntities1 db = new DBCoreEntities1())
             {
                 ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
                 db.spInsertUsuario(idPerfil, idCliente, nombre, clave);
@@ -64,7 +65,7 @@ namespace CoreServices.Clases
 
         public bool UpdateUsuario(int idUsuario, int idPerfil, int idCliente, string nombre, string clave)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spUpsertUsuario(idUsuario, idPerfil, idCliente, nombre, clave);
 
@@ -81,7 +82,7 @@ namespace CoreServices.Clases
 
         public bool DeleteUsuarios(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spDeleteUsuario(id);
 
@@ -96,9 +97,14 @@ namespace CoreServices.Clases
             }
         }
 
+        public bool ContraseñaSegura(string clave)
+        {
+            return Regex.IsMatch(clave, @"^(?=.\d)(?=.[a-z])(?=.[A-Z])(?!.\s).{8,}$");
+        }
+
         public bool ValidarUsuario(string nombre, string clave)
         {
-            using(DBCoreEntities db = new DBCoreEntities()) 
+            using(DBCoreEntities1 db = new DBCoreEntities1()) 
             {
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
@@ -136,34 +142,11 @@ namespace CoreServices.Clases
         }
         public DataTable GetUsuarioID(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var dt = new DataTable();
-                var conn = db.Database.Connection;
-                var connectionState = conn.State;
-                try
-                {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = "spGetUsuarioById";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("Id", id));
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            dt.Load(reader);
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
+                var Cliente = db.Cliente;
+
+                
             }
         }
     }

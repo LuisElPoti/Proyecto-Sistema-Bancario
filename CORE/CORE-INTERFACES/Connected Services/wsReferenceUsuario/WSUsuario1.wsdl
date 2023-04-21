@@ -25,6 +25,12 @@
   <wsdl:message name="IWSUsuario_ActualizarUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:ActualizarUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="IWSUsuario_ValidarSeguridad_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarSeguridad" />
+  </wsdl:message>
+  <wsdl:message name="IWSUsuario_ValidarSeguridad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarSeguridadResponse" />
+  </wsdl:message>
   <wsdl:message name="IWSUsuario_ValidarSesion_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidarSesion" />
   </wsdl:message>
@@ -55,6 +61,10 @@
     <wsdl:operation name="ActualizarUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSUsuario/ActualizarUsuario" message="tns:IWSUsuario_ActualizarUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWSUsuario/ActualizarUsuarioResponse" message="tns:IWSUsuario_ActualizarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarSeguridad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSUsuario/ValidarSeguridad" message="tns:IWSUsuario_ValidarSeguridad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSUsuario/ValidarSeguridadResponse" message="tns:IWSUsuario_ValidarSeguridad_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ValidarSesion">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSUsuario/ValidarSesion" message="tns:IWSUsuario_ValidarSesion_InputMessage" />
@@ -91,6 +101,15 @@
     </wsdl:operation>
     <wsdl:operation name="ActualizarUsuario">
       <soap:operation soapAction="http://tempuri.org/IWSUsuario/ActualizarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarSeguridad">
+      <soap:operation soapAction="http://tempuri.org/IWSUsuario/ValidarSeguridad" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

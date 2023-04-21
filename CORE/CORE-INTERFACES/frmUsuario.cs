@@ -16,5 +16,10 @@ namespace CORE_INTERFACES
         {
             InitializeComponent();
         }
+
+        private void guna2GradientTileButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

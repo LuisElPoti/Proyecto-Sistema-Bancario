@@ -16,5 +16,50 @@ namespace CORE_INTERFACES
         {
             InitializeComponent();
         }
+
+        wsReferenceCliente.WSClienteClient Referencia = new wsReferenceCliente.WSClienteClient();
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            Referencia.CrearCliente(tbNombre.Text, AsignarTipoDocumento(cbTipoDocumento.Text), tbDocumento.Text, tbCorreo.Text, tbTelefono.Text, tbDireccion.Text, DateTime.Parse(tpFechaNacimiento.Text));
+            MessageBox.Show("Usuario Registrado!");
+            tbID.Text = tbNombre.Text = cbTipoDocumento.Text = tbDocumento.Text = tbCorreo.Text = tbTelefono.Text = tbDireccion.Text = tpFechaNacimiento.Text = "";
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Referencia.ActualizarCliente(int.Parse(tbID.Text), tbNombre.Text, AsignarTipoDocumento(cbTipoDocumento.Text), tbDocumento.Text, tbCorreo.Text, tbTelefono.Text, tbDireccion.Text, DateTime.Parse(tpFechaNacimiento.Text));
+            MessageBox.Show("Cliente Modificado!");
+            tbID.Text = tbNombre.Text = cbTipoDocumento.Text = tbDocumento.Text = tbCorreo.Text = tbTelefono.Text = tbDireccion.Text = tpFechaNacimiento.Text = "";
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Referencia.EliminarCliente(int.Parse(tbID.Text));
+            MessageBox.Show("Usuario Eliminado!");
+            tbID.Text = tbNombre.Text = cbTipoDocumento.Text = tbDocumento.Text = tbCorreo.Text = tbTelefono.Text = tbDireccion.Text = tpFechaNacimiento.Text = "";
+        }
+
+        private int AsignarTipoDocumento(string tipoDocumento)
+        {
+            if (tipoDocumento.ToLower() == "cédula")
+                return 1;
+
+            return 2;
+        }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            DataTable dt = Referencia.BuscarCliente(int.Parse(tbID.Text));
+            
+            //dt = Referencia.BuscarCliente(int.Parse(tbID.Text));
+            //MessageBox.Show("Cliente encontrado.");
+            //tbNombre.Text = dt.Rows[1].ToString();
+            //cbTipoDocumento.Text = dt.Rows[2].ToString();
+            //tbDocumento.Text = dt.Rows[3].ToString();
+            //tbCorreo.Text = dt.Rows[4].ToString();
+            //tbTelefono.Text = dt.Rows[5].ToString();
+            //tbDireccion.Text = dt.Rows[6].ToString();
+            //tpFechaNacimiento.Text = dt.Rows[7].ToString();
+        }
     }
 }

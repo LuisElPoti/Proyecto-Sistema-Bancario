@@ -27,6 +27,10 @@ namespace CoreServices.Servicios
             return Operaciones.UpdateClientes(id, nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
         }
 
+        public bool EliminarCliente(int id)
+        {
+            return Operaciones.EliminarCliente(id);
+        }
         public DataTable MostrarClientes()
         {
             return Operaciones.GetClientes();
