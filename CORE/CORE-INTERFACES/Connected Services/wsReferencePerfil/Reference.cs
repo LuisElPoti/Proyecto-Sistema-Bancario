@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using CoreServices;
-
 namespace CORE_INTERFACES.wsReferencePerfil {
     
     
@@ -42,10 +40,10 @@ namespace CORE_INTERFACES.wsReferencePerfil {
         System.Threading.Tasks.Task<System.Data.DataTable> MostrarPerfilesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/BuscarPerfil", ReplyAction="http://tempuri.org/IWSPerfil/BuscarPerfilResponse")]
-        System.Collections.Generic.List<Perfil> BuscarPerfil(int id);
+        CoreServices.Perfil[] BuscarPerfil(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/BuscarPerfil", ReplyAction="http://tempuri.org/IWSPerfil/BuscarPerfilResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Perfil>> BuscarPerfilAsync(int id);
+        System.Threading.Tasks.Task<CoreServices.Perfil[]> BuscarPerfilAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -107,11 +105,11 @@ namespace CORE_INTERFACES.wsReferencePerfil {
             return base.Channel.MostrarPerfilesAsync();
         }
         
-        public System.Collections.Generic.List<Perfil> BuscarPerfil(int id) {
+        public CoreServices.Perfil[] BuscarPerfil(int id) {
             return base.Channel.BuscarPerfil(id);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Perfil>> BuscarPerfilAsync(int id) {
+        public System.Threading.Tasks.Task<CoreServices.Perfil[]> BuscarPerfilAsync(int id) {
             return base.Channel.BuscarPerfilAsync(id);
         }
     }

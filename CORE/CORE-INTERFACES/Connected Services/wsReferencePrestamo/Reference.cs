@@ -34,22 +34,10 @@ namespace CORE_INTERFACES.wsReferencePrestamo {
         System.Threading.Tasks.Task<bool> ActualizarPrestamoAsync(int idPrestamo, int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, System.DateTime fechaCorte);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/MostrarPrestamos", ReplyAction="http://tempuri.org/IWSPrestamo/MostrarPrestamosResponse")]
-        System.Data.DataTable MostrarPrestamos();
+        CoreServices.Prestamo[] MostrarPrestamos(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/MostrarPrestamos", ReplyAction="http://tempuri.org/IWSPrestamo/MostrarPrestamosResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> MostrarPrestamosAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/BuscarPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/BuscarPrestamoResponse")]
-        System.Data.DataTable BuscarPrestamo(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/BuscarPrestamo", ReplyAction="http://tempuri.org/IWSPrestamo/BuscarPrestamoResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> BuscarPrestamoAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/MostarPrestamoCliente", ReplyAction="http://tempuri.org/IWSPrestamo/MostarPrestamoClienteResponse")]
-        System.Data.DataTable MostarPrestamoCliente();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/MostarPrestamoCliente", ReplyAction="http://tempuri.org/IWSPrestamo/MostarPrestamoClienteResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> MostarPrestamoClienteAsync();
+        System.Threading.Tasks.Task<CoreServices.Prestamo[]> MostrarPrestamosAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -103,28 +91,12 @@ namespace CORE_INTERFACES.wsReferencePrestamo {
             return base.Channel.ActualizarPrestamoAsync(idPrestamo, idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
         }
         
-        public System.Data.DataTable MostrarPrestamos() {
-            return base.Channel.MostrarPrestamos();
+        public CoreServices.Prestamo[] MostrarPrestamos(int id) {
+            return base.Channel.MostrarPrestamos(id);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> MostrarPrestamosAsync() {
-            return base.Channel.MostrarPrestamosAsync();
-        }
-        
-        public System.Data.DataTable BuscarPrestamo(int id) {
-            return base.Channel.BuscarPrestamo(id);
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarPrestamoAsync(int id) {
-            return base.Channel.BuscarPrestamoAsync(id);
-        }
-        
-        public System.Data.DataTable MostarPrestamoCliente() {
-            return base.Channel.MostarPrestamoCliente();
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataTable> MostarPrestamoClienteAsync() {
-            return base.Channel.MostarPrestamoClienteAsync();
+        public System.Threading.Tasks.Task<CoreServices.Prestamo[]> MostrarPrestamosAsync(int id) {
+            return base.Channel.MostrarPrestamosAsync(id);
         }
     }
 }

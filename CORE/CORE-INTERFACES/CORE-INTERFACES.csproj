@@ -378,6 +378,9 @@
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta32.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\wsReferencePerfil\WSPerfil.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\wsReferencePerfil\WSPerfil1.wsdl" />
     <None Include="Connected Services\wsReferencePerfil\WSPerfil3.xsd">
       <SubType>Designer</SubType>
@@ -419,6 +422,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CoreServices.Perfil.datasource" />
+    <None Include="Properties\DataSources\CoreServices.Prestamo.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
