@@ -17,9 +17,13 @@ namespace CORE_INTERFACES
             InitializeComponent();
         }
 
-        private void frmPerfil_Load(object sender, EventArgs e)
-        {
+        wsReferencePerfil.WSPerfilClient Reference = wsReferencePerfil.WSPerfilClient();
 
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            Reference.CrearPerfil(tbNombre.Text,tbDescripcion.Text);
+            MessageBox.Show("Perfil Creado.");
+            tbID.Text = tbNombre.Text = tbDescripcion.Text = "";
         }
     }
 }
