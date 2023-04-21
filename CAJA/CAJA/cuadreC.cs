@@ -54,5 +54,10 @@ namespace CAJA
 
             btn_monto_inicio.Enabled = false;
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

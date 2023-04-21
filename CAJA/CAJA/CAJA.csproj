@@ -152,6 +152,9 @@
     <Compile Include="transaccione.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="cajaC.resx">
+      <DependentUpon>cajaC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="contadorC.resx">
       <DependentUpon>contadorC.cs</DependentUpon>
     </EmbeddedResource>
