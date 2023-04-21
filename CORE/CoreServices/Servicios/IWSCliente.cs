@@ -23,10 +23,10 @@ namespace CoreServices.Servicios
         bool EliminarCliente(int id);
 
         [OperationContract]
-        DataTable MostrarClientes();
+        List <Cliente> MostrarClientes();
 
         [OperationContract]
-        DataTable BuscarCliente(int id);
+        List<Cliente> BuscarCliente(int id);
     }
 
     [DataContract]

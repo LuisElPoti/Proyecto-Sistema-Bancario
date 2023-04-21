@@ -30,11 +30,11 @@ namespace INTEGRACION.Operaciones
                             dt.Load(reader);
                         }
                     }
-                    log.Info("Select Clientes Realizado.");
+                    //log.Info("Select Clientes Realizado.");
                 }
                 catch (Exception ex)
                 {
-                    log.Error("Select Clientes Fallido." + ex);
+                   // log.Error("Select Clientes Fallido." + ex);
                     throw;
                 }
                 finally
@@ -54,12 +54,12 @@ namespace INTEGRACION.Operaciones
                     ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
                     db.spInsertCliente(nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
 
-                    log.Info("Something");
+                   // log.Info("Something");
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    log.Error("Fallo Insert Clientes: " + ex);
+                   // log.Error("Fallo Insert Clientes: " + ex);
                     return false;
                 }
             }
@@ -73,12 +73,12 @@ namespace INTEGRACION.Operaciones
                 {
                     int ReturnedValue = db.spUpsertCliente(id, nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
 
-                    log.Info("Update Clientes Realizado.");
+                   // log.Info("Update Clientes Realizado.");
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    log.Error("Fallo Update Clientes: " + ex);
+                   // log.Error("Fallo Update Clientes: " + ex);
                     return false;
                 }
             }
@@ -104,11 +104,11 @@ namespace INTEGRACION.Operaciones
                             dt.Load(reader);
                         }
                     }
-                    log.Info("Select por ID Realizado.");
+                    //log.Info("Select por ID Realizado.");
                 }
                 catch (Exception ex)
                 {
-                    log.Error("Fallo select por ID: " + ex);
+                   // log.Error("Fallo select por ID: " + ex);
                     throw;
                 }
                 finally

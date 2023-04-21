@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CAJA
 {
     public partial class cajaC : Form
     {
+        decimal monto_total = 0;
         SqlConnection conn = new SqlConnection("Server=tcp:sistema-bancario-server.database.windows.net,1433;Database=DBCaja;User ID=Administrador@sistema-bancario-server;Password=sistema.banco21;Trusted_Connection=False;Encrypt=True;");
 
         public cajaC()
@@ -44,17 +46,11 @@ namespace CAJA
 
             try
             {
-                decimal Monto = Convert.ToDecimal(txtBox_montocaja.Text);
-
                 SqlCommand cmd = new SqlCommand("INSERT INTO caja (monto_caja, id_sucursal) VALUES (@Monto, 2)", conn);
-                cmd.Parameters.AddWithValue("@Monto", Monto);
+                cmd.Parameters.AddWithValue("@Monto", monto_total);
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Transacción realizada de manera exitosa");
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Por favor ingrese un valor decimal válido");
             }
             catch (SqlException ex)
             {
@@ -62,6 +58,34 @@ namespace CAJA
             }
 
             conn.Close();
+        }
+
+        private void cmbox_opciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbox_opciones.SelectedItem.ToString() == "Salida")
+            {
+                try
+                {
+                    decimal Monto = Convert.ToDecimal(txtBox_montocaja.Text);
+                    monto_total -= Monto;
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Por favor ingrese un valor decimal válido");
+                }
+            }
+            else if (cmbox_opciones.SelectedItem.ToString() == "Entrada")
+            {
+                try
+                {
+                    decimal Monto = Convert.ToDecimal(txtBox_montocaja.Text);
+                    monto_total += Monto;
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Por favor ingrese un valor decimal válido");
+                }
+            }
         }
     }
 }

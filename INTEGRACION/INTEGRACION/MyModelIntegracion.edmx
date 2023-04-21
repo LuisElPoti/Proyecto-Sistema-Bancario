@@ -170,8 +170,8 @@
           <Property Name="idTipo" Type="int" Nullable="false" />
           <Property Name="idMoneda" Type="int" Nullable="false" />
           <Property Name="idEstado" Type="int" Nullable="false" />
-          <Property Name="CuentaOrigen" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="CuentaDestino" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="CuentaOrigen" Type="int" Nullable="false" />
+          <Property Name="CuentaDestino" Type="int" Nullable="false" />
           <Property Name="Monto" Type="money" Nullable="false" />
           <Property Name="FechaIngreso" Type="datetime" />
         </EntityType>
@@ -537,8 +537,8 @@
         </Function>
         <Function Name="TransferenciaMismoBanco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="monto" Type="money" Mode="In" />
-          <Parameter Name="cuentaOrigen" Type="varchar" Mode="In" />
-          <Parameter Name="cuentaDestino" Type="varchar" Mode="In" />
+          <Parameter Name="cuentaOrigen" Type="int" Mode="In" />
+          <Parameter Name="cuentaDestino" Type="int" Mode="In" />
         </Function>
         <Function Name="ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="nvarchar" Mode="In" />
@@ -834,8 +834,8 @@
           <Property Name="idTipo" Type="Int32" Nullable="false" />
           <Property Name="idMoneda" Type="Int32" Nullable="false" />
           <Property Name="idEstado" Type="Int32" Nullable="false" />
-          <Property Name="CuentaOrigen" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CuentaDestino" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CuentaOrigen" Type="String" Nullable="false" />
+          <Property Name="CuentaDestino" Type="String" Nullable="false" />
           <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Estado" Relationship="Self.FK_Estado_Transaccion" FromRole="Transaccion" ToRole="Estado" />
@@ -1284,7 +1284,7 @@
           <FunctionImport Name="GetAllMovimientobyCuenta" ReturnType="Collection(DBIntegracionModel.GetAllMovimientobyCuenta_Result)" />
           <FunctionImport Name="GetAllPrestamobyCliente" ReturnType="Collection(DBIntegracionModel.GetAllPrestamobyCliente_Result)" />
           <FunctionImport Name="spGetCuentabyCliente" ReturnType="Collection(DBIntegracionModel.spGetCuentabyCliente_Result)">
-            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+          <Parameter Name="idCliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spOperaciones">
             <Parameter Name="Tipo" Mode="In" Type="Int32" />
@@ -1297,8 +1297,8 @@
           </FunctionImport>
           <FunctionImport Name="TransferenciaMismoBanco">
             <Parameter Name="monto" Mode="In" Type="Decimal" />
-            <Parameter Name="cuentaOrigen" Mode="In" Type="String" />
-            <Parameter Name="cuentaDestino" Mode="In" Type="String" />
+            <Parameter Name="cuentaOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="cuentaDestino" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ValidarUsuario" ReturnType="Collection(DBIntegracionModel.ValidarUsuario_Result)">
             <Parameter Name="nombre" Mode="In" Type="String" />
