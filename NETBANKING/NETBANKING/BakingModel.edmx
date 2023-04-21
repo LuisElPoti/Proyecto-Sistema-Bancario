@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBNetBankingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TblBanco">
+          <Key>
+            <PropertyRef Name="BancoID" />
+          </Key>
+          <Property Name="BancoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblBeneficiario">
+          <Key>
+            <PropertyRef Name="BeneficiarioID" />
+          </Key>
+          <Property Name="BeneficiarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioID" Type="int" Nullable="false" />
+          <Property Name="TipoDocumento" Type="int" Nullable="false" />
+          <Property Name="Documento" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BancoID" Type="int" />
+        </EntityType>
+        <EntityType Name="TblCuentaBeneficiario">
+          <Key>
+            <PropertyRef Name="CuentaBeneficiarioID" />
+          </Key>
+          <Property Name="CuentaBeneficiarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoCuenta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="BeneficiarioID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblEstado">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+          </Key>
+          <Property Name="EstadoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblMonedaTransaccion">
+          <Key>
+            <PropertyRef Name="MonedaID" />
+          </Key>
+          <Property Name="MonedaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblTipoTransaccion">
+          <Key>
+            <PropertyRef Name="TipoTransaccionID" />
+          </Key>
+          <Property Name="TipoTransaccionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblTransaccion">
+          <Key>
+            <PropertyRef Name="TransaccionID" />
+          </Key>
+          <Property Name="TransaccionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoTransaccionID" Type="int" Nullable="false" />
+          <Property Name="MonedaID" Type="int" Nullable="false" />
+          <Property Name="Concepto" Type="nvarchar" MaxLength="50" />
+          <Property Name="CorreoCliente" Type="nvarchar" MaxLength="50" />
+          <Property Name="CorreoBeneficiario" Type="nvarchar" MaxLength="50" />
+          <Property Name="EstadoID" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+          <Property Name="CuentaOrigen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CuentaDestino" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblUsuario">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Documento" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TipoDocumento" Type="int" Nullable="false" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EstadoID" Type="int" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Banco_Beneficiario">
+          <End Role="TblBanco" Type="Self.TblBanco" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblBeneficiario" Type="Self.TblBeneficiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBanco">
+              <PropertyRef Name="BancoID" />
+            </Principal>
+            <Dependent Role="TblBeneficiario">
+              <PropertyRef Name="BancoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Benefiario_Cuenta">
+          <End Role="TblBeneficiario" Type="Self.TblBeneficiario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblCuentaBeneficiario" Type="Self.TblCuentaBeneficiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBeneficiario">
+              <PropertyRef Name="BeneficiarioID" />
+            </Principal>
+            <Dependent Role="TblCuentaBeneficiario">
+              <PropertyRef Name="BeneficiarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Transaccion">
+          <End Role="TblEstado" Type="Self.TblEstado" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblTransaccion" Type="Self.TblTransaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEstado">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="TblTransaccion">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Usuario">
+          <End Role="TblEstado" Type="Self.TblEstado" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblUsuario" Type="Self.TblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEstado">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="TblUsuario">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moneda_Transaccion">
+          <End Role="TblMonedaTransaccion" Type="Self.TblMonedaTransaccion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblTransaccion" Type="Self.TblTransaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMonedaTransaccion">
+              <PropertyRef Name="MonedaID" />
+            </Principal>
+            <Dependent Role="TblTransaccion">
+              <PropertyRef Name="MonedaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo_Transaccion">
+          <End Role="TblTipoTransaccion" Type="Self.TblTipoTransaccion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblTransaccion" Type="Self.TblTransaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblTipoTransaccion">
+              <PropertyRef Name="TipoTransaccionID" />
+            </Principal>
+            <Dependent Role="TblTransaccion">
+              <PropertyRef Name="TipoTransaccionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spInsertarBanco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertarBeneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UsuarioID" Type="int" Mode="In" />
+          <Parameter Name="TipoDocumento" Type="int" Mode="In" />
+          <Parameter Name="Documento" Type="nvarchar" Mode="In" />
+          <Parameter Name="Alias" Type="nvarchar" Mode="In" />
+          <Parameter Name="Correo" Type="nvarchar" Mode="In" />
+          <Parameter Name="BancoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInsertarEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="descripcion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertarMonedaTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertarTipoTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertarTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TipoTransaccionID" Type="int" Mode="In" />
+          <Parameter Name="MonedaID" Type="int" Mode="In" />
+          <Parameter Name="Concepto" Type="nvarchar" Mode="In" />
+          <Parameter Name="CorreoCliente" Type="nvarchar" Mode="In" />
+          <Parameter Name="CorreoBeneficiario" Type="nvarchar" Mode="In" />
+          <Parameter Name="EstadoID" Type="int" Mode="In" />
+          <Parameter Name="Monto" Type="money" Mode="In" />
+          <Parameter Name="CuentaOrigen" Type="nvarchar" Mode="In" />
+          <Parameter Name="CuentaDestino" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="Documento" Type="nvarchar" Mode="In" />
+          <Parameter Name="TipoDocumento" Type="int" Mode="In" />
+          <Parameter Name="Nombres" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellidos" Type="nvarchar" Mode="In" />
+          <Parameter Name="Correo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="Clave" Type="nvarchar" Mode="In" />
+          <Parameter Name="EstadoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInsertCuentaBeneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NoCuenta" Type="nvarchar" Mode="In" />
+          <Parameter Name="BeneficiarioID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DBNetBankingModelStoreContainer">
+          <EntitySet Name="TblBanco" EntityType="Self.TblBanco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblBeneficiario" EntityType="Self.TblBeneficiario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblCuentaBeneficiario" EntityType="Self.TblCuentaBeneficiario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblEstado" EntityType="Self.TblEstado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMonedaTransaccion" EntityType="Self.TblMonedaTransaccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblTipoTransaccion" EntityType="Self.TblTipoTransaccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblTransaccion" EntityType="Self.TblTransaccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblUsuario" EntityType="Self.TblUsuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Banco_Beneficiario" Association="Self.FK_Banco_Beneficiario">
+            <End Role="TblBanco" EntitySet="TblBanco" />
+            <End Role="TblBeneficiario" EntitySet="TblBeneficiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Benefiario_Cuenta" Association="Self.FK_Benefiario_Cuenta">
+            <End Role="TblBeneficiario" EntitySet="TblBeneficiario" />
+            <End Role="TblCuentaBeneficiario" EntitySet="TblCuentaBeneficiario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Transaccion" Association="Self.FK_Estado_Transaccion">
+            <End Role="TblEstado" EntitySet="TblEstado" />
+            <End Role="TblTransaccion" EntitySet="TblTransaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Usuario" Association="Self.FK_Estado_Usuario">
+            <End Role="TblEstado" EntitySet="TblEstado" />
+            <End Role="TblUsuario" EntitySet="TblUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moneda_Transaccion" Association="Self.FK_Moneda_Transaccion">
+            <End Role="TblMonedaTransaccion" EntitySet="TblMonedaTransaccion" />
+            <End Role="TblTransaccion" EntitySet="TblTransaccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo_Transaccion" Association="Self.FK_Tipo_Transaccion">
+            <End Role="TblTipoTransaccion" EntitySet="TblTipoTransaccion" />
+            <End Role="TblTransaccion" EntitySet="TblTransaccion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBNetBankingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TblBanco">
+          <Key>
+            <PropertyRef Name="BancoID" />
+          </Key>
+          <Property Name="BancoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblBeneficiarios" Relationship="Self.FK_Banco_Beneficiario" FromRole="TblBanco" ToRole="TblBeneficiario" />
+        </EntityType>
+        <EntityType Name="TblBeneficiario">
+          <Key>
+            <PropertyRef Name="BeneficiarioID" />
+          </Key>
+          <Property Name="BeneficiarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioID" Type="Int32" Nullable="false" />
+          <Property Name="TipoDocumento" Type="Int32" Nullable="false" />
+          <Property Name="Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BancoID" Type="Int32" />
+          <NavigationProperty Name="TblBanco" Relationship="Self.FK_Banco_Beneficiario" FromRole="TblBeneficiario" ToRole="TblBanco" />
+          <NavigationProperty Name="TblCuentaBeneficiarios" Relationship="Self.FK_Benefiario_Cuenta" FromRole="TblBeneficiario" ToRole="TblCuentaBeneficiario" />
+        </EntityType>
+        <EntityType Name="TblCuentaBeneficiario">
+          <Key>
+            <PropertyRef Name="CuentaBeneficiarioID" />
+          </Key>
+          <Property Name="CuentaBeneficiarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoCuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BeneficiarioID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TblBeneficiario" Relationship="Self.FK_Benefiario_Cuenta" FromRole="TblCuentaBeneficiario" ToRole="TblBeneficiario" />
+        </EntityType>
+        <EntityType Name="TblEstado">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+          </Key>
+          <Property Name="EstadoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblTransaccions" Relationship="Self.FK_Estado_Transaccion" FromRole="TblEstado" ToRole="TblTransaccion" />
+          <NavigationProperty Name="TblUsuarios" Relationship="Self.FK_Estado_Usuario" FromRole="TblEstado" ToRole="TblUsuario" />
+        </EntityType>
+        <EntityType Name="TblMonedaTransaccion">
+          <Key>
+            <PropertyRef Name="MonedaID" />
+          </Key>
+          <Property Name="MonedaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblTransaccions" Relationship="Self.FK_Moneda_Transaccion" FromRole="TblMonedaTransaccion" ToRole="TblTransaccion" />
+        </EntityType>
+        <EntityType Name="TblTipoTransaccion">
+          <Key>
+            <PropertyRef Name="TipoTransaccionID" />
+          </Key>
+          <Property Name="TipoTransaccionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblTransaccions" Relationship="Self.FK_Tipo_Transaccion" FromRole="TblTipoTransaccion" ToRole="TblTransaccion" />
+        </EntityType>
+        <EntityType Name="TblTransaccion">
+          <Key>
+            <PropertyRef Name="TransaccionID" />
+          </Key>
+          <Property Name="TransaccionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoTransaccionID" Type="Int32" Nullable="false" />
+          <Property Name="MonedaID" Type="Int32" Nullable="false" />
+          <Property Name="Concepto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CorreoCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CorreoBeneficiario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EstadoID" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CuentaOrigen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CuentaDestino" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="TblEstado" Relationship="Self.FK_Estado_Transaccion" FromRole="TblTransaccion" ToRole="TblEstado" />
+          <NavigationProperty Name="TblMonedaTransaccion" Relationship="Self.FK_Moneda_Transaccion" FromRole="TblTransaccion" ToRole="TblMonedaTransaccion" />
+          <NavigationProperty Name="TblTipoTransaccion" Relationship="Self.FK_Tipo_Transaccion" FromRole="TblTransaccion" ToRole="TblTipoTransaccion" />
+        </EntityType>
+        <EntityType Name="TblUsuario">
+          <Key>
+            <PropertyRef Name="UsuarioID" />
+          </Key>
+          <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoDocumento" Type="Int32" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EstadoID" Type="Int32" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TblEstado" Relationship="Self.FK_Estado_Usuario" FromRole="TblUsuario" ToRole="TblEstado" />
+        </EntityType>
+        <Association Name="FK_Banco_Beneficiario">
+          <End Role="TblBanco" Type="Self.TblBanco" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblBeneficiario" Type="Self.TblBeneficiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBanco">
+              <PropertyRef Name="BancoID" />
+            </Principal>
+            <Dependent Role="TblBeneficiario">
+              <PropertyRef Name="BancoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Benefiario_Cuenta">
+          <End Role="TblBeneficiario" Type="Self.TblBeneficiario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblCuentaBeneficiario" Type="Self.TblCuentaBeneficiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBeneficiario">
+              <PropertyRef Name="BeneficiarioID" />
+            </Principal>
+            <Dependent Role="TblCuentaBeneficiario">
+              <PropertyRef Name="BeneficiarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Transaccion">
+          <End Role="TblEstado" Type="Self.TblEstado" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblTransaccion" Type="Self.TblTransaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEstado">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="TblTransaccion">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_Usuario">
+          <End Role="TblEstado" Type="Self.TblEstado" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblUsuario" Type="Self.TblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEstado">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="TblUsuario">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moneda_Transaccion">
+          <End Role="TblMonedaTransaccion" Type="Self.TblMonedaTransaccion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblTransaccion" Type="Self.TblTransaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMonedaTransaccion">
+              <PropertyRef Name="MonedaID" />
+            </Principal>
+            <Dependent Role="TblTransaccion">
+              <PropertyRef Name="MonedaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo_Transaccion">
+          <End Role="TblTipoTransaccion" Type="Self.TblTipoTransaccion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblTransaccion" Type="Self.TblTransaccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblTipoTransaccion">
+              <PropertyRef Name="TipoTransaccionID" />
+            </Principal>
+            <Dependent Role="TblTransaccion">
+              <PropertyRef Name="TipoTransaccionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBNetBankingEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TblBancoes" EntityType="Self.TblBanco" />
+          <EntitySet Name="TblBeneficiarios" EntityType="Self.TblBeneficiario" />
+          <EntitySet Name="TblCuentaBeneficiarios" EntityType="Self.TblCuentaBeneficiario" />
+          <EntitySet Name="TblEstadoes" EntityType="Self.TblEstado" />
+          <EntitySet Name="TblMonedaTransaccions" EntityType="Self.TblMonedaTransaccion" />
+          <EntitySet Name="TblTipoTransaccions" EntityType="Self.TblTipoTransaccion" />
+          <EntitySet Name="TblTransaccions" EntityType="Self.TblTransaccion" />
+          <EntitySet Name="TblUsuarios" EntityType="Self.TblUsuario" />
+          <AssociationSet Name="FK_Banco_Beneficiario" Association="Self.FK_Banco_Beneficiario">
+            <End Role="TblBanco" EntitySet="TblBancoes" />
+            <End Role="TblBeneficiario" EntitySet="TblBeneficiarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Benefiario_Cuenta" Association="Self.FK_Benefiario_Cuenta">
+            <End Role="TblBeneficiario" EntitySet="TblBeneficiarios" />
+            <End Role="TblCuentaBeneficiario" EntitySet="TblCuentaBeneficiarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Transaccion" Association="Self.FK_Estado_Transaccion">
+            <End Role="TblEstado" EntitySet="TblEstadoes" />
+            <End Role="TblTransaccion" EntitySet="TblTransaccions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_Usuario" Association="Self.FK_Estado_Usuario">
+            <End Role="TblEstado" EntitySet="TblEstadoes" />
+            <End Role="TblUsuario" EntitySet="TblUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moneda_Transaccion" Association="Self.FK_Moneda_Transaccion">
+            <End Role="TblMonedaTransaccion" EntitySet="TblMonedaTransaccions" />
+            <End Role="TblTransaccion" EntitySet="TblTransaccions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo_Transaccion" Association="Self.FK_Tipo_Transaccion">
+            <End Role="TblTipoTransaccion" EntitySet="TblTipoTransaccions" />
+            <End Role="TblTransaccion" EntitySet="TblTransaccions" />
+          </AssociationSet>
+          <FunctionImport Name="spInsertarBanco">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertarBeneficiario">
+            <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+            <Parameter Name="TipoDocumento" Mode="In" Type="Int32" />
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="Alias" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="BancoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertarEstado">
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertarMonedaTransaccion">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertarTipoTransaccion">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertarTransaccion">
+            <Parameter Name="TipoTransaccionID" Mode="In" Type="Int32" />
+            <Parameter Name="MonedaID" Mode="In" Type="Int32" />
+            <Parameter Name="Concepto" Mode="In" Type="String" />
+            <Parameter Name="CorreoCliente" Mode="In" Type="String" />
+            <Parameter Name="CorreoBeneficiario" Mode="In" Type="String" />
+            <Parameter Name="EstadoID" Mode="In" Type="Int32" />
+            <Parameter Name="Monto" Mode="In" Type="Decimal" />
+            <Parameter Name="CuentaOrigen" Mode="In" Type="String" />
+            <Parameter Name="CuentaDestino" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertarUsuario">
+            <Parameter Name="NombreUsuario" Mode="In" Type="String" />
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="TipoDocumento" Mode="In" Type="Int32" />
+            <Parameter Name="Nombres" Mode="In" Type="String" />
+            <Parameter Name="Apellidos" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+            <Parameter Name="EstadoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertCuentaBeneficiario">
+            <Parameter Name="NoCuenta" Mode="In" Type="String" />
+            <Parameter Name="BeneficiarioID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBNetBankingModelStoreContainer" CdmEntityContainer="DBNetBankingEntities1">
+          <EntitySetMapping Name="TblBancoes">
+            <EntityTypeMapping TypeName="DBNetBankingModel.TblBanco">
+              <MappingFragment StoreEntitySet="TblBanco">
+                <ScalarProperty Name="BancoID" ColumnName="BancoID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBeneficiarios">
+            <EntityTypeMapping TypeName="DBNetBankingModel.TblBeneficiario">
+              <MappingFragment StoreEntitySet="TblBeneficiario">
+                <ScalarProperty Name="BeneficiarioID" ColumnName="BeneficiarioID" />
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="BancoID" ColumnName="BancoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCuentaBeneficiarios">
+            <EntityTypeMapping TypeName="DBNetBankingModel.TblCuentaBeneficiario">
+              <MappingFragment StoreEntitySet="TblCuentaBeneficiario">
+                <ScalarProperty Name="CuentaBeneficiarioID" ColumnName="CuentaBeneficiarioID" />
+                <ScalarProperty Name="NoCuenta" ColumnName="NoCuenta" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="BeneficiarioID" ColumnName="BeneficiarioID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblEstadoes">
+            <EntityTypeMapping TypeName="DBNetBankingModel.TblEstado">
+              <MappingFragment StoreEntitySet="TblEstado">
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMonedaTransaccions">
+            <EntityTypeMapping TypeName="DBNetBankingModel.TblMonedaTransaccion">
+              <MappingFragment StoreEntitySet="TblMonedaTransaccion">
+                <ScalarProperty Name="MonedaID" ColumnName="MonedaID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblTipoTransaccions">
+            <EntityTypeMapping TypeName="DBNetBankingModel.TblTipoTransaccion">
+              <MappingFragment StoreEntitySet="TblTipoTransaccion">
+                <ScalarProperty Name="TipoTransaccionID" ColumnName="TipoTransaccionID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblTransaccions">
+            <EntityTypeMapping TypeName="DBNetBankingModel.TblTransaccion">
+              <MappingFragment StoreEntitySet="TblTransaccion">
+                <ScalarProperty Name="TransaccionID" ColumnName="TransaccionID" />
+                <ScalarProperty Name="TipoTransaccionID" ColumnName="TipoTransaccionID" />
+                <ScalarProperty Name="MonedaID" ColumnName="MonedaID" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+                <ScalarProperty Name="CorreoCliente" ColumnName="CorreoCliente" />
+                <ScalarProperty Name="CorreoBeneficiario" ColumnName="CorreoBeneficiario" />
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="CuentaOrigen" ColumnName="CuentaOrigen" />
+                <ScalarProperty Name="CuentaDestino" ColumnName="CuentaDestino" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblUsuarios">
+            <EntityTypeMapping TypeName="DBNetBankingModel.TblUsuario">
+              <MappingFragment StoreEntitySet="TblUsuario">
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spInsertarBanco" FunctionName="DBNetBankingModel.Store.spInsertarBanco" />
+          <FunctionImportMapping FunctionImportName="spInsertarBeneficiario" FunctionName="DBNetBankingModel.Store.spInsertarBeneficiario" />
+          <FunctionImportMapping FunctionImportName="spInsertarEstado" FunctionName="DBNetBankingModel.Store.spInsertarEstado" />
+          <FunctionImportMapping FunctionImportName="spInsertarMonedaTransaccion" FunctionName="DBNetBankingModel.Store.spInsertarMonedaTransaccion" />
+          <FunctionImportMapping FunctionImportName="spInsertarTipoTransaccion" FunctionName="DBNetBankingModel.Store.spInsertarTipoTransaccion" />
+          <FunctionImportMapping FunctionImportName="spInsertarTransaccion" FunctionName="DBNetBankingModel.Store.spInsertarTransaccion" />
+          <FunctionImportMapping FunctionImportName="spInsertarUsuario" FunctionName="DBNetBankingModel.Store.spInsertarUsuario" />
+          <FunctionImportMapping FunctionImportName="spInsertCuentaBeneficiario" FunctionName="DBNetBankingModel.Store.spInsertCuentaBeneficiario" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
