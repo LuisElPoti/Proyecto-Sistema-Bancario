@@ -50,7 +50,8 @@ namespace CORE_INTERFACES
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             DataTable dt = Referencia.BuscarCliente(int.Parse(tbID.Text));
-            
+            dgbClientes.DataSource = dt;
+            dgbClientes.Refresh();
             //dt = Referencia.BuscarCliente(int.Parse(tbID.Text));
             //MessageBox.Show("Cliente encontrado.");
             //tbNombre.Text = dt.Rows[1].ToString();
