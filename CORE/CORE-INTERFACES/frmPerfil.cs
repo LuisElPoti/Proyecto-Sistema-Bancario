@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoreServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,32 @@ namespace CORE_INTERFACES
             Reference.CrearPerfil(tbNombre.Text,tbDescripcion.Text);
             MessageBox.Show("Perfil Creado.");
             tbID.Text = tbNombre.Text = tbDescripcion.Text = "";
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(tbID.Text);
+                wsReferencePerfil.WSPerfilClient Reference = new wsReferencePerfil.WSPerfilClient();
+                List<Perfil> perfiles = new List<Perfil>(); ;
+                perfiles = Reference.BuscarPerfil(id);
+                //List<Cliente> clientes = client.BuscarCliente(id);
+
+                if (perfiles != null && perfiles.Count > 0)
+                {
+                    dgvPerfil.DataSource = perfiles;
+                    MessageBox.Show("Perfil encontrado.");
+                }
+                else
+                {
+                    MessageBox.Show("Perfil no encontrado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar Perfil: " + ex.Message);
+            }
         }
     }
 }
