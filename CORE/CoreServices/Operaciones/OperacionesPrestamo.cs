@@ -11,36 +11,48 @@ namespace CoreServices.Operaciones
 {
     public class OperacionesPrestamo
     {
-        public DataTable GetPrestamos()
+        public List<Prestamo> GetPrestamosbyID(int id)
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var dt = new DataTable();
+                var Prestamos = new List<Prestamo>();
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
-                try
+
+                if (connectionState != ConnectionState.Open) conn.Open();
+                using (var cmd = conn.CreateCommand())
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    cmd.CommandText = "spGetPrestamobyCuenta";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("idCuenta", id));
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        cmd.CommandText = "spGetAllPrestamo";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
                         {
-                            dt.Load(reader);
+                            Prestamo Prestamo = new Prestamo();
+                            Prestamo.idPrestamo = int.Parse(reader[0].ToString());
+                            Prestamo.idCuenta = int.Parse(reader[1].ToString());
+                            Prestamo.Tasa = reader.GetDecimal(reader.GetOrdinal("Tasa"));
+                            Prestamo.MontoActual = reader.GetDecimal(reader.GetOrdinal("MontoActual"));
+                            Prestamo.MontoOriginal = reader.GetDecimal(reader.GetOrdinal("MontoOriginal"));
+                            Prestamo.FechaCorte = reader.GetDateTime(reader.GetOrdinal("FechaCorte"));
+                            Prestamo.FechaIngreso = reader.GetDateTime(reader.GetOrdinal("FechaIngreso"));
+
+                            Prestamos.Add(Prestamo);
                         }
                     }
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
 
-                return dt;
+                //catch (Exception ex)
+                //{
+                //    log.Error("Fallo select por ID: " + ex);
+                //    throw;
+                //}
+                //finally
+                //{
+                //    if (connectionState != ConnectionState.Closed) conn.Close();
+                //}
+                return Prestamos;
             }
         }
 
@@ -96,69 +108,6 @@ namespace CoreServices.Operaciones
             }
         }
 
-        public DataTable GetPrestamobyCuenta(int id)
-        {
-            using (DBCoreEntities1 db = new DBCoreEntities1())
-            {
-                var dt = new DataTable();
-                var conn = db.Database.Connection;
-                var connectionState = conn.State;
-                try
-                {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = "spGetPrestamoByCuenta";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("Id", id));
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            dt.Load(reader);
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
-            }
-        }
-
-        public DataTable GetAllPrestamobyCliente()
-        {
-            using (DBCoreEntities1 db = new DBCoreEntities1())
-            {
-                var dt = new DataTable();
-                var conn = db.Database.Connection;
-                var connectionState = conn.State;
-                try
-                {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = "GetAllPrestamobyCliente";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            dt.Load(reader);
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
-            }
-        }
     }
 }
+

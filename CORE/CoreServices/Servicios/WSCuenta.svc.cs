@@ -31,29 +31,35 @@ namespace CoreServices.Servicios
             return Operaciones.UpdateCuentas(idCuenta, Estado, Balance);
         }
 
-        public DataTable MostrarCuentas()
+        public List<Cuenta> MostrarCuentas()
         {
             return Operaciones.GetCuentas();
         }
 
-        public DataTable BuscarCuenta(int id)
+        public List<Cuenta> BuscarCuenta(int id)
         {
             return Operaciones.GetCuentabyID(id);
         }
 
-        public DataTable MostrarCuentaCliente(int idCliente)
+        public List<Cuenta> MostrarCuentaCliente(int idCliente)
         {
             return Operaciones.GetCuentabyCliente(idCliente);
         }
+
         
         public bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto)
         {
             return Operaciones.Deposito_Retiro(tipo, NumeroCuenta, Monto);
         }
 
-        public bool Pago_Prestamo(int idPrestamo, decimal Monto)
+        public bool Pago_Prestamo(int idCliente, decimal Monto)
         {
-            return Operaciones.Pago(idPrestamo, Monto);
+            return Operaciones.Pago(idCliente, Monto);
+        }
+
+        public bool CrearTransferencia(int idTipo, int idMoneda, int idEstado, int CuentaOrigen, int CuentaDestino, decimal Monto)
+        {
+            return Operaciones.InsertTransferencia(idTipo, idMoneda, idEstado, CuentaOrigen, CuentaDestino, Monto);
         }
 
         public bool Transferencia_MismoBanco(int CuentaOrigen, int CuentaDestino, decimal Monto)

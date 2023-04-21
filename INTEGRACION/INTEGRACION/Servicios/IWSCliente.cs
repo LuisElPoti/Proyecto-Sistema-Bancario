@@ -19,9 +19,34 @@ namespace INTEGRACION.Servicios
         bool ActualizarCliente(int id, string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento);
 
         [OperationContract]
-        DataTable MostrarClientes();
+        bool EliminarCliente(int id);
 
         [OperationContract]
-        DataTable BuscarCliente(int id);
+        List<Cliente> MostrarClientes();
+
+        [OperationContract]
+        List<Cliente> BuscarCliente(int id);
+    }
+
+    [DataContract]
+    public class ClCliente
+    {
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public string nombre { get; set; }
+        [DataMember]
+        public int tipoDocumento { get; set; }
+        [DataMember]
+        public string documento { get; set; }
+        [DataMember]
+        public string correo { get; set; }
+        [DataMember]
+        public string telefono { get; set; }
+        [DataMember]
+        public string direccion { get; set; }
+        [DataMember]
+        public DateTime FechaNacimiento { get; set; }
+
     }
 }

@@ -25,14 +25,19 @@ namespace INTEGRACION.Servicios
             return Operaciones.UpdateClientes(id, nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
         }
 
-        public DataTable MostrarClientes()
+        public bool EliminarCliente(int id)
+        {
+            return Operaciones.EliminarCliente(id);
+        }
+        public List<Cliente> MostrarClientes()
         {
             return Operaciones.GetClientes();
         }
 
-        public DataTable BuscarCliente(int id)
+        public List<Cliente> BuscarCliente(int id)
         {
             return Operaciones.GetClientebyID(id);
         }
+
     }
 }

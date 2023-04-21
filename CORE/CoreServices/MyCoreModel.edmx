@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBCoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBCoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Banco">
           <Key>
             <PropertyRef Name="idBanco" />
@@ -516,6 +516,14 @@
           <Parameter Name="nombre" Type="varchar" Mode="In" />
           <Parameter Name="descripcion" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="spInsertTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTipo" Type="int" Mode="In" />
+          <Parameter Name="idMoneda" Type="int" Mode="In" />
+          <Parameter Name="idEstado" Type="int" Mode="In" />
+          <Parameter Name="CuentaOrigen" Type="int" Mode="In" />
+          <Parameter Name="CuentaDestino" Type="int" Mode="In" />
+          <Parameter Name="Monto" Type="money" Mode="In" />
+        </Function>
         <Function Name="spInsertUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idPerfil" Type="int" Mode="In" />
           <Parameter Name="idCliente" Type="int" Mode="In" />
@@ -528,7 +536,7 @@
           <Parameter Name="Monto" Type="money" Mode="In" />
         </Function>
         <Function Name="spPagoPrestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idPrestamo" Type="int" Mode="In" />
+          <Parameter Name="idCuenta" Type="int" Mode="In" />
           <Parameter Name="Monto" Type="money" Mode="In" />
         </Function>
         <Function Name="spUpsertCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -680,8 +688,7 @@
             <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBCoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1260,22 +1267,22 @@
           <FunctionImport Name="GetAllMovimientobyCuenta" ReturnType="Collection(DBCoreModel.GetAllMovimientobyCuenta_Result)" />
           <FunctionImport Name="GetAllPrestamobyCliente" ReturnType="Collection(DBCoreModel.GetAllPrestamobyCliente_Result)" />
           <FunctionImport Name="spDeleteCliente">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteCuenta">
-            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
+          <Parameter Name="idCuenta" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeletePerfil">
-            <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+          <Parameter Name="idPerfil" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeletePrestamo">
-            <Parameter Name="idPrestamo" Mode="In" Type="Int32" />
+          <Parameter Name="idPrestamo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteTipoTransaccion">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteUsuario">
-            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+          <Parameter Name="idUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetAllCliente" ReturnType="Collection(DBCoreModel.spGetAllCliente_Result)" />
           <FunctionImport Name="spGetAllCuenta" ReturnType="Collection(DBCoreModel.spGetAllCuenta_Result)" />
@@ -1284,25 +1291,25 @@
           <FunctionImport Name="spGetAllTipoTransaccion" ReturnType="Collection(DBCoreModel.spGetAllTipoTransaccion_Result)" />
           <FunctionImport Name="spGetAllUsuario" ReturnType="Collection(DBCoreModel.spGetAllUsuario_Result)" />
           <FunctionImport Name="spGetClienteById" ReturnType="Collection(DBCoreModel.spGetClienteById_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetCuentabyCliente" ReturnType="Collection(DBCoreModel.spGetCuentabyCliente_Result)">
-            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+          <Parameter Name="idCliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetCuentaById" ReturnType="Collection(DBCoreModel.spGetCuentaById_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetPerfilById" ReturnType="Collection(DBCoreModel.spGetPerfilById_Result)">
-            <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+          <Parameter Name="idPerfil" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetPrestamoByCuenta" ReturnType="Collection(DBCoreModel.spGetPrestamoByCuenta_Result)">
-            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
+          <Parameter Name="idCuenta" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetTipoTransaccionById" ReturnType="Collection(DBCoreModel.spGetTipoTransaccionById_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetUsuarioById" ReturnType="Collection(DBCoreModel.spGetUsuarioById_Result)">
-            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+          <Parameter Name="idUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spInsertCliente">
             <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -1347,7 +1354,7 @@
             <Parameter Name="Monto" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="spPagoPrestamo">
-            <Parameter Name="idPrestamo" Mode="In" Type="Int32" />
+            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
             <Parameter Name="Monto" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="spUpsertCliente">
@@ -1398,6 +1405,14 @@
           <FunctionImport Name="ValidarUsuario" ReturnType="Collection(DBCoreModel.ValidarUsuario_Result)">
             <Parameter Name="nombre" Mode="In" Type="String" />
             <Parameter Name="clave" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertTransaccion">
+            <Parameter Name="idTipo" Mode="In" Type="Int32" />
+            <Parameter Name="idMoneda" Mode="In" Type="Int32" />
+            <Parameter Name="idEstado" Mode="In" Type="Int32" />
+            <Parameter Name="CuentaOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="CuentaDestino" Mode="In" Type="Int32" />
+            <Parameter Name="Monto" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAllMovimientobyCuenta_Result">
@@ -1956,6 +1971,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInsertTransaccion" FunctionName="DBCoreModel.Store.spInsertTransaccion" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using CoreServices;
+
 namespace CORE_INTERFACES.wsReferenceUsuario {
     
     
@@ -46,16 +48,16 @@ namespace CORE_INTERFACES.wsReferenceUsuario {
         System.Threading.Tasks.Task<bool> ValidarSesionAsync(string nombre, string clave);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/MostrarUsuarios", ReplyAction="http://tempuri.org/IWSUsuario/MostrarUsuariosResponse")]
-        System.Data.DataTable MostrarUsuarios();
+        System.Collections.Generic.List<Usuario> MostrarUsuarios();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/MostrarUsuarios", ReplyAction="http://tempuri.org/IWSUsuario/MostrarUsuariosResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> MostrarUsuariosAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Usuario>> MostrarUsuariosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/BuscarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/BuscarUsuarioResponse")]
-        System.Data.DataTable BuscarUsuario(int id);
+        System.Collections.Generic.List<Usuario> BuscarUsuario(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSUsuario/BuscarUsuario", ReplyAction="http://tempuri.org/IWSUsuario/BuscarUsuarioResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> BuscarUsuarioAsync(int id);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Usuario>> BuscarUsuarioAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -125,19 +127,19 @@ namespace CORE_INTERFACES.wsReferenceUsuario {
             return base.Channel.ValidarSesionAsync(nombre, clave);
         }
         
-        public System.Data.DataTable MostrarUsuarios() {
+        public System.Collections.Generic.List<Usuario> MostrarUsuarios() {
             return base.Channel.MostrarUsuarios();
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> MostrarUsuariosAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Usuario>> MostrarUsuariosAsync() {
             return base.Channel.MostrarUsuariosAsync();
         }
         
-        public System.Data.DataTable BuscarUsuario(int id) {
+        public System.Collections.Generic.List<Usuario> BuscarUsuario(int id) {
             return base.Channel.BuscarUsuario(id);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarUsuarioAsync(int id) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Usuario>> BuscarUsuarioAsync(int id) {
             return base.Channel.BuscarUsuarioAsync(id);
         }
     }

@@ -23,10 +23,10 @@ namespace CoreServices.Servicios
         bool ActualizarCuenta(int idCuenta, bool Estado, decimal Balance);
 
         [OperationContract]
-        DataTable MostrarCuentas();
+        List<Cuenta> MostrarCuentas();
 
         [OperationContract]
-        DataTable BuscarCuenta(int id);
+        List<Cuenta> BuscarCuenta(int id);
 
         [OperationContract]
         bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto);
@@ -34,6 +34,8 @@ namespace CoreServices.Servicios
         [OperationContract]
         bool Pago_Prestamo(int idPrestamo, decimal Monto);
 
+        [OperationContract]
+        bool CrearTransferencia(int idTipo, int idMoneda, int idEstado, int CuentaOrigen, int CuentaDestino, decimal Monto);
         [OperationContract]
         bool Transferencia_MismoBanco(int CuentaOrigen, int CuentaDestino, decimal Monto);
     }

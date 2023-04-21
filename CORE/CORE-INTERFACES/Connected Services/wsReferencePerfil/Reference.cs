@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using CoreServices;
+using System.Collections.Generic;
+
 namespace CORE_INTERFACES.wsReferencePerfil {
     
     
@@ -34,16 +37,16 @@ namespace CORE_INTERFACES.wsReferencePerfil {
         System.Threading.Tasks.Task<bool> ActualizarPerfilAsync(int idPerfil, string nombre, string descripcion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/MostrarPerfiles", ReplyAction="http://tempuri.org/IWSPerfil/MostrarPerfilesResponse")]
-        System.Data.DataTable MostrarPerfiles();
+        System.Collections.Generic.List<Perfil> MostrarPerfiles();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/MostrarPerfiles", ReplyAction="http://tempuri.org/IWSPerfil/MostrarPerfilesResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> MostrarPerfilesAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Perfil>> MostrarPerfilesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/BuscarPerfil", ReplyAction="http://tempuri.org/IWSPerfil/BuscarPerfilResponse")]
-        System.Data.DataTable BuscarPerfil(int id);
+        System.Collections.Generic.List<Perfil> BuscarPerfil(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPerfil/BuscarPerfil", ReplyAction="http://tempuri.org/IWSPerfil/BuscarPerfilResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> BuscarPerfilAsync(int id);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Perfil>> BuscarPerfilAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,19 +100,19 @@ namespace CORE_INTERFACES.wsReferencePerfil {
             return base.Channel.ActualizarPerfilAsync(idPerfil, nombre, descripcion);
         }
         
-        public System.Data.DataTable MostrarPerfiles() {
+        public System.Collections.Generic.List<Perfil> MostrarPerfiles() {
             return base.Channel.MostrarPerfiles();
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> MostrarPerfilesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Perfil>> MostrarPerfilesAsync() {
             return base.Channel.MostrarPerfilesAsync();
         }
         
-        public System.Data.DataTable BuscarPerfil(int id) {
+        public System.Collections.Generic.List<Perfil> BuscarPerfil(int id) {
             return base.Channel.BuscarPerfil(id);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarPerfilAsync(int id) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Perfil>> BuscarPerfilAsync(int id) {
             return base.Channel.BuscarPerfilAsync(id);
         }
     }

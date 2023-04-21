@@ -1,14 +1,17 @@
-﻿using System;
+﻿using INTEGRACION;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Web.Services;
 
-namespace INTEGRACION.Servicios
+namespace CoreServices
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IIWSUsuario" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IWSUsuario
     {
@@ -23,13 +26,31 @@ namespace INTEGRACION.Servicios
         bool ActualizarUsuario(int idUsuario, int idPerfil, int idCliente, string nombre, string clave);
 
         [OperationContract]
+        bool ValidarSeguridad(string clave);
+
+        [OperationContract]
         bool ValidarSesion(string nombre, string clave);
 
         [OperationContract]
-        DataTable MostrarUsuarios();
+        List<Usuario> MostrarUsuarios();
 
         [OperationContract]
-        DataTable BuscarUsuario(int id);
+        List<Usuario> BuscarUsuario(int id);
 
+    }
+
+    [DataContract]
+    public class ClUsuario
+    {
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public int idPerfil { get; set; }
+        [DataMember]
+        public int idCliente { get; set; }
+        [DataMember]
+        public string nombre { get; set; }
+        [DataMember]
+        public string clave { get; set; }
     }
 }
