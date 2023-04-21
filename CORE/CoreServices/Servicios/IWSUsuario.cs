@@ -36,4 +36,21 @@ namespace CoreServices
 
     }
 
+<<<<<<< HEAD
+=======
+    [DataContract]
+    public class ClUsuario
+    {
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public int idPerfil { get; set; }
+        [DataMember]
+        public int idCliente { get; set; }
+        [DataMember]
+        public string nombre { get; set; }
+        [DataMember]
+        public string clave { get; set; }
+    }
+>>>>>>> c464aed82b45e56291b718127524f420952a1d28
 }

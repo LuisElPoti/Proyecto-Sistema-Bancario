@@ -25,4 +25,29 @@ namespace CoreServices.Servicios
         [OperationContract]
         DataTable BuscarCliente(int id);
     }
+<<<<<<< HEAD
+=======
+
+    [DataContract]
+    public class ClCliente
+    {
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public string nombre { get; set; }
+        [DataMember]
+        public int tipoDocumento { get; set; }
+        [DataMember]
+        public string documento { get; set; }
+        [DataMember]
+        public string correo{ get; set; }
+        [DataMember]
+        public string telefono { get; set; }
+        [DataMember]
+        public string direccion { get; set; }
+        [DataMember]
+        public DateTime FechaNacimiento { get; set; }
+
+    }
+>>>>>>> c464aed82b45e56291b718127524f420952a1d28
 }

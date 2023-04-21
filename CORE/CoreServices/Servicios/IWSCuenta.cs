@@ -38,4 +38,21 @@ namespace CoreServices.Servicios
         bool Transferencia_MismoBanco(string CuentaOrigen, string CuentaDestino, decimal Monto);
     }
 
+<<<<<<< HEAD
+=======
+    [DataContract]
+    public class ClCuenta
+    {
+        [DataMember]
+        public int idCliente { get; set; }
+        [DataMember]
+        public int idTipoCuenta { get; set; }
+        [DataMember]
+        public int idBanco { get; set; }
+        [DataMember]
+        public string NumeroCuenta { get; set; }
+        [DataMember]
+        public bool Estado { get; set; }
+    }
+>>>>>>> c464aed82b45e56291b718127524f420952a1d28
 }
