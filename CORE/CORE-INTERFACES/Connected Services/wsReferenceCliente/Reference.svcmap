@@ -19,13 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://localhost:44362/Servicios/WSCliente.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost:44346/Servicios/WSCliente.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WSCliente.xsd" MetadataType="Schema" ID="145ab7ea-6999-4030-af9e-faf2e204de8a" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSCliente.svc?xsd=xsd0" />
-    <MetadataFile FileName="WSCliente1.xsd" MetadataType="Schema" ID="97f9bfd8-df24-4e0a-99b0-4915f45a6ee3" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSCliente.svc?xsd=xsd1" />
-    <MetadataFile FileName="WSCliente.wsdl" MetadataType="Wsdl" ID="6b958bc5-ebdc-4eef-9752-3d25db3bbdf5" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSCliente.svc?wsdl" />
-    <MetadataFile FileName="WSCliente.disco" MetadataType="Disco" ID="df828d6f-8721-4eb6-a2aa-d362719f18a1" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSCliente.svc?disco" />
+    <MetadataFile FileName="WSCliente1.wsdl" MetadataType="Wsdl" ID="bf183eb4-5a8c-44c0-8f17-5606b17b1b16" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCliente.svc?wsdl" />
+    <MetadataFile FileName="WSCliente2.xsd" MetadataType="Schema" ID="dbc2bb61-006b-4234-8c13-c88bb8b9a0b2" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCliente.svc?xsd=xsd2" />
+    <MetadataFile FileName="WSCliente21.xsd" MetadataType="Schema" ID="433a92f9-26e6-46d0-81da-977a57dfc6d8" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCliente.svc?xsd=xsd0" />
+    <MetadataFile FileName="WSCliente22.xsd" MetadataType="Schema" ID="f53da327-6d45-4745-aae9-ec2e1cc56bbc" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCliente.svc?xsd=xsd1" />
+    <MetadataFile FileName="WSCliente1.disco" MetadataType="Disco" ID="b35fccef-a0a1-4b25-994d-3c00553ae3e4" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCliente.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

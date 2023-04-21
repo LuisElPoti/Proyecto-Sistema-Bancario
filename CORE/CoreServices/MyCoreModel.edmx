@@ -169,7 +169,7 @@
           <Key>
             <PropertyRef Name="idTipo" />
           </Key>
-          <Property Name="idTipo" Type="int" Nullable="false" />
+          <Property Name="idTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
           <Property Name="FechaIngreso" Type="datetime" />
@@ -440,6 +440,9 @@
         </Association>
         <Function Name="GetAllMovimientobyCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllPrestamobyCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spDeleteCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="spDeleteCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idCuenta" Type="int" Mode="In" />
         </Function>
@@ -1380,6 +1383,9 @@
             <Parameter Name="clave" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Log" EntityType="DBCoreModel.Log" />
+          <FunctionImport Name="spDeleteCliente">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetAllCliente_Result">
           <Property Type="Int32" Name="idCliente" Nullable="false" />
@@ -1948,6 +1954,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spDeleteCliente" FunctionName="DBCoreModel.Store.spDeleteCliente" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

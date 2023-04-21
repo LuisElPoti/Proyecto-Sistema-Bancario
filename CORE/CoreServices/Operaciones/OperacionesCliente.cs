@@ -7,6 +7,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using log4net;
+using System.Xml.Linq;
 
 namespace CoreServices.Operaciones
 {
@@ -67,6 +68,25 @@ namespace CoreServices.Operaciones
             }
         }
 
+        public bool EliminarCliente(int id)
+        {
+            using (DBCoreEntities db = new DBCoreEntities())
+            {
+                try
+                {
+                    ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
+                    db.spDeleteCliente(id);
+
+                    log.Info("Something");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    log.Error("Fallo Insert Clientes: " + ex);
+                    return false;
+                }
+            }
+        }
         public bool UpdateClientes(int id, string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento)
         {
             using (DBCoreEntities db = new DBCoreEntities())

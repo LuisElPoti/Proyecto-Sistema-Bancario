@@ -20,6 +20,9 @@ namespace CoreServices.Servicios
         bool ActualizarCliente(int id, string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento);
 
         [OperationContract]
+        bool EliminarCliente(int id);
+
+        [OperationContract]
         DataTable MostrarClientes();
 
         [OperationContract]
