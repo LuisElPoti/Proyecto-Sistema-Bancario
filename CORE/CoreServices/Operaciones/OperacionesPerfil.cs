@@ -13,7 +13,7 @@ namespace CoreServices.Clases
     {
         public DataTable GetPerfil()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -62,7 +62,7 @@ namespace CoreServices.Clases
 
         public bool UpdatePerfiles(int idPerfil, string nombre, string descripcion)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spUpsertPerfil(idPerfil, nombre, descripcion);
 
@@ -79,7 +79,7 @@ namespace CoreServices.Clases
 
         public bool DeletePerfil(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spDeletePerfil(id);
 

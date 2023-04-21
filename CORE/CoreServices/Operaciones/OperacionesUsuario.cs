@@ -145,6 +145,8 @@ namespace CoreServices.Clases
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var Cliente = db.Cliente;
+                DataTable dt = new DataTable();
+                return dt;
 
                 
             }

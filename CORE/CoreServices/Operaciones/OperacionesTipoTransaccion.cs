@@ -14,7 +14,7 @@ namespace CoreServices.Operaciones
     {
         public DataTable GetAllTipoTransaccion()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -47,7 +47,7 @@ namespace CoreServices.Operaciones
 
         public bool InsertTipoTransaccion(string nombre, string descripcion)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
                 db.spInsertTipoTransaccion(nombre, descripcion);
@@ -65,7 +65,7 @@ namespace CoreServices.Operaciones
 
         public bool UpdateTipoTransaccion(int id, string nombre, string descripcion)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spUpsertTipoTransaccion(id, nombre, descripcion);
 
@@ -82,7 +82,7 @@ namespace CoreServices.Operaciones
 
         public bool DeleteTipoTransaccion(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spDeleteTipoTransaccion(id);
 
@@ -99,7 +99,7 @@ namespace CoreServices.Operaciones
 
         public DataTable GetTipoTransaccionbyID(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;

@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using CoreServices;
+
 namespace CORE_INTERFACES.wsReferenceCliente {
     
     
@@ -40,10 +42,10 @@ namespace CORE_INTERFACES.wsReferenceCliente {
         System.Threading.Tasks.Task<System.Data.DataTable> MostrarClientesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCliente/BuscarCliente", ReplyAction="http://tempuri.org/IWSCliente/BuscarClienteResponse")]
-        System.Data.DataTable BuscarCliente(int id);
+        System.Collections.Generic.List<Cliente> BuscarCliente(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCliente/BuscarCliente", ReplyAction="http://tempuri.org/IWSCliente/BuscarClienteResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> BuscarClienteAsync(int id);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Cliente>> BuscarClienteAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -105,11 +107,11 @@ namespace CORE_INTERFACES.wsReferenceCliente {
             return base.Channel.MostrarClientesAsync();
         }
         
-        public System.Data.DataTable BuscarCliente(int id) {
+        public System.Collections.Generic.List<Cliente> BuscarCliente(int id) {
             return base.Channel.BuscarCliente(id);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarClienteAsync(int id) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Cliente>> BuscarClienteAsync(int id) {
             return base.Channel.BuscarClienteAsync(id);
         }
     }

@@ -69,12 +69,13 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPerfil.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPerfil.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvPerfil.Location = new System.Drawing.Point(74, 465);
+            this.dgvPerfil.Location = new System.Drawing.Point(56, 378);
+            this.dgvPerfil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvPerfil.Name = "dgvPerfil";
             this.dgvPerfil.RowHeadersVisible = false;
             this.dgvPerfil.RowHeadersWidth = 51;
             this.dgvPerfil.RowTemplate.Height = 24;
-            this.dgvPerfil.Size = new System.Drawing.Size(819, 221);
+            this.dgvPerfil.Size = new System.Drawing.Size(614, 180);
             this.dgvPerfil.TabIndex = 47;
             this.dgvPerfil.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvPerfil.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -110,9 +111,10 @@
             this.btnEliminar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
             this.btnEliminar.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminar.Location = new System.Drawing.Point(599, 381);
+            this.btnEliminar.Location = new System.Drawing.Point(449, 310);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(130, 41);
+            this.btnEliminar.Size = new System.Drawing.Size(98, 33);
             this.btnEliminar.TabIndex = 46;
             this.btnEliminar.Text = "Eliminar";
             // 
@@ -128,9 +130,10 @@
             this.btnEditar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
             this.btnEditar.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
-            this.btnEditar.Location = new System.Drawing.Point(417, 381);
+            this.btnEditar.Location = new System.Drawing.Point(313, 310);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(130, 41);
+            this.btnEditar.Size = new System.Drawing.Size(98, 33);
             this.btnEditar.TabIndex = 45;
             this.btnEditar.Text = "Editar";
             // 
@@ -146,9 +149,10 @@
             this.btnBuscar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
             this.btnBuscar.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnBuscar.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscar.Location = new System.Drawing.Point(575, 178);
+            this.btnBuscar.Location = new System.Drawing.Point(431, 145);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(112, 41);
+            this.btnBuscar.Size = new System.Drawing.Size(84, 33);
             this.btnBuscar.TabIndex = 42;
             this.btnBuscar.Text = "Buscar";
             // 
@@ -164,11 +168,13 @@
             this.btnRegistrar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
             this.btnRegistrar.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnRegistrar.ForeColor = System.Drawing.Color.Black;
-            this.btnRegistrar.Location = new System.Drawing.Point(237, 381);
+            this.btnRegistrar.Location = new System.Drawing.Point(178, 310);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(130, 41);
+            this.btnRegistrar.Size = new System.Drawing.Size(98, 33);
             this.btnRegistrar.TabIndex = 41;
             this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // label1
             // 
@@ -176,9 +182,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(7)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(782, 155);
+            this.label1.Location = new System.Drawing.Point(586, 126);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 25);
+            this.label1.Size = new System.Drawing.Size(31, 22);
             this.label1.TabIndex = 36;
             this.label1.Text = "ID";
             // 
@@ -194,13 +201,13 @@
             this.tbID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbID.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tbID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbID.Location = new System.Drawing.Point(723, 184);
-            this.tbID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbID.Location = new System.Drawing.Point(542, 150);
+            this.tbID.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tbID.Name = "tbID";
             this.tbID.PasswordChar = '\0';
             this.tbID.PlaceholderText = "";
             this.tbID.SelectedText = "";
-            this.tbID.Size = new System.Drawing.Size(160, 35);
+            this.tbID.Size = new System.Drawing.Size(120, 28);
             this.tbID.TabIndex = 35;
             // 
             // label3
@@ -209,9 +216,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(7)))), ((int)(((byte)(82)))));
-            this.label3.Location = new System.Drawing.Point(443, 40);
+            this.label3.Location = new System.Drawing.Point(332, 32);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 32);
+            this.label3.Size = new System.Drawing.Size(64, 25);
             this.label3.TabIndex = 34;
             this.label3.Text = "Perfíl";
             // 
@@ -221,9 +229,10 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(7)))), ((int)(((byte)(82)))));
-            this.label6.Location = new System.Drawing.Point(573, 275);
+            this.label6.Location = new System.Drawing.Point(430, 223);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 25);
+            this.label6.Size = new System.Drawing.Size(107, 22);
             this.label6.TabIndex = 49;
             this.label6.Text = "Descripción";
             // 
@@ -239,13 +248,13 @@
             this.tbDescripcion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tbDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbDescripcion.Location = new System.Drawing.Point(520, 313);
-            this.tbDescripcion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbDescripcion.Location = new System.Drawing.Point(390, 254);
+            this.tbDescripcion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tbDescripcion.Name = "tbDescripcion";
             this.tbDescripcion.PasswordChar = '\0';
             this.tbDescripcion.PlaceholderText = "";
             this.tbDescripcion.SelectedText = "";
-            this.tbDescripcion.Size = new System.Drawing.Size(227, 35);
+            this.tbDescripcion.Size = new System.Drawing.Size(170, 28);
             this.tbDescripcion.TabIndex = 48;
             // 
             // tbNombre
@@ -260,13 +269,13 @@
             this.tbNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tbNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbNombre.Location = new System.Drawing.Point(227, 313);
-            this.tbNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbNombre.Location = new System.Drawing.Point(170, 254);
+            this.tbNombre.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.PasswordChar = '\0';
             this.tbNombre.PlaceholderText = "";
             this.tbNombre.SelectedText = "";
-            this.tbNombre.Size = new System.Drawing.Size(227, 35);
+            this.tbNombre.Size = new System.Drawing.Size(170, 28);
             this.tbNombre.TabIndex = 51;
             // 
             // label7
@@ -275,17 +284,18 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(7)))), ((int)(((byte)(82)))));
-            this.label7.Location = new System.Drawing.Point(297, 275);
+            this.label7.Location = new System.Drawing.Point(223, 223);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 25);
+            this.label7.Size = new System.Drawing.Size(76, 22);
             this.label7.TabIndex = 50;
             this.label7.Text = "Nombre";
             // 
             // frmPerfil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 687);
+            this.ClientSize = new System.Drawing.Size(728, 558);
             this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -299,10 +309,10 @@
             this.Controls.Add(this.tbID);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmPerfil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmPerfil";
-            this.Load += new System.EventHandler(this.frmPerfil_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPerfil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

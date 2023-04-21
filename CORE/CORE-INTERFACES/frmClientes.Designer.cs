@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -35,6 +36,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dgbClientes = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnEliminar = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btnEditar = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2GradientTileButton4 = new Guna.UI2.WinForms.Guna2GradientTileButton();
@@ -54,6 +56,7 @@
             this.tpFechaNacimiento = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.cbTipoDocumento = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgbClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tbNombre
@@ -154,6 +157,10 @@
             this.dgbClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgbClientes.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // dataTableBindingSource
+            // 
+            this.dataTableBindingSource.DataSource = typeof(System.Data.DataTable);
+            // 
             // btnEliminar
             // 
             this.btnEliminar.BorderRadius = 20;
@@ -212,6 +219,7 @@
             this.guna2GradientTileButton4.Size = new System.Drawing.Size(112, 41);
             this.guna2GradientTileButton4.TabIndex = 56;
             this.guna2GradientTileButton4.Text = "Buscar";
+            this.guna2GradientTileButton4.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnRegistrar
             // 
@@ -490,6 +498,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmClientes";
             ((System.ComponentModel.ISupportInitialize)(this.dgbClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -519,5 +528,6 @@
         private Guna.UI2.WinForms.Guna2TextBox tbDireccion;
         private Guna.UI2.WinForms.Guna2DateTimePicker tpFechaNacimiento;
         private Guna.UI2.WinForms.Guna2ComboBox cbTipoDocumento;
+        private System.Windows.Forms.BindingSource dataTableBindingSource;
     }
 }
