@@ -14,12 +14,12 @@ namespace CAJA
 {
     public partial class cajaC : Form
     {
-        decimal monto_total = 0;
-        SqlConnection conn = new SqlConnection("Server=tcp:sistema-bancario-server.database.windows.net,1433;Database=DBCaja;User ID=Administrador@sistema-bancario-server;Password=sistema.banco21;Trusted_Connection=False;Encrypt=True;");
-
         public cajaC()
         {
             InitializeComponent();
+            cmbox_opciones.Items.Add("entrada");
+            cmbox_opciones.Items.Add("salida");
+
         }
 
         private void txt_usuario_login_Click(object sender, EventArgs e)
@@ -40,52 +40,68 @@ namespace CAJA
             this.Close();
         }
 
+        private int tipo_transaccionCore(string cb)
+        {
+            if (cb == "entrada")
+            {
+                return 1;
+            }
+            else if (cb == "salida")
+            {
+                return 2;
+            }
+            else return 3;
+        }
+
         private void btn_realizar_Click(object sender, EventArgs e)
         {
-            conn.Open();
-
-            try
+            using (DBCajaEntities db = new DBCajaEntities())
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO caja (monto_caja, id_sucursal) VALUES (@Monto, 2)", conn);
-                cmd.Parameters.AddWithValue("@Monto", monto_total);
 
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Transacción realizada de manera exitosa");
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("No se pudo completar la transacción");
-            }
+                var conn = (SqlConnection)db.Database.Connection;
 
-            conn.Close();
+                conn.Open();
+                using (SqlTransaction transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        using (SqlCommand command = new SqlCommand("sp_modificar_monto_caja", conn, transaction))
+                        {
+                            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                            command.Parameters.AddWithValue("@id_caja", CurrentUser.Id_caja);
+                            command.Parameters.AddWithValue("@Tipo", tipo_transaccionCore(cmbox_opciones.SelectedItem.ToString()));
+                            command.Parameters.AddWithValue("@Monto", (txtBox_montocaja.Text));
+
+                            command.ExecuteNonQuery();
+
+                            Console.WriteLine("Stored procedure executed successfully.");
+
+                            transaction.Commit();
+                        }
+                    }catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("la transaccion fue un error por rollback");
+                    }
+                }
+            }
+        }
+
+
+        private void txtBox_Cajero_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBox_montocaja_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void cmbox_opciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbox_opciones.SelectedItem.ToString() == "Salida")
-            {
-                try
-                {
-                    decimal Monto = Convert.ToDecimal(txtBox_montocaja.Text);
-                    monto_total -= Monto;
-                }
-                catch (FormatException)
-                {
-                    MessageBox.Show("Por favor ingrese un valor decimal válido");
-                }
-            }
-            else if (cmbox_opciones.SelectedItem.ToString() == "Entrada")
-            {
-                try
-                {
-                    decimal Monto = Convert.ToDecimal(txtBox_montocaja.Text);
-                    monto_total += Monto;
-                }
-                catch (FormatException)
-                {
-                    MessageBox.Show("Por favor ingrese un valor decimal válido");
-                }
-            }
+
         }
     }
 }
