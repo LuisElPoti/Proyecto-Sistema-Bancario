@@ -231,12 +231,7 @@
             <section class="content">
                 <form id="form1" runat="server">
                     <div>
-                         <div class="col-md-4">
-                         <div class="form-group" class="bg-gray">
-                             <asp:Label ID="LabelID" runat="server" Text="Este es tu ID"></asp:Label>
-                             <asp:TextBox ID="txtID" runat="server" CssClass="form-control" ReadOnly="True"></asp:TextBox>
-                         </div>
-                         </div>
+                      
                         <asp:ContentPlaceHolder ID="Content" runat="server">
                                 <div class="container-fluid"></div>
 

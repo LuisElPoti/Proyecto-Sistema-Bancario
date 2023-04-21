@@ -37,8 +37,8 @@ namespace NETBANKING.Pages
                 try
                 {
                     var banco = DdBanco.Text;
-                    string query = "SELECT UsuarioID FROM tblUsuario WHERE UsuariID = 3";
-                    string query2 = "SELECT BancoID FROM tblBanco WHERE Descripcion = @banco";
+                    string query = "SELECT UsuarioID FROM tblUsuario WHERE UsuarioID = usuarioID";
+                    string query2 = "SELECT BancoID FROM tblBanco WHERE Descripcion = banco";
                     ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
                     db.spInsertarBeneficiario(int.Parse(query), AsignarTipoDocumento(DdTipoDocumento.Text), txtDocumento.Text, txtAlias.Text, txtCorreo.Text, int.Parse(query2));
 

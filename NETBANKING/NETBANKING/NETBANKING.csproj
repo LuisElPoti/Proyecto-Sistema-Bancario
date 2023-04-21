@@ -50,6 +50,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -328,7 +331,6 @@
     <Content Include="img\credit\paypal2.png" />
     <Content Include="img\credit\visa.png" />
     <Content Include="img\icons.png" />
-    <Content Include="LoginPages\Logo.png" />
     <Content Include="img\sprite-skin-flat.png" />
     <Content Include="img\sprite-skin-nice.png" />
     <Content Include="img\user-bg.png" />
@@ -456,14 +458,14 @@
     <Content Include="js\plugins\sparkline\jquery.sparkline.min.js" />
     <Content Include="js\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="js\plugins\timepicker\bootstrap-timepicker.min.js" />
-    <Content Include="LoginPages\LoginForm.aspx" />
-    <Content Include="LoginPages\SignInForm.aspx" />
-    <Content Include="LoginPages\SignInFormPt2.aspx" />
     <Content Include="Pages\BeneficiariosForm.aspx" />
     <Content Include="Pages\DetalleCuentaForm.aspx" />
     <Content Include="Pages\InicioForm.aspx" />
+    <Content Include="Pages\LoginForm.aspx" />
     <Content Include="Pages\MiPerfilForm.aspx" />
     <Content Include="Pages\PagoPrestamosForm.aspx" />
+    <Content Include="Pages\SignInForm.aspx" />
+    <Content Include="Pages\SignInFormPt2.aspx" />
     <Content Include="Pages\TransaccionesInterbancariasForm.aspx" />
     <Content Include="Pages\TransaccionesTercerosForm.aspx" />
     <Content Include="Pages\TransaccionesPropiasForm.aspx" />
@@ -527,6 +529,7 @@
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="log4net.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -607,27 +610,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="LoginPages\LoginForm.aspx.cs">
-      <DependentUpon>LoginForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LoginPages\LoginForm.aspx.designer.cs">
-      <DependentUpon>LoginForm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LoginPages\SignInForm.aspx.cs">
-      <DependentUpon>SignInForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LoginPages\SignInForm.aspx.designer.cs">
-      <DependentUpon>SignInForm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LoginPages\SignInFormPt2.aspx.cs">
-      <DependentUpon>SignInFormPt2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LoginPages\SignInFormPt2.aspx.designer.cs">
-      <DependentUpon>SignInFormPt2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="MP.Master.cs">
       <DependentUpon>MP.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -656,6 +638,13 @@
     <Compile Include="Pages\InicioForm.aspx.designer.cs">
       <DependentUpon>InicioForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\LoginForm.aspx.cs">
+      <DependentUpon>LoginForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\LoginForm.aspx.designer.cs">
+      <DependentUpon>LoginForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MiPerfilForm.aspx.cs">
       <DependentUpon>MiPerfilForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -669,6 +658,20 @@
     </Compile>
     <Compile Include="Pages\PagoPrestamosForm.aspx.designer.cs">
       <DependentUpon>PagoPrestamosForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SignInForm.aspx.cs">
+      <DependentUpon>SignInForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SignInForm.aspx.designer.cs">
+      <DependentUpon>SignInForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SignInFormPt2.aspx.cs">
+      <DependentUpon>SignInFormPt2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SignInFormPt2.aspx.designer.cs">
+      <DependentUpon>SignInFormPt2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\TransaccionesInterbancariasForm.aspx.cs">
       <DependentUpon>TransaccionesInterbancariasForm.aspx</DependentUpon>

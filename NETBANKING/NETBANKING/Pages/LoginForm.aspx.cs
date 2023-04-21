@@ -16,8 +16,7 @@ namespace NETBANKING
    
     public partial class LoginForm : System.Web.UI.Page
     {
-        public User usuario = new User();
-
+       
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -41,6 +40,7 @@ namespace NETBANKING
 
                     using (var cmd = conn.CreateCommand())
                     {
+
                         cmd.CommandText = "ValidarUsuario";
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add(new SqlParameter("nombre", txtUsuario.Text));
@@ -50,7 +50,7 @@ namespace NETBANKING
                      
                         if (reader.Read())
                             {
-                                usuario.SetDatosUsuarios(txtUsuario.Text, txtClave.Text);
+                                
                                 Response.Redirect("InicioForm.aspx");
                             }
                             else
