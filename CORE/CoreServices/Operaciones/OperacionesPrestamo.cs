@@ -22,9 +22,9 @@ namespace CoreServices.Operaciones
                 if (connectionState != ConnectionState.Open) conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "spGetPerfilById";
+                    cmd.CommandText = "spGetPrestamobyCuenta";
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("idPefil", id));
+                    cmd.Parameters.Add(new SqlParameter("idCuenta", id));
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
