@@ -14,12 +14,6 @@ namespace CoreServices
     
     public partial class Transaccion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Transaccion()
-        {
-            this.Movimiento = new HashSet<Movimiento>();
-        }
-    
         public int idTransaccion { get; set; }
         public int idTipo { get; set; }
         public int idMoneda { get; set; }
@@ -33,8 +27,6 @@ namespace CoreServices
         public virtual Cuenta Cuenta { get; set; }
         public virtual Estado Estado { get; set; }
         public virtual Moneda Moneda { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Movimiento> Movimiento { get; set; }
         public virtual TipoTransaccion TipoTransaccion { get; set; }
     }
 }

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="WSCuenta" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://localhost:44346/Servicios/WSCuenta.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://localhost:44346/Servicios/WSCuenta.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://localhost:44346/Servicios/WSCuenta.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CoreServices" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWSCuenta_CrearCuenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearCuenta" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_CrearCuenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_EliminarCuenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCuenta" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_EliminarCuenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_ActualizarCuenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCuenta" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_ActualizarCuenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_MostrarCuentas_InputMessage">
+    <wsdl:part name="parameters" element="tns:MostrarCuentas" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_MostrarCuentas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MostrarCuentasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_BuscarCuenta_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarCuenta" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_BuscarCuenta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_Deposito_Retiro_InputMessage">
+    <wsdl:part name="parameters" element="tns:Deposito_Retiro" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_Deposito_Retiro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Deposito_RetiroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_Pago_Prestamo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Pago_Prestamo" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_Pago_Prestamo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Pago_PrestamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_CrearTransferencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearTransferencia" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_CrearTransferencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearTransferenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_Transferencia_MismoBanco_InputMessage">
+    <wsdl:part name="parameters" element="tns:Transferencia_MismoBanco" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_Transferencia_MismoBanco_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Transferencia_MismoBancoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWSCuenta">
+    <wsdl:operation name="CrearCuenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/CrearCuenta" message="tns:IWSCuenta_CrearCuenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/CrearCuentaResponse" message="tns:IWSCuenta_CrearCuenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCuenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/EliminarCuenta" message="tns:IWSCuenta_EliminarCuenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/EliminarCuentaResponse" message="tns:IWSCuenta_EliminarCuenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCuenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/ActualizarCuenta" message="tns:IWSCuenta_ActualizarCuenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/ActualizarCuentaResponse" message="tns:IWSCuenta_ActualizarCuenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCuentas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/MostrarCuentas" message="tns:IWSCuenta_MostrarCuentas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/MostrarCuentasResponse" message="tns:IWSCuenta_MostrarCuentas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCuenta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/BuscarCuenta" message="tns:IWSCuenta_BuscarCuenta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/BuscarCuentaResponse" message="tns:IWSCuenta_BuscarCuenta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Deposito_Retiro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/Deposito_Retiro" message="tns:IWSCuenta_Deposito_Retiro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/Deposito_RetiroResponse" message="tns:IWSCuenta_Deposito_Retiro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Pago_Prestamo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/Pago_Prestamo" message="tns:IWSCuenta_Pago_Prestamo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/Pago_PrestamoResponse" message="tns:IWSCuenta_Pago_Prestamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearTransferencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/CrearTransferencia" message="tns:IWSCuenta_CrearTransferencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/CrearTransferenciaResponse" message="tns:IWSCuenta_CrearTransferencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Transferencia_MismoBanco">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/Transferencia_MismoBanco" message="tns:IWSCuenta_Transferencia_MismoBanco_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/Transferencia_MismoBancoResponse" message="tns:IWSCuenta_Transferencia_MismoBanco_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWSCuenta" type="tns:IWSCuenta">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearCuenta">
+      <soap:operation soapAction="http://tempuri.org/IWSCuenta/CrearCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarCuenta">
+      <soap:operation soapAction="http://tempuri.org/IWSCuenta/EliminarCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarCuenta">
+      <soap:operation soapAction="http://tempuri.org/IWSCuenta/ActualizarCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MostrarCuentas">
+      <soap:operation soapAction="http://tempuri.org/IWSCuenta/MostrarCuentas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCuenta">
+      <soap:operation soapAction="http://tempuri.org/IWSCuenta/BuscarCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Deposito_Retiro">
+      <soap:operation soapAction="http://tempuri.org/IWSCuenta/Deposito_Retiro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Pago_Prestamo">
+      <soap:operation soapAction="http://tempuri.org/IWSCuenta/Pago_Prestamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearTransferencia">
+      <soap:operation soapAction="http://tempuri.org/IWSCuenta/CrearTransferencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transferencia_MismoBanco">
+      <soap:operation soapAction="http://tempuri.org/IWSCuenta/Transferencia_MismoBanco" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSCuenta">
+    <wsdl:port name="BasicHttpBinding_IWSCuenta" binding="tns:BasicHttpBinding_IWSCuenta">
+      <soap:address location="http://localhost:53368/Servicios/WSCuenta.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

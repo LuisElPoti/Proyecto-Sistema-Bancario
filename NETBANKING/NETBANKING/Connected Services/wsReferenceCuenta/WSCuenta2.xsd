@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44346/Servicios/WSCuenta.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CoreServices" />
+  <xs:element name="CrearCuenta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idCliente" type="xs:int" />
+        <xs:element minOccurs="0" name="idTipoCuenta" type="xs:int" />
+        <xs:element minOccurs="0" name="idBanco" type="xs:int" />
+        <xs:element minOccurs="0" name="NumeroCuenta" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Estado" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearCuentaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CrearCuentaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarCuenta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarCuentaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EliminarCuentaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarCuenta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idCuenta" type="xs:int" />
+        <xs:element minOccurs="0" name="Estado" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Balance" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarCuentaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActualizarCuentaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MostrarCuentas">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MostrarCuentasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/CoreServices" minOccurs="0" name="MostrarCuentasResult" nillable="true" type="q1:ArrayOfCuenta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarCuenta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarCuentaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CoreServices" minOccurs="0" name="BuscarCuentaResult" nillable="true" type="q2:ArrayOfCuenta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Deposito_Retiro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tipo" type="xs:int" />
+        <xs:element minOccurs="0" name="NumeroCuenta" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Monto" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Deposito_RetiroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Deposito_RetiroResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Pago_Prestamo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPrestamo" type="xs:int" />
+        <xs:element minOccurs="0" name="Monto" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Pago_PrestamoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Pago_PrestamoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearTransferencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idTipo" type="xs:int" />
+        <xs:element minOccurs="0" name="idMoneda" type="xs:int" />
+        <xs:element minOccurs="0" name="idEstado" type="xs:int" />
+        <xs:element minOccurs="0" name="CuentaOrigen" type="xs:int" />
+        <xs:element minOccurs="0" name="CuentaDestino" type="xs:int" />
+        <xs:element minOccurs="0" name="Monto" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearTransferenciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CrearTransferenciaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Transferencia_MismoBanco">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CuentaOrigen" type="xs:int" />
+        <xs:element minOccurs="0" name="CuentaDestino" type="xs:int" />
+        <xs:element minOccurs="0" name="Monto" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Transferencia_MismoBancoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Transferencia_MismoBancoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
