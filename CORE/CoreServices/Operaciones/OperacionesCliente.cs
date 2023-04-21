@@ -6,12 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
+using log4net;
 
 namespace CoreServices.Operaciones
 {
     public class OperacionesCliente
     {
-
+        log4net.ILog log;
         public DataTable GetClientes()
         {
             using (DBCoreEntities db = new DBCoreEntities())
@@ -31,16 +32,17 @@ namespace CoreServices.Operaciones
                             dt.Load(reader);
                         }
                     }
+                    log.Info("Select Clientes Realizado.");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    log.Error("Select Clientes Fallido." + ex);
                     throw;
                 }
                 finally
                 {
                     if (connectionState != ConnectionState.Closed) conn.Close();
                 }
-
                 return dt;
             }
         }
@@ -49,15 +51,17 @@ namespace CoreServices.Operaciones
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
-                db.spInsertCliente(nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
-
-                if (Convert.ToInt32(ReturnedValue.Value) >= 1)
+                try
                 {
+                    ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
+                    db.spInsertCliente(nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
+
+                    log.Info("Something");
                     return true;
                 }
-                else
+                catch(Exception ex)
                 {
+                    log.Error("Fallo Insert Clientes: "+ex);
                     return false;
                 }
             }
@@ -67,14 +71,16 @@ namespace CoreServices.Operaciones
         {
             using (DBCoreEntities db = new DBCoreEntities())
             {
-                int ReturnedValue = db.spUpsertCliente(id, nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
-
-                if (ReturnedValue >= 1)
+                try
                 {
+                    int ReturnedValue = db.spUpsertCliente(id, nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
+
+                    log.Info("Update Clientes Realizado.");
                     return true;
                 }
-                else
+                catch(Exception ex)
                 {
+                    log.Error("Fallo Update Clientes: "+ex);
                     return false;
                 }
             }
@@ -100,9 +106,11 @@ namespace CoreServices.Operaciones
                             dt.Load(reader);
                         }
                     }
+                    log.Info("Select por ID Realizado.");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    log.Error("Fallo select por ID: "+ex);
                     throw;
                 }
                 finally
