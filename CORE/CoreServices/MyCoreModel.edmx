@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBCoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBCoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Banco">
           <Key>
             <PropertyRef Name="idBanco" />
@@ -573,8 +573,8 @@
         </Function>
         <Function Name="TransferenciaMismoBanco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="monto" Type="money" Mode="In" />
-          <Parameter Name="cuentaOrigen" Type="varchar" Mode="In" />
-          <Parameter Name="cuentaDestino" Type="varchar" Mode="In" />
+          <Parameter Name="cuentaOrigen" Type="int" Mode="In" />
+          <Parameter Name="cuentaDestino" Type="int" Mode="In" />
         </Function>
         <Function Name="ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="nvarchar" Mode="In" />
@@ -680,7 +680,8 @@
             <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBCoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -784,6 +785,18 @@
           <NavigationProperty Name="Detalle_Prestamo" Relationship="Self.FK_Estado_Detalle" FromRole="Estado" ToRole="Detalle_Prestamo" />
           <NavigationProperty Name="Transaccion" Relationship="Self.FK_Estado_Transaccion" FromRole="Estado" ToRole="Transaccion" />
         </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Thread" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Level" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Logger" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Moneda">
           <Key>
             <PropertyRef Name="idMoneda" />
@@ -867,7 +880,7 @@
           <Key>
             <PropertyRef Name="idTipo" />
           </Key>
-          <Property Name="idTipo" Type="Int32" Nullable="false" />
+          <Property Name="idTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
@@ -1145,7 +1158,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBCoreEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBCoreEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Banco" EntityType="Self.Banco" />
           <EntitySet Name="Beneficiario" EntityType="Self.Beneficiario" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
@@ -1153,6 +1166,7 @@
           <EntitySet Name="Cuenta_Beneficiario" EntityType="Self.Cuenta_Beneficiario" />
           <EntitySet Name="Detalle_Prestamo" EntityType="Self.Detalle_Prestamo" />
           <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Log" EntityType="Self.Log" />
           <EntitySet Name="Moneda" EntityType="Self.Moneda" />
           <EntitySet Name="Movimiento" EntityType="Self.Movimiento" />
           <EntitySet Name="Perfil" EntityType="Self.Perfil" />
@@ -1243,20 +1257,25 @@
             <End Role="TipoTransaccion" EntitySet="TipoTransaccion" />
             <End Role="Transaccion" EntitySet="Transaccion" />
           </AssociationSet>
+          <FunctionImport Name="GetAllMovimientobyCuenta" ReturnType="Collection(DBCoreModel.GetAllMovimientobyCuenta_Result)" />
+          <FunctionImport Name="GetAllPrestamobyCliente" ReturnType="Collection(DBCoreModel.GetAllPrestamobyCliente_Result)" />
+          <FunctionImport Name="spDeleteCliente">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="spDeleteCuenta">
-          <Parameter Name="idCuenta" Mode="In" Type="Int32" />
+            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeletePerfil">
-          <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+            <Parameter Name="idPerfil" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeletePrestamo">
-          <Parameter Name="idPrestamo" Mode="In" Type="Int32" />
+            <Parameter Name="idPrestamo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteTipoTransaccion">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDeleteUsuario">
-          <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetAllCliente" ReturnType="Collection(DBCoreModel.spGetAllCliente_Result)" />
           <FunctionImport Name="spGetAllCuenta" ReturnType="Collection(DBCoreModel.spGetAllCuenta_Result)" />
@@ -1265,22 +1284,25 @@
           <FunctionImport Name="spGetAllTipoTransaccion" ReturnType="Collection(DBCoreModel.spGetAllTipoTransaccion_Result)" />
           <FunctionImport Name="spGetAllUsuario" ReturnType="Collection(DBCoreModel.spGetAllUsuario_Result)" />
           <FunctionImport Name="spGetClienteById" ReturnType="Collection(DBCoreModel.spGetClienteById_Result)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetCuentabyCliente" ReturnType="Collection(DBCoreModel.spGetCuentabyCliente_Result)">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetCuentaById" ReturnType="Collection(DBCoreModel.spGetCuentaById_Result)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetPerfilById" ReturnType="Collection(DBCoreModel.spGetPerfilById_Result)">
-          <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+            <Parameter Name="idPerfil" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetPrestamoByCuenta" ReturnType="Collection(DBCoreModel.spGetPrestamoByCuenta_Result)">
-          <Parameter Name="idCuenta" Mode="In" Type="Int32" />
+            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetTipoTransaccionById" ReturnType="Collection(DBCoreModel.spGetTipoTransaccionById_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spGetUsuarioById" ReturnType="Collection(DBCoreModel.spGetUsuarioById_Result)">
-          <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spInsertCliente">
             <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -1318,6 +1340,15 @@
             <Parameter Name="idCliente" Mode="In" Type="Int32" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Clave" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spOperaciones">
+            <Parameter Name="Tipo" Mode="In" Type="Int32" />
+            <Parameter Name="NumeroCuenta" Mode="In" Type="String" />
+            <Parameter Name="Monto" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spPagoPrestamo">
+            <Parameter Name="idPrestamo" Mode="In" Type="Int32" />
+            <Parameter Name="Monto" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="spUpsertCliente">
             <Parameter Name="Id" Mode="In" Type="Int32" />
@@ -1359,34 +1390,26 @@
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Clave" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetAllMovimientobyCuenta" ReturnType="Collection(DBCoreModel.GetAllMovimientobyCuenta_Result)" />
-          <FunctionImport Name="GetAllPrestamobyCliente" ReturnType="Collection(DBCoreModel.GetAllPrestamobyCliente_Result)" />
-          <FunctionImport Name="spGetCuentabyCliente" ReturnType="Collection(DBCoreModel.spGetCuentabyCliente_Result)">
-          <Parameter Name="idCliente" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="spOperaciones">
-            <Parameter Name="Tipo" Mode="In" Type="Int32" />
-            <Parameter Name="NumeroCuenta" Mode="In" Type="String" />
-            <Parameter Name="Monto" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="spPagoPrestamo">
-            <Parameter Name="idPrestamo" Mode="In" Type="Int32" />
-            <Parameter Name="Monto" Mode="In" Type="Decimal" />
-          </FunctionImport>
           <FunctionImport Name="TransferenciaMismoBanco">
             <Parameter Name="monto" Mode="In" Type="Decimal" />
-            <Parameter Name="cuentaOrigen" Mode="In" Type="String" />
-            <Parameter Name="cuentaDestino" Mode="In" Type="String" />
+            <Parameter Name="cuentaOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="cuentaDestino" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ValidarUsuario" ReturnType="Collection(DBCoreModel.ValidarUsuario_Result)">
             <Parameter Name="nombre" Mode="In" Type="String" />
             <Parameter Name="clave" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Log" EntityType="DBCoreModel.Log" />
-          <FunctionImport Name="spDeleteCliente">
-          <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="GetAllMovimientobyCuenta_Result">
+          <Property Type="String" Name="Numero_Cuenta" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="Asunto" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Tipo_Movimiento" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="GetAllPrestamobyCliente_Result">
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="80" />
+          <Property Type="Decimal" Name="Deuda" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="Fecha_de_Corte" Nullable="false" Precision="23" />
+        </ComplexType>
         <ComplexType Name="spGetAllCliente_Result">
           <Property Type="Int32" Name="idCliente" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="80" />
@@ -1448,6 +1471,16 @@
           <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
         </ComplexType>
+        <ComplexType Name="spGetCuentabyCliente_Result">
+          <Property Type="Int32" Name="idCuenta" Nullable="false" />
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="Int32" Name="idTipoCuenta" Nullable="false" />
+          <Property Type="Int32" Name="idBanco" Nullable="false" />
+          <Property Type="String" Name="NumeroCuenta" Nullable="false" MaxLength="80" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="Decimal" Name="Balance" Nullable="false" Precision="19" />
+          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
+        </ComplexType>
         <ComplexType Name="spGetCuentaById_Result">
           <Property Type="Int32" Name="idCuenta" Nullable="false" />
           <Property Type="Int32" Name="idCliente" Nullable="false" />
@@ -1487,26 +1520,6 @@
           <Property Type="String" Name="Clave" Nullable="false" MaxLength="80" />
           <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
         </ComplexType>
-        <ComplexType Name="GetAllMovimientobyCuenta_Result">
-          <Property Type="String" Name="Numero_Cuenta" Nullable="false" MaxLength="80" />
-          <Property Type="String" Name="Asunto" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="Tipo_Movimiento" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="GetAllPrestamobyCliente_Result">
-          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="80" />
-          <Property Type="Decimal" Name="Deuda" Nullable="false" Precision="19" />
-          <Property Type="DateTime" Name="Fecha_de_Corte" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="spGetCuentabyCliente_Result">
-          <Property Type="Int32" Name="idCuenta" Nullable="false" />
-          <Property Type="Int32" Name="idCliente" Nullable="false" />
-          <Property Type="Int32" Name="idTipoCuenta" Nullable="false" />
-          <Property Type="Int32" Name="idBanco" Nullable="false" />
-          <Property Type="String" Name="NumeroCuenta" Nullable="false" MaxLength="80" />
-          <Property Type="Boolean" Name="Estado" Nullable="false" />
-          <Property Type="Decimal" Name="Balance" Nullable="false" Precision="19" />
-          <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
-        </ComplexType>
         <ComplexType Name="ValidarUsuario_Result">
           <Property Type="Int32" Name="idUsuario" Nullable="false" />
           <Property Type="Int32" Name="idCliente" Nullable="false" />
@@ -1515,24 +1528,12 @@
           <Property Type="String" Name="Clave" Nullable="false" MaxLength="80" />
           <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
         </ComplexType>
-        <EntityType Name="Log">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBCoreModelStoreContainer" CdmEntityContainer="DBCoreEntities">
+        <EntityContainerMapping StorageEntityContainer="DBCoreModelStoreContainer" CdmEntityContainer="DBCoreEntities1">
           <EntitySetMapping Name="Banco">
             <EntityTypeMapping TypeName="DBCoreModel.Banco">
               <MappingFragment StoreEntitySet="Banco">
@@ -1616,6 +1617,19 @@
                 <ScalarProperty Name="idEstado" ColumnName="idEstado" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="DBCoreModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Thread" ColumnName="Thread" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Logger" ColumnName="Logger" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1729,6 +1743,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllMovimientobyCuenta" FunctionName="DBCoreModel.Store.GetAllMovimientobyCuenta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.GetAllMovimientobyCuenta_Result">
+                <ScalarProperty Name="Numero_Cuenta" ColumnName="Numero Cuenta" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="Tipo_Movimiento" ColumnName="Tipo Movimiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPrestamobyCliente" FunctionName="DBCoreModel.Store.GetAllPrestamobyCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.GetAllPrestamobyCliente_Result">
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Deuda" ColumnName="Deuda" />
+                <ScalarProperty Name="Fecha_de_Corte" ColumnName="Fecha de Corte" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDeleteCliente" FunctionName="DBCoreModel.Store.spDeleteCliente" />
           <FunctionImportMapping FunctionImportName="spDeleteCuenta" FunctionName="DBCoreModel.Store.spDeleteCuenta" />
           <FunctionImportMapping FunctionImportName="spDeletePerfil" FunctionName="DBCoreModel.Store.spDeletePerfil" />
           <FunctionImportMapping FunctionImportName="spDeletePrestamo" FunctionName="DBCoreModel.Store.spDeletePrestamo" />
@@ -1823,6 +1856,20 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetCuentabyCliente" FunctionName="DBCoreModel.Store.spGetCuentabyCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBCoreModel.spGetCuentabyCliente_Result">
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idTipoCuenta" ColumnName="idTipoCuenta" />
+                <ScalarProperty Name="idBanco" ColumnName="idBanco" />
+                <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="spGetCuentaById" FunctionName="DBCoreModel.Store.spGetCuentaById">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DBCoreModel.spGetCuentaById_Result">
@@ -1888,46 +1935,14 @@
           <FunctionImportMapping FunctionImportName="spInsertPrestamo" FunctionName="DBCoreModel.Store.spInsertPrestamo" />
           <FunctionImportMapping FunctionImportName="spInsertTipoTransaccion" FunctionName="DBCoreModel.Store.spInsertTipoTransaccion" />
           <FunctionImportMapping FunctionImportName="spInsertUsuario" FunctionName="DBCoreModel.Store.spInsertUsuario" />
+          <FunctionImportMapping FunctionImportName="spOperaciones" FunctionName="DBCoreModel.Store.spOperaciones" />
+          <FunctionImportMapping FunctionImportName="spPagoPrestamo" FunctionName="DBCoreModel.Store.spPagoPrestamo" />
           <FunctionImportMapping FunctionImportName="spUpsertCliente" FunctionName="DBCoreModel.Store.spUpsertCliente" />
           <FunctionImportMapping FunctionImportName="spUpsertCuenta" FunctionName="DBCoreModel.Store.spUpsertCuenta" />
           <FunctionImportMapping FunctionImportName="spUpsertPerfil" FunctionName="DBCoreModel.Store.spUpsertPerfil" />
           <FunctionImportMapping FunctionImportName="spUpsertPrestamo" FunctionName="DBCoreModel.Store.spUpsertPrestamo" />
           <FunctionImportMapping FunctionImportName="spUpsertTipoTransaccion" FunctionName="DBCoreModel.Store.spUpsertTipoTransaccion" />
           <FunctionImportMapping FunctionImportName="spUpsertUsuario" FunctionName="DBCoreModel.Store.spUpsertUsuario" />
-          <FunctionImportMapping FunctionImportName="GetAllMovimientobyCuenta" FunctionName="DBCoreModel.Store.GetAllMovimientobyCuenta">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DBCoreModel.GetAllMovimientobyCuenta_Result">
-                <ScalarProperty Name="Numero_Cuenta" ColumnName="Numero Cuenta" />
-                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
-                <ScalarProperty Name="Tipo_Movimiento" ColumnName="Tipo Movimiento" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAllPrestamobyCliente" FunctionName="DBCoreModel.Store.GetAllPrestamobyCliente">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DBCoreModel.GetAllPrestamobyCliente_Result">
-                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-                <ScalarProperty Name="Deuda" ColumnName="Deuda" />
-                <ScalarProperty Name="Fecha_de_Corte" ColumnName="Fecha de Corte" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spGetCuentabyCliente" FunctionName="DBCoreModel.Store.spGetCuentabyCliente">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DBCoreModel.spGetCuentabyCliente_Result">
-                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
-                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
-                <ScalarProperty Name="idTipoCuenta" ColumnName="idTipoCuenta" />
-                <ScalarProperty Name="idBanco" ColumnName="idBanco" />
-                <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Balance" ColumnName="Balance" />
-                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spOperaciones" FunctionName="DBCoreModel.Store.spOperaciones" />
-          <FunctionImportMapping FunctionImportName="spPagoPrestamo" FunctionName="DBCoreModel.Store.spPagoPrestamo" />
           <FunctionImportMapping FunctionImportName="TransferenciaMismoBanco" FunctionName="DBCoreModel.Store.TransferenciaMismoBanco" />
           <FunctionImportMapping FunctionImportName="ValidarUsuario" FunctionName="DBCoreModel.Store.ValidarUsuario">
             <ResultMapping>
@@ -1941,20 +1956,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Log">
-            <EntityTypeMapping TypeName="DBCoreModel.Log">
-              <MappingFragment StoreEntitySet="Log">
-                <ScalarProperty Name="Exception" ColumnName="Exception" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Logger" ColumnName="Logger" />
-                <ScalarProperty Name="Level" ColumnName="Level" />
-                <ScalarProperty Name="Thread" ColumnName="Thread" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="spDeleteCliente" FunctionName="DBCoreModel.Store.spDeleteCliente" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

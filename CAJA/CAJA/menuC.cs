@@ -24,7 +24,10 @@ namespace CAJA
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            cajaC cajaC = new cajaC();
+            this.Hide();
+            cajaC.ShowDialog();
+            this.Close();
         }
     }
 }

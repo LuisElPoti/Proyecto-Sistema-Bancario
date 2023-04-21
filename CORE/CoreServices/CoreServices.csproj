@@ -206,29 +206,6 @@
     <Compile Include="Log.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Operaciones\OperacionesCliente.cs" />
-    <Compile Include="Operaciones\OperacionesMovimiento.cs" />
-    <Compile Include="Operaciones\OperacionesPrestamo.cs" />
-    <Compile Include="Operaciones\OperacionesTipoTransaccion.cs" />
-    <Compile Include="Servicios\IWSMovimiento.cs" />
-    <Compile Include="Servicios\IWSTipoTransaccion.cs" />
-    <Compile Include="Servicios\IWSPrestamo.cs" />
-    <Compile Include="Servicios\WSMovimiento.svc.cs">
-      <DependentUpon>WSMovimiento.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Servicios\WSTipoTransaccion.svc.cs">
-      <DependentUpon>WSTipoTransaccion.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Servicios\WSPrestamo.svc.cs">
-      <DependentUpon>WSPrestamo.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Servicios\WSCuenta.svc.cs">
-      <DependentUpon>WSCuenta.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Servicios\IWSCuenta.cs" />
-    <Compile Include="Servicios\IWSPerfil.cs" />
-    <Compile Include="Servicios\IWSCliente.cs" />
-    <Compile Include="Servicios\IWSUsuario.cs" />
     <Compile Include="Moneda.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
@@ -250,9 +227,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyCoreModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Operaciones\OperacionesCuenta.cs" />
-    <Compile Include="Operaciones\OperacionesPerfil.cs" />
-    <Compile Include="Operaciones\OperacionesUsuario.cs" />
+    <Compile Include="Operaciones\OperacionesCliente.cs" />
+    <Compile Include="Operaciones\OperacionesMovimiento.cs" />
+    <Compile Include="Operaciones\OperacionesPrestamo.cs" />
+    <Compile Include="Operaciones\OperacionesTipoTransaccion.cs" />
     <Compile Include="Perfil.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
@@ -262,10 +240,32 @@
     <Compile Include="Prestamo.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rol.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\IWSMovimiento.cs" />
+    <Compile Include="Servicios\IWSTipoTransaccion.cs" />
+    <Compile Include="Servicios\IWSPrestamo.cs" />
+    <Compile Include="Servicios\WSMovimiento.svc.cs">
+      <DependentUpon>WSMovimiento.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\WSTipoTransaccion.svc.cs">
+      <DependentUpon>WSTipoTransaccion.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\WSPrestamo.svc.cs">
+      <DependentUpon>WSPrestamo.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\WSCuenta.svc.cs">
+      <DependentUpon>WSCuenta.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\IWSCuenta.cs" />
+    <Compile Include="Servicios\IWSPerfil.cs" />
+    <Compile Include="Servicios\IWSCliente.cs" />
+    <Compile Include="Servicios\IWSUsuario.cs" />
+    <Compile Include="Operaciones\OperacionesCuenta.cs" />
+    <Compile Include="Operaciones\OperacionesPerfil.cs" />
+    <Compile Include="Operaciones\OperacionesUsuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\WSCliente.svc.cs">
       <DependentUpon>WSCliente.svc</DependentUpon>
     </Compile>
@@ -352,8 +352,8 @@
     <Content Include="Global.asax" />
     <Content Include="MyCoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MyCoreModel.Context.cs</LastGenOutput>
       <DependentUpon>MyCoreModel.edmx</DependentUpon>
+      <LastGenOutput>MyCoreModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="MyCoreModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

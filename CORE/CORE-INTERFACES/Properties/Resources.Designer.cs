@@ -63,6 +63,36 @@ namespace CORE_INTERFACES.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap diseño_2_inicio {
+            get {
+                object obj = ResourceManager.GetObject("diseño 2 inicio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap diseño_3 {
+            get {
+                object obj = ResourceManager.GetObject("diseño 3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Diseño_inicio {
+            get {
+                object obj = ResourceManager.GetObject("Diseño inicio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_banco {
             get {
                 object obj = ResourceManager.GetObject("icono banco", resourceCulture);
@@ -106,6 +136,16 @@ namespace CORE_INTERFACES.Properties {
         internal static System.Drawing.Bitmap Icono_Home {
             get {
                 object obj = ResourceManager.GetObject("Icono Home", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_logo_pequeño {
+            get {
+                object obj = ResourceManager.GetObject("icono logo pequeño", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +216,16 @@ namespace CORE_INTERFACES.Properties {
         internal static System.Drawing.Bitmap icons8_mastercard_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-mastercard-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_banco {
+            get {
+                object obj = ResourceManager.GetObject("logo banco", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Data;
 using log4net;
 using System.Xml.Linq;
-using FastMember;
 
 namespace CoreServices.Operaciones
 {
@@ -17,7 +16,7 @@ namespace CoreServices.Operaciones
         log4net.ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public DataTable GetClientes()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1()) 
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -51,7 +50,7 @@ namespace CoreServices.Operaciones
 
         public bool InsertCliente(string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 try
                 {
@@ -71,7 +70,7 @@ namespace CoreServices.Operaciones
 
         public bool EliminarCliente(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 try
                 {
@@ -90,7 +89,7 @@ namespace CoreServices.Operaciones
         }
         public bool UpdateClientes(int id, string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 try
                 {
@@ -107,28 +106,38 @@ namespace CoreServices.Operaciones
             }
         }
 
-        public bool ClienteExists(int id)
+        public DataTable GetClientebyID(int id)
         {
-            using(DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var Conexion = db.Database.Connection.ToString();
-
-                using (SqlConnection sql = new SqlConnection(Conexion))
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
                 {
-                    using(SqlCommand cmd = new SqlCommand("spGetClienteById", sql))
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using (var cmd = conn.CreateCommand())
                     {
+                        cmd.CommandText = "spGetClienteById";
                         cmd.CommandType = CommandType.StoredProcedure;
-                        sql.Open();
-                        cmd.Parameters.Add(new SqlParameter("@IdPais", id));
-
-                        var dt = new DataTable();
-
-                        var da = new SqlDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        return dt;
+                        cmd.Parameters.Add(new SqlParameter("Id", id));
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
                     }
+                    log.Info("Select por ID Realizado.");
                 }
+                catch (Exception ex)
+                {
+                    log.Error("Fallo select por ID: "+ex);
+                    throw;
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                return dt;
             }
         }
     }

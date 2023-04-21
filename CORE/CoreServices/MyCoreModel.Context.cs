@@ -15,10 +15,10 @@ namespace CoreServices
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class DBCoreEntities : DbContext
+    public partial class DBCoreEntities1 : DbContext
     {
-        public DBCoreEntities()
-            : base("name=DBCoreEntities")
+        public DBCoreEntities1()
+            : base("name=DBCoreEntities1")
         {
         }
     
@@ -34,6 +34,7 @@ namespace CoreServices
         public virtual DbSet<Cuenta_Beneficiario> Cuenta_Beneficiario { get; set; }
         public virtual DbSet<Detalle_Prestamo> Detalle_Prestamo { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
+        public virtual DbSet<Log> Log { get; set; }
         public virtual DbSet<Moneda> Moneda { get; set; }
         public virtual DbSet<Movimiento> Movimiento { get; set; }
         public virtual DbSet<Perfil> Perfil { get; set; }
@@ -44,7 +45,25 @@ namespace CoreServices
         public virtual DbSet<TipoTransaccion> TipoTransaccion { get; set; }
         public virtual DbSet<Transaccion> Transaccion { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
-        public virtual DbSet<Log> Log { get; set; }
+    
+        public virtual ObjectResult<GetAllMovimientobyCuenta_Result> GetAllMovimientobyCuenta()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllMovimientobyCuenta_Result>("GetAllMovimientobyCuenta");
+        }
+    
+        public virtual ObjectResult<GetAllPrestamobyCliente_Result> GetAllPrestamobyCliente()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllPrestamobyCliente_Result>("GetAllPrestamobyCliente");
+        }
+    
+        public virtual int spDeleteCliente(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDeleteCliente", idParameter);
+        }
     
         public virtual int spDeleteCuenta(Nullable<int> idCuenta)
         {
@@ -128,6 +147,15 @@ namespace CoreServices
                 new ObjectParameter("Id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetClienteById_Result>("spGetClienteById", idParameter);
+        }
+    
+        public virtual ObjectResult<spGetCuentabyCliente_Result> spGetCuentabyCliente(Nullable<int> idCliente)
+        {
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetCuentabyCliente_Result>("spGetCuentabyCliente", idClienteParameter);
         }
     
         public virtual ObjectResult<spGetCuentaById_Result> spGetCuentaById(Nullable<int> id)
@@ -305,6 +333,36 @@ namespace CoreServices
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertUsuario", idPerfilParameter, idClienteParameter, nombreParameter, claveParameter);
         }
     
+        public virtual int spOperaciones(Nullable<int> tipo, string numeroCuenta, Nullable<decimal> monto)
+        {
+            var tipoParameter = tipo.HasValue ?
+                new ObjectParameter("Tipo", tipo) :
+                new ObjectParameter("Tipo", typeof(int));
+    
+            var numeroCuentaParameter = numeroCuenta != null ?
+                new ObjectParameter("NumeroCuenta", numeroCuenta) :
+                new ObjectParameter("NumeroCuenta", typeof(string));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("Monto", monto) :
+                new ObjectParameter("Monto", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spOperaciones", tipoParameter, numeroCuentaParameter, montoParameter);
+        }
+    
+        public virtual int spPagoPrestamo(Nullable<int> idPrestamo, Nullable<decimal> monto)
+        {
+            var idPrestamoParameter = idPrestamo.HasValue ?
+                new ObjectParameter("idPrestamo", idPrestamo) :
+                new ObjectParameter("idPrestamo", typeof(int));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("Monto", monto) :
+                new ObjectParameter("Monto", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spPagoPrestamo", idPrestamoParameter, montoParameter);
+        }
+    
         public virtual int spUpsertCliente(Nullable<int> id, string nombre, Nullable<int> tipoDocumento, string documento, string correo, string telefono, string direccion, Nullable<System.DateTime> fechaNacimiento)
         {
             var idParameter = id.HasValue ?
@@ -447,68 +505,19 @@ namespace CoreServices
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpsertUsuario", idUsuarioParameter, idPerfilParameter, idClienteParameter, nombreParameter, claveParameter);
         }
     
-        public virtual ObjectResult<GetAllMovimientobyCuenta_Result> GetAllMovimientobyCuenta()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllMovimientobyCuenta_Result>("GetAllMovimientobyCuenta");
-        }
-    
-        public virtual ObjectResult<GetAllPrestamobyCliente_Result> GetAllPrestamobyCliente()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllPrestamobyCliente_Result>("GetAllPrestamobyCliente");
-        }
-    
-        public virtual ObjectResult<spGetCuentabyCliente_Result> spGetCuentabyCliente(Nullable<int> idCliente)
-        {
-            var idClienteParameter = idCliente.HasValue ?
-                new ObjectParameter("idCliente", idCliente) :
-                new ObjectParameter("idCliente", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetCuentabyCliente_Result>("spGetCuentabyCliente", idClienteParameter);
-        }
-    
-        public virtual int spOperaciones(Nullable<int> tipo, string numeroCuenta, Nullable<decimal> monto)
-        {
-            var tipoParameter = tipo.HasValue ?
-                new ObjectParameter("Tipo", tipo) :
-                new ObjectParameter("Tipo", typeof(int));
-    
-            var numeroCuentaParameter = numeroCuenta != null ?
-                new ObjectParameter("NumeroCuenta", numeroCuenta) :
-                new ObjectParameter("NumeroCuenta", typeof(string));
-    
-            var montoParameter = monto.HasValue ?
-                new ObjectParameter("Monto", monto) :
-                new ObjectParameter("Monto", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spOperaciones", tipoParameter, numeroCuentaParameter, montoParameter);
-        }
-    
-        public virtual int spPagoPrestamo(Nullable<int> idPrestamo, Nullable<decimal> monto)
-        {
-            var idPrestamoParameter = idPrestamo.HasValue ?
-                new ObjectParameter("idPrestamo", idPrestamo) :
-                new ObjectParameter("idPrestamo", typeof(int));
-    
-            var montoParameter = monto.HasValue ?
-                new ObjectParameter("Monto", monto) :
-                new ObjectParameter("Monto", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spPagoPrestamo", idPrestamoParameter, montoParameter);
-        }
-    
-        public virtual int TransferenciaMismoBanco(Nullable<decimal> monto, string cuentaOrigen, string cuentaDestino)
+        public virtual int TransferenciaMismoBanco(Nullable<decimal> monto, Nullable<int> cuentaOrigen, Nullable<int> cuentaDestino)
         {
             var montoParameter = monto.HasValue ?
                 new ObjectParameter("monto", monto) :
                 new ObjectParameter("monto", typeof(decimal));
     
-            var cuentaOrigenParameter = cuentaOrigen != null ?
+            var cuentaOrigenParameter = cuentaOrigen.HasValue ?
                 new ObjectParameter("cuentaOrigen", cuentaOrigen) :
-                new ObjectParameter("cuentaOrigen", typeof(string));
+                new ObjectParameter("cuentaOrigen", typeof(int));
     
-            var cuentaDestinoParameter = cuentaDestino != null ?
+            var cuentaDestinoParameter = cuentaDestino.HasValue ?
                 new ObjectParameter("cuentaDestino", cuentaDestino) :
-                new ObjectParameter("cuentaDestino", typeof(string));
+                new ObjectParameter("cuentaDestino", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TransferenciaMismoBanco", montoParameter, cuentaOrigenParameter, cuentaDestinoParameter);
         }
@@ -524,15 +533,6 @@ namespace CoreServices
                 new ObjectParameter("clave", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarUsuario_Result>("ValidarUsuario", nombreParameter, claveParameter);
-        }
-    
-        public virtual int spDeleteCliente(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDeleteCliente", idParameter);
         }
     }
 }
