@@ -33,7 +33,7 @@ namespace CoreServices.Servicios
     }
 
     [DataContract]
-    public class Prestamo
+    public class ClPrestamo
     {
         [DataMember]
         public int id { get; set; }

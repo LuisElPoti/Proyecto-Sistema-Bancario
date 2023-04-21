@@ -27,7 +27,7 @@ namespace CoreServices.Servicios
     }
 
     [DataContract]
-    public class Cliente
+    public class ClCliente
     {
         [DataMember]
         public int id { get; set; }
