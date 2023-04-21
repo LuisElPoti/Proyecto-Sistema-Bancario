@@ -38,5 +38,12 @@ namespace CAJA
                 e.Handled = true;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CuentaTest.WSCuentaClient Referencia = new CuentaTest.WSCuentaClient();
+
+            Referencia.Pago_Prestamo(1, 500);
+        }
     }
 }
