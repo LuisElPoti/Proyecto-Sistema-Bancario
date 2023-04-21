@@ -57,9 +57,9 @@ namespace CoreServices.Servicios
             return Operaciones.Pago(idCliente, Monto);
         }
 
-        public bool CrearTransferencia(int CuentaOrigen, int CuentaDestino, decimal Monto, int idEstado, int idMoneda, int idTipo)
+        public bool CrearTransferencia(int idTipo, int idMoneda, int idEstado, int CuentaOrigen, int CuentaDestino, decimal Monto)
         {
-            return Operaciones.InsertTransferencia(CuentaOrigen, CuentaDestino, Monto, idEstado, idMoneda, idTipo);
+            return Operaciones.InsertTransferencia(idTipo, idMoneda, idEstado, CuentaOrigen, CuentaDestino, Monto);
         }
 
         public bool Transferencia_MismoBanco(int CuentaOrigen, int CuentaDestino, decimal Monto)
