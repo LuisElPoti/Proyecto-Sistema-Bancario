@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="14dab8f3779443e0a03f624d2f7984a3" Name="Diagram1" ZoomLevel="61">
+        <EntityTypeShape EntityType="DBIntegracionModel.Banco" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Beneficiario" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Cliente" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Cuenta" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Cuenta_Beneficiario" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Detalle_Prestamo" Width="1.5" PointX="10.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Estado" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Moneda" Width="1.5" PointX="3.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Movimiento" Width="1.5" PointX="8.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Perfil" Width="1.5" PointX="5.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Perfil_Rol" Width="1.5" PointX="8" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Prestamo" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Rol" Width="1.5" PointX="5.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.TipoCuenta" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.TipoTransaccion" Width="1.5" PointX="3.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Transaccion" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIntegracionModel.Usuario" Width="1.5" PointX="8" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Banco_Beneficiario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Banco_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Beneficiario_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Cliente_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Cliente_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Cuenta_Beneficiario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Cuenta_Movimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.Fk_Cuenta_Prestamo" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_TipoCuenta_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Estado_Detalle" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Prestamo_Detalle" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Estado_Transaccion" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Moneda_Transaccion" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Transaccion_Movimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Perfil_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Perfil_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Rol_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIntegracionModel.FK_Tipo_Transaccion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
