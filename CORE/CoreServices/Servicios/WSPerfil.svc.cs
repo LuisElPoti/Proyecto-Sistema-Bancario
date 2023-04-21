@@ -32,7 +32,7 @@ namespace CoreServices.Servicios
             return Operaciones.UpdatePerfiles(idPerfil, nombre, descripcion);
         }
 
-        public DataTable MostrarPerfiles()
+        public List<Perfil> MostrarPerfiles()
         {
             return Operaciones.GetPerfil();
         }

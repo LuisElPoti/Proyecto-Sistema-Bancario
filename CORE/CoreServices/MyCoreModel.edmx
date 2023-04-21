@@ -516,6 +516,14 @@
           <Parameter Name="nombre" Type="varchar" Mode="In" />
           <Parameter Name="descripcion" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="spInsertTransaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTipo" Type="int" Mode="In" />
+          <Parameter Name="idMoneda" Type="int" Mode="In" />
+          <Parameter Name="idEstado" Type="int" Mode="In" />
+          <Parameter Name="CuentaOrigen" Type="int" Mode="In" />
+          <Parameter Name="CuentaDestino" Type="int" Mode="In" />
+          <Parameter Name="Monto" Type="money" Mode="In" />
+        </Function>
         <Function Name="spInsertUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idPerfil" Type="int" Mode="In" />
           <Parameter Name="idCliente" Type="int" Mode="In" />
@@ -1398,6 +1406,14 @@
             <Parameter Name="nombre" Mode="In" Type="String" />
             <Parameter Name="clave" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="spInsertTransaccion">
+            <Parameter Name="idTipo" Mode="In" Type="Int32" />
+            <Parameter Name="idMoneda" Mode="In" Type="Int32" />
+            <Parameter Name="idEstado" Mode="In" Type="Int32" />
+            <Parameter Name="CuentaOrigen" Mode="In" Type="Int32" />
+            <Parameter Name="CuentaDestino" Mode="In" Type="Int32" />
+            <Parameter Name="Monto" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAllMovimientobyCuenta_Result">
           <Property Type="String" Name="Numero_Cuenta" Nullable="false" MaxLength="80" />
@@ -1955,6 +1971,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInsertTransaccion" FunctionName="DBCoreModel.Store.spInsertTransaccion" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
