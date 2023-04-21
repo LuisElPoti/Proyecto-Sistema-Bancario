@@ -15,6 +15,7 @@ namespace CORE_INTERFACES
         public frmLogin()
         {
             InitializeComponent();
+            tbPassword.UseSystemPasswordChar = true;
         }
 
         private void ptbExitLogin_Click(object sender, EventArgs e)
@@ -25,7 +26,7 @@ namespace CORE_INTERFACES
         private void btnEnter_Click(object sender, EventArgs e)
         {
             wsReferenceUsuario.WSUsuarioClient Referencia = new wsReferenceUsuario.WSUsuarioClient();
-
+            
             if(Referencia.ValidarSesion(tbUsername.Text,tbPassword.Text))
             {
                 frmMenu frm = new frmMenu();
