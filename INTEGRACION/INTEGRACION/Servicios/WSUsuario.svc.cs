@@ -1,16 +1,22 @@
 ﻿using INTEGRACION.Operaciones;
+using INTEGRACION.Servicios;
+using INTEGRACION;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Web.Services;
+using CoreServices;
+using INTEGRACION.Clases;
 
-namespace INTEGRACION.Servicios
+namespace INTEGRACION
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "IWSUsuario" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select IWSUsuario.svc or IWSUsuario.svc.cs at the Solution Explorer and start debugging.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class WSUsuario : IWSUsuario
     {
         OperacionesUsuario Operaciones = new OperacionesUsuario();
@@ -30,16 +36,20 @@ namespace INTEGRACION.Servicios
             return Operaciones.UpdateUsuario(idUsuario, idPerfil, idCliente, nombre, clave);
         }
 
+        public bool ValidarSeguridad(string clave)
+        {
+            return Operaciones.ContraseñaSegura(clave);
+        }
         public bool ValidarSesion(string nombre, string clave)
         {
             return Operaciones.ValidarUsuario(nombre, clave);
         }
-        public DataTable MostrarUsuarios()
+        public List<Usuario> MostrarUsuarios()
         {
             return Operaciones.GetUsuario();
         }
 
-        public DataTable BuscarUsuario(int id)
+        public List<Usuario> BuscarUsuario(int id)
         {
             return Operaciones.GetUsuarioID(id);
         }
