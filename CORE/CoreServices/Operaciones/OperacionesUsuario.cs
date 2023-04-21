@@ -101,6 +101,7 @@ namespace CoreServices.Clases
         {
             return Regex.IsMatch(clave, @"^(?=.\d)(?=.[a-z])(?=.[A-Z])(?!.\s).{8,}$");
         }
+
         public bool ValidarUsuario(string nombre, string clave)
         {
             using(DBCoreEntities db = new DBCoreEntities()) 
