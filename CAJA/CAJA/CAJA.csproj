@@ -61,6 +61,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -83,6 +84,11 @@
     </Compile>
     <Compile Include="cajero.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsReferenceCuenta\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="contadorC.cs">
       <SubType>Form</SubType>
@@ -183,10 +189,21 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta.wsdl" />
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -207,6 +224,13 @@
     <Content Include="assets\Logo1.png" />
     <Content Include="assets\Logo2.png" />
     <Content Include="assets\Logo3.png" />
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta.disco" />
+    <None Include="Connected Services\wsReferenceCuenta\configuration91.svcinfo" />
+    <None Include="Connected Services\wsReferenceCuenta\configuration.svcinfo" />
+    <None Include="Connected Services\wsReferenceCuenta\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -232,6 +256,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\wsReferenceCuenta\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
