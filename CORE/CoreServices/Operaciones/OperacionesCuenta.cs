@@ -13,7 +13,7 @@ namespace CoreServices.Clases
     {        
         public DataTable GetCuentas()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -45,7 +45,7 @@ namespace CoreServices.Clases
 
         public bool InsertCuentas(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
                 db.spInsertCuenta(idCliente, idTipoCuenta, idBanco, NumeroCuenta, Estado);
@@ -63,7 +63,7 @@ namespace CoreServices.Clases
 
         public bool UpdateCuentas(int idCuenta, bool Estado, decimal Balance)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spUpsertCuenta(idCuenta, Estado, Balance);
 
@@ -80,7 +80,7 @@ namespace CoreServices.Clases
 
         public bool DeleteCuentas(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spDeleteCuenta(id);
 
@@ -97,7 +97,7 @@ namespace CoreServices.Clases
 
         public DataTable GetCuentabyID(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -130,7 +130,7 @@ namespace CoreServices.Clases
 
         public DataTable GetCuentabyCliente(int idCliente)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -163,7 +163,7 @@ namespace CoreServices.Clases
 
         public bool Deposito_Retiro(int Tipo, string NumeroCuenta, decimal Monto)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spOperaciones(Tipo, NumeroCuenta, Monto);
 
@@ -180,7 +180,7 @@ namespace CoreServices.Clases
 
         public bool Pago(int idPrestamo, decimal Monto)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spPagoPrestamo(idPrestamo,Monto);
 
@@ -195,9 +195,9 @@ namespace CoreServices.Clases
             }
         }
 
-        public bool Transferencia_Mismo(string CuentaOrigen, string CuentaDestino, decimal Monto)
+        public bool Transferencia_Mismo(int CuentaOrigen, int CuentaDestino, decimal Monto)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.TransferenciaMismoBanco(Monto,CuentaOrigen,CuentaDestino);
 

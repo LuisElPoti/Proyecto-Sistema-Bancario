@@ -13,7 +13,7 @@ namespace CoreServices.Operaciones
     {
         public DataTable GetPrestamos()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -46,7 +46,7 @@ namespace CoreServices.Operaciones
 
         public bool InsertPrestamo(int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, DateTime fechaCorte)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
                 db.spInsertPrestamo(idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
@@ -64,7 +64,7 @@ namespace CoreServices.Operaciones
 
         public bool UpdatePrestamos(int idPrestamo, int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, DateTime fechaCorte)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spUpsertPrestamo(idPrestamo, idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
 
@@ -81,7 +81,7 @@ namespace CoreServices.Operaciones
 
         public bool DeletePrestamo (int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spDeletePrestamo(id);
 
@@ -98,7 +98,7 @@ namespace CoreServices.Operaciones
 
         public DataTable GetPrestamobyCuenta(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -131,7 +131,7 @@ namespace CoreServices.Operaciones
 
         public DataTable GetAllPrestamobyCliente()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
