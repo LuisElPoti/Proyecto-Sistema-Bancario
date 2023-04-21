@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace CoreServices.Clases
@@ -96,6 +97,10 @@ namespace CoreServices.Clases
             }
         }
 
+        public bool ContraseñaSegura(string clave)
+        {
+            return Regex.IsMatch(clave, @"^(?=.\d)(?=.[a-z])(?=.[A-Z])(?!.\s).{8,}$");
+        }
         public bool ValidarUsuario(string nombre, string clave)
         {
             using(DBCoreEntities db = new DBCoreEntities()) 
