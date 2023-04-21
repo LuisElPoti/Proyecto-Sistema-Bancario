@@ -26,6 +26,18 @@ namespace CORE_INTERFACES
             cbCliente.Text = cbTipoCuenta.Text = cbBanco.Text = cbEstado.Text = tbNoCuenta.Text = cbEstado.Text = "";
         }
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Referencia.ActualizarCuenta(int.Parse(tbID.Text),bool.Parse(cbEstado.Text),decimal.Parse(tbBalance.Text));
+            MessageBox.Show("Cuenta Actualizada. ");
+            cbCliente.Text = cbTipoCuenta.Text = cbBanco.Text = cbEstado.Text = tbNoCuenta.Text = cbEstado.Text = "";
+        }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Referencia.EliminarCuenta(int.Parse(tbID.Text));
+            MessageBox.Show("Cuenta Eliminada.");
+            cbCliente.Text = cbTipoCuenta.Text = cbBanco.Text = cbEstado.Text = tbNoCuenta.Text = cbEstado.Text = "";
+        }
     }
 }
