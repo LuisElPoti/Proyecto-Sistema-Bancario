@@ -272,13 +272,22 @@
     <Compile Include="Servicios\WSUsuario.svc.cs">
       <DependentUpon>WSUsuario.svc</DependentUpon>
     </Compile>
+    <Compile Include="spCuentabyidCliente_Result.cs">
+      <DependentUpon>MyCoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="spGetAllCliente_Result.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetAllCuenta_Result.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="spGetAllMovimientobyCuenta_Result.cs">
+      <DependentUpon>MyCoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="spGetAllPerfil_Result.cs">
+      <DependentUpon>MyCoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spGetAllPrestamosbyCliente_Result.cs">
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetAllPrestamo_Result.cs">

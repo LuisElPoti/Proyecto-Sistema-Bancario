@@ -284,15 +284,11 @@ namespace CoreServices
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertTipoTransaccion", nombreParameter, descripcionParameter);
         }
     
-        public virtual int spInsertUsuario(Nullable<int> idPerfil, Nullable<int> idCliente, string nombre, string clave)
+        public virtual int spInsertUsuario(Nullable<int> idPerfil, string nombre, string clave)
         {
             var idPerfilParameter = idPerfil.HasValue ?
                 new ObjectParameter("idPerfil", idPerfil) :
                 new ObjectParameter("idPerfil", typeof(int));
-    
-            var idClienteParameter = idCliente.HasValue ?
-                new ObjectParameter("idCliente", idCliente) :
-                new ObjectParameter("idCliente", typeof(int));
     
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -302,7 +298,7 @@ namespace CoreServices
                 new ObjectParameter("Clave", clave) :
                 new ObjectParameter("Clave", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertUsuario", idPerfilParameter, idClienteParameter, nombreParameter, claveParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertUsuario", idPerfilParameter, nombreParameter, claveParameter);
         }
     
         public virtual int spUpsertCliente(Nullable<int> id, string nombre, Nullable<int> tipoDocumento, string documento, string correo, string telefono, string direccion, Nullable<System.DateTime> fechaNacimiento)
@@ -422,7 +418,7 @@ namespace CoreServices
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpsertTipoTransaccion", idParameter, nombreParameter, descripcionParameter);
         }
     
-        public virtual int spUpsertUsuario(Nullable<int> idUsuario, Nullable<int> idPerfil, Nullable<int> idCliente, string nombre, string clave)
+        public virtual int spUpsertUsuario(Nullable<int> idUsuario, Nullable<int> idPerfil, string nombre, string clave)
         {
             var idUsuarioParameter = idUsuario.HasValue ?
                 new ObjectParameter("idUsuario", idUsuario) :
@@ -432,10 +428,6 @@ namespace CoreServices
                 new ObjectParameter("idPerfil", idPerfil) :
                 new ObjectParameter("idPerfil", typeof(int));
     
-            var idClienteParameter = idCliente.HasValue ?
-                new ObjectParameter("idCliente", idCliente) :
-                new ObjectParameter("idCliente", typeof(int));
-    
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
                 new ObjectParameter("Nombre", typeof(string));
@@ -444,7 +436,7 @@ namespace CoreServices
                 new ObjectParameter("Clave", clave) :
                 new ObjectParameter("Clave", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpsertUsuario", idUsuarioParameter, idPerfilParameter, idClienteParameter, nombreParameter, claveParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spUpsertUsuario", idUsuarioParameter, idPerfilParameter, nombreParameter, claveParameter);
         }
     
         public virtual ObjectResult<GetAllMovimientobyCuenta_Result> GetAllMovimientobyCuenta()
@@ -529,10 +521,29 @@ namespace CoreServices
         public virtual int spDeleteCliente(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDeleteCliente", idParameter);
+        }
+    
+        public virtual ObjectResult<spCuentabyidCliente_Result> spCuentabyidCliente(Nullable<int> idCliente)
+        {
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("IdCliente", idCliente) :
+                new ObjectParameter("IdCliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spCuentabyidCliente_Result>("spCuentabyidCliente", idClienteParameter);
+        }
+    
+        public virtual ObjectResult<spGetAllMovimientobyCuenta_Result> spGetAllMovimientobyCuenta()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAllMovimientobyCuenta_Result>("spGetAllMovimientobyCuenta");
+        }
+    
+        public virtual ObjectResult<spGetAllPrestamosbyCliente_Result> spGetAllPrestamosbyCliente()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAllPrestamosbyCliente_Result>("spGetAllPrestamosbyCliente");
         }
     }
 }
