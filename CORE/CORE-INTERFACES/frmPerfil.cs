@@ -52,5 +52,16 @@ namespace CORE_INTERFACES
                 MessageBox.Show("Error al buscar Perfil: " + ex.Message);
             }
         }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Reference.ActualizarPerfil(int.Parse(tbID.Text), tbNombre.Text, tbDescripcion.Text);
+            MessageBox.Show("Perfil Actualizado.");
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Reference.EliminarPerfil(int.Parse(tbID.Text));
+        }
     }
 }
