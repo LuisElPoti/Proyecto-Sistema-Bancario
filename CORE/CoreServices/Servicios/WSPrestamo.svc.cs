@@ -30,19 +30,9 @@ namespace CoreServices.Servicios
             return Operaciones.UpdatePrestamos(idPrestamo, idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
         }
 
-        public DataTable MostrarPrestamos()
+        public List<Prestamo> MostrarPrestamos(int id)
         {
-            return Operaciones.GetPrestamos();
-        }
-
-        public DataTable BuscarPrestamo(int id)
-        {
-            return Operaciones.GetPrestamobyCuenta(id);
-        }
-
-        public DataTable MostarPrestamoCliente()
-        {
-            return Operaciones.GetAllPrestamobyCliente();
+            return Operaciones.GetPrestamosbyID(id);
         }
 
     }

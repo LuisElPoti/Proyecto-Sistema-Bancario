@@ -23,13 +23,7 @@ namespace CoreServices.Servicios
         bool ActualizarPrestamo(int idPrestamo, int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, DateTime fechaCorte);
 
         [OperationContract]
-        DataTable MostrarPrestamos();
-
-        [OperationContract]
-        DataTable BuscarPrestamo(int id);
-
-        [OperationContract]
-        DataTable MostarPrestamoCliente();
+        List<Prestamo> MostrarPrestamos(int id);
     }
 
     [DataContract]
