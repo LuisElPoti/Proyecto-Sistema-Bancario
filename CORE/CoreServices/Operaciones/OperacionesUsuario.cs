@@ -113,9 +113,31 @@ namespace CoreServices.Clases
             }
         }
 
-        public bool ContraseñaSegura(string clave)
+        public bool ContraseñaSegura(string contrasena)
         {
-            return Regex.IsMatch(clave, @"^(?=.\d)(?=.[a-z])(?=.[A-Z])(?!.\s).{8,}$");
+            bool esValida = true;
+            if (contrasena.Length < 8)
+            {
+                esValida = false;
+            }
+            if (!contrasena.Any(char.IsDigit))
+            {
+                esValida = false;
+            }
+            if (!contrasena.Any(char.IsUpper))
+            {
+                esValida = false;
+            }
+            if (!contrasena.Any(char.IsLower))
+            {
+                esValida = false;
+            }
+            if (!contrasena.Any(c => !char.IsLetterOrDigit(c)))
+            {
+                esValida = false;
+            }
+            return esValida;
+
         }
 
         public bool ValidarUsuario(string nombre, string clave)
