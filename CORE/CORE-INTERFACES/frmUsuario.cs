@@ -66,12 +66,16 @@ namespace CORE_INTERFACES
 
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
-
+            Referencia.ActualizarUsuario(int.Parse(tbID.Text), int.Parse(cbPerfil.Text), int.Parse(cbCliente.Text), tbNombre.Text, tbClave.Text);
+            MessageBox.Show("Cliente Modificado!");
+            LimpiarCampos();
         }
 
         private void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
-
+            Referencia.EliminarUsuario(int.Parse(tbID.Text));
+            MessageBox.Show("Usuario Eliminado!");
+            LimpiarCampos();
         }
 
         private void cbCliente_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,6 +130,11 @@ namespace CORE_INTERFACES
         }
 
         private void cbCliente_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbPerfil_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
