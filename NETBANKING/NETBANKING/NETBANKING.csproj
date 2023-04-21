@@ -58,6 +58,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -121,6 +122,16 @@
       <DependentUpon>BakingModel.edmx</DependentUpon>
       <LastGenOutput>BakingModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Connected Services\wsReferenceCuenta\NETBANKING.wsReferenceCuenta.Cuenta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta.disco" />
+    <None Include="Connected Services\wsReferenceCuenta\configuration91.svcinfo" />
+    <None Include="Connected Services\wsReferenceCuenta\configuration.svcinfo" />
+    <None Include="Connected Services\wsReferenceCuenta\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -506,6 +517,16 @@
     <Content Include="BakingModel.edmx.diagram">
       <DependentUpon>BakingModel.edmx</DependentUpon>
     </Content>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta.wsdl" />
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceCuenta\WSCuenta2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -563,6 +584,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BakingModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsReferenceCuenta\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -742,6 +768,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\wsReferenceCuenta\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
