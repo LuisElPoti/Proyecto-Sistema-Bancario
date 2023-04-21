@@ -24,7 +24,7 @@ namespace CoreServices.Operaciones
                 {
                     cmd.CommandText = "spGetPerfilById";
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("IdPefil", id));
+                    cmd.Parameters.Add(new SqlParameter("idPefil", id));
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
