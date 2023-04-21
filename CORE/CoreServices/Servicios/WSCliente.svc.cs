@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CoreServices.Servicios
 {
@@ -27,6 +28,10 @@ namespace CoreServices.Servicios
             return Operaciones.UpdateClientes(id, nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
         }
 
+        public bool EliminarCliente(int id)
+        {
+            return Operaciones.EliminarCliente(id);
+        }
         public DataTable MostrarClientes()
         {
             return Operaciones.GetClientes();

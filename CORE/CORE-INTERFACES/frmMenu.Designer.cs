@@ -74,9 +74,9 @@
             // pnlContenedor
             // 
             this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlContenedor.Location = new System.Drawing.Point(249, 52);
+            this.pnlContenedor.Location = new System.Drawing.Point(249, 44);
             this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(971, 687);
+            this.pnlContenedor.Size = new System.Drawing.Size(971, 695);
             this.pnlContenedor.TabIndex = 3;
             this.pnlContenedor.Text = "guna2ContainerControl2";
             // 
@@ -124,6 +124,7 @@
             this.btnInicio.Size = new System.Drawing.Size(249, 55);
             this.btnInicio.TabIndex = 18;
             this.btnInicio.Text = "       Inicio";
+            this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
             // btnTransacción
             // 

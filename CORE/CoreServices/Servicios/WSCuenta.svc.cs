@@ -56,7 +56,7 @@ namespace CoreServices.Servicios
             return Operaciones.Pago(idPrestamo, Monto);
         }
 
-        public bool Transferencia_MismoBanco(string CuentaOrigen, string CuentaDestino, decimal Monto)
+        public bool Transferencia_MismoBanco(int CuentaOrigen, int CuentaDestino, decimal Monto)
         {
             return Operaciones.Transferencia_Mismo(CuentaOrigen, CuentaDestino, Monto);
         }

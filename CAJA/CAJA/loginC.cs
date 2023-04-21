@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace CAJA
 {
-    public partial class login : Form
+    public partial class loginC : Form
     {
 
         SqlConnection conn = new SqlConnection("Server=tcp:sistema-bancario-server.database.windows.net,1433;Database=DBCaja;User ID=Administrador@sistema-bancario-server;Password=sistema.banco21;Trusted_Connection=False;Encrypt=True;");
 
 
-        public login()
+        public loginC()
         {
             InitializeComponent();
             
@@ -34,7 +34,7 @@ namespace CAJA
             SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    menu m1 = new menu();
+                    menuC m1 = new menuC();
                     this.Hide();
                     m1.ShowDialog();
                     this.Close();
@@ -46,6 +46,11 @@ namespace CAJA
             }
 
             conn.Close();
+
+        }
+
+        private void loginC_Load(object sender, EventArgs e)
+        {
 
         }
     }

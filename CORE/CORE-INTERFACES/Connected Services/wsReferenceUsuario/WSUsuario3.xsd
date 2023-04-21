@@ -49,6 +49,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ValidarSeguridad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clave" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarSeguridadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidarSeguridadResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ValidarSesion">
     <xs:complexType>
       <xs:sequence>

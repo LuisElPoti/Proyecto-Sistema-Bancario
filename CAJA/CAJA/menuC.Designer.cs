@@ -1,6 +1,6 @@
 ﻿namespace CAJA
 {
-    partial class menu
+    partial class menuC
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(menu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(menuC));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_caja = new System.Windows.Forms.Button();
+            this.btn_cuadre = new System.Windows.Forms.Button();
+            this.btn_transaccion = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -42,9 +42,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 15);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(264, 118);
+            this.pictureBox1.Size = new System.Drawing.Size(352, 145);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -52,88 +53,95 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(2)))), ((int)(((byte)(53)))));
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(58, 179);
+            this.panel1.Controls.Add(this.btn_caja);
+            this.panel1.Controls.Add(this.btn_cuadre);
+            this.panel1.Controls.Add(this.btn_transaccion);
+            this.panel1.Location = new System.Drawing.Point(77, 230);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(675, 106);
+            this.panel1.Size = new System.Drawing.Size(900, 130);
             this.panel1.TabIndex = 1;
             // 
-            // button1
+            // btn_caja
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(158)))), ((int)(((byte)(7)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 18F);
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(224, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(217, 92);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Transacciones";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btn_caja.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_caja.FlatAppearance.BorderSize = 0;
+            this.btn_caja.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btn_caja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(158)))), ((int)(((byte)(7)))));
+            this.btn_caja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_caja.Font = new System.Drawing.Font("Century Gothic", 18F);
+            this.btn_caja.ForeColor = System.Drawing.Color.Black;
+            this.btn_caja.Location = new System.Drawing.Point(596, 4);
+            this.btn_caja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_caja.Name = "btn_caja";
+            this.btn_caja.Size = new System.Drawing.Size(287, 113);
+            this.btn_caja.TabIndex = 5;
+            this.btn_caja.Text = "Caja";
+            this.btn_caja.UseVisualStyleBackColor = false;
+            this.btn_caja.Click += new System.EventHandler(this.btn_caja_Click);
             // 
-            // button2
+            // btn_cuadre
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(158)))), ((int)(((byte)(7)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 18F);
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(215, 92);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Cuadre";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_cuadre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btn_cuadre.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_cuadre.FlatAppearance.BorderSize = 0;
+            this.btn_cuadre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btn_cuadre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(158)))), ((int)(((byte)(7)))));
+            this.btn_cuadre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cuadre.Font = new System.Drawing.Font("Century Gothic", 18F);
+            this.btn_cuadre.ForeColor = System.Drawing.Color.Black;
+            this.btn_cuadre.Location = new System.Drawing.Point(4, 4);
+            this.btn_cuadre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_cuadre.Name = "btn_cuadre";
+            this.btn_cuadre.Size = new System.Drawing.Size(287, 113);
+            this.btn_cuadre.TabIndex = 3;
+            this.btn_cuadre.Text = "Cuadre";
+            this.btn_cuadre.UseVisualStyleBackColor = false;
+            this.btn_cuadre.Click += new System.EventHandler(this.btn_cuadre_Click);
+            // 
+            // btn_transaccion
+            // 
+            this.btn_transaccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btn_transaccion.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_transaccion.FlatAppearance.BorderSize = 0;
+            this.btn_transaccion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btn_transaccion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(158)))), ((int)(((byte)(7)))));
+            this.btn_transaccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_transaccion.Font = new System.Drawing.Font("Century Gothic", 18F);
+            this.btn_transaccion.ForeColor = System.Drawing.Color.Black;
+            this.btn_transaccion.Location = new System.Drawing.Point(299, 4);
+            this.btn_transaccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_transaccion.Name = "btn_transaccion";
+            this.btn_transaccion.Size = new System.Drawing.Size(289, 113);
+            this.btn_transaccion.TabIndex = 0;
+            this.btn_transaccion.Text = "Transacciones";
+            this.btn_transaccion.UseVisualStyleBackColor = false;
+            this.btn_transaccion.Click += new System.EventHandler(this.btn_transaccion_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(669, 48);
+            this.label1.Location = new System.Drawing.Point(892, 59);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 19);
+            this.label1.Size = new System.Drawing.Size(80, 23);
             this.label1.TabIndex = 2;
             this.label1.Text = "Caja: 1";
             // 
-            // button4
+            // menuC
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(158)))), ((int)(((byte)(7)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 18F);
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(447, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(215, 92);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Caja";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // menu
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(6)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "menu";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "menuC";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -146,9 +154,9 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_transaccion;
+        private System.Windows.Forms.Button btn_cuadre;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_caja;
     }
 }

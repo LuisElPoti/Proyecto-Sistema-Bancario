@@ -26,6 +26,9 @@ namespace CoreServices
         bool ActualizarUsuario(int idUsuario, int idPerfil, int idCliente, string nombre, string clave);
 
         [OperationContract]
+        bool ValidarSeguridad(string clave);
+
+        [OperationContract]
         bool ValidarSesion(string nombre, string clave);
 
         [OperationContract]

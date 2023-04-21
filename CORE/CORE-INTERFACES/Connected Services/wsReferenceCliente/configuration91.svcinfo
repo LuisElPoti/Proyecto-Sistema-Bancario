@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="wIYEHir5SXlxdNaULY0qRzzxHaya6QEEPweV1KwmTMk=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="eClEhDxhAmfdwGmy+93A3chfgJbcH6I3sFNaDn/MwRc=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IWSCliente">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IWSCliente" contract="wsReferenceCliente.IWSCliente" bindingType="basicHttpBinding" address="http://localhost:61491/Servicios/WSCliente.svc" bindingConfiguration="BasicHttpBinding_IWSCliente">
+    <endpoint name="BasicHttpBinding_IWSCliente" contract="wsReferenceCliente.IWSCliente" bindingType="basicHttpBinding" address="http://localhost:53368/Servicios/WSCliente.svc" bindingConfiguration="BasicHttpBinding_IWSCliente">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:61491/Servicios/WSCliente.svc</serializedValue>
+          <serializedValue>http://localhost:53368/Servicios/WSCliente.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
