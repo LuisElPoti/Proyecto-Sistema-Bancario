@@ -40,6 +40,8 @@ namespace CoreServices.Servicios
         public DataTable BuscarCliente(int id)
         {
             return Operaciones.GetClientebyID(id);
+
+
         }
     }
 }

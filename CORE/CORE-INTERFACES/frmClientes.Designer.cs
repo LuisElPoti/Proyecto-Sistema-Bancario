@@ -36,6 +36,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dgbClientes = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnEliminar = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.btnEditar = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.guna2GradientTileButton4 = new Guna.UI2.WinForms.Guna2GradientTileButton();
@@ -54,7 +55,6 @@
             this.tbDireccion = new Guna.UI2.WinForms.Guna2TextBox();
             this.tpFechaNacimiento = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.cbTipoDocumento = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.dataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgbClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTableBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -108,7 +108,6 @@
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgbClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgbClientes.AutoGenerateColumns = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -119,7 +118,6 @@
             this.dgbClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgbClientes.ColumnHeadersHeight = 4;
             this.dgbClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgbClientes.DataSource = this.dataTableBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -158,6 +156,10 @@
             this.dgbClientes.ThemeStyle.RowsStyle.Height = 24;
             this.dgbClientes.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgbClientes.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // dataTableBindingSource
+            // 
+            this.dataTableBindingSource.DataSource = typeof(System.Data.DataTable);
             // 
             // btnEliminar
             // 
@@ -462,10 +464,6 @@
             this.cbTipoDocumento.Name = "cbTipoDocumento";
             this.cbTipoDocumento.Size = new System.Drawing.Size(227, 36);
             this.cbTipoDocumento.TabIndex = 75;
-            // 
-            // dataTableBindingSource
-            // 
-            this.dataTableBindingSource.DataSource = typeof(System.Data.DataTable);
             // 
             // frmClientes
             // 

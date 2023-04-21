@@ -53,7 +53,8 @@ namespace CORE_INTERFACES
             try
             {
                 int id = int.Parse(tbID.Text);
-                DataTable dt = Referencia.BuscarCliente(id);
+                WSClienteClient client = new WSClienteClient();
+                DataTable dt = client.BuscarCliente(id);
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     dgbClientes.DataSource = dt;
