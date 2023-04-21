@@ -15,33 +15,36 @@ namespace CoreServices.Clases
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var dt = new DataTable();
-                var conn = db.Database.Connection;
-                var connectionState = conn.State;
+                var perfiles = new List<Perfil>();
                 try
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    using (var cmd = db.Database.Connection.CreateCommand())
                     {
                         cmd.CommandText = "spGetAllPerfil";
                         cmd.CommandType = CommandType.StoredProcedure;
+                        if (cmd.Connection.State != ConnectionState.Open) cmd.Connection.Open();
                         using (var reader = cmd.ExecuteReader())
                         {
-                            dt.Load(reader);
+                            while (reader.Read())
+                            {
+                                var perfil = new Perfil();
+                                perfil.idPerfil = reader.GetInt32(reader.GetOrdinal("idPerfil"));
+                                perfil.Nombre = reader.GetString(reader.GetOrdinal("Nombre"));
+                                perfil.Descripcion = reader.GetString(reader.GetOrdinal("Nombre"));
+                                // Aquí deberías agregar el resto de las propiedades de Perfil
+                                perfiles.Add(perfil);
+                            }
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    throw new Exception("Error al obtener los perfiles", ex);
                 }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return null;
+                return perfiles;
             }
         }
+
         public bool InsertPerfil(string nombre, string descripcion)
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
