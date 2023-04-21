@@ -221,6 +221,11 @@
   <ItemGroup>
     <Compile Include="Clases\clsRol.cs" />
     <Compile Include="Clases\ClsUsuario.cs" />
+    <Compile Include="Connected Services\wsReferenceCliente\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\wsReferencePerfil\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -334,6 +339,13 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\wsReferenceCliente\WSCliente.wsdl" />
+    <None Include="Connected Services\wsReferenceCliente\WSCliente.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceCliente\WSCliente1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta1.wsdl" />
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta3.xsd">
       <SubType>Designer</SubType>
@@ -450,6 +462,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\wsReferenceCliente\" />
     <WCFMetadataStorage Include="Connected Services\wsReferencePerfil\" />
     <WCFMetadataStorage Include="Connected Services\wsReferencePrestamo\" />
     <WCFMetadataStorage Include="Connected Services\wsReferenceCuenta\" />
@@ -530,6 +543,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\wsReferenceUsuario\WSUsuario1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceCliente\WSCliente.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceCliente\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceCliente\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceCliente\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
