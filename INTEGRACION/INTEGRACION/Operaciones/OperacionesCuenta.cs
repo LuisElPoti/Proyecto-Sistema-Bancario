@@ -194,7 +194,7 @@ namespace INTEGRACION.Operaciones
             }
         }
 
-        public bool Transferencia_Mismo(string CuentaOrigen, string CuentaDestino, decimal Monto)
+        public bool Transferencia_Mismo(int CuentaOrigen, int CuentaDestino, decimal Monto)
         {
             using (DBIntegracionEntities db = new DBIntegracionEntities())
             {
