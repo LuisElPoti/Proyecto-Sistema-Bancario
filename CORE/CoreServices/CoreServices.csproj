@@ -200,9 +200,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Log.cs">
-      <DependentUpon>MyCoreModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Operaciones\OperacionesCliente.cs" />
     <Compile Include="Operaciones\OperacionesMovimiento.cs" />
     <Compile Include="Operaciones\OperacionesPrestamo.cs" />

@@ -44,7 +44,6 @@ namespace CoreServices
         public virtual DbSet<TipoTransaccion> TipoTransaccion { get; set; }
         public virtual DbSet<Transaccion> Transaccion { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
-        public virtual DbSet<Log> Log { get; set; }
     
         public virtual int spDeleteCuenta(Nullable<int> idCuenta)
         {
