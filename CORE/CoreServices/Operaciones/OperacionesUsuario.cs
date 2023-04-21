@@ -110,7 +110,7 @@ namespace CoreServices.Clases
                         cmd.CommandText = "ValidarUsuario";
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add(new SqlParameter("nombre", nombre));
-                        cmd.Parameters.Add(new SqlParameter("clave", nombre));
+                        cmd.Parameters.Add(new SqlParameter("clave", clave));
                         using (var reader = cmd.ExecuteReader())
                         {
                             if(reader.Read())
