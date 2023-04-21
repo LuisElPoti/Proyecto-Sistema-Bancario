@@ -14,7 +14,7 @@ namespace CoreServices.Clases
     {
         public DataTable GetUsuario()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -47,7 +47,7 @@ namespace CoreServices.Clases
         
         public bool InsertUsuario(int idPerfil, int idCliente, string nombre, string clave)
         {
-            using(DBCoreEntities db = new DBCoreEntities())
+            using(DBCoreEntities1 db = new DBCoreEntities1())
             {
                 ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
                 db.spInsertUsuario(idPerfil, idCliente, nombre, clave);
@@ -65,7 +65,7 @@ namespace CoreServices.Clases
 
         public bool UpdateUsuario(int idUsuario, int idPerfil, int idCliente, string nombre, string clave)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spUpsertUsuario(idUsuario, idPerfil, idCliente, nombre, clave);
 
@@ -82,7 +82,7 @@ namespace CoreServices.Clases
 
         public bool DeleteUsuarios(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 int ReturnedValue = db.spDeleteUsuario(id);
 
@@ -104,7 +104,7 @@ namespace CoreServices.Clases
 
         public bool ValidarUsuario(string nombre, string clave)
         {
-            using(DBCoreEntities db = new DBCoreEntities()) 
+            using(DBCoreEntities1 db = new DBCoreEntities1()) 
             {
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
@@ -142,7 +142,7 @@ namespace CoreServices.Clases
         }
         public DataTable GetUsuarioID(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;

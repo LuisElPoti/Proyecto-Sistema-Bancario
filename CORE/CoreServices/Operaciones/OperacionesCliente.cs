@@ -16,7 +16,7 @@ namespace CoreServices.Operaciones
         log4net.ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public DataTable GetClientes()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1()) 
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
@@ -50,7 +50,7 @@ namespace CoreServices.Operaciones
 
         public bool InsertCliente(string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 try
                 {
@@ -70,7 +70,7 @@ namespace CoreServices.Operaciones
 
         public bool EliminarCliente(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 try
                 {
@@ -89,7 +89,7 @@ namespace CoreServices.Operaciones
         }
         public bool UpdateClientes(int id, string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 try
                 {
@@ -108,7 +108,7 @@ namespace CoreServices.Operaciones
 
         public DataTable GetClientebyID(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;

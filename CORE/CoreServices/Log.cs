@@ -10,16 +10,16 @@
 namespace CoreServices
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class spCuentabyidCliente_Result
+    public partial class Log
     {
-        public int idCuenta { get; set; }
-        public int idCliente { get; set; }
-        public int idTipoCuenta { get; set; }
-        public int idBanco { get; set; }
-        public string NumeroCuenta { get; set; }
-        public bool Estado { get; set; }
-        public decimal Balance { get; set; }
-        public Nullable<System.DateTime> FechaIngreso { get; set; }
+        public int Id { get; set; }
+        public System.DateTime Date { get; set; }
+        public string Thread { get; set; }
+        public string Level { get; set; }
+        public string Logger { get; set; }
+        public string Message { get; set; }
+        public string Exception { get; set; }
     }
 }
