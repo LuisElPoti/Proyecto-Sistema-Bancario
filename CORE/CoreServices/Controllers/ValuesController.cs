@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,9 +10,16 @@ namespace CoreServices.Controllers
 {
     public class ValuesController : ApiController
     {
+
+        private readonly ILog log = LogManager.GetLogger("API Logger");
         // GET api/values
         public IEnumerable<string> Get()
         {
+            log.Info("Log Info Message");
+            log.Debug("Log Debug Message");
+            log.Error("Log Error Message");
+            log.Warn("Log Warning Message");
+
             return new string[] { "value1", "value2" };
         }
 
@@ -35,5 +43,6 @@ namespace CoreServices.Controllers
         public void Delete(int id)
         {
         }
+
     }
 }

@@ -38,9 +38,6 @@ namespace CORE_INTERFACES
 
                 tbUsername.Text = tbPassword.Text = "";
             }
-                
-            
-            
         }
         bool ValidarCamposRellenos() //Valida que los campos del contenedor esten todos llenos
         {
