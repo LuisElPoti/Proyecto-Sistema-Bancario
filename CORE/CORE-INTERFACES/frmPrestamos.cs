@@ -38,7 +38,7 @@ namespace CORE_INTERFACES
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            Referencia.BuscarPrestamo(int.Parse(tbID.Text));
+            Referencia.MostrarPrestamos(int.Parse(tbID.Text));
         }
     }
 }
