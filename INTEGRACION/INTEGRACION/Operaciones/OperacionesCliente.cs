@@ -158,15 +158,6 @@ namespace INTEGRACION.Operaciones
                 }
                 log.Info("Select por ID Realizado.");
 
-                //catch (Exception ex)
-                //{
-                //    log.Error("Fallo select por ID: " + ex);
-                //    throw;
-                //}
-                //finally
-                //{
-                //    if (connectionState != ConnectionState.Closed) conn.Close();
-                //}
                 return clientes;
             }
         }
