@@ -16,6 +16,8 @@ namespace CORE_INTERFACES
         public frmUsuario()
         {
             InitializeComponent();
+            CargarClientes();
+            CargarPerfiles();
         }
 
         wsReferenceUsuario.WSUsuarioClient Referencia = new wsReferenceUsuario.WSUsuarioClient();
@@ -116,16 +118,19 @@ namespace CORE_INTERFACES
         }
         private void CargarClientes()
         {
-
-            cbCliente.DataSource = Referencia2.MostrarClientes();
-            cbCliente.DisplayMember = "Name";
+            List<Cliente> clientes  = new List<Cliente>();
+            clientes = Referencia2.MostrarClientes();
+            cbCliente.DataSource = clientes;
+            cbCliente.DisplayMember = "Nombre";
             cbCliente.ValueMember = "idCliente";
 
         }
         private void CargarPerfiles()
         {
-            cbPerfil.DataSource = Referencia1.MostrarPerfiles();
-            cbPerfil.DisplayMember = "Name";
+            List<Perfil> perfil = new List<Perfil>();
+            perfil = Referencia1.MostrarPerfiles();
+            cbPerfil.DataSource = perfil;
+            cbPerfil.DisplayMember = "Nombre";
             cbPerfil.ValueMember = "idPerfil";
         }
 

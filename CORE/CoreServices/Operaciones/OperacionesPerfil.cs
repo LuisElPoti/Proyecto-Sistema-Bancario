@@ -11,7 +11,7 @@ namespace CoreServices.Clases
 {
     public class OperacionesPerfil
     {
-        public DataTable GetPerfil()
+        public List<Perfil> GetPerfil()
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
