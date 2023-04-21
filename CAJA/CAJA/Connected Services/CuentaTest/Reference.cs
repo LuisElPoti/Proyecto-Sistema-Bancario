@@ -2696,6 +2696,12 @@ namespace CAJA.CuentaTest {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/Pago_Prestamo", ReplyAction="http://tempuri.org/IWSCuenta/Pago_PrestamoResponse")]
         System.Threading.Tasks.Task<bool> Pago_PrestamoAsync(int idPrestamo, decimal Monto);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/CrearTransferencia", ReplyAction="http://tempuri.org/IWSCuenta/CrearTransferenciaResponse")]
+        bool CrearTransferencia(int CuentaOrigen, int CuentaDestino, decimal Monto, int idEstado, int idMoneda, int idTipo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/CrearTransferencia", ReplyAction="http://tempuri.org/IWSCuenta/CrearTransferenciaResponse")]
+        System.Threading.Tasks.Task<bool> CrearTransferenciaAsync(int CuentaOrigen, int CuentaDestino, decimal Monto, int idEstado, int idMoneda, int idTipo);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/Transferencia_MismoBanco", ReplyAction="http://tempuri.org/IWSCuenta/Transferencia_MismoBancoResponse")]
         bool Transferencia_MismoBanco(int CuentaOrigen, int CuentaDestino, decimal Monto);
         
@@ -2784,6 +2790,14 @@ namespace CAJA.CuentaTest {
         
         public System.Threading.Tasks.Task<bool> Pago_PrestamoAsync(int idPrestamo, decimal Monto) {
             return base.Channel.Pago_PrestamoAsync(idPrestamo, Monto);
+        }
+        
+        public bool CrearTransferencia(int CuentaOrigen, int CuentaDestino, decimal Monto, int idEstado, int idMoneda, int idTipo) {
+            return base.Channel.CrearTransferencia(CuentaOrigen, CuentaDestino, Monto, idEstado, idMoneda, idTipo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearTransferenciaAsync(int CuentaOrigen, int CuentaDestino, decimal Monto, int idEstado, int idMoneda, int idTipo) {
+            return base.Channel.CrearTransferenciaAsync(CuentaOrigen, CuentaDestino, Monto, idEstado, idMoneda, idTipo);
         }
         
         public bool Transferencia_MismoBanco(int CuentaOrigen, int CuentaDestino, decimal Monto) {

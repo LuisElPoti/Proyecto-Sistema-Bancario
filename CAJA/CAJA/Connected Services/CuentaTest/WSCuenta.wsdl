@@ -49,6 +49,12 @@
   <wsdl:message name="IWSCuenta_Pago_Prestamo_OutputMessage">
     <wsdl:part name="parameters" element="tns:Pago_PrestamoResponse" />
   </wsdl:message>
+  <wsdl:message name="IWSCuenta_CrearTransferencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearTransferencia" />
+  </wsdl:message>
+  <wsdl:message name="IWSCuenta_CrearTransferencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearTransferenciaResponse" />
+  </wsdl:message>
   <wsdl:message name="IWSCuenta_Transferencia_MismoBanco_InputMessage">
     <wsdl:part name="parameters" element="tns:Transferencia_MismoBanco" />
   </wsdl:message>
@@ -83,6 +89,10 @@
     <wsdl:operation name="Pago_Prestamo">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/Pago_Prestamo" message="tns:IWSCuenta_Pago_Prestamo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/Pago_PrestamoResponse" message="tns:IWSCuenta_Pago_Prestamo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearTransferencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/CrearTransferencia" message="tns:IWSCuenta_CrearTransferencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWSCuenta/CrearTransferenciaResponse" message="tns:IWSCuenta_CrearTransferencia_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Transferencia_MismoBanco">
       <wsdl:input wsaw:Action="http://tempuri.org/IWSCuenta/Transferencia_MismoBanco" message="tns:IWSCuenta_Transferencia_MismoBanco_InputMessage" />
@@ -147,6 +157,15 @@
     </wsdl:operation>
     <wsdl:operation name="Pago_Prestamo">
       <soap:operation soapAction="http://tempuri.org/IWSCuenta/Pago_Prestamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearTransferencia">
+      <soap:operation soapAction="http://tempuri.org/IWSCuenta/CrearTransferencia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

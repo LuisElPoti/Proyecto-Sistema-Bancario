@@ -43,7 +43,10 @@ namespace CAJA
         {
             CuentaTest.WSCuentaClient Referencia = new CuentaTest.WSCuentaClient();
 
-            Referencia.Pago_Prestamo(1, 500);
+            Referencia.Transferencia_MismoBanco(402173, 402170, 7000);
+            Referencia.CrearTransferencia(402173,402170,700,1,2,3);
+            
+
         }
     }
 }

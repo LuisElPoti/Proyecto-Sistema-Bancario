@@ -534,5 +534,34 @@ namespace CoreServices
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarUsuario_Result>("ValidarUsuario", nombreParameter, claveParameter);
         }
+    
+        public virtual int spInsertTransaccion(Nullable<int> idTipo, Nullable<int> idMoneda, Nullable<int> idEstado, Nullable<int> cuentaOrigen, Nullable<int> cuentaDestino, Nullable<decimal> monto)
+        {
+            var idTipoParameter = idTipo.HasValue ?
+                new ObjectParameter("idTipo", idTipo) :
+                new ObjectParameter("idTipo", typeof(int));
+    
+            var idMonedaParameter = idMoneda.HasValue ?
+                new ObjectParameter("idMoneda", idMoneda) :
+                new ObjectParameter("idMoneda", typeof(int));
+    
+            var idEstadoParameter = idEstado.HasValue ?
+                new ObjectParameter("idEstado", idEstado) :
+                new ObjectParameter("idEstado", typeof(int));
+    
+            var cuentaOrigenParameter = cuentaOrigen.HasValue ?
+                new ObjectParameter("CuentaOrigen", cuentaOrigen) :
+                new ObjectParameter("CuentaOrigen", typeof(int));
+    
+            var cuentaDestinoParameter = cuentaDestino.HasValue ?
+                new ObjectParameter("CuentaDestino", cuentaDestino) :
+                new ObjectParameter("CuentaDestino", typeof(int));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("Monto", monto) :
+                new ObjectParameter("Monto", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spInsertTransaccion", idTipoParameter, idMonedaParameter, idEstadoParameter, cuentaOrigenParameter, cuentaDestinoParameter, montoParameter);
+        }
     }
 }

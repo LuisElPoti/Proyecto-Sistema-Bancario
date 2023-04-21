@@ -217,6 +217,24 @@ namespace CoreServices.Clases
             }
         }
 
+        public bool InsertTransferencia(int idTipo, int idMoneda, int idEstado, int CuentaOrigen, int CuentaDestino, decimal Monto)
+        {
+            using (DBCoreEntities1 db = new DBCoreEntities1())
+            {
+                int ReturnedValue = db.spInsertTransaccion(iidTipo, idMoneda, idEstado, CuentaOrigen, CuentaDestino, Monto);
+
+                if(ReturnedValue >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+        }
+
         public bool Transferencia_Mismo(int CuentaOrigen, int CuentaDestino, decimal Monto)
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
