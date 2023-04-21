@@ -1,6 +1,6 @@
 ﻿namespace CAJA
 {
-    partial class login
+    partial class loginC
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginC));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_login = new System.Windows.Forms.Button();
             this.txtBox_contrasena = new System.Windows.Forms.TextBox();

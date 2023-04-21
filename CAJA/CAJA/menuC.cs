@@ -10,21 +10,29 @@ using System.Windows.Forms;
 
 namespace CAJA
 {
-    public partial class menu : Form
+    public partial class menuC : Form
     {
-        public menu()
+        public menuC()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_cuadre_Click(object sender, EventArgs e)
         {
+            cuadreC c1 = new cuadreC();
+            this.Hide();
+            c1.ShowDialog();
+            this.Close();
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btn_transaccion_Click(object sender, EventArgs e)
         {
-
+            transaccionC t1 = new transaccionC();
+            this.Hide();
+            t1.ShowDialog();
+            this.Close();
         }
+
     }
 }

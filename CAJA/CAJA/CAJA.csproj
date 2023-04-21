@@ -75,11 +75,29 @@
     <Compile Include="caja.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="cajaC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cajaC.Designer.cs">
+      <DependentUpon>cajaC.cs</DependentUpon>
+    </Compile>
     <Compile Include="cajero.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="contadorC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contadorC.Designer.cs">
+      <DependentUpon>contadorC.cs</DependentUpon>
+    </Compile>
     <Compile Include="cuadre.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuadreC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cuadreC.Designer.cs">
+      <DependentUpon>cuadreC.cs</DependentUpon>
     </Compile>
     <Compile Include="database_firewall_rules.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -87,17 +105,17 @@
     <Compile Include="estado_transaccion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="menu.cs">
+    <Compile Include="menuC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="menu.Designer.cs">
-      <DependentUpon>menu.cs</DependentUpon>
+    <Compile Include="menuC.Designer.cs">
+      <DependentUpon>menuC.cs</DependentUpon>
     </Compile>
-    <Compile Include="login.cs">
+    <Compile Include="loginC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="login.Designer.cs">
-      <DependentUpon>login.cs</DependentUpon>
+    <Compile Include="loginC.Designer.cs">
+      <DependentUpon>loginC.cs</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -125,14 +143,26 @@
     <Compile Include="tipo_transaccion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="transaccionC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="transaccionC.Designer.cs">
+      <DependentUpon>transaccionC.cs</DependentUpon>
+    </Compile>
     <Compile Include="transaccione.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="login.resx">
-      <DependentUpon>login.cs</DependentUpon>
+    <EmbeddedResource Include="contadorC.resx">
+      <DependentUpon>contadorC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="menu.resx">
-      <DependentUpon>menu.cs</DependentUpon>
+    <EmbeddedResource Include="cuadreC.resx">
+      <DependentUpon>cuadreC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loginC.resx">
+      <DependentUpon>loginC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menuC.resx">
+      <DependentUpon>menuC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
