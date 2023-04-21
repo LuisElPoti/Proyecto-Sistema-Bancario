@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tbBalance = new Guna.UI2.WinForms.Guna2TextBox();
@@ -47,10 +47,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbCliente = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cbTipoCuenta = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cbBanco = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cbEstado = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.tbCliente = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuenta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +92,7 @@
             this.tbBalance.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbBalance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tbBalance.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbBalance.Location = new System.Drawing.Point(287, 277);
+            this.tbBalance.Location = new System.Drawing.Point(288, 277);
             this.tbBalance.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tbBalance.Name = "tbBalance";
             this.tbBalance.PasswordChar = '\0';
@@ -176,26 +176,26 @@
             // 
             // dgvCuenta
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvCuenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCuenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvCuenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCuenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCuenta.ColumnHeadersHeight = 4;
             this.dgvCuenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCuenta.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCuenta.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCuenta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCuenta.Location = new System.Drawing.Point(58, 379);
             this.dgvCuenta.Margin = new System.Windows.Forms.Padding(2);
@@ -354,23 +354,6 @@
             this.label3.TabIndex = 75;
             this.label3.Text = "Cuenta";
             // 
-            // cbCliente
-            // 
-            this.cbCliente.BackColor = System.Drawing.Color.Transparent;
-            this.cbCliente.BorderRadius = 20;
-            this.cbCliente.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCliente.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbCliente.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbCliente.ItemHeight = 30;
-            this.cbCliente.Location = new System.Drawing.Point(58, 203);
-            this.cbCliente.Margin = new System.Windows.Forms.Padding(2);
-            this.cbCliente.Name = "cbCliente";
-            this.cbCliente.Size = new System.Drawing.Size(171, 36);
-            this.cbCliente.TabIndex = 95;
-            // 
             // cbTipoCuenta
             // 
             this.cbTipoCuenta.BackColor = System.Drawing.Color.Transparent;
@@ -382,6 +365,9 @@
             this.cbTipoCuenta.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbTipoCuenta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbTipoCuenta.ItemHeight = 30;
+            this.cbTipoCuenta.Items.AddRange(new object[] {
+            "Ahorro",
+            "Crédito"});
             this.cbTipoCuenta.Location = new System.Drawing.Point(287, 203);
             this.cbTipoCuenta.Margin = new System.Windows.Forms.Padding(2);
             this.cbTipoCuenta.Name = "cbTipoCuenta";
@@ -399,6 +385,11 @@
             this.cbBanco.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbBanco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbBanco.ItemHeight = 30;
+            this.cbBanco.Items.AddRange(new object[] {
+            "Banreservas",
+            "BHD",
+            "Popular",
+            "Union"});
             this.cbBanco.Location = new System.Drawing.Point(501, 203);
             this.cbBanco.Margin = new System.Windows.Forms.Padding(2);
             this.cbBanco.Name = "cbBanco";
@@ -416,21 +407,45 @@
             this.cbEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbEstado.ItemHeight = 30;
+            this.cbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
             this.cbEstado.Location = new System.Drawing.Point(58, 276);
             this.cbEstado.Margin = new System.Windows.Forms.Padding(2);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(171, 36);
             this.cbEstado.TabIndex = 98;
             // 
+            // tbCliente
+            // 
+            this.tbCliente.BorderRadius = 20;
+            this.tbCliente.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbCliente.DefaultText = "";
+            this.tbCliente.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbCliente.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbCliente.Location = new System.Drawing.Point(59, 203);
+            this.tbCliente.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tbCliente.Name = "tbCliente";
+            this.tbCliente.PasswordChar = '\0';
+            this.tbCliente.PlaceholderText = "";
+            this.tbCliente.SelectedText = "";
+            this.tbCliente.Size = new System.Drawing.Size(170, 28);
+            this.tbCliente.TabIndex = 99;
+            // 
             // frmCuentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 558);
+            this.Controls.Add(this.tbCliente);
             this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.cbBanco);
             this.Controls.Add(this.cbTipoCuenta);
-            this.Controls.Add(this.cbCliente);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.tbBalance);
@@ -475,9 +490,9 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox tbID;
         private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2ComboBox cbCliente;
         private Guna.UI2.WinForms.Guna2ComboBox cbTipoCuenta;
         private Guna.UI2.WinForms.Guna2ComboBox cbBanco;
         private Guna.UI2.WinForms.Guna2ComboBox cbEstado;
+        private Guna.UI2.WinForms.Guna2TextBox tbCliente;
     }
 }

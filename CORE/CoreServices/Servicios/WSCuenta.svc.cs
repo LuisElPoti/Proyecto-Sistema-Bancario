@@ -45,6 +45,7 @@ namespace CoreServices.Servicios
         {
             return Operaciones.GetCuentabyCliente(idCliente);
         }
+
         
         public bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto)
         {
