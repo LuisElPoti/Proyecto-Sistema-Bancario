@@ -1,4 +1,5 @@
 ﻿using CORE_INTERFACES.wsReferencePrestamo;
+using CoreServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,6 +39,28 @@ namespace CORE_INTERFACES
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int id = int.Parse(tbID.Text);
+                wsReferencePrestamo.WSPrestamoClient Referencia = new wsReferencePrestamo.WSPrestamoClient();
+                List<Prestamo> Prestamos = new List<Prestamo>();
+                Prestamos = Referencia.MostrarPrestamos(id);
+                //List<Cliente> clientes = client.BuscarCliente(id);
+
+                if (Prestamos != null && Prestamos.Count > 0)
+                {
+                    dgvPrestamo.DataSource = Prestamos;
+                    MessageBox.Show("Cliente encontrado.");
+                }
+                else
+                {
+                    MessageBox.Show("Cliente no encontrado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar cliente: " + ex.Message);
+            }
             Referencia.MostrarPrestamos(int.Parse(tbID.Text));
         }
     }

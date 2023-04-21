@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using CoreServices;
+
 namespace CORE_INTERFACES.wsReferencePrestamo {
     
     
@@ -34,10 +36,10 @@ namespace CORE_INTERFACES.wsReferencePrestamo {
         System.Threading.Tasks.Task<bool> ActualizarPrestamoAsync(int idPrestamo, int idCuenta, decimal tasa, decimal montoOriginal, decimal montoActual, System.DateTime fechaCorte);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/MostrarPrestamos", ReplyAction="http://tempuri.org/IWSPrestamo/MostrarPrestamosResponse")]
-        CoreServices.Prestamo[] MostrarPrestamos(int id);
+        System.Collections.Generic.List<Prestamo> MostrarPrestamos(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSPrestamo/MostrarPrestamos", ReplyAction="http://tempuri.org/IWSPrestamo/MostrarPrestamosResponse")]
-        System.Threading.Tasks.Task<CoreServices.Prestamo[]> MostrarPrestamosAsync(int id);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Prestamo>> MostrarPrestamosAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -91,11 +93,11 @@ namespace CORE_INTERFACES.wsReferencePrestamo {
             return base.Channel.ActualizarPrestamoAsync(idPrestamo, idCuenta, tasa, montoOriginal, montoActual, fechaCorte);
         }
         
-        public CoreServices.Prestamo[] MostrarPrestamos(int id) {
+        public System.Collections.Generic.List<Prestamo> MostrarPrestamos(int id) {
             return base.Channel.MostrarPrestamos(id);
         }
         
-        public System.Threading.Tasks.Task<CoreServices.Prestamo[]> MostrarPrestamosAsync(int id) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Prestamo>> MostrarPrestamosAsync(int id) {
             return base.Channel.MostrarPrestamosAsync(id);
         }
     }

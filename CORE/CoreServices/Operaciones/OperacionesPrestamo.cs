@@ -31,11 +31,11 @@ namespace CoreServices.Operaciones
                         {
                             Prestamo Prestamo = new Prestamo();
                             Prestamo.idPrestamo = int.Parse(reader[0].ToString());
-                            Prestamo.idCuenta = reader.GetInt16(reader.GetOrdinal("idCuenta"));
+                            Prestamo.idCuenta = int.Parse(reader[1].ToString());
                             Prestamo.Tasa = reader.GetDecimal(reader.GetOrdinal("Tasa"));
                             Prestamo.MontoActual = reader.GetDecimal(reader.GetOrdinal("MontoActual"));
                             Prestamo.MontoOriginal = reader.GetDecimal(reader.GetOrdinal("MontoOriginal"));
-                            Prestamo.FechaCorte = reader.GetDateTime(reader.GetOrdinal("FechCorte"));
+                            Prestamo.FechaCorte = reader.GetDateTime(reader.GetOrdinal("FechaCorte"));
                             Prestamo.FechaIngreso = reader.GetDateTime(reader.GetOrdinal("FechaIngreso"));
 
                             Prestamos.Add(Prestamo);
