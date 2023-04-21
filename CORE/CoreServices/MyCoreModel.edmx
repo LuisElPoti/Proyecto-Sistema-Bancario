@@ -112,7 +112,6 @@
           </Key>
           <Property Name="idMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idCuenta" Type="int" Nullable="false" />
-          <Property Name="idTransaccion" Type="int" Nullable="false" />
           <Property Name="Monto" Type="money" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="250" />
           <Property Name="FechaIngreso" Type="datetime" />
@@ -426,18 +425,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Transaccion_Movimiento">
-          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="1" />
-          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Transaccion">
-              <PropertyRef Name="idTransaccion" />
-            </Principal>
-            <Dependent Role="Movimiento">
-              <PropertyRef Name="idTransaccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="GetAllMovimientobyCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllPrestamobyCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spDeleteCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -536,7 +523,7 @@
           <Parameter Name="Monto" Type="money" Mode="In" />
         </Function>
         <Function Name="spPagoPrestamo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idCuenta" Type="int" Mode="In" />
+          <Parameter Name="NumeroCuenta" Type="int" Mode="In" />
           <Parameter Name="Monto" Type="money" Mode="In" />
         </Function>
         <Function Name="spUpsertCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -682,10 +669,6 @@
           <AssociationSet Name="FK_Transaccion_CuentaDestino" Association="Self.FK_Transaccion_CuentaDestino">
             <End Role="Beneficiario" EntitySet="Beneficiario" />
             <End Role="Transaccion" EntitySet="Transaccion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Transaccion_Movimiento" Association="Self.FK_Transaccion_Movimiento">
-            <End Role="Transaccion" EntitySet="Transaccion" />
-            <End Role="Movimiento" EntitySet="Movimiento" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -1335,7 +1318,7 @@
             <Parameter Name="Monto" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="spPagoPrestamo">
-            <Parameter Name="idCuenta" Mode="In" Type="Int32" />
+            <Parameter Name="NumeroCuenta" Mode="In" Type="Int32" />
             <Parameter Name="Monto" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="spUpsertCliente">
