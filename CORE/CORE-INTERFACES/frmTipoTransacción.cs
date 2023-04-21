@@ -16,5 +16,7 @@ namespace CORE_INTERFACES
         {
             InitializeComponent();
         }
+
+       
     }
 }
