@@ -27,16 +27,21 @@ namespace CAJA
                 var conn = (SqlConnection)db.Database.Connection;
                 conn.Open();
                 string userName = txtBox_usuario.Text;
-                string query = "SELECT id_cajero FROM cajeros WHERE nombre_cajero = @UserName";
+                string query = "SELECT id_cajero, id_caja, id_sucursal FROM cajeros WHERE nombre_cajero = @UserName";
 
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@UserName", userName);
 
-                    object result = command.ExecuteScalar();
-                    if (result != null)
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        CurrentUser.SetUser(Convert.ToInt32(result), txtBox_usuario.Text, txtBox_contrasena.Text);
+                        if (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            int id_caja = reader.GetInt32(1);
+                            int id_sucursal = reader.GetInt32(2);
+                            CurrentUser.SetUser(id, txtBox_usuario.Text, txtBox_contrasena.Text, id_caja, id_sucursal);
+                        }
                     }
 
                     using (SqlCommand cmd = new SqlCommand("SELECT nombre_cajero, clave_cajero FROM cajeros WHERE nombre_cajero=@nombre_cajero AND clave_cajero=@clave_cajero", conn))

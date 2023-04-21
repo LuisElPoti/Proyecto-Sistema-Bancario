@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.Xml;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -137,9 +138,9 @@ namespace CAJA
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
+            private void button1_Click(object sender, EventArgs e)
+         {
 
 
             if (CB_tipo_transaccion.SelectedIndex == -1 || CB_moneda_transaccion.SelectedIndex == -1)
@@ -175,7 +176,20 @@ namespace CAJA
 
                                 int rowsAffected = command.ExecuteNonQuery();
                                 MessageBox.Show("la transaccion fue un exito");
+                            }
+                      
 
+                            using (SqlCommand command = new SqlCommand("sp_modificar_monto_caja", conn, transaction))
+                            {
+                                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                                command.Parameters.AddWithValue("@id_caja", CurrentUser.Id_caja);
+                                command.Parameters.AddWithValue("@Tipo", tipo_transaccionCore(CB_tipo_transaccion.SelectedItem.ToString()));
+                                command.Parameters.AddWithValue("@Monto", calculateMonto(txtBox_monto_transaccion.Text));
+
+                                command.ExecuteNonQuery();
+
+                                Console.WriteLine("Stored procedure executed successfully.");
                             }
 
                             transaction.Commit();
@@ -190,6 +204,14 @@ namespace CAJA
                     conn.Close();
                 }
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            menuC m1 = new menuC();
+            this.Hide();
+            m1.ShowDialog();
+            this.Close();
         }
     }
 }
