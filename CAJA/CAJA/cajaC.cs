@@ -40,9 +40,6 @@ namespace CAJA
             this.Close();
         }
 
-        //How to use References:
-        wsReferenceCuenta.WSCuentaClient Reference = wsReferenceCuenta.WSCuentaClient();
-
         private void btn_realizar_Click(object sender, EventArgs e)
         {
             conn.Open();
