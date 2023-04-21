@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CORE_INTERFACES.wsReferenceCliente;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,9 +50,28 @@ namespace CORE_INTERFACES
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            DataTable dt = Referencia.BuscarCliente(int.Parse(tbID.Text));
-            dgbClientes.DataSource = dt;
-            dgbClientes.Refresh();
+            try
+            {
+                int id = int.Parse(tbID.Text);
+                WSClienteClient client = new WSClienteClient();
+                DataTable dt = client.BuscarCliente(id);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    dgbClientes.DataSource = dt;
+                    MessageBox.Show("Cliente encontrado.");
+                }
+                else
+                {
+                    MessageBox.Show("Cliente no encontrado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar cliente: " + ex.Message);
+            }
+            //DataTable dt =  Referencia.BuscarCliente(int.Parse(tbID.Text));
+            //dgbClientes.DataSource = dt;
+            //dgbClientes.Refresh();
             //dt = Referencia.BuscarCliente(int.Parse(tbID.Text));
             //MessageBox.Show("Cliente encontrado.");
             //tbNombre.Text = dt.Rows[1].ToString();
