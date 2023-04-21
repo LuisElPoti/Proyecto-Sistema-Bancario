@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="59c0da70-28f2-4789-916d-34e688295fc7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://localhost:44346/Servicios/WSCuenta.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WSCuenta.xsd" MetadataType="Schema" ID="80a97f62-f604-4cf7-aad8-b1730f69de01" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCuenta.svc?xsd=xsd1" />
+    <MetadataFile FileName="WSCuenta.wsdl" MetadataType="Wsdl" ID="c008bf5b-7e75-43f9-9009-e286858dc1e7" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCuenta.svc?wsdl" />
+    <MetadataFile FileName="WSCuenta.disco" MetadataType="Disco" ID="fa62b398-09fc-4083-87f9-2d6833c771e4" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCuenta.svc?disco" />
+    <MetadataFile FileName="WSCuenta1.xsd" MetadataType="Schema" ID="5e4087c2-01aa-4c31-b5c0-00d15cf75592" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCuenta.svc?xsd=xsd2" />
+    <MetadataFile FileName="WSCuenta2.xsd" MetadataType="Schema" ID="b58783cc-c3b4-4ee9-8425-4acfbcfa3aba" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCuenta.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
