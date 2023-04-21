@@ -1384,7 +1384,7 @@
           </FunctionImport>
           <EntitySet Name="Log" EntityType="DBCoreModel.Log" />
           <FunctionImport Name="spDeleteCliente">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spGetAllCliente_Result">

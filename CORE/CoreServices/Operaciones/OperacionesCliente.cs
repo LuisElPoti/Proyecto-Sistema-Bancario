@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 using log4net;
 using System.Xml.Linq;
+using FastMember;
 
 namespace CoreServices.Operaciones
 {
@@ -108,36 +109,26 @@ namespace CoreServices.Operaciones
 
         public DataTable GetClientebyID(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using(DBCoreEntities db = new DBCoreEntities())
             {
-                var dt = new DataTable();
-                var conn = db.Database.Connection;
-                var connectionState = conn.State;
-                try
+                var Conexion = db.Database.Connection.ToString();
+
+                using (SqlConnection sql = new SqlConnection(Conexion))
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    using(SqlCommand cmd = new SqlCommand("spGetClienteById", sql))
                     {
-                        cmd.CommandText = "spGetClienteById";
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("Id", id));
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            dt.Load(reader);
-                        }
+                        sql.Open();
+                        cmd.Parameters.Add(new SqlParameter("@IdPais", id));
+
+                        var dt = new DataTable();
+
+                        var da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+
+                        return dt;
                     }
-                    log.Info("Select por ID Realizado.");
                 }
-                catch (Exception ex)
-                {
-                    log.Error("Fallo select por ID: "+ex);
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
             }
         }
     }
