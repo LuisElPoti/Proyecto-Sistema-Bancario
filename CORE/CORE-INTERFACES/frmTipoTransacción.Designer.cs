@@ -31,41 +31,41 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tbNombre = new Guna.UI2.WinForms.Guna2TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.guna2GradientTileButton6 = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.guna2GradientTileButton5 = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.guna2GradientTileButton4 = new Guna.UI2.WinForms.Guna2GradientTileButton();
-            this.guna2GradientTileButton1 = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.tbDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dgvTransaccion = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnEliminar = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btnEditar = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btnBuscar = new Guna.UI2.WinForms.Guna2GradientTileButton();
+            this.btnRegistrar = new Guna.UI2.WinForms.Guna2GradientTileButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tbID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransaccion)).BeginInit();
             this.SuspendLayout();
             // 
-            // guna2TextBox4
+            // tbNombre
             // 
-            this.guna2TextBox4.BorderRadius = 20;
-            this.guna2TextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox4.DefaultText = "";
-            this.guna2TextBox4.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox4.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox4.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox4.Location = new System.Drawing.Point(229, 312);
-            this.guna2TextBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox4.Name = "guna2TextBox4";
-            this.guna2TextBox4.PasswordChar = '\0';
-            this.guna2TextBox4.PlaceholderText = "";
-            this.guna2TextBox4.SelectedText = "";
-            this.guna2TextBox4.Size = new System.Drawing.Size(227, 35);
-            this.guna2TextBox4.TabIndex = 63;
+            this.tbNombre.BorderRadius = 20;
+            this.tbNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbNombre.DefaultText = "";
+            this.tbNombre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbNombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbNombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbNombre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbNombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbNombre.Location = new System.Drawing.Point(229, 312);
+            this.tbNombre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbNombre.Name = "tbNombre";
+            this.tbNombre.PasswordChar = '\0';
+            this.tbNombre.PlaceholderText = "";
+            this.tbNombre.SelectedText = "";
+            this.tbNombre.Size = new System.Drawing.Size(227, 35);
+            this.tbNombre.TabIndex = 63;
             // 
             // label7
             // 
@@ -91,31 +91,31 @@
             this.label6.TabIndex = 61;
             this.label6.Text = "Descripción";
             // 
-            // guna2TextBox3
+            // tbDescripcion
             // 
-            this.guna2TextBox3.BorderRadius = 20;
-            this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox3.DefaultText = "";
-            this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Location = new System.Drawing.Point(522, 312);
-            this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox3.Name = "guna2TextBox3";
-            this.guna2TextBox3.PasswordChar = '\0';
-            this.guna2TextBox3.PlaceholderText = "";
-            this.guna2TextBox3.SelectedText = "";
-            this.guna2TextBox3.Size = new System.Drawing.Size(227, 35);
-            this.guna2TextBox3.TabIndex = 60;
+            this.tbDescripcion.BorderRadius = 20;
+            this.tbDescripcion.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbDescripcion.DefaultText = "";
+            this.tbDescripcion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbDescripcion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbDescripcion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbDescripcion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbDescripcion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbDescripcion.Location = new System.Drawing.Point(522, 312);
+            this.tbDescripcion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbDescripcion.Name = "tbDescripcion";
+            this.tbDescripcion.PasswordChar = '\0';
+            this.tbDescripcion.PlaceholderText = "";
+            this.tbDescripcion.SelectedText = "";
+            this.tbDescripcion.Size = new System.Drawing.Size(227, 35);
+            this.tbDescripcion.TabIndex = 60;
             // 
-            // guna2DataGridView1
+            // dgvTransaccion
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvTransaccion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -123,9 +123,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.guna2DataGridView1.ColumnHeadersHeight = 4;
-            this.guna2DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvTransaccion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvTransaccion.ColumnHeadersHeight = 4;
+            this.dgvTransaccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -133,108 +133,108 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(76, 464);
-            this.guna2DataGridView1.Name = "guna2DataGridView1";
-            this.guna2DataGridView1.RowHeadersVisible = false;
-            this.guna2DataGridView1.RowHeadersWidth = 51;
-            this.guna2DataGridView1.RowTemplate.Height = 24;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(819, 221);
-            this.guna2DataGridView1.TabIndex = 59;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.guna2DataGridView1.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 4;
-            this.guna2DataGridView1.ThemeStyle.ReadOnly = false;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 24;
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvTransaccion.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvTransaccion.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvTransaccion.Location = new System.Drawing.Point(76, 464);
+            this.dgvTransaccion.Name = "dgvTransaccion";
+            this.dgvTransaccion.RowHeadersVisible = false;
+            this.dgvTransaccion.RowHeadersWidth = 51;
+            this.dgvTransaccion.RowTemplate.Height = 24;
+            this.dgvTransaccion.Size = new System.Drawing.Size(819, 221);
+            this.dgvTransaccion.TabIndex = 59;
+            this.dgvTransaccion.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvTransaccion.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvTransaccion.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvTransaccion.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvTransaccion.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvTransaccion.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvTransaccion.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvTransaccion.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvTransaccion.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvTransaccion.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTransaccion.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvTransaccion.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvTransaccion.ThemeStyle.HeaderStyle.Height = 4;
+            this.dgvTransaccion.ThemeStyle.ReadOnly = false;
+            this.dgvTransaccion.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvTransaccion.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvTransaccion.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTransaccion.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvTransaccion.ThemeStyle.RowsStyle.Height = 24;
+            this.dgvTransaccion.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvTransaccion.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // guna2GradientTileButton6
+            // btnEliminar
             // 
-            this.guna2GradientTileButton6.BorderRadius = 20;
-            this.guna2GradientTileButton6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton6.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientTileButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.guna2GradientTileButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.guna2GradientTileButton6.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.guna2GradientTileButton6.ForeColor = System.Drawing.Color.Black;
-            this.guna2GradientTileButton6.Location = new System.Drawing.Point(601, 380);
-            this.guna2GradientTileButton6.Name = "guna2GradientTileButton6";
-            this.guna2GradientTileButton6.Size = new System.Drawing.Size(130, 41);
-            this.guna2GradientTileButton6.TabIndex = 58;
-            this.guna2GradientTileButton6.Text = "Eliminar";
+            this.btnEliminar.BorderRadius = 20;
+            this.btnEliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEliminar.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEliminar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEliminar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btnEliminar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btnEliminar.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminar.Location = new System.Drawing.Point(601, 380);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(130, 41);
+            this.btnEliminar.TabIndex = 58;
+            this.btnEliminar.Text = "Eliminar";
             // 
-            // guna2GradientTileButton5
+            // btnEditar
             // 
-            this.guna2GradientTileButton5.BorderRadius = 20;
-            this.guna2GradientTileButton5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton5.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientTileButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.guna2GradientTileButton5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.guna2GradientTileButton5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.guna2GradientTileButton5.ForeColor = System.Drawing.Color.Black;
-            this.guna2GradientTileButton5.Location = new System.Drawing.Point(419, 380);
-            this.guna2GradientTileButton5.Name = "guna2GradientTileButton5";
-            this.guna2GradientTileButton5.Size = new System.Drawing.Size(130, 41);
-            this.guna2GradientTileButton5.TabIndex = 57;
-            this.guna2GradientTileButton5.Text = "Editar";
+            this.btnEditar.BorderRadius = 20;
+            this.btnEditar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEditar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEditar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEditar.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEditar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEditar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btnEditar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btnEditar.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnEditar.ForeColor = System.Drawing.Color.Black;
+            this.btnEditar.Location = new System.Drawing.Point(419, 380);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(130, 41);
+            this.btnEditar.TabIndex = 57;
+            this.btnEditar.Text = "Editar";
             // 
-            // guna2GradientTileButton4
+            // btnBuscar
             // 
-            this.guna2GradientTileButton4.BorderRadius = 20;
-            this.guna2GradientTileButton4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton4.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientTileButton4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.guna2GradientTileButton4.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.guna2GradientTileButton4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.guna2GradientTileButton4.ForeColor = System.Drawing.Color.Black;
-            this.guna2GradientTileButton4.Location = new System.Drawing.Point(577, 177);
-            this.guna2GradientTileButton4.Name = "guna2GradientTileButton4";
-            this.guna2GradientTileButton4.Size = new System.Drawing.Size(112, 41);
-            this.guna2GradientTileButton4.TabIndex = 56;
-            this.guna2GradientTileButton4.Text = "Buscar";
+            this.btnBuscar.BorderRadius = 20;
+            this.btnBuscar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBuscar.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBuscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBuscar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btnBuscar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btnBuscar.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnBuscar.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscar.Location = new System.Drawing.Point(577, 177);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(112, 41);
+            this.btnBuscar.TabIndex = 56;
+            this.btnBuscar.Text = "Buscar";
             // 
-            // guna2GradientTileButton1
+            // btnRegistrar
             // 
-            this.guna2GradientTileButton1.BorderRadius = 20;
-            this.guna2GradientTileButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2GradientTileButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2GradientTileButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2GradientTileButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.guna2GradientTileButton1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.guna2GradientTileButton1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.guna2GradientTileButton1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GradientTileButton1.Location = new System.Drawing.Point(239, 380);
-            this.guna2GradientTileButton1.Name = "guna2GradientTileButton1";
-            this.guna2GradientTileButton1.Size = new System.Drawing.Size(130, 41);
-            this.guna2GradientTileButton1.TabIndex = 55;
-            this.guna2GradientTileButton1.Text = "Registrar";
+            this.btnRegistrar.BorderRadius = 20;
+            this.btnRegistrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnRegistrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnRegistrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRegistrar.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRegistrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnRegistrar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btnRegistrar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
+            this.btnRegistrar.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnRegistrar.ForeColor = System.Drawing.Color.Black;
+            this.btnRegistrar.Location = new System.Drawing.Point(239, 380);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(130, 41);
+            this.btnRegistrar.TabIndex = 55;
+            this.btnRegistrar.Text = "Registrar";
             // 
             // label1
             // 
@@ -242,32 +242,32 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(7)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(775, 154);
+            this.label1.Location = new System.Drawing.Point(784, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 25);
             this.label1.TabIndex = 54;
             this.label1.Text = "ID";
             // 
-            // guna2TextBox1
+            // tbID
             // 
-            this.guna2TextBox1.BorderRadius = 20;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(725, 183);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(160, 35);
-            this.guna2TextBox1.TabIndex = 53;
+            this.tbID.BorderRadius = 20;
+            this.tbID.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbID.DefaultText = "";
+            this.tbID.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbID.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbID.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbID.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbID.Location = new System.Drawing.Point(725, 183);
+            this.tbID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbID.Name = "tbID";
+            this.tbID.PasswordChar = '\0';
+            this.tbID.PlaceholderText = "";
+            this.tbID.SelectedText = "";
+            this.tbID.Size = new System.Drawing.Size(160, 35);
+            this.tbID.TabIndex = 53;
             // 
             // label3
             // 
@@ -286,23 +286,23 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 687);
-            this.Controls.Add(this.guna2TextBox4);
+            this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.guna2TextBox3);
-            this.Controls.Add(this.guna2DataGridView1);
-            this.Controls.Add(this.guna2GradientTileButton6);
-            this.Controls.Add(this.guna2GradientTileButton5);
-            this.Controls.Add(this.guna2GradientTileButton4);
-            this.Controls.Add(this.guna2GradientTileButton1);
+            this.Controls.Add(this.tbDescripcion);
+            this.Controls.Add(this.dgvTransaccion);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.tbID);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmTipoTransacción";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmTipoTransacción";
-            ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransaccion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,17 +310,17 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
+        private Guna.UI2.WinForms.Guna2TextBox tbNombre;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
-        private Guna.UI2.WinForms.Guna2GradientTileButton guna2GradientTileButton6;
-        private Guna.UI2.WinForms.Guna2GradientTileButton guna2GradientTileButton5;
-        private Guna.UI2.WinForms.Guna2GradientTileButton guna2GradientTileButton4;
-        private Guna.UI2.WinForms.Guna2GradientTileButton guna2GradientTileButton1;
+        private Guna.UI2.WinForms.Guna2TextBox tbDescripcion;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvTransaccion;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnEliminar;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnEditar;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnBuscar;
+        private Guna.UI2.WinForms.Guna2GradientTileButton btnRegistrar;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox tbID;
         private System.Windows.Forms.Label label3;
     }
 }

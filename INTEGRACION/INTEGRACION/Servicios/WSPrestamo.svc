@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="INTEGRACION.Servicios.IWSPrestamo" CodeBehind="WSPrestamo.svc.cs" %>
