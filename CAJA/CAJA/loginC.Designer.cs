@@ -138,7 +138,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "loginC";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.loginC_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo_login)).EndInit();

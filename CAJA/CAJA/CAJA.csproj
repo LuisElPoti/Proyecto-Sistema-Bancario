@@ -87,11 +87,7 @@
     <Compile Include="cajero.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\CuentaTest\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
+    <Compile Include="CurrentUser.cs" />
     <Compile Include="Connected Services\wsReferenceCuenta\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,18 +197,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Connected Services\CuentaTest\CAJA.CuentaTest.Cuenta.datasource">
+    <None Include="Connected Services\wsReferenceCuenta\CAJA.wsReferenceCuenta.Cuenta1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\CuentaTest\WSCuenta.wsdl" />
-    <None Include="Connected Services\CuentaTest\WSCuenta.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CuentaTest\WSCuenta1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\CuentaTest\WSCuenta2.xsd">
-      <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta.wsdl" />
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta.xsd">
@@ -270,13 +256,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\CuentaTest\WSCuenta.disco" />
-    <None Include="Connected Services\CuentaTest\configuration91.svcinfo" />
-    <None Include="Connected Services\CuentaTest\configuration.svcinfo" />
-    <None Include="Connected Services\CuentaTest\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -321,7 +300,6 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\CuentaTest\" />
     <WCFMetadataStorage Include="Connected Services\wsReferenceCuenta\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
