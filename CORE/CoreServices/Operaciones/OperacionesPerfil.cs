@@ -39,7 +39,7 @@ namespace CoreServices.Clases
                 {
                     if (connectionState != ConnectionState.Closed) conn.Close();
                 }
-                return dt;
+                return null;
             }
         }
         public bool InsertPerfil(string nombre, string descripcion)
