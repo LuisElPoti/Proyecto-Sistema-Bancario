@@ -35,4 +35,19 @@ namespace CoreServices
         DataTable BuscarUsuario(int id);
 
     }
+
+    [DataContract]
+    public class Usuario
+    {
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public int idPerfil { get; set; }
+        [DataMember]
+        public int idCliente { get; set; }
+        [DataMember]
+        public string nombre { get; set; }
+        [DataMember]
+        public string clave { get; set; }
+    }
 }

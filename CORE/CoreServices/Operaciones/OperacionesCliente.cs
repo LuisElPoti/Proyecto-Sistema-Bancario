@@ -32,7 +32,7 @@ namespace CoreServices.Operaciones
                             dt.Load(reader);
                         }
                     }
-                    log.Info("Select Clientes Realizado.");
+                    log.Info();
                 }
                 catch (Exception ex)
                 {
