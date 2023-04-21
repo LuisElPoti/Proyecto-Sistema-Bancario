@@ -78,6 +78,7 @@
             this.txtBox_contrasena.Name = "txtBox_contrasena";
             this.txtBox_contrasena.Size = new System.Drawing.Size(198, 24);
             this.txtBox_contrasena.TabIndex = 3;
+            this.txtBox_contrasena.UseSystemPasswordChar = true;
             // 
             // txtBox_usuario
             // 
