@@ -12,7 +12,7 @@ namespace CoreServices.Operaciones
 {
     public class OperacionesCliente
     {
-        log4net.ILog log;
+        log4net.ILog log = LogManager.GetLogger();
         public DataTable GetClientes()
         {
             using (DBCoreEntities db = new DBCoreEntities())
