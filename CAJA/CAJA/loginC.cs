@@ -48,5 +48,10 @@ namespace CAJA
             conn.Close();
 
         }
+
+        private void loginC_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
