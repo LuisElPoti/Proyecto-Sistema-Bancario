@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://localhost:44362/Servicios/WSPRestamo.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost:44346/Servicios/WSPrestamo.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WSPrestamo.wsdl" MetadataType="Wsdl" ID="db679d1a-a6cd-4210-8ca4-05db96266fc8" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSPRestamo.svc?wsdl" />
-    <MetadataFile FileName="WSPRestamo.xsd" MetadataType="Schema" ID="40e9aea5-48cf-4626-956c-f1f447f94a4d" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSPRestamo.svc?xsd=xsd2" />
-    <MetadataFile FileName="WSPRestamo1.xsd" MetadataType="Schema" ID="621bbde3-2d54-447d-8c0e-239c469ec01f" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSPRestamo.svc?xsd=xsd1" />
-    <MetadataFile FileName="WSPRestamo.disco" MetadataType="Disco" ID="df55d52c-5adc-4bfc-8cc4-806ffaea0b5b" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSPRestamo.svc?disco" />
-    <MetadataFile FileName="WSPRestamo2.xsd" MetadataType="Schema" ID="ed8a28cd-9114-4c11-948c-22e3bb678afe" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSPRestamo.svc?xsd=xsd0" />
+    <MetadataFile FileName="WSPrestamo3.xsd" MetadataType="Schema" ID="89455efc-97c8-4c85-a65d-74d784366136" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSPrestamo.svc?xsd=xsd2" />
+    <MetadataFile FileName="WSPrestamo1.wsdl" MetadataType="Wsdl" ID="86d47b18-3132-4146-9c93-250216ba2377" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSPrestamo.svc?wsdl" />
+    <MetadataFile FileName="WSPrestamo31.xsd" MetadataType="Schema" ID="77da5b61-62b7-4820-b2e1-7805c891d285" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSPrestamo.svc?xsd=xsd0" />
+    <MetadataFile FileName="WSPrestamo32.xsd" MetadataType="Schema" ID="f5373242-df63-49e4-a420-2d25c0db9318" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSPrestamo.svc?xsd=xsd1" />
+    <MetadataFile FileName="WSPrestamo1.disco" MetadataType="Disco" ID="5d8d8a93-ec24-45d1-baae-4f5cd24a9c01" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSPrestamo.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

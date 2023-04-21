@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://localhost:44362/Servicios/WSUsuario.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost:44346/Servicios/WSUsuario.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WSUsuario.xsd" MetadataType="Schema" ID="b541d92a-0a26-46a4-b6d5-5e5dff5c04ea" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSUsuario.svc?xsd=xsd0" />
-    <MetadataFile FileName="WSUsuario.wsdl" MetadataType="Wsdl" ID="ed0abff2-f90a-430f-a3c1-dbb7f7101850" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSUsuario.svc?wsdl" />
-    <MetadataFile FileName="WSUsuario.disco" MetadataType="Disco" ID="9e811ed4-01a5-444c-bfa1-59a9157a7eab" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSUsuario.svc?disco" />
-    <MetadataFile FileName="WSUsuario1.xsd" MetadataType="Schema" ID="4ab8e600-6b77-44bd-a048-262f31c043da" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSUsuario.svc?xsd=xsd2" />
-    <MetadataFile FileName="WSUsuario2.xsd" MetadataType="Schema" ID="6c0ed454-11ce-402d-b230-95b680f1a9d8" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSUsuario.svc?xsd=xsd1" />
+    <MetadataFile FileName="WSUsuario3.xsd" MetadataType="Schema" ID="c4ca3bac-52a6-4f04-92b3-e8c3f02b7af0" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSUsuario.svc?xsd=xsd0" />
+    <MetadataFile FileName="WSUsuario1.disco" MetadataType="Disco" ID="e0644db4-befd-4a5a-a6da-1a7b70d4df4b" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSUsuario.svc?disco" />
+    <MetadataFile FileName="WSUsuario31.xsd" MetadataType="Schema" ID="d911ee52-b632-40fd-a1f8-d927cea7bead" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSUsuario.svc?xsd=xsd2" />
+    <MetadataFile FileName="WSUsuario32.xsd" MetadataType="Schema" ID="019394fb-be00-4077-949e-c26a8f53e95a" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSUsuario.svc?xsd=xsd1" />
+    <MetadataFile FileName="WSUsuario1.wsdl" MetadataType="Wsdl" ID="d0abf2e5-e706-4c88-9174-66402dc35fa4" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSUsuario.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

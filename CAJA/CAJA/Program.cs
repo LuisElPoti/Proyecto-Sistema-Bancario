@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CAJA
-{
+namespace CAJA { 
     internal static class Program
     {
         /// <summary>
@@ -16,7 +15,7 @@ namespace CAJA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new loginC());
         }
     }
 }

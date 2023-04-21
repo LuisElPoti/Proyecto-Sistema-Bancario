@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="c014824f-5643-42f2-8f03-714941b1a88e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://localhost:44346/Servicios/WSCliente.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WSCliente.wsdl" MetadataType="Wsdl" ID="3ccca1d0-3e86-4cea-9375-572ea03f1c90" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCliente.svc?wsdl" />
+    <MetadataFile FileName="WSCliente.xsd" MetadataType="Schema" ID="36cdee76-291e-4c4e-9982-9b6c91c7249b" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCliente.svc?xsd=xsd2" />
+    <MetadataFile FileName="WSCliente1.xsd" MetadataType="Schema" ID="eca425d6-c557-427e-9c94-41e68bb26544" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCliente.svc?xsd=xsd0" />
+    <MetadataFile FileName="WSCliente2.xsd" MetadataType="Schema" ID="080d1fa3-1480-42e1-a5eb-c8bae3771485" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCliente.svc?xsd=xsd1" />
+    <MetadataFile FileName="WSCliente.disco" MetadataType="Disco" ID="8891822d-94d8-4b63-84b7-0e53e057e2c2" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSCliente.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://localhost:44362/Servicios/WSTipoTransaccion.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost:44346/Servicios/WSTipoTransaccion.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WSTipoTransaccion.xsd" MetadataType="Schema" ID="85df2ab4-02ff-4f3a-9fc1-e84616f6af60" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSTipoTransaccion.svc?xsd=xsd1" />
-    <MetadataFile FileName="WSTipoTransaccion.disco" MetadataType="Disco" ID="7241102d-290c-4264-9a8c-a2860a5dc9d8" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSTipoTransaccion.svc?disco" />
-    <MetadataFile FileName="WSTipoTransaccion1.xsd" MetadataType="Schema" ID="609186dd-67d5-4e6c-be43-9dd13d2782ef" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSTipoTransaccion.svc?xsd=xsd2" />
-    <MetadataFile FileName="WSTipoTransaccion2.xsd" MetadataType="Schema" ID="d6973064-0159-4b85-900c-c8d75fe4e1ac" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSTipoTransaccion.svc?xsd=xsd0" />
-    <MetadataFile FileName="WSTipoTransaccion.wsdl" MetadataType="Wsdl" ID="0dad2cc1-60d2-4ba9-82c6-e2edb6ef6cf0" SourceId="1" SourceUrl="https://localhost:44362/Servicios/WSTipoTransaccion.svc?wsdl" />
+    <MetadataFile FileName="WSTipoTransaccion3.xsd" MetadataType="Schema" ID="a4927287-ac57-4634-9dff-bf81d2dd2c32" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSTipoTransaccion.svc?xsd=xsd0" />
+    <MetadataFile FileName="WSTipoTransaccion1.disco" MetadataType="Disco" ID="cb6c43de-e1e0-4411-9fa5-82660d2e7a75" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSTipoTransaccion.svc?disco" />
+    <MetadataFile FileName="WSTipoTransaccion31.xsd" MetadataType="Schema" ID="7e571c35-a961-41da-8759-93ba931e21cd" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSTipoTransaccion.svc?xsd=xsd1" />
+    <MetadataFile FileName="WSTipoTransaccion32.xsd" MetadataType="Schema" ID="edad881b-5daa-45ba-a04e-2e5aca1ca42c" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSTipoTransaccion.svc?xsd=xsd2" />
+    <MetadataFile FileName="WSTipoTransaccion1.wsdl" MetadataType="Wsdl" ID="3dae2541-cd32-45a0-9939-32935d05905f" SourceId="1" SourceUrl="https://localhost:44346/Servicios/WSTipoTransaccion.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
