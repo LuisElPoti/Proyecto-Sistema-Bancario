@@ -146,6 +146,7 @@
             this.pnLogin.Name = "pnLogin";
             this.pnLogin.Size = new System.Drawing.Size(307, 209);
             this.pnLogin.TabIndex = 19;
+            this.pnLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.pnLogin_Paint);
             // 
             // comboBox1
             // 

@@ -50,5 +50,9 @@ namespace CORE_INTERFACES
             return true; //retorna que los campos estan rellenos
         }
 
+        private void pnLogin_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
