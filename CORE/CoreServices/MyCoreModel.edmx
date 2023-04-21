@@ -170,8 +170,8 @@
           <Property Name="idTipo" Type="int" Nullable="false" />
           <Property Name="idMoneda" Type="int" Nullable="false" />
           <Property Name="idEstado" Type="int" Nullable="false" />
-          <Property Name="CuentaOrigen" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="CuentaDestino" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="CuentaOrigen" Type="int" Nullable="false" />
+          <Property Name="CuentaDestino" Type="int" Nullable="false" />
           <Property Name="Monto" Type="money" Nullable="false" />
           <Property Name="FechaIngreso" Type="datetime" />
         </EntityType>
