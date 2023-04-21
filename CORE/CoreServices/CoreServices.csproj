@@ -204,7 +204,6 @@
       <DependentUpon>MyCoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Operaciones\OperacionesCliente.cs" />
-    <Compile Include="Operaciones\OperacionesLog.cs" />
     <Compile Include="Operaciones\OperacionesMovimiento.cs" />
     <Compile Include="Operaciones\OperacionesPrestamo.cs" />
     <Compile Include="Operaciones\OperacionesTipoTransaccion.cs" />
