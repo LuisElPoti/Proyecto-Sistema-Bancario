@@ -27,7 +27,7 @@ namespace CoreServices.Servicios
     }
 
     [DataContract]
-    public class Cliente
+    public class ClCliente
     {
         [DataMember]
         public int id { get; set; }
@@ -45,7 +45,6 @@ namespace CoreServices.Servicios
         public string direccion { get; set; }
         [DataMember]
         public DateTime FechaNacimiento { get; set; }
-        [DataMember]
 
     }
 }

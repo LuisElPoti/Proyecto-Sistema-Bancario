@@ -30,7 +30,7 @@ namespace CoreServices.Servicios
         
     }
     [DataContract]
-    public class Perfil
+    public class ClPerfil
     {
         [DataMember]
         public int id { get; set; }

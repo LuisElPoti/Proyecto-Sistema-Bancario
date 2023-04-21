@@ -39,7 +39,7 @@ namespace CoreServices.Servicios
     }
 
     [DataContract]
-    public class Cuenta
+    public class ClCuenta
     {
         [DataMember]
         public int idCliente { get; set; }

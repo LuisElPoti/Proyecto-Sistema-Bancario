@@ -37,7 +37,7 @@ namespace CoreServices
     }
 
     [DataContract]
-    public class Usuario
+    public class ClUsuario
     {
         [DataMember]
         public int id { get; set; }
