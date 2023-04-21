@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace CAJA
         public transaccionC()
         {
             InitializeComponent();
+
             CB_tipo_transaccion.Items.Add("deposito");
             CB_tipo_transaccion.Items.Add("retiro");
             CB_tipo_transaccion.Items.Add("prestamo");
@@ -83,22 +85,68 @@ namespace CAJA
 
         }
 
+
+        private decimal calculateMonto(string cb)
+        {
+            if (CB_moneda_transaccion.SelectedItem.ToString() == "DOM")
+            {
+                return decimal.Parse(cb);
+            } 
+            else if (CB_moneda_transaccion.SelectedItem.ToString() == "USD")
+            {
+                return decimal.Parse(cb)*56;
+            }
+            else
+            {
+                return decimal.Parse(cb) * 60;
+            }
+        }
+
+
+        private int tipo_transaccionCore(string cb)
+        {
+            if (cb == "deposito")
+            {
+                return 1;
+            }
+            else if (cb == "retiro")
+            {
+                return 2;
+            }
+            else return 3;
+        }
+
+
         private bool sendTransaction()
         {
-            wsReferenceCuenta.WSCuentaClient referencia = new wsReferenceCuenta.WSCuentaClient();
-            var transactionGO = referencia.Deposito_Retiro(1, txtBox_numero_cuenta.Text, decimal.Parse(txtBox_monto_transaccion.Text));
-            if (transactionGO == true)
-            {
-                referencia.Deposito_Retiro(1, txtBox_numero_cuenta.Text, decimal.Parse(txtBox_monto_transaccion.Text));
-                return true;
-            }
-            else return false;
 
+            bool transactionMode = true;
+
+            wsReferenceCuenta.WSCuentaClient referencia = new wsReferenceCuenta.WSCuentaClient();
+
+            if (CB_tipo_transaccion.SelectedItem.ToString() == "deposito" || CB_tipo_transaccion.SelectedItem.ToString() == "retiro")
+            {
+                transactionMode = referencia.Deposito_Retiro(tipo_transaccionCore(CB_tipo_transaccion.SelectedItem.ToString()), txtBox_numero_cuenta.Text, calculateMonto(txtBox_monto_transaccion.Text));
+
+            } else if (CB_tipo_transaccion.SelectedItem.ToString() == "prestamo")
+            {
+                transactionMode = referencia.Pago_Prestamo(1, calculateMonto(txtBox_monto_transaccion.Text));
+            }
+             
+            return transactionMode;
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
 
+
+
+            if (CB_tipo_transaccion.SelectedIndex == -1 || CB_moneda_transaccion.SelectedIndex == -1)
+            {
+                MessageBox.Show("No puede tener campos vacios");
+                return;
+            }
 
             using (DBCajaEntities db = new DBCajaEntities())
             {
@@ -112,16 +160,17 @@ namespace CAJA
                     {
                         try
                         {
+
                             using (SqlCommand command = new SqlCommand("sp_insertar_transaccion", conn, transaction))
                             {
                                 command.CommandType = CommandType.StoredProcedure;
 
                                 command.Parameters.AddWithValue("@id_cajero", CurrentUser.Id);
-                                command.Parameters.AddWithValue("@num_cuenta_origen", txtBox_numero_cuenta);
-                                command.Parameters.AddWithValue("@num_cuenta_destino", txtBox_numero_cuenta);
+                                command.Parameters.AddWithValue("@num_cuenta_origen", txtBox_numero_cuenta.Text);
+                                command.Parameters.AddWithValue("@num_cuenta_destino", txtBox_numero_cuenta.Text);
                                 command.Parameters.AddWithValue("@id_tipo_transaccion", getTransaction_type(CB_tipo_transaccion.SelectedItem.ToString()));
                                 command.Parameters.AddWithValue("@id_moneda", getMoneda_type(CB_moneda_transaccion.SelectedItem.ToString()));
-                                command.Parameters.AddWithValue("@monto_transaccion", txtBox_monto_transaccion);
+                                command.Parameters.AddWithValue("@monto_transaccion", decimal.Parse(txtBox_monto_transaccion.Text));
                                 command.Parameters.AddWithValue("@id_estado_transaccion", 1);
 
                                 int rowsAffected = command.ExecuteNonQuery();
