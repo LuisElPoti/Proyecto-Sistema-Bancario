@@ -36,10 +36,10 @@ namespace CORE_INTERFACES.wsReferenceCliente {
         System.Threading.Tasks.Task<bool> EliminarClienteAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCliente/MostrarClientes", ReplyAction="http://tempuri.org/IWSCliente/MostrarClientesResponse")]
-        System.Data.DataTable MostrarClientes();
+        System.Collections.Generic.List<Cliente> MostrarClientes();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCliente/MostrarClientes", ReplyAction="http://tempuri.org/IWSCliente/MostrarClientesResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> MostrarClientesAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Cliente>> MostrarClientesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCliente/BuscarCliente", ReplyAction="http://tempuri.org/IWSCliente/BuscarClienteResponse")]
         System.Collections.Generic.List<Cliente> BuscarCliente(int id);
@@ -99,11 +99,11 @@ namespace CORE_INTERFACES.wsReferenceCliente {
             return base.Channel.EliminarClienteAsync(id);
         }
         
-        public System.Data.DataTable MostrarClientes() {
+        public System.Collections.Generic.List<Cliente> MostrarClientes() {
             return base.Channel.MostrarClientes();
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> MostrarClientesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Cliente>> MostrarClientesAsync() {
             return base.Channel.MostrarClientesAsync();
         }
         

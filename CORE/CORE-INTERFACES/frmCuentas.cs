@@ -17,28 +17,54 @@ namespace CORE_INTERFACES
         {
             InitializeComponent();
         }
-
+        
         wsReferenceCuenta.WSCuentaClient Referencia = new wsReferenceCuenta.WSCuentaClient();
 
+        private int TipoCuentaInt (string TipoCuenta)
+        {
+            if (TipoCuenta.ToLower() == "ahorro")
+                return 1;
+
+            return 3;
+                    
+        }
+
+        private int BancoInt (string Banco)
+        {
+            if (Banco.ToLower() == "banreservas")
+                return 1;
+            if(Banco.ToLower() == "bhd")
+                return 2;
+            if(Banco.ToLower() == "popular")
+                return 3;
+            return 4;
+        }
+
+        private bool Estadobool (string Estado)
+        {
+            if (Estado.ToLower() == "activo")
+                return true;
+            return false;
+        }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            Referencia.CrearCuenta(int.Parse(cbCliente.Text), int.Parse(cbTipoCuenta.Text), int.Parse(cbBanco.Text), tbNoCuenta.Text, bool.Parse(cbEstado.Text));
+            Referencia.CrearCuenta(int.Parse(tbCliente.Text), TipoCuentaInt(cbTipoCuenta.Text), BancoInt(cbBanco.Text), tbNoCuenta.Text, Estadobool(cbEstado.Text));
             MessageBox.Show("Cuenta Registrada. ");
-            cbCliente.Text = cbTipoCuenta.Text = cbBanco.Text = cbEstado.Text = tbNoCuenta.Text = cbEstado.Text = "";
+            tbCliente.Text = cbTipoCuenta.Text = cbBanco.Text = cbEstado.Text = tbNoCuenta.Text = cbEstado.Text = "";
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            Referencia.ActualizarCuenta(int.Parse(tbID.Text),bool.Parse(cbEstado.Text),decimal.Parse(tbBalance.Text));
+            Referencia.ActualizarCuenta(int.Parse(tbID.Text), Estadobool(cbEstado.Text), decimal.Parse(tbBalance.Text));
             MessageBox.Show("Cuenta Actualizada. ");
-            cbCliente.Text = cbTipoCuenta.Text = cbBanco.Text = cbEstado.Text = tbNoCuenta.Text = cbEstado.Text = "";
+            tbCliente.Text = cbTipoCuenta.Text = cbBanco.Text = cbEstado.Text = tbNoCuenta.Text = cbEstado.Text = "";
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Referencia.EliminarCuenta(int.Parse(tbID.Text));
             MessageBox.Show("Cuenta Eliminada.");
-            cbCliente.Text = cbTipoCuenta.Text = cbBanco.Text = cbEstado.Text = tbNoCuenta.Text = cbEstado.Text = "";
+            tbCliente.Text = cbTipoCuenta.Text = cbBanco.Text = cbEstado.Text = tbNoCuenta.Text = cbEstado.Text = "";
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
