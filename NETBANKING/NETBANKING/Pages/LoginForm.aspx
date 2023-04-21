@@ -24,7 +24,7 @@
          </div>
        </div>
         <div class="footer bg-gray">
-            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn bg-orange col-12" />
+            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn bg-orange col-12" OnClick="btnAceptar_Click1" />
         <asp:Button ID="btnNuevoUsuario" runat="server" Text="Nuevo usuario" CssClass="btn bg-purple col-12" OnClick="btnNuevoUsuario_Click" />
         </div>
     </form>

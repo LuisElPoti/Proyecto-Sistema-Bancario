@@ -10,7 +10,7 @@
         <h5 class="card-title">Allen Silverio</h5>
         <h6 class="card-subtitle mb-2 text-muted">Banco BHD</h6>
         <p class="card-text">1234567890986</p>
-        <a href="\Pages\TransaccionesForm.aspx" class="card-link">Realizar una transacción</a>
+        <a href="\Pages\TransaccionesPropiasForm.aspx" class="card-link">Realizar una transacción</a>
       </div>
         </div>
              <div class="card" style="width: 18rem;">
@@ -18,12 +18,22 @@
         <h5 class="card-title">Angel Moreno</h5>
         <h6 class="card-subtitle mb-2 text-muted">Banco Unión</h6>
         <p class="card-text">1234567890986</p>
-        <a href="\Pages\TransaccionesForm.aspx" class="card-link">Realizar una transacción</a>
+        <a href="\\Pages\TransaccionesInterbancariasForm.aspx" class="card-link">Realizar una transacción</a>
       </div>
     </div>
     </div>
 
       <div class="col-md-4">
+          <div class="form-group">
+            <h3>Registro de beneficiarios</h3>
+
+            <asp:Label ID="LabelBanco" runat="server" Text="Banco: "></asp:Label>
+            <br />
+            <br />
+             <asp:DropDownList ID="DdBanco" runat="server" Width="185px">
+                 <asp:ListItem>Banco BHD</asp:ListItem>
+                 <asp:ListItem>Banco 2</asp:ListItem>
+             </asp:DropDownList>
         <div class="form-group">
             <h3>Registro de beneficiarios</h3>
 
@@ -31,7 +41,7 @@
             <br />
             <br />
              <asp:DropDownList ID="DdTipoDocumento" runat="server" Width="185px">
-                 <asp:ListItem>Cedula</asp:ListItem>
+                 <asp:ListItem>Cédula</asp:ListItem>
                  <asp:ListItem>Pasaporte</asp:ListItem>
              </asp:DropDownList>
             <br />
