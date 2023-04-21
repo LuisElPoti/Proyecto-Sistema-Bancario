@@ -34,6 +34,7 @@ namespace CoreServices.Operaciones
                     {
                         while (reader.Read())
                         {
+
                             Cliente cliente = new Cliente();
                             cliente.idCliente = int.Parse(reader[0].ToString());
                             cliente.Nombre = reader.GetString(reader.GetOrdinal("Nombre"));

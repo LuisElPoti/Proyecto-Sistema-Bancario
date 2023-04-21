@@ -154,5 +154,10 @@ namespace CORE_INTERFACES
             dgvUsuario.AutoGenerateColumns = true;
             
         }
+
+        private void dgvUsuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

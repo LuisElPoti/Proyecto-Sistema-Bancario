@@ -15,7 +15,7 @@ namespace CoreServices.Servicios
     {
         OperacionesMovimiento Operaciones = new OperacionesMovimiento();
 
-        public DataTable MostrarMovimientoCuenta()
+        public List<Movimiento> MostrarMovimientoCuenta()
         {
             return Operaciones.GetAllMovimientobyCuenta();
         }

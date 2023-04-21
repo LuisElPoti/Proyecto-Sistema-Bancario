@@ -332,6 +332,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\wsReferenceMovimiento\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\wsReferencePerfil\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -393,6 +398,12 @@
     <Compile Include="frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMovimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMovimiento.Designer.cs">
+      <DependentUpon>frmMovimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -437,6 +448,9 @@
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMovimiento.resx">
+      <DependentUpon>frmMovimiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPerfil.resx">
       <DependentUpon>frmPerfil.cs</DependentUpon>
     </EmbeddedResource>
@@ -479,6 +493,16 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\wsReferenceCuenta\WSCuenta32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceMovimiento\WSMovimiento.wsdl" />
+    <None Include="Connected Services\wsReferenceMovimiento\WSMovimiento.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceMovimiento\WSMovimiento1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\wsReferenceMovimiento\WSMovimiento2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\wsReferencePerfil\WSPerfil.xsd">
@@ -593,6 +617,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\wsReferenceCliente\" />
+    <WCFMetadataStorage Include="Connected Services\wsReferenceMovimiento\" />
     <WCFMetadataStorage Include="Connected Services\wsReferencePerfil\" />
     <WCFMetadataStorage Include="Connected Services\wsReferencePrestamo\" />
     <WCFMetadataStorage Include="Connected Services\wsReferenceCuenta\" />
@@ -715,6 +740,21 @@
       <Project>{f962c15d-b631-485f-b8f2-921ff21ce971}</Project>
       <Name>CoreServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceMovimiento\WSMovimiento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceMovimiento\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceMovimiento\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsReferenceMovimiento\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

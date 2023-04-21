@@ -92,5 +92,7 @@ namespace CORE_INTERFACES
                 MessageBox.Show("Error al buscar cliente: " + ex.Message);
             }
         }
+
+        
     }
 }

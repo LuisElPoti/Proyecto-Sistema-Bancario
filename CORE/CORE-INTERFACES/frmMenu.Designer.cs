@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2ContainerControl1 = new Guna.UI2.WinForms.Guna2ContainerControl();
-            this.pnlContenedor = new Guna.UI2.WinForms.Guna2ContainerControl();
-            this.guna2ContainerControl2 = new Guna.UI2.WinForms.Guna2ContainerControl();
-            this.ptbExit = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnInicio = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ContainerControl1 = new Guna.UI2.WinForms.Guna2ContainerControl();
             this.btnTransacción = new Guna.UI2.WinForms.Guna2Button();
             this.btnPrestamos = new Guna.UI2.WinForms.Guna2Button();
             this.btnCuenta = new Guna.UI2.WinForms.Guna2Button();
             this.btnCliente = new Guna.UI2.WinForms.Guna2Button();
             this.btnPerfil = new Guna.UI2.WinForms.Guna2Button();
             this.btnUsuario = new Guna.UI2.WinForms.Guna2Button();
+            this.pnlContenedor = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.guna2ContainerControl2 = new Guna.UI2.WinForms.Guna2ContainerControl();
+            this.ptbExit = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel1.SuspendLayout();
             this.guna2ContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbExit)).BeginInit();
@@ -47,6 +48,7 @@
             // 
             // guna2GradientPanel1
             // 
+            this.guna2GradientPanel1.Controls.Add(this.guna2Button1);
             this.guna2GradientPanel1.Controls.Add(this.btnInicio);
             this.guna2GradientPanel1.Controls.Add(this.guna2ContainerControl1);
             this.guna2GradientPanel1.Controls.Add(this.btnTransacción);
@@ -62,48 +64,6 @@
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(249, 739);
             this.guna2GradientPanel1.TabIndex = 2;
-            // 
-            // guna2ContainerControl1
-            // 
-            this.guna2ContainerControl1.Location = new System.Drawing.Point(252, 3);
-            this.guna2ContainerControl1.Name = "guna2ContainerControl1";
-            this.guna2ContainerControl1.Size = new System.Drawing.Size(200, 200);
-            this.guna2ContainerControl1.TabIndex = 3;
-            this.guna2ContainerControl1.Text = "guna2ContainerControl1";
-            // 
-            // pnlContenedor
-            // 
-            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlContenedor.Location = new System.Drawing.Point(249, 44);
-            this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(971, 695);
-            this.pnlContenedor.TabIndex = 3;
-            this.pnlContenedor.Text = "guna2ContainerControl2";
-            // 
-            // guna2ContainerControl2
-            // 
-            this.guna2ContainerControl2.Controls.Add(this.ptbExit);
-            this.guna2ContainerControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2ContainerControl2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(7)))), ((int)(((byte)(82)))));
-            this.guna2ContainerControl2.Location = new System.Drawing.Point(249, 0);
-            this.guna2ContainerControl2.Name = "guna2ContainerControl2";
-            this.guna2ContainerControl2.Size = new System.Drawing.Size(971, 46);
-            this.guna2ContainerControl2.TabIndex = 4;
-            this.guna2ContainerControl2.Text = "guna2ContainerControl2";
-            // 
-            // ptbExit
-            // 
-            this.ptbExit.BackColor = System.Drawing.Color.Transparent;
-            this.ptbExit.Image = global::CORE_INTERFACES.Properties.Resources.icono_cerrar;
-            this.ptbExit.ImageRotate = 0F;
-            this.ptbExit.Location = new System.Drawing.Point(914, 0);
-            this.ptbExit.Name = "ptbExit";
-            this.ptbExit.Size = new System.Drawing.Size(45, 46);
-            this.ptbExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbExit.TabIndex = 17;
-            this.ptbExit.TabStop = false;
-            this.ptbExit.UseTransparentBackground = true;
-            this.ptbExit.Click += new System.EventHandler(this.ptbExit_Click);
             // 
             // btnInicio
             // 
@@ -125,6 +85,14 @@
             this.btnInicio.TabIndex = 18;
             this.btnInicio.Text = "       Inicio";
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
+            // 
+            // guna2ContainerControl1
+            // 
+            this.guna2ContainerControl1.Location = new System.Drawing.Point(252, 3);
+            this.guna2ContainerControl1.Name = "guna2ContainerControl1";
+            this.guna2ContainerControl1.Size = new System.Drawing.Size(200, 200);
+            this.guna2ContainerControl1.TabIndex = 3;
+            this.guna2ContainerControl1.Text = "guna2ContainerControl1";
             // 
             // btnTransacción
             // 
@@ -254,6 +222,61 @@
             this.btnUsuario.MouseEnter += new System.EventHandler(this.btnUsuario_MouseEnter);
             this.btnUsuario.MouseLeave += new System.EventHandler(this.btnUsuario_MouseLeave);
             // 
+            // pnlContenedor
+            // 
+            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlContenedor.Location = new System.Drawing.Point(249, 44);
+            this.pnlContenedor.Name = "pnlContenedor";
+            this.pnlContenedor.Size = new System.Drawing.Size(971, 695);
+            this.pnlContenedor.TabIndex = 3;
+            this.pnlContenedor.Text = "guna2ContainerControl2";
+            // 
+            // guna2ContainerControl2
+            // 
+            this.guna2ContainerControl2.Controls.Add(this.ptbExit);
+            this.guna2ContainerControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2ContainerControl2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(7)))), ((int)(((byte)(82)))));
+            this.guna2ContainerControl2.Location = new System.Drawing.Point(249, 0);
+            this.guna2ContainerControl2.Name = "guna2ContainerControl2";
+            this.guna2ContainerControl2.Size = new System.Drawing.Size(971, 46);
+            this.guna2ContainerControl2.TabIndex = 4;
+            this.guna2ContainerControl2.Text = "guna2ContainerControl2";
+            // 
+            // ptbExit
+            // 
+            this.ptbExit.BackColor = System.Drawing.Color.Transparent;
+            this.ptbExit.Image = global::CORE_INTERFACES.Properties.Resources.icono_cerrar;
+            this.ptbExit.ImageRotate = 0F;
+            this.ptbExit.Location = new System.Drawing.Point(914, 0);
+            this.ptbExit.Name = "ptbExit";
+            this.ptbExit.Size = new System.Drawing.Size(45, 46);
+            this.ptbExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbExit.TabIndex = 17;
+            this.ptbExit.TabStop = false;
+            this.ptbExit.UseTransparentBackground = true;
+            this.ptbExit.Click += new System.EventHandler(this.ptbExit_Click);
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = global::CORE_INTERFACES.Properties.Resources.Icono_tarjeta;
+            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button1.ImageSize = new System.Drawing.Size(50, 50);
+            this.guna2Button1.IndicateFocus = true;
+            this.guna2Button1.Location = new System.Drawing.Point(0, 638);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(246, 60);
+            this.guna2Button1.TabIndex = 19;
+            this.guna2Button1.Text = "               Movimiento";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -287,5 +310,6 @@
         private Guna.UI2.WinForms.Guna2ContainerControl guna2ContainerControl2;
         private Guna.UI2.WinForms.Guna2PictureBox ptbExit;
         private Guna.UI2.WinForms.Guna2Button btnInicio;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

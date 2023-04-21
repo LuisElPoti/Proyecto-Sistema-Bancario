@@ -43,7 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbID = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnMovimiento = new Guna.UI2.WinForms.Guna2GradientTileButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaccion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -282,31 +281,11 @@
             this.label3.TabIndex = 52;
             this.label3.Text = "Tipo Transacción";
             // 
-            // btnMovimiento
-            // 
-            this.btnMovimiento.BorderRadius = 20;
-            this.btnMovimiento.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMovimiento.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMovimiento.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMovimiento.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMovimiento.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMovimiento.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.btnMovimiento.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(188)))), ((int)(((byte)(7)))));
-            this.btnMovimiento.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnMovimiento.ForeColor = System.Drawing.Color.Black;
-            this.btnMovimiento.Location = new System.Drawing.Point(39, 183);
-            this.btnMovimiento.Name = "btnMovimiento";
-            this.btnMovimiento.Size = new System.Drawing.Size(266, 41);
-            this.btnMovimiento.TabIndex = 64;
-            this.btnMovimiento.Text = "Ver Movimientos";
-            this.btnMovimiento.Click += new System.EventHandler(this.btnMovimiento_Click);
-            // 
             // frmTipoTransacción
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 687);
-            this.Controls.Add(this.btnMovimiento);
             this.Controls.Add(this.tbNombre);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -343,6 +322,5 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox tbID;
         private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2GradientTileButton btnMovimiento;
     }
 }

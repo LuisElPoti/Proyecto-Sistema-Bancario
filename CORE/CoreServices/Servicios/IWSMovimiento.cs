@@ -13,6 +13,6 @@ namespace CoreServices.Servicios
     public interface IWSMovimiento
     {
         [OperationContract]
-        DataTable MostrarMovimientoCuenta();
+        List<Movimiento> MostrarMovimientoCuenta();
     }
 }

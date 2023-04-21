@@ -9,36 +9,41 @@ namespace CoreServices.Operaciones
 {
     public class OperacionesMovimiento
     {
-        public DataTable GetAllMovimientobyCuenta()
+        public List<Movimiento> GetAllMovimientobyCuenta()
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var dt = new DataTable();
-                var conn = db.Database.Connection;
-                var connectionState = conn.State;
+                var movimientos = new List<Movimiento>();
                 try
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    using (var cmd = db.Database.Connection.CreateCommand())
                     {
-                        cmd.CommandText = "GetAllMovimientobyCuenta";
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "SELECT * FROM Movimiento";
+                        cmd.CommandType = CommandType.Text;
+                        if (cmd.Connection.State != ConnectionState.Open) cmd.Connection.Open();
                         using (var reader = cmd.ExecuteReader())
                         {
-                            dt.Load(reader);
+                            while (reader.Read())
+                            {
+                                var movimiento = new Movimiento();
+                                movimiento.idMovimiento = (int)reader[0];
+                                movimiento.idCuenta = (int)reader[1];
+                                movimiento.Monto = (decimal)reader[2];
+                                movimiento.Descripcion = reader[3].ToString();
+                                movimiento.FechaIngreso = DateTime.Parse(reader[4].ToString());
+                                movimientos.Add(movimiento);
+                            }
                         }
                     }
+
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    throw new Exception("Error al obtener los perfiles", ex);
                 }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
+                return movimientos;
             }
         }
+
     }
 }
