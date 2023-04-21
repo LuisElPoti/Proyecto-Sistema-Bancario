@@ -1315,7 +1315,6 @@
             <Parameter Name="nombre" Mode="In" Type="String" />
             <Parameter Name="clave" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Log" EntityType="DBCoreModel.Log" />
           <FunctionImport Name="spDeleteCliente">
           <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1453,18 +1452,6 @@
           <Property Type="String" Name="Clave" Nullable="false" MaxLength="80" />
           <Property Type="DateTime" Name="FechaIngreso" Nullable="true" Precision="23" />
         </ComplexType>
-        <EntityType Name="Log">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
-        </EntityType>
         <ComplexType Name="spCuentabyidCliente_Result">
           <Property Type="Int32" Name="idCuenta" Nullable="false" />
           <Property Type="Int32" Name="idCliente" Nullable="false" />

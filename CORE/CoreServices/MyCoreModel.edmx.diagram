@@ -42,7 +42,6 @@
         <AssociationConnector Association="DBCoreModel.FK_Perfil_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="DBCoreModel.FK_Rol_Perfil" ManuallyRouted="false" />
         <AssociationConnector Association="DBCoreModel.FK_Tipo_Transaccion" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DBCoreModel.Log" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
