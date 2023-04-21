@@ -30,6 +30,7 @@ namespace CORE_INTERFACES
             if (Referencia.ValidarSeguridad(tbClave.Text))
             {
                 Referencia.CrearUsuario(PerfilID, ClienteID, tbNombre.Text, tbClave.Text);
+                MostrarInfo();
                 MessageBox.Show("Usuario Registrado!");
                 LimpiarCampos();
             }
@@ -52,7 +53,9 @@ namespace CORE_INTERFACES
 
                 if (usuarios != null && usuarios.Count > 0)
                 {
+                    
                     dgvUsuario.DataSource = usuarios;
+                    dgvUsuario.AutoGenerateColumns = true;
                     MessageBox.Show("Cliente encontrado.");
                 }
                 else
@@ -68,7 +71,7 @@ namespace CORE_INTERFACES
 
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
-            Referencia.ActualizarUsuario(int.Parse(tbID.Text), int.Parse(cbPerfil.Text), int.Parse(cbCliente.Text), tbNombre.Text, tbClave.Text);
+            Referencia.ActualizarUsuario(int.Parse(tbID.Text), int.Parse(cbPerfil.Text), int.Parse(cbCliente.SelectedValue.ToString()), tbNombre.Text, tbClave.Text);
             MessageBox.Show("Cliente Modificado!");
             LimpiarCampos();
         }
@@ -142,6 +145,14 @@ namespace CORE_INTERFACES
         private void cbPerfil_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        private void MostrarInfo()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            usuarios = Referencia.MostrarUsuarios();
+            dgvUsuario.DataSource = usuarios;
+            dgvUsuario.AutoGenerateColumns = true;
+            
         }
     }
 }
