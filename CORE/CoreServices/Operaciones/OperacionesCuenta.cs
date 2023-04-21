@@ -221,7 +221,7 @@ namespace CoreServices.Clases
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                int ReturnedValue = db.spInsertTransaccion(iidTipo, idMoneda, idEstado, CuentaOrigen, CuentaDestino, Monto);
+                int ReturnedValue = db.spInsertTransaccion(idTipo, idMoneda, idEstado, CuentaOrigen, CuentaDestino, Monto);
 
                 if(ReturnedValue >= 1)
                 {
