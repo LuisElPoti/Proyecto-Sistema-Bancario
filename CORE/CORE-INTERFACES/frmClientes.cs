@@ -1,4 +1,5 @@
 ﻿using CORE_INTERFACES.wsReferenceCliente;
+using CoreServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,11 +54,14 @@ namespace CORE_INTERFACES
             try
             {
                 int id = int.Parse(tbID.Text);
-                WSClienteClient client = new WSClienteClient();
-                DataTable dt = client.BuscarCliente(id);
-                if (dt != null && dt.Rows.Count > 0)
+                wsReferenceCliente.WSClienteClient client = new wsReferenceCliente.WSClienteClient();
+                List<Cliente> clientes = new List<Cliente>();
+                clientes = client.BuscarCliente(id);
+                //List<Cliente> clientes = client.BuscarCliente(id);
+
+                if (clientes != null && clientes.Count > 0)
                 {
-                    dgbClientes.DataSource = dt;
+                    dgbClientes.DataSource = clientes;
                     MessageBox.Show("Cliente encontrado.");
                 }
                 else

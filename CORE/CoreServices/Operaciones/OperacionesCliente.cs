@@ -14,23 +14,37 @@ namespace CoreServices.Operaciones
     public class OperacionesCliente
     {
         log4net.ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public DataTable GetClientes()
+        public List<Cliente> GetClientes()
         {
-            using (DBCoreEntities1 db = new DBCoreEntities1()) 
+            List<Cliente> clientes = new List<Cliente>();
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var dt = new DataTable();
-                var conn = db.Database.Connection;
-                var connectionState = conn.State;
                 try
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    var cmd = db.Database.Connection.CreateCommand();
+                    cmd.CommandText = "spGetAllCliente";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    if (cmd.Connection.State != ConnectionState.Open)
                     {
-                        cmd.CommandText = "spGetAllCliente";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        using (var reader = cmd.ExecuteReader())
+                        cmd.Connection.Open();
+                    }
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
                         {
-                            dt.Load(reader);
+                            Cliente cliente = new Cliente();
+                            cliente.idCliente = reader.GetInt32(reader.GetOrdinal("Id"));
+                            cliente.Nombre = reader.GetString(reader.GetOrdinal("Nombre"));
+                            cliente.TipoDocumento = reader.GetInt32(reader.GetOrdinal("TipoDocumento"));
+                            cliente.Documento = reader.GetString(reader.GetOrdinal("Documento"));
+                            cliente.Correo = reader.GetString(reader.GetOrdinal("Correo"));
+                            cliente.Telefono = reader.GetString(reader.GetOrdinal("Telefono"));
+                            cliente.Direccion = reader.GetString(reader.GetOrdinal("Direccion"));
+                            cliente.FechaNacimiento = reader.GetDateTime(reader.GetOrdinal("FechaNacimiento"));
+
+                            clientes.Add(cliente);
                         }
                     }
                     log.Info("Ayuda.");
@@ -42,11 +56,15 @@ namespace CoreServices.Operaciones
                 }
                 finally
                 {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
+                    if (db.Database.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Database.Connection.Close();
+                    }
                 }
-                return dt;
             }
+            return clientes;
         }
+    
 
         public bool InsertCliente(string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento)
         {
@@ -106,15 +124,14 @@ namespace CoreServices.Operaciones
             }
         }
 
-        public DataTable GetClientebyID(int id)
+        public List<Cliente> GetClientebyID(int id)
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var dt = new DataTable();
+                var clientes = new List<Cliente>();
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
-                try
-                {
+                
                     if (connectionState != ConnectionState.Open) conn.Open();
                     using (var cmd = conn.CreateCommand())
                     {
@@ -123,21 +140,34 @@ namespace CoreServices.Operaciones
                         cmd.Parameters.Add(new SqlParameter("Id", id));
                         using (var reader = cmd.ExecuteReader())
                         {
-                            dt.Load(reader);
+                            while (reader.Read())
+                            {
+                                Cliente cliente = new Cliente();
+                                cliente.idCliente = int.Parse(reader[0].ToString());      //GetInt32(reader.GetOrdinal("Id"));
+                                cliente.Nombre = reader.GetString(reader.GetOrdinal("Nombre"));
+                                cliente.TipoDocumento = reader.GetInt32(reader.GetOrdinal("TipoDocumento"));
+                                cliente.Documento = reader.GetString(reader.GetOrdinal("Documento"));
+                                cliente.Correo = reader.GetString(reader.GetOrdinal("Correo"));
+                                cliente.Telefono = reader.GetString(reader.GetOrdinal("Telefono"));
+                                cliente.Direccion = reader.GetString(reader.GetOrdinal("Direccion"));
+                                cliente.FechaNacimiento = reader.GetDateTime(reader.GetOrdinal("FechaNacimiento"));
+
+                                clientes.Add(cliente);
+                            }
                         }
                     }
                     log.Info("Select por ID Realizado.");
-                }
-                catch (Exception ex)
-                {
-                    log.Error("Fallo select por ID: "+ex);
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
+                
+                //catch (Exception ex)
+                //{
+                //    log.Error("Fallo select por ID: " + ex);
+                //    throw;
+                //}
+                //finally
+                //{
+                //    if (connectionState != ConnectionState.Closed) conn.Close();
+                //}
+                return clientes;
             }
         }
     }

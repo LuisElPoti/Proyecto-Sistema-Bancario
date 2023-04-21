@@ -32,12 +32,12 @@ namespace CoreServices.Servicios
         {
             return Operaciones.EliminarCliente(id);
         }
-        public DataTable MostrarClientes()
+        public List<Cliente> MostrarClientes()
         {
             return Operaciones.GetClientes();
         }
 
-        public DataTable BuscarCliente(int id)
+        public List<Cliente> BuscarCliente(int id)
         {
             return Operaciones.GetClientebyID(id);
 

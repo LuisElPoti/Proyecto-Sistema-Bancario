@@ -17,7 +17,7 @@ namespace CORE_INTERFACES
             InitializeComponent();
         }
 
-        wsReferencePerfil.WSPerfilClient Reference = wsReferencePerfil.WSPerfilClient();
+        wsReferencePerfil.WSPerfilClient Reference = new wsReferencePerfil.WSPerfilClient();
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
