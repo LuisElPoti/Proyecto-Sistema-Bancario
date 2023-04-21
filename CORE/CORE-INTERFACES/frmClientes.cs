@@ -50,15 +50,16 @@ namespace CORE_INTERFACES
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             DataTable dt = Referencia.BuscarCliente(int.Parse(tbID.Text));
-            dt = Referencia.BuscarCliente(int.Parse(tbID.Text));
-            MessageBox.Show("Cliente encontrado.");
-            tbNombre.Text = dt.Rows[1].ToString();
-            cbTipoDocumento.Text = dt.Rows[2].ToString();
-            tbDocumento.Text = dt.Rows[3].ToString();
-            tbCorreo.Text = dt.Rows[4].ToString();
-            tbTelefono.Text = dt.Rows[5].ToString();
-            tbDireccion.Text = dt.Rows[6].ToString();
-            tpFechaNacimiento.Text = dt.Rows[7].ToString();
+            
+            //dt = Referencia.BuscarCliente(int.Parse(tbID.Text));
+            //MessageBox.Show("Cliente encontrado.");
+            //tbNombre.Text = dt.Rows[1].ToString();
+            //cbTipoDocumento.Text = dt.Rows[2].ToString();
+            //tbDocumento.Text = dt.Rows[3].ToString();
+            //tbCorreo.Text = dt.Rows[4].ToString();
+            //tbTelefono.Text = dt.Rows[5].ToString();
+            //tbDireccion.Text = dt.Rows[6].ToString();
+            //tpFechaNacimiento.Text = dt.Rows[7].ToString();
         }
     }
 }
