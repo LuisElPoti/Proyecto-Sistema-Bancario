@@ -12,7 +12,7 @@ namespace CoreServices.Operaciones
 {
     public class OperacionesCliente
     {
-        log4net.ILog log = LogManager.GetLogger();
+        log4net.ILog log = LogManager.GetLogger(System.Environment.MachineName);
         public DataTable GetClientes()
         {
             using (DBCoreEntities db = new DBCoreEntities())
@@ -32,7 +32,7 @@ namespace CoreServices.Operaciones
                             dt.Load(reader);
                         }
                     }
-                    log.Info();
+                    log.Info("Success.");
                 }
                 catch (Exception ex)
                 {

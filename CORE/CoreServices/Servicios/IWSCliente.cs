@@ -45,7 +45,6 @@ namespace CoreServices.Servicios
         public string direccion { get; set; }
         [DataMember]
         public DateTime FechaNacimiento { get; set; }
-        [DataMember]
 
     }
 }
