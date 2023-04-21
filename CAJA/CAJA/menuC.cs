@@ -8,16 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CORE_INTERFACES
+namespace CAJA
 {
-    public partial class frmUsuario : Form
+    public partial class menu : Form
     {
-        public frmUsuario()
+        public menu()
         {
             InitializeComponent();
         }
 
-        private void guna2GradientTileButton1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }

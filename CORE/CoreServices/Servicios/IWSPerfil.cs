@@ -29,4 +29,14 @@ namespace CoreServices.Servicios
         DataTable BuscarPerfil(int id);
         
     }
+    [DataContract]
+    public class ClPerfil
+    {
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public string nombre { get; set; }
+        [DataMember]
+        public string descripcion { get; set; }
+    }
 }

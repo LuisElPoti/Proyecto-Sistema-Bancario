@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBCajaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="caja">
+          <Key>
+            <PropertyRef Name="id_caja" />
+          </Key>
+          <Property Name="id_caja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sucursal" Type="int" Nullable="false" />
+          <Property Name="monto_caja" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cajeros">
+          <Key>
+            <PropertyRef Name="id_cajero" />
+          </Key>
+          <Property Name="id_cajero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_caja" Type="int" Nullable="false" />
+          <Property Name="nombre_cajero" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellido_cajero" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="clave_cajero" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="id_sucursal" Type="int" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cuadres">
+          <Key>
+            <PropertyRef Name="id_cuadres" />
+          </Key>
+          <Property Name="id_cuadres" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cajero" Type="int" Nullable="false" />
+          <Property Name="monto_inicial" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="monto_final" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="diferencia_cuadre" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="fecha_cuadre" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estado_transaccion">
+          <Key>
+            <PropertyRef Name="id_estado_transaccion" />
+          </Key>
+          <Property Name="id_estado_transaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_estado_transaccion" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="recibos">
+          <Key>
+            <PropertyRef Name="id_recibo" />
+          </Key>
+          <Property Name="id_recibo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_transaccion" Type="int" Nullable="false" />
+          <Property Name="monto_transaccion" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="fecha_transaccion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sucursales">
+          <Key>
+            <PropertyRef Name="id_sucursal" />
+          </Key>
+          <Property Name="id_sucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_sucursal" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="telefono_sucursal" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="direccion_sucursal" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_transaccion">
+          <Key>
+            <PropertyRef Name="id_tipo_transaccion" />
+          </Key>
+          <Property Name="id_tipo_transaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_tipo_transaccion" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="transacciones">
+          <Key>
+            <PropertyRef Name="id_transaccion" />
+          </Key>
+          <Property Name="id_transaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cajero" Type="int" Nullable="false" />
+          <Property Name="num_cuenta_origen" Type="int" Nullable="false" />
+          <Property Name="num_cuenta_destino" Type="int" Nullable="false" />
+          <Property Name="id_moneda" Type="int" Nullable="false" />
+          <Property Name="id_tipo_transaccion" Type="int" Nullable="false" />
+          <Property Name="monto_transaccion" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="fecha_transaccion" Type="datetime" Nullable="false" />
+          <Property Name="id_estado_transaccion" Type="int" Nullable="false" />
+          <Property Name="id_prestamo" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBCaja.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_caja_id_sucursal">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="caja" Type="Self.caja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="id_sucursal" />
+            </Principal>
+            <Dependent Role="caja">
+              <PropertyRef Name="id_sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cajeros_id_sucursal">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="cajeros" Type="Self.cajeros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="id_sucursal" />
+            </Principal>
+            <Dependent Role="cajeros">
+              <PropertyRef Name="id_sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuadres_id_cajero">
+          <End Role="cajeros" Type="Self.cajeros" Multiplicity="1" />
+          <End Role="cuadres" Type="Self.cuadres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cajeros">
+              <PropertyRef Name="id_cajero" />
+            </Principal>
+            <Dependent Role="cuadres">
+              <PropertyRef Name="id_cajero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recibos_id_transaccion">
+          <End Role="transacciones" Type="Self.transacciones" Multiplicity="1" />
+          <End Role="recibos" Type="Self.recibos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transacciones">
+              <PropertyRef Name="id_transaccion" />
+            </Principal>
+            <Dependent Role="recibos">
+              <PropertyRef Name="id_transaccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaccion_id_cajero">
+          <End Role="cajeros" Type="Self.cajeros" Multiplicity="1" />
+          <End Role="transacciones" Type="Self.transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cajeros">
+              <PropertyRef Name="id_cajero" />
+            </Principal>
+            <Dependent Role="transacciones">
+              <PropertyRef Name="id_cajero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaccion_id_estado_transaccion">
+          <End Role="estado_transaccion" Type="Self.estado_transaccion" Multiplicity="1" />
+          <End Role="transacciones" Type="Self.transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_transaccion">
+              <PropertyRef Name="id_estado_transaccion" />
+            </Principal>
+            <Dependent Role="transacciones">
+              <PropertyRef Name="id_estado_transaccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaccion_id_tipo_transaccion">
+          <End Role="tipo_transaccion" Type="Self.tipo_transaccion" Multiplicity="1" />
+          <End Role="transacciones" Type="Self.transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_transaccion">
+              <PropertyRef Name="id_tipo_transaccion" />
+            </Principal>
+            <Dependent Role="transacciones">
+              <PropertyRef Name="id_tipo_transaccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_insertar_cuadres" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_cajero" Type="int" Mode="In" />
+          <Parameter Name="monto_inicial" Type="decimal" Mode="In" />
+          <Parameter Name="monto_final" Type="decimal" Mode="In" />
+          <Parameter Name="diferencia_cuadre" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_insertar_recibo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_transaccion" Type="int" Mode="In" />
+          <Parameter Name="monto_transaccion" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_insertar_transaccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_cajero" Type="int" Mode="In" />
+          <Parameter Name="num_cuenta_origen" Type="int" Mode="In" />
+          <Parameter Name="num_cuenta_destino" Type="int" Mode="In" />
+          <Parameter Name="id_tipo_transaccion" Type="int" Mode="In" />
+          <Parameter Name="id_prestamo" Type="int" Mode="In" />
+          <Parameter Name="id_moneda" Type="int" Mode="In" />
+          <Parameter Name="monto_transaccion" Type="decimal" Mode="In" />
+          <Parameter Name="id_estado_transaccion" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DBCajaModelStoreContainer">
+          <EntitySet Name="caja" EntityType="Self.caja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cajeros" EntityType="Self.cajeros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cuadres" EntityType="Self.cuadres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="estado_transaccion" EntityType="Self.estado_transaccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recibos" EntityType="Self.recibos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sucursales" EntityType="Self.sucursales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_transaccion" EntityType="Self.tipo_transaccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transacciones" EntityType="Self.transacciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+            <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_caja_id_sucursal" Association="Self.FK_caja_id_sucursal">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="caja" EntitySet="caja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cajeros_id_sucursal" Association="Self.FK_Cajeros_id_sucursal">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="cajeros" EntitySet="cajeros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuadres_id_cajero" Association="Self.FK_Cuadres_id_cajero">
+            <End Role="cajeros" EntitySet="cajeros" />
+            <End Role="cuadres" EntitySet="cuadres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recibos_id_transaccion" Association="Self.FK_Recibos_id_transaccion">
+            <End Role="transacciones" EntitySet="transacciones" />
+            <End Role="recibos" EntitySet="recibos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaccion_id_cajero" Association="Self.FK_Transaccion_id_cajero">
+            <End Role="cajeros" EntitySet="cajeros" />
+            <End Role="transacciones" EntitySet="transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaccion_id_estado_transaccion" Association="Self.FK_Transaccion_id_estado_transaccion">
+            <End Role="estado_transaccion" EntitySet="estado_transaccion" />
+            <End Role="transacciones" EntitySet="transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaccion_id_tipo_transaccion" Association="Self.FK_Transaccion_id_tipo_transaccion">
+            <End Role="tipo_transaccion" EntitySet="tipo_transaccion" />
+            <End Role="transacciones" EntitySet="transacciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBCajaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="caja">
+          <Key>
+            <PropertyRef Name="id_caja" />
+          </Key>
+          <Property Name="id_caja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sucursal" Type="Int32" Nullable="false" />
+          <Property Name="monto_caja" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="sucursale" Relationship="Self.FK_caja_id_sucursal" FromRole="caja" ToRole="sucursales" />
+        </EntityType>
+        <EntityType Name="cajero">
+          <Key>
+            <PropertyRef Name="id_cajero" />
+          </Key>
+          <Property Name="id_cajero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_caja" Type="Int32" Nullable="false" />
+          <Property Name="nombre_cajero" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido_cajero" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="clave_cajero" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_sucursal" Type="Int32" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="sucursale" Relationship="Self.FK_Cajeros_id_sucursal" FromRole="cajeros" ToRole="sucursales" />
+          <NavigationProperty Name="cuadres" Relationship="Self.FK_Cuadres_id_cajero" FromRole="cajeros" ToRole="cuadres" />
+          <NavigationProperty Name="transacciones" Relationship="Self.FK_Transaccion_id_cajero" FromRole="cajeros" ToRole="transacciones" />
+        </EntityType>
+        <EntityType Name="cuadre">
+          <Key>
+            <PropertyRef Name="id_cuadres" />
+          </Key>
+          <Property Name="id_cuadres" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cajero" Type="Int32" Nullable="false" />
+          <Property Name="monto_inicial" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="monto_final" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="diferencia_cuadre" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="fecha_cuadre" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="cajero" Relationship="Self.FK_Cuadres_id_cajero" FromRole="cuadres" ToRole="cajeros" />
+        </EntityType>
+        <EntityType Name="estado_transaccion">
+          <Key>
+            <PropertyRef Name="id_estado_transaccion" />
+          </Key>
+          <Property Name="id_estado_transaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_estado_transaccion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="transacciones" Relationship="Self.FK_Transaccion_id_estado_transaccion" FromRole="estado_transaccion" ToRole="transacciones" />
+        </EntityType>
+        <EntityType Name="recibo">
+          <Key>
+            <PropertyRef Name="id_recibo" />
+          </Key>
+          <Property Name="id_recibo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_transaccion" Type="Int32" Nullable="false" />
+          <Property Name="monto_transaccion" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="fecha_transaccion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="transaccione" Relationship="Self.FK_Recibos_id_transaccion" FromRole="recibos" ToRole="transacciones" />
+        </EntityType>
+        <EntityType Name="sucursale">
+          <Key>
+            <PropertyRef Name="id_sucursal" />
+          </Key>
+          <Property Name="id_sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono_sucursal" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion_sucursal" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="cajas" Relationship="Self.FK_caja_id_sucursal" FromRole="sucursales" ToRole="caja" />
+          <NavigationProperty Name="cajeros" Relationship="Self.FK_Cajeros_id_sucursal" FromRole="sucursales" ToRole="cajeros" />
+        </EntityType>
+        <EntityType Name="tipo_transaccion">
+          <Key>
+            <PropertyRef Name="id_tipo_transaccion" />
+          </Key>
+          <Property Name="id_tipo_transaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_tipo_transaccion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="transacciones" Relationship="Self.FK_Transaccion_id_tipo_transaccion" FromRole="tipo_transaccion" ToRole="transacciones" />
+        </EntityType>
+        <EntityType Name="transaccione">
+          <Key>
+            <PropertyRef Name="id_transaccion" />
+          </Key>
+          <Property Name="id_transaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cajero" Type="Int32" Nullable="false" />
+          <Property Name="num_cuenta_origen" Type="Int32" Nullable="false" />
+          <Property Name="num_cuenta_destino" Type="Int32" Nullable="false" />
+          <Property Name="id_moneda" Type="Int32" Nullable="false" />
+          <Property Name="id_tipo_transaccion" Type="Int32" Nullable="false" />
+          <Property Name="monto_transaccion" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="fecha_transaccion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_estado_transaccion" Type="Int32" Nullable="false" />
+          <Property Name="id_prestamo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cajero" Relationship="Self.FK_Transaccion_id_cajero" FromRole="transacciones" ToRole="cajeros" />
+          <NavigationProperty Name="estado_transaccion" Relationship="Self.FK_Transaccion_id_estado_transaccion" FromRole="transacciones" ToRole="estado_transaccion" />
+          <NavigationProperty Name="recibos" Relationship="Self.FK_Recibos_id_transaccion" FromRole="transacciones" ToRole="recibos" />
+          <NavigationProperty Name="tipo_transaccion" Relationship="Self.FK_Transaccion_id_tipo_transaccion" FromRole="transacciones" ToRole="tipo_transaccion" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_caja_id_sucursal">
+          <End Role="sucursales" Type="Self.sucursale" Multiplicity="1" />
+          <End Role="caja" Type="Self.caja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="id_sucursal" />
+            </Principal>
+            <Dependent Role="caja">
+              <PropertyRef Name="id_sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cajeros_id_sucursal">
+          <End Role="sucursales" Type="Self.sucursale" Multiplicity="1" />
+          <End Role="cajeros" Type="Self.cajero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="id_sucursal" />
+            </Principal>
+            <Dependent Role="cajeros">
+              <PropertyRef Name="id_sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuadres_id_cajero">
+          <End Role="cajeros" Type="Self.cajero" Multiplicity="1" />
+          <End Role="cuadres" Type="Self.cuadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cajeros">
+              <PropertyRef Name="id_cajero" />
+            </Principal>
+            <Dependent Role="cuadres">
+              <PropertyRef Name="id_cajero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaccion_id_cajero">
+          <End Role="cajeros" Type="Self.cajero" Multiplicity="1" />
+          <End Role="transacciones" Type="Self.transaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cajeros">
+              <PropertyRef Name="id_cajero" />
+            </Principal>
+            <Dependent Role="transacciones">
+              <PropertyRef Name="id_cajero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaccion_id_estado_transaccion">
+          <End Role="estado_transaccion" Type="Self.estado_transaccion" Multiplicity="1" />
+          <End Role="transacciones" Type="Self.transaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_transaccion">
+              <PropertyRef Name="id_estado_transaccion" />
+            </Principal>
+            <Dependent Role="transacciones">
+              <PropertyRef Name="id_estado_transaccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recibos_id_transaccion">
+          <End Role="transacciones" Type="Self.transaccione" Multiplicity="1" />
+          <End Role="recibos" Type="Self.recibo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transacciones">
+              <PropertyRef Name="id_transaccion" />
+            </Principal>
+            <Dependent Role="recibos">
+              <PropertyRef Name="id_transaccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaccion_id_tipo_transaccion">
+          <End Role="tipo_transaccion" Type="Self.tipo_transaccion" Multiplicity="1" />
+          <End Role="transacciones" Type="Self.transaccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_transaccion">
+              <PropertyRef Name="id_tipo_transaccion" />
+            </Principal>
+            <Dependent Role="transacciones">
+              <PropertyRef Name="id_tipo_transaccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBCajaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cajas" EntityType="Self.caja" />
+          <EntitySet Name="cajeros" EntityType="Self.cajero" />
+          <EntitySet Name="cuadres" EntityType="Self.cuadre" />
+          <EntitySet Name="estado_transaccion" EntityType="Self.estado_transaccion" />
+          <EntitySet Name="recibos" EntityType="Self.recibo" />
+          <EntitySet Name="sucursales" EntityType="Self.sucursale" />
+          <EntitySet Name="tipo_transaccion" EntityType="Self.tipo_transaccion" />
+          <EntitySet Name="transacciones" EntityType="Self.transaccione" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <AssociationSet Name="FK_caja_id_sucursal" Association="Self.FK_caja_id_sucursal">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="caja" EntitySet="cajas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cajeros_id_sucursal" Association="Self.FK_Cajeros_id_sucursal">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="cajeros" EntitySet="cajeros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuadres_id_cajero" Association="Self.FK_Cuadres_id_cajero">
+            <End Role="cajeros" EntitySet="cajeros" />
+            <End Role="cuadres" EntitySet="cuadres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaccion_id_cajero" Association="Self.FK_Transaccion_id_cajero">
+            <End Role="cajeros" EntitySet="cajeros" />
+            <End Role="transacciones" EntitySet="transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaccion_id_estado_transaccion" Association="Self.FK_Transaccion_id_estado_transaccion">
+            <End Role="estado_transaccion" EntitySet="estado_transaccion" />
+            <End Role="transacciones" EntitySet="transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recibos_id_transaccion" Association="Self.FK_Recibos_id_transaccion">
+            <End Role="transacciones" EntitySet="transacciones" />
+            <End Role="recibos" EntitySet="recibos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaccion_id_tipo_transaccion" Association="Self.FK_Transaccion_id_tipo_transaccion">
+            <End Role="tipo_transaccion" EntitySet="tipo_transaccion" />
+            <End Role="transacciones" EntitySet="transacciones" />
+          </AssociationSet>
+          <FunctionImport Name="sp_insertar_cuadres">
+            <Parameter Name="id_cajero" Mode="In" Type="Int32" />
+            <Parameter Name="monto_inicial" Mode="In" Type="Decimal" />
+            <Parameter Name="monto_final" Mode="In" Type="Decimal" />
+            <Parameter Name="diferencia_cuadre" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_insertar_recibo">
+            <Parameter Name="id_transaccion" Mode="In" Type="Int32" />
+            <Parameter Name="monto_transaccion" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_insertar_transaccion">
+            <Parameter Name="id_cajero" Mode="In" Type="Int32" />
+            <Parameter Name="num_cuenta_origen" Mode="In" Type="Int32" />
+            <Parameter Name="num_cuenta_destino" Mode="In" Type="Int32" />
+            <Parameter Name="id_tipo_transaccion" Mode="In" Type="Int32" />
+            <Parameter Name="id_prestamo" Mode="In" Type="Int32" />
+            <Parameter Name="id_moneda" Mode="In" Type="Int32" />
+            <Parameter Name="monto_transaccion" Mode="In" Type="Decimal" />
+            <Parameter Name="id_estado_transaccion" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBCajaModelStoreContainer" CdmEntityContainer="DBCajaEntities">
+          <EntitySetMapping Name="cajas">
+            <EntityTypeMapping TypeName="DBCajaModel.caja">
+              <MappingFragment StoreEntitySet="caja">
+                <ScalarProperty Name="id_caja" ColumnName="id_caja" />
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="monto_caja" ColumnName="monto_caja" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cajeros">
+            <EntityTypeMapping TypeName="DBCajaModel.cajero">
+              <MappingFragment StoreEntitySet="cajeros">
+                <ScalarProperty Name="id_cajero" ColumnName="id_cajero" />
+                <ScalarProperty Name="id_caja" ColumnName="id_caja" />
+                <ScalarProperty Name="nombre_cajero" ColumnName="nombre_cajero" />
+                <ScalarProperty Name="apellido_cajero" ColumnName="apellido_cajero" />
+                <ScalarProperty Name="clave_cajero" ColumnName="clave_cajero" />
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cuadres">
+            <EntityTypeMapping TypeName="DBCajaModel.cuadre">
+              <MappingFragment StoreEntitySet="cuadres">
+                <ScalarProperty Name="id_cuadres" ColumnName="id_cuadres" />
+                <ScalarProperty Name="id_cajero" ColumnName="id_cajero" />
+                <ScalarProperty Name="monto_inicial" ColumnName="monto_inicial" />
+                <ScalarProperty Name="monto_final" ColumnName="monto_final" />
+                <ScalarProperty Name="diferencia_cuadre" ColumnName="diferencia_cuadre" />
+                <ScalarProperty Name="fecha_cuadre" ColumnName="fecha_cuadre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado_transaccion">
+            <EntityTypeMapping TypeName="DBCajaModel.estado_transaccion">
+              <MappingFragment StoreEntitySet="estado_transaccion">
+                <ScalarProperty Name="id_estado_transaccion" ColumnName="id_estado_transaccion" />
+                <ScalarProperty Name="nombre_estado_transaccion" ColumnName="nombre_estado_transaccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recibos">
+            <EntityTypeMapping TypeName="DBCajaModel.recibo">
+              <MappingFragment StoreEntitySet="recibos">
+                <ScalarProperty Name="id_recibo" ColumnName="id_recibo" />
+                <ScalarProperty Name="id_transaccion" ColumnName="id_transaccion" />
+                <ScalarProperty Name="monto_transaccion" ColumnName="monto_transaccion" />
+                <ScalarProperty Name="fecha_transaccion" ColumnName="fecha_transaccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sucursales">
+            <EntityTypeMapping TypeName="DBCajaModel.sucursale">
+              <MappingFragment StoreEntitySet="sucursales">
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="nombre_sucursal" ColumnName="nombre_sucursal" />
+                <ScalarProperty Name="telefono_sucursal" ColumnName="telefono_sucursal" />
+                <ScalarProperty Name="direccion_sucursal" ColumnName="direccion_sucursal" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_transaccion">
+            <EntityTypeMapping TypeName="DBCajaModel.tipo_transaccion">
+              <MappingFragment StoreEntitySet="tipo_transaccion">
+                <ScalarProperty Name="id_tipo_transaccion" ColumnName="id_tipo_transaccion" />
+                <ScalarProperty Name="nombre_tipo_transaccion" ColumnName="nombre_tipo_transaccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transacciones">
+            <EntityTypeMapping TypeName="DBCajaModel.transaccione">
+              <MappingFragment StoreEntitySet="transacciones">
+                <ScalarProperty Name="id_transaccion" ColumnName="id_transaccion" />
+                <ScalarProperty Name="id_cajero" ColumnName="id_cajero" />
+                <ScalarProperty Name="num_cuenta_origen" ColumnName="num_cuenta_origen" />
+                <ScalarProperty Name="num_cuenta_destino" ColumnName="num_cuenta_destino" />
+                <ScalarProperty Name="id_moneda" ColumnName="id_moneda" />
+                <ScalarProperty Name="id_tipo_transaccion" ColumnName="id_tipo_transaccion" />
+                <ScalarProperty Name="monto_transaccion" ColumnName="monto_transaccion" />
+                <ScalarProperty Name="fecha_transaccion" ColumnName="fecha_transaccion" />
+                <ScalarProperty Name="id_estado_transaccion" ColumnName="id_estado_transaccion" />
+                <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="database_firewall_rules">
+            <EntityTypeMapping TypeName="DBCajaModel.database_firewall_rules">
+              <MappingFragment StoreEntitySet="database_firewall_rules">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_insertar_cuadres" FunctionName="DBCajaModel.Store.sp_insertar_cuadres" />
+          <FunctionImportMapping FunctionImportName="sp_insertar_recibo" FunctionName="DBCajaModel.Store.sp_insertar_recibo" />
+          <FunctionImportMapping FunctionImportName="sp_insertar_transaccion" FunctionName="DBCajaModel.Store.sp_insertar_transaccion" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

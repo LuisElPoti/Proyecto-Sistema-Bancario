@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c68360e2ca9f41adad11268e52c5770d" Name="Diagram1">
+        <EntityTypeShape EntityType="DBCajaModel.caja" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCajaModel.cajero" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCajaModel.cuadre" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCajaModel.estado_transaccion" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCajaModel.recibo" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCajaModel.sucursale" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCajaModel.tipo_transaccion" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCajaModel.transaccione" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCajaModel.database_firewall_rules" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="DBCajaModel.FK_caja_id_sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCajaModel.FK_Cajeros_id_sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCajaModel.FK_Cuadres_id_cajero" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCajaModel.FK_Transaccion_id_cajero" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCajaModel.FK_Transaccion_id_estado_transaccion" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCajaModel.FK_Recibos_id_transaccion" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCajaModel.FK_Transaccion_id_tipo_transaccion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

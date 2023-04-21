@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CAJA
 {
-    public partial class Form1 : Form
+    public partial class transaccionC : Form
     {
-        public Form1()
+        public transaccionC()
         {
             InitializeComponent();
         }
