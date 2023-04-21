@@ -1,49 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
-using System.Data.SqlClient;
-using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient;
+using System.Data;
+using log4net;
+using System.Xml.Linq;
 
 namespace INTEGRACION.Operaciones
 {
     public class OperacionesCliente
     {
-        
-        public DataTable GetClientes()
+        log4net.ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        public List<Cliente> GetClientes()
         {
+            List<Cliente> clientes = new List<Cliente>();
             using (DBIntegracionEntities db = new DBIntegracionEntities())
             {
-                var dt = new DataTable();
-                var conn = db.Database.Connection;
-                var connectionState = conn.State;
                 try
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    var cmd = db.Database.Connection.CreateCommand();
+                    cmd.CommandText = "spGetAllCliente";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    if (cmd.Connection.State != ConnectionState.Open)
                     {
-                        cmd.CommandText = "spGetAllCliente";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        using (var reader = cmd.ExecuteReader())
+                        cmd.Connection.Open();
+                    }
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
                         {
-                            dt.Load(reader);
+                            Cliente cliente = new Cliente();
+                            cliente.idCliente = int.Parse(reader[0].ToString());
+                            cliente.Nombre = reader.GetString(reader.GetOrdinal("Nombre"));
+                            cliente.TipoDocumento = reader.GetInt32(reader.GetOrdinal("TipoDocumento"));
+                            cliente.Documento = reader.GetString(reader.GetOrdinal("Documento"));
+                            cliente.Correo = reader.GetString(reader.GetOrdinal("Correo"));
+                            cliente.Telefono = reader.GetString(reader.GetOrdinal("Telefono"));
+                            cliente.Direccion = reader.GetString(reader.GetOrdinal("Direccion"));
+                            cliente.FechaNacimiento = reader.GetDateTime(reader.GetOrdinal("FechaNacimiento"));
+
+                            clientes.Add(cliente);
                         }
                     }
-                    //log.Info("Select Clientes Realizado.");
+                    log.Info("Ayuda.");
                 }
                 catch (Exception ex)
                 {
-                   // log.Error("Select Clientes Fallido." + ex);
+                    log.Error("Select Clientes Fallido." + ex);
                     throw;
                 }
                 finally
                 {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
+                    if (db.Database.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Database.Connection.Close();
+                    }
                 }
-                return dt;
             }
+            return clientes;
         }
+
 
         public bool InsertCliente(string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento)
         {
@@ -54,17 +75,36 @@ namespace INTEGRACION.Operaciones
                     ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
                     db.spInsertCliente(nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
 
-                   // log.Info("Something");
+                    log.Info("Something");
                     return true;
                 }
                 catch (Exception ex)
                 {
-                   // log.Error("Fallo Insert Clientes: " + ex);
+                    log.Error("Fallo Insert Clientes: " + ex);
                     return false;
                 }
             }
         }
 
+        public bool EliminarCliente(int id)
+        {
+            using (DBIntegracionEntities db = new DBIntegracionEntities())
+            {
+                try
+                {
+                    ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
+                    db.spDeleteCliente(id);
+
+                    log.Info("Something");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    log.Error("Fallo Insert Clientes: " + ex);
+                    return false;
+                }
+            }
+        }
         public bool UpdateClientes(int id, string nombre, int tipoDocumento, string documento, string correo, string telefono, string direccion, DateTime fechaNacimiento)
         {
             using (DBIntegracionEntities db = new DBIntegracionEntities())
@@ -73,49 +113,61 @@ namespace INTEGRACION.Operaciones
                 {
                     int ReturnedValue = db.spUpsertCliente(id, nombre, tipoDocumento, documento, correo, telefono, direccion, fechaNacimiento);
 
-                   // log.Info("Update Clientes Realizado.");
+                    log.Info("Update Clientes Realizado.");
                     return true;
                 }
                 catch (Exception ex)
                 {
-                   // log.Error("Fallo Update Clientes: " + ex);
+                    log.Error("Fallo Update Clientes: " + ex);
                     return false;
                 }
             }
         }
 
-        public DataTable GetClientebyID(int id)
+        public List<Cliente> GetClientebyID(int id)
         {
             using (DBIntegracionEntities db = new DBIntegracionEntities())
             {
-                var dt = new DataTable();
+                var clientes = new List<Cliente>();
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
-                try
+
+                if (connectionState != ConnectionState.Open) conn.Open();
+                using (var cmd = conn.CreateCommand())
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    cmd.CommandText = "spGetClienteById";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("Id", id));
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        cmd.CommandText = "spGetClienteById";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("Id", id));
-                        using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
                         {
-                            dt.Load(reader);
+                            Cliente cliente = new Cliente();
+                            cliente.idCliente = int.Parse(reader[0].ToString());
+                            cliente.Nombre = reader.GetString(reader.GetOrdinal("Nombre"));
+                            cliente.TipoDocumento = reader.GetInt32(reader.GetOrdinal("TipoDocumento"));
+                            cliente.Documento = reader.GetString(reader.GetOrdinal("Documento"));
+                            cliente.Correo = reader.GetString(reader.GetOrdinal("Correo"));
+                            cliente.Telefono = reader.GetString(reader.GetOrdinal("Telefono"));
+                            cliente.Direccion = reader.GetString(reader.GetOrdinal("Direccion"));
+                            cliente.FechaNacimiento = reader.GetDateTime(reader.GetOrdinal("FechaNacimiento"));
+
+                            clientes.Add(cliente);
                         }
                     }
-                    //log.Info("Select por ID Realizado.");
                 }
-                catch (Exception ex)
-                {
-                   // log.Error("Fallo select por ID: " + ex);
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
+                log.Info("Select por ID Realizado.");
+
+                //catch (Exception ex)
+                //{
+                //    log.Error("Fallo select por ID: " + ex);
+                //    throw;
+                //}
+                //finally
+                //{
+                //    if (connectionState != ConnectionState.Closed) conn.Close();
+                //}
+                return clientes;
             }
         }
     }

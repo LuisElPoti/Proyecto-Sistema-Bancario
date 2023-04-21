@@ -35,7 +35,7 @@ namespace INTEGRACION.Servicios
             return Operaciones.GetPerfil();
         }
 
-        public DataTable BuscarPerfil(int id)
+        public List<Perfil> BuscarPerfil(int id)
         {
             return Operaciones.GetPerfilbyID(id);
         }

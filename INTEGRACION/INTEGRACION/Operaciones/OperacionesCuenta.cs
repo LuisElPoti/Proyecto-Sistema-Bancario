@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -10,38 +11,54 @@ namespace INTEGRACION.Operaciones
 {
     public class OperacionesCuenta
     {
-        public DataTable GetCuentas()
+        public List<Cuenta> GetCuentas()
         {
+            List<Cuenta> Cuentas = new List<Cuenta>();
             using (DBIntegracionEntities db = new DBIntegracionEntities())
             {
-                var dt = new DataTable();
-                var conn = db.Database.Connection;
-                var connectionState = conn.State;
                 try
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    var cmd = db.Database.Connection.CreateCommand();
+                    cmd.CommandText = "spGetAllCuenta";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    if (cmd.Connection.State != ConnectionState.Open)
                     {
-                        cmd.CommandText = "spGetAllCuenta";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        using (var reader = cmd.ExecuteReader())
+                        cmd.Connection.Open();
+                    }
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
                         {
-                            dt.Load(reader);
+                            Cuenta Cuenta = new Cuenta();
+                            Cuenta.idCuenta = reader.GetInt32(reader.GetOrdinal("idCuenta"));
+                            Cuenta.idCliente = reader.GetInt32(reader.GetOrdinal("idCliente"));
+                            Cuenta.idTipoCuenta = reader.GetInt32(reader.GetOrdinal("idTipoCuenta"));
+                            Cuenta.idBanco = reader.GetInt32(reader.GetOrdinal("idBanco"));
+                            Cuenta.NumeroCuenta = reader.GetString(reader.GetOrdinal("NumeroCuenta"));
+                            Cuenta.Estado = reader.GetBoolean(reader.GetOrdinal("Estado"));
+                            Cuenta.Balance = reader.GetDecimal(reader.GetOrdinal("Balance"));
+                            Cuenta.FechaIngreso = reader.GetDateTime(reader.GetOrdinal("FechaNacimiento"));
+
+                            Cuentas.Add(Cuenta);
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw;
                 }
                 finally
                 {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
+                    if (db.Database.Connection.State != ConnectionState.Closed)
+                    {
+                        db.Database.Connection.Close();
+                    }
                 }
-                return dt;
             }
+            return Cuentas;
         }
-
         public bool InsertCuentas(int idCliente, int idTipoCuenta, int idBanco, string NumeroCuenta, bool Estado)
         {
             using (DBIntegracionEntities db = new DBIntegracionEntities())
@@ -94,69 +111,75 @@ namespace INTEGRACION.Operaciones
             }
         }
 
-        public DataTable GetCuentabyID(int id)
+        public List<Cuenta> GetCuentabyID(int id)
         {
             using (DBIntegracionEntities db = new DBIntegracionEntities())
             {
-                var dt = new DataTable();
+                var Cuentas = new List<Cuenta>();
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
-                try
+
+                if (connectionState != ConnectionState.Open) conn.Open();
+                using (var cmd = conn.CreateCommand())
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    cmd.CommandText = "spGetCuentaById";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("Id", id));
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        cmd.CommandText = "spGetCuentaById";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("Id", id));
-                        using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
                         {
-                            dt.Load(reader);
+                            Cuenta Cuenta = new Cuenta();
+                            Cuenta.idCuenta = int.Parse(reader[0].ToString());      //GetInt32(reader.GetOrdinal("Id"));
+                            Cuenta.idCliente = reader.GetInt32(reader.GetOrdinal("idCliente"));
+                            Cuenta.idTipoCuenta = reader.GetInt32(reader.GetOrdinal("idTipoCuenta"));
+                            Cuenta.idBanco = reader.GetInt32(reader.GetOrdinal("idBanco"));
+                            Cuenta.NumeroCuenta = reader.GetString(reader.GetOrdinal("NumeroCuenta"));
+                            Cuenta.Estado = reader.GetBoolean(reader.GetOrdinal("Estado"));
+                            Cuenta.Balance = reader.GetDecimal(reader.GetOrdinal("Balance"));
+                            Cuenta.FechaIngreso = reader.GetDateTime(reader.GetOrdinal("FechaIngreso"));
+
+                            Cuentas.Add(Cuenta);
                         }
                     }
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
+                return Cuentas;
             }
         }
 
-        public DataTable GetCuentabyCliente(int idCliente)
+        public List<Cuenta> GetCuentabyCliente(int idCliente)
         {
             using (DBIntegracionEntities db = new DBIntegracionEntities())
             {
-                var dt = new DataTable();
+                var Cuentas = new List<Cuenta>();
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
-                try
+
+                if (connectionState != ConnectionState.Open) conn.Open();
+                using (var cmd = conn.CreateCommand())
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    cmd.CommandText = "spGetCuentaByCliente";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@idCliente", idCliente));
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        cmd.CommandText = "spGetCuentabyCliente";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("IdCliente", idCliente));
-                        using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
                         {
-                            dt.Load(reader);
+                            Cuenta Cuenta = new Cuenta();
+                            Cuenta.idCuenta = int.Parse(reader[0].ToString());      //GetInt32(reader.GetOrdinal("Id"));
+                            Cuenta.idCliente = reader.GetInt32(reader.GetOrdinal("idCliente"));
+                            Cuenta.idTipoCuenta = reader.GetInt32(reader.GetOrdinal("idTipoCuenta"));
+                            Cuenta.idBanco = reader.GetInt32(reader.GetOrdinal("idBanco"));
+                            Cuenta.NumeroCuenta = reader.GetString(reader.GetOrdinal("NumeroCuenta"));
+                            Cuenta.Estado = reader.GetBoolean(reader.GetOrdinal("Estado"));
+                            Cuenta.Balance = reader.GetDecimal(reader.GetOrdinal("Balance"));
+                            Cuenta.FechaIngreso = reader.GetDateTime(reader.GetOrdinal("FechaNacimiento"));
+
+                            Cuentas.Add(Cuenta);
                         }
                     }
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
+                return Cuentas;
             }
         }
 

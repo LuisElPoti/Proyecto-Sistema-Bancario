@@ -93,37 +93,39 @@ namespace INTEGRACION.Operaciones
             }
         }
 
-        public DataTable GetPerfilbyID(int id)
+        public List<Perfil> GetPerfilbyID(int id)
         {
             using (DBIntegracionEntities db = new DBIntegracionEntities())
             {
-                var dt = new DataTable();
+                var perfiles = new List<Perfil>();
                 var conn = db.Database.Connection;
                 var connectionState = conn.State;
-                try
+
+                if (connectionState != ConnectionState.Open) conn.Open();
+                using (var cmd = conn.CreateCommand())
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
+                    cmd.CommandText = "spGetPerfilbyID";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("IdPerfil", id));
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        cmd.CommandText = "spGetPerfilById";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("Id", id));
-                        using (var reader = cmd.ExecuteReader())
+                        while (reader.Read())
                         {
-                            dt.Load(reader);
+                            Perfil perfil = new Perfil();
+                            perfil.idPerfil = int.Parse(reader[0].ToString());
+                            perfil.Nombre = reader.GetString(reader.GetOrdinal("Nombre"));
+                            perfil.Descripcion = reader.GetString(reader.GetOrdinal("Descripcion"));
+                            perfil.FechaIngreso = reader.GetDateTime(reader.GetOrdinal("FechaIngreso"));
+
+                            perfiles.Add(perfil);
+
+
                         }
                     }
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
+                return perfiles;
             }
+
         }
     }
 }
