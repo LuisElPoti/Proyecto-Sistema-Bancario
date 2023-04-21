@@ -107,7 +107,7 @@ namespace CoreServices.Operaciones
             }
         }
 
-        public DataTable GetClientebyID(int id)
+        public bool ClienteExists(int id)
         {
             using(DBCoreEntities db = new DBCoreEntities())
             {
