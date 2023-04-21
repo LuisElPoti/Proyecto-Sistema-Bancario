@@ -10,7 +10,7 @@
         <h5 class="card-title">Allen Silverio</h5>
         <h6 class="card-subtitle mb-2 text-muted">Banco BHD</h6>
         <p class="card-text">1234567890986</p>
-        <a href="\Pages\TransaccionesPropiasForm.aspx" class="card-link">Realizar una transacción</a>
+        <a href="\Pages\TransaccionesInterbancariasForm.aspx" class="card-link">Realizar una transacción</a>
       </div>
         </div>
              <div class="card" style="width: 18rem;">
@@ -18,7 +18,7 @@
         <h5 class="card-title">Angel Moreno</h5>
         <h6 class="card-subtitle mb-2 text-muted">Banco Unión</h6>
         <p class="card-text">1234567890986</p>
-        <a href="\\Pages\TransaccionesInterbancariasForm.aspx" class="card-link">Realizar una transacción</a>
+        <a href="\Pages\TransaccionesPropiasForm.aspx" class="card-link">Realizar una transacción</a>
       </div>
     </div>
     </div>
