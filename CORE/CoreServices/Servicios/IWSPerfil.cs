@@ -22,8 +22,8 @@ namespace CoreServices.Servicios
         [OperationContract]
         bool ActualizarPerfil(int idPerfil, string nombre, string descripcion);
 
-        [OperationContract]
-        DataTable MostrarPerfiles();
+        //[OperationContract]
+        //DataTable MostrarPerfiles();
         
         [OperationContract]
         List<Perfil> BuscarPerfil(int id);
