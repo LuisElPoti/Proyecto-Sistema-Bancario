@@ -31,17 +31,17 @@ namespace CoreServices.Servicios
             return Operaciones.UpdateCuentas(idCuenta, Estado, Balance);
         }
 
-        public DataTable MostrarCuentas()
+        public List<Cuenta> MostrarCuentas()
         {
             return Operaciones.GetCuentas();
         }
 
-        public DataTable BuscarCuenta(int id)
+        public List<Cuenta> BuscarCuenta(int id)
         {
             return Operaciones.GetCuentabyID(id);
         }
 
-        public DataTable MostrarCuentaCliente(int idCliente)
+        public List<Cuenta> MostrarCuentaCliente(int idCliente)
         {
             return Operaciones.GetCuentabyCliente(idCliente);
         }

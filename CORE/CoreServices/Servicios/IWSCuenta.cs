@@ -23,10 +23,10 @@ namespace CoreServices.Servicios
         bool ActualizarCuenta(int idCuenta, bool Estado, decimal Balance);
 
         [OperationContract]
-        DataTable MostrarCuentas();
+        List<Cuenta> MostrarCuentas();
 
         [OperationContract]
-        DataTable BuscarCuenta(int id);
+        List<Cuenta> BuscarCuenta(int id);
 
         [OperationContract]
         bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto);

@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using CoreServices;
+
 namespace CORE_INTERFACES.wsReferenceCuenta {
     
     
@@ -40,10 +42,10 @@ namespace CORE_INTERFACES.wsReferenceCuenta {
         System.Threading.Tasks.Task<System.Data.DataTable> MostrarCuentasAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/BuscarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/BuscarCuentaResponse")]
-        System.Data.DataTable BuscarCuenta(int id);
+        System.Collections.Generic.List<Cuenta> BuscarCuenta(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/BuscarCuenta", ReplyAction="http://tempuri.org/IWSCuenta/BuscarCuentaResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> BuscarCuentaAsync(int id);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Cuenta>> BuscarCuentaAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWSCuenta/Deposito_Retiro", ReplyAction="http://tempuri.org/IWSCuenta/Deposito_RetiroResponse")]
         bool Deposito_Retiro(int tipo, string NumeroCuenta, decimal Monto);
@@ -123,11 +125,11 @@ namespace CORE_INTERFACES.wsReferenceCuenta {
             return base.Channel.MostrarCuentasAsync();
         }
         
-        public System.Data.DataTable BuscarCuenta(int id) {
+        public System.Collections.Generic.List<Cuenta> BuscarCuenta(int id) {
             return base.Channel.BuscarCuenta(id);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> BuscarCuentaAsync(int id) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Cuenta>> BuscarCuentaAsync(int id) {
             return base.Channel.BuscarCuentaAsync(id);
         }
         
