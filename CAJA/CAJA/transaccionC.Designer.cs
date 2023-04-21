@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(transaccionC));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgv_transaccion = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.CB_moneda_transaccion = new System.Windows.Forms.ComboBox();
             this.txtBox_monto_transaccion = new System.Windows.Forms.TextBox();
@@ -43,7 +42,6 @@
             this.txt_numero_cuenta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_transaccion)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -59,7 +57,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.dgv_transaccion);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.CB_moneda_transaccion);
             this.panel1.Controls.Add(this.txtBox_monto_transaccion);
@@ -73,14 +70,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(724, 304);
             this.panel1.TabIndex = 1;
-            // 
-            // dgv_transaccion
-            // 
-            this.dgv_transaccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_transaccion.Location = new System.Drawing.Point(444, 35);
-            this.dgv_transaccion.Name = "dgv_transaccion";
-            this.dgv_transaccion.Size = new System.Drawing.Size(253, 241);
-            this.dgv_transaccion.TabIndex = 11;
             // 
             // button1
             // 
@@ -181,7 +170,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_transaccion)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -199,6 +187,5 @@
         private System.Windows.Forms.Label txt_moneda_transaccion;
         private System.Windows.Forms.Label txt_monto_transaccion;
         private System.Windows.Forms.Label txt_tipo_transaccion;
-        private System.Windows.Forms.DataGridView dgv_transaccion;
     }
 }
