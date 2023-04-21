@@ -44,7 +44,7 @@ namespace CoreServices.Clases
         }
         public bool InsertPerfil(string nombre, string descripcion)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
                 db.spInsertPerfil(nombre, descripcion);
@@ -96,7 +96,7 @@ namespace CoreServices.Clases
         
         public DataTable GetPerfilbyID(int id)
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;

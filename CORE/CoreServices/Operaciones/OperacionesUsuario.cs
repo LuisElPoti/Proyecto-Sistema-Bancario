@@ -144,32 +144,18 @@ namespace CoreServices.Clases
         {
             using (DBCoreEntities1 db = new DBCoreEntities1())
             {
-                var dt = new DataTable();
-                var conn = db.Database.Connection;
-                var connectionState = conn.State;
-                try
+                var Cliente = db.Cliente();
+                ObjectParameter ReturnedValue = new ObjectParameter("ReturnValue", typeof(int));
+                db.spInsertPerfil(nombre, descripcion);
+
+                if (Convert.ToInt32(ReturnedValue.Value) >= 1)
                 {
-                    if (connectionState != ConnectionState.Open) conn.Open();
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = "spGetUsuarioById";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("Id", id));
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            dt.Load(reader);
-                        }
-                    }
+                    return true;
                 }
-                catch (Exception)
+                else
                 {
-                    throw;
+                    return false;
                 }
-                finally
-                {
-                    if (connectionState != ConnectionState.Closed) conn.Close();
-                }
-                return dt;
             }
         }
     }
