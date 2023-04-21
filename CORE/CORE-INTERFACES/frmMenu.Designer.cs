@@ -124,6 +124,7 @@
             this.btnInicio.Size = new System.Drawing.Size(249, 55);
             this.btnInicio.TabIndex = 18;
             this.btnInicio.Text = "       Inicio";
+            this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
             // btnTransacción
             // 

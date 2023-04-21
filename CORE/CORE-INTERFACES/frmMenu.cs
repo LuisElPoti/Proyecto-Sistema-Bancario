@@ -79,5 +79,10 @@ namespace CORE_INTERFACES
         {
             Application.Exit();
         }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new frmInicio());
+        }
     }
 }
