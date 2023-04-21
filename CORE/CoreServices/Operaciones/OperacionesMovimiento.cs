@@ -11,7 +11,7 @@ namespace CoreServices.Operaciones
     {
         public DataTable GetAllMovimientobyCuenta()
         {
-            using (DBCoreEntities db = new DBCoreEntities())
+            using (DBCoreEntities1 db = new DBCoreEntities1())
             {
                 var dt = new DataTable();
                 var conn = db.Database.Connection;
